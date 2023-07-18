@@ -152,7 +152,7 @@ ob_start();
                       $nivel = $row['nivel'];
                       switch($nivel):
                           case 'adm':
-                              header('Location: adm.php');
+                              header('Location: dashboard.php');
                           break;
                           case 'user':
                               header('Location: user.php');
