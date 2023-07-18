@@ -880,52 +880,44 @@
                         <td>
                           <img style="margin: auto; display: block;" src="assets/img/xml.gif" alt="XML">
                         </td>
-                        <td class="d-none d-sm-table-cell text-end fw-medium">
-                          $1199,99
+                        <td class="text-end fw-medium">
+                          conteúdo
                         </td>
-                        <td class="text-center text-nowrap fw-medium">
-                          <a href="javascript:void(0)">
-                            View
-                          </a>
+                        <td class="text-end fw-medium">
+                          conteúdo
                         </td>
-                        <td>
-                          <span class="fw-semibold">iPhone 11 Pro</span>
+                        <td class="text-end fw-medium">
+                          conteúdo
                         </td>
-                        <td class="d-none d-xl-table-cell">
-                          <span class="fs-sm text-muted">today</span>
+                        <td class="text-end fw-medium">
+                          conteúdo
                         </td>
-                        <td>
-                          <span class="fw-semibold text-warning">Pending..</span>
+                        <td class="text-end fw-medium">
+                          conteúdo
                         </td>
-                        <td class="d-none d-sm-table-cell text-end fw-medium">
-                          $1199,99
+                        <td class="text-end fw-medium">
+                          conteúdo
                         </td>
-                        <td class="text-center text-nowrap fw-medium">
-                          <a href="javascript:void(0)">
-                            View
-                          </a>
+                        <td class="text-end fw-medium">
+                          conteúdo
                         </td>
-                        <td>
-                          <span class="fw-semibold">iPhone 11 Pro</span>
+                        <td class="text-end fw-medium">
+                          conteúdo
                         </td>
-                        <td class="d-none d-xl-table-cell">
-                          <span class="fs-sm text-muted">today</span>
+                        <td class="text-end fw-medium">
+                          conteúdo
                         </td>
-                        <td>
-                          <span class="fw-semibold text-warning">Pending..</span>
+                        <td class="text-end fw-medium">
+                          conteúdo
                         </td>
-                        <td class="d-none d-sm-table-cell text-end fw-medium">
-                          $1199,99
+                        <td class="text-end fw-medium">
+                          conteúdo
                         </td>
-                        <td class="text-center text-nowrap fw-medium">
-                          <a href="javascript:void(0)">
-                            View
-                          </a>
+                        <td class="text-end fw-medium">
+                          conteúdo
                         </td>
-                        <td class="text-center text-nowrap fw-medium">
-                          <a href="javascript:void(0)">
-                            View
-                          </a>
+                        <td class="text-end fw-medium">
+                          conteúdo
                         </td>
                       </tr>
                       
