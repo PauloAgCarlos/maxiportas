@@ -53,7 +53,7 @@ ob_start();
                   <!-- Header -->
                   <div class="mb-2 text-center">
                     <a class="link-fx fw-bold fs-1" href="index.html">
-                      <img src="assets/img/logotipo-maxportas.png" alt="logotipo-maxportas">
+                      <img src="assets/img/logoHJ-Aluminio.jpg" alt="logotipo-hj">
                     </a>
                     <p class="text-uppercase fw-bold fs-sm text-muted">Iniciar Sessão</p>
                   </div>
@@ -90,7 +90,7 @@ ob_start();
                     
                   </form>
                     <div style="display: flex; justify-content: right;">
-                      <img width="100px" src="assets/img/LogoRTOColor.png" alt="LogoRTOColor">
+                      <a href="http://devaholic.ao" target="_blank" rel="noopener noreferrer" style="font-weight: bolder;">Devaholic</a>
                     </div>
                   <!-- END Sign Up Form -->
                 </div>
@@ -117,15 +117,6 @@ ob_start();
 </html>
 
 <?php
-    // define('HOST', 'localhost');
-    // define('USER', 'root');
-    // define('PASS', '');
-    // define('BD', 'maxportas');
-    // $connection = 'mysql:host='.HOST.';dbname='.BD;
-    // try{ $connect = new PDO($connection, USER, PASS);
-    //      $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // }catch(PDOException $erro){
-    //     echo "ERROR na connection "; }
     if(isset($_POST['btn_iniciarSessao']))
     {
       include "conexao-bd.php";
@@ -152,13 +143,13 @@ ob_start();
                       $nivel = $row['nivel'];
                       switch($nivel):
                           case 'adm':
-                              header('Location: dashboard.php');
+                              header('Location: dashboard/dashboard.php');
                           break;
                           case 'user':
                               header('Location: user.php');
                           break;
                           default:
-                              header('Location: login.php');
+                              header('Location: index.php');
                           break;            
                       endswitch;
 

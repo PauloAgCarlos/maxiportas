@@ -2,5 +2,5 @@
     session_start();
     ob_clean();
     session_destroy();
-    header('Location: login.php');
+    header('Location: index.php');
 ?>

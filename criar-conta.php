@@ -41,8 +41,6 @@
     <!-- END Icons -->
 
     <!-- Stylesheets -->
-    <!-- Fonts and Dashmix framework -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" id="css-main" href="assets/css/dashmix.min.css">
 
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
@@ -64,9 +62,8 @@
                   <!-- Header -->
                   <div class="mb-2 text-center">
                     <a class="link-fx fw-bold fs-1" href="index.html">
-                      <img src="assets/img/logotipo-maxportas.png" alt="logotipo-maxportas">
+                      <img src="assets/img/logoHJ-Aluminio.jpg" alt="logotipo-hj">
                     </a>
-                    <!-- <p class="text-uppercase fw-bold fs-sm text-muted">Iniciar Sessão</p> -->
                   </div>
                   <form class="js-validation-signup " action="" method="POST">
                     <div class="input-group mb-3">
@@ -114,7 +111,7 @@
                       <input type="text" class="form-control ms-3" id="nascimento" name="nascimento" style="font-size: 0.9em;" placeholder="Nascimento">
                     </div>
                       
-                    <input type="hidden" class="form-control ms-3" id="nivel" name="nivel" style="font-size: 0.9em;" placeholder="nivel" value="user">
+                    <input type="hidden" class="form-control ms-3" id="nivel" name="nivel" style="font-size: 0.9em;" placeholder="nivel" value="adm">
                     
                     <div class="text-center mb-4">
                       <button type="submit" name="btn_cadastrar" class="btn btn-hero btn-primary">
@@ -122,14 +119,14 @@
                       </button>
                     </div>
                     <p class="mt-3 mb-0 d-lg-flex justify-content-lg-between">
-                        <a class="btn btn-sm btn-alt-secondary d-block d-lg-inline-block mb-1" href="login.php">
+                        <a class="btn btn-sm btn-alt-secondary d-block d-lg-inline-block mb-1" href="index.php">
                         <i class="fa fa-exclamation-triangle opacity-50 me-1"></i> Voltar
                         </a>
                     </p>
                     
                   </form>
                     <div style="display: flex; justify-content: right;">
-                      <img width="100px" src="assets/img/LogoRTOColor.png" alt="LogoRTOColor">
+                      <a href="http://devaholic.ao" target="_blank" rel="noopener noreferrer" style="font-weight: bolder;">Devaholic</a>
                     </div>
                   <!-- END Sign Up Form -->
                 </div>

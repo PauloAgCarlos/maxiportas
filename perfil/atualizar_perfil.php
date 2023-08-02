@@ -1,0 +1,385 @@
+<?php 
+
+    session_start();
+    require_once "../conexao-bd.php";
+    if(!isset($_SESSION['email'])){
+        header('location: ../login.php');
+    }
+?>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <title>HJ Alumínio</title>
+
+    <meta name="description" content="HJ Alumínio">
+    <meta name="author" content="pixelcave">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Open Graph Meta -->
+    <meta property="og:title" content="HJ Alumínio">
+    <meta property="og:site_name" content="HH Alumínio">
+    <meta property="og:description" content="HJ Alumínio">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+    <!-- Icons -->
+    <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+    <link rel="shortcut icon" href="../assets/media/favicons/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../assets/media/favicons/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/media/favicons/apple-touch-icon-180x180.png">
+    <!-- END Icons -->
+
+    <!-- Stylesheets -->
+    <!-- Fonts and Dashmix framework -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" id="css-main" href="../assets/css/dashmix.min.css">
+
+  </head>
+  <body>
+    <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
+    <?php require_once "../template/sidebar.php" ?>
+
+    <?php require_once "../template/header.php" ?>
+
+      <!-- Main Container -->
+      <main id="main-container">
+        <!-- Page Content -->
+        <div class="content content-full content-boxed">
+          <!-- New Post -->
+          <form action="processar_atualizacao_perfil.php" method="POST" enctype="multipart/form-data">
+            <div class="block">
+              <div class="block-header block-header-default">
+                <a class="btn btn-alt-secondary" href="visualizar_perfil.php">
+                  Voltar
+                </a>
+              </div>
+              <div class="block-content" >
+                <div class="row justify-content-center push">
+                  <div class="col-md-6">
+                  <?php
+                    require_once "../controllers/controllers_perfil.php";
+                    $selecionar_perfil_id = new controllers_perfil();
+                    $idDescriptografado = base64_decode($_GET['atualizar_perfil']); 
+                    
+                    $id_update = $idDescriptografado;
+                    $update = $selecionar_perfil_id->selecionar_perfil_id($id_update);                   
+                    foreach($update as $row_update){
+                  ?>
+                    <div class="mb-1">
+                      <label class="form-label" for="descricao" style="font-size: 0.9em;">Decrição</label> <span style="color: red;">*</span>
+                      <div  style="display: flex;">
+                        <input type="text" class="form-control" id="descricao" name="descricao" value="<?php echo $row_update['descricao']; ?>" style="font-size: 0.9em;" required>
+                      </div>
+                    </div>  
+                
+                    <div class="mt-3 mb-3" style="display: flex; align-items: center; justify-content: space-between;">
+                      <div class="mb-1" style="display: flex; align-items: center; justify-content: center;">                      
+                        <input type="checkbox" name="puxadoracoplado" id="puxadoracoplado">
+                        <label class="form-label"  style="font-size: 12px;" for="puxadoracoplado">Puxador Acoplado </label>
+                      </div>
+
+                      <div class="mb-1" style="display: flex; align-items: center; justify-content: center;">                      
+                        <input type="checkbox" name="ponteira_acoplado" id="ponteira_acoplado">
+                        <label class="form-label"  style="font-size: 12px;" for="ponteira_acoplado">Ponteira Acoplado </label>
+                      </div>
+
+                      <div class="mb-1" style="display: flex; align-items: center; justify-content: center;">                      
+                        <input type="checkbox" name="ponteira_obrigatoria" id="ponteira_obrigatoria">
+                        <label class="form-label"  style="font-size: 12px;" for="ponteira_obrigatoria">Ponteira Obrigatória </label>
+                      </div>
+
+                      <div class="mb-1" style="display: flex; align-items: center; justify-content: center;">                      
+                        <input type="checkbox" name="exige_pinturano_vidro" id="exige_pinturano_vidro">
+                        <label class="form-label"  style="font-size: 12px;" for="exige_pinturano_vidro">Exige Pintura no Vidro </label>
+                      </div>
+                    </div>
+
+                    <div class="mb-3" style="display: flex; align-items: center; justify-content: space-between;">
+                      <div class="mb-1">
+                        <label class="form-label" style="font-size: 0.9em;" for="agregar">Agregar </label>
+                        <select name="agregar" class="form-control" id="agregar">
+                          <option value="Agregar Simples">Agregar Simples</option>
+                          <option value="Agregar Simples1">Agregar Simples1</option>
+                          <option value="Agregar Simples2">Agregar Simples2</option>
+                          <option value="Agregar Simples3">Agregar Simples3</option>
+                        </select>
+                      </div>
+
+                      <div class="mb-1">
+                        <label class="form-label"  style="font-size: 0.9em;" for="unidade">Unidade </label>
+                        <select name="unidade" class="form-control" id="unidade">
+                          <option value="Metro">Metro</option>
+                          <option value="Metro1">Metro1</option>
+                          <option value="Metro2">Metro2</option>
+                          <option value="Metro3">Metro3</option>
+                        </select>
+                      </div>
+
+                      <div class="mb-1">
+                        <label class="form-label"  style="font-size: 0.9em;" for="vidro">Vidro </label>
+                        <select name="vidro" class="form-control" id="vidro">
+                          <option value="Vidro Simples">Vidro Simples</option>
+                          <option value="Vidro Simples1">Vidro Simples1</option>
+                          <option value="Vidro Simples2">Vidro Simples2</option>
+                          <option value="Vidro Simples3">Vidro Simples3</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="mb-3" style="display: flex; align-items: center; justify-content: space-between;">
+                      
+                      <div class="mb-1">
+                        <label class="form-label"  style="font-size: 0.9em;" for="esquadreta">Esquadreta </label>
+                        <select name="esquadreta" class="form-control" id="esquadreta">
+                          <option value="Esquadreta">Esquadreta</option>
+                          <option value="Esquadreta1">Esquadreta1</option>
+                          <option value="Esquadreta2">Esquadreta2</option>
+                          <option value="Esquadreta3">Esquadreta3</option>
+                        </select>
+                      </div>
+                      
+                      <div class="mb-1">
+                        <label class="form-label"  style="font-size: 0.9em;" for="esquadreta_reforcada_a">Esquadreta Reforçada A </label>
+                        <select name="esquadreta_reforcada_a" class="form-control" id="esquadreta_reforcada_a">
+                          <option value="Esquadreta Reforcada A ">Esquadreta Reforcada A </option>
+                          <option value="Esquadreta Reforcada A 1">Esquadreta Reforcada A 1</option>
+                          <option value="Esquadreta Reforcada A 2">Esquadreta Reforcada A 2</option>
+                          <option value="Esquadreta Reforcada A 3">Esquadreta Reforcada A 3</option>
+                        </select>
+                      </div>
+
+                      <div class="mb-1">
+                        <label class="form-label"  style="font-size: 0.9em;" for="esquadreta_reforcada_b">Esquadreta Reforçada B </label>
+                        <select name="esquadreta_reforcada_b" class="form-control" id="esquadreta_reforcada_b">
+                          <option value="Esquadreta Reforcada B ">Esquadreta Reforcada B </option>
+                          <option value="Esquadreta Reforcada B 1">Esquadreta Reforcada B 1</option>
+                          <option value="Esquadreta Reforcada B 2">Esquadreta Reforcada B 2</option>
+                          <option value="Esquadreta Reforcada B 3">Esquadreta Reforcada B 3</option>
+                        </select>
+                      </div>
+                    </div>
+
+                      <div class="mb-1">                      
+                        <input type="checkbox" name="esquadreta_dupla" id="esquadreta_dupla">
+                        <label class="form-label"  style="font-size: 0.9em;" for="esquadreta_dupla">Esquadreta Dupla </label>
+                      </div> 
+                      <?php } ?>                     
+                  </div>
+                  
+                  <div class="col-md-6">
+
+                  <?php
+                    require_once "../controllers/controllers_perfil.php";
+                    $selecionar_perfil_id = new controllers_perfil();
+                    $idDescriptografado = base64_decode($_GET['atualizar_perfil']); 
+                    
+                    $id_update = $idDescriptografado;
+                    $update = $selecionar_perfil_id->selecionar_perfil_id($id_update);                   
+                    foreach($update as $row_update){
+                  ?>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                      <div class="mb-1">
+                        <label class="form-label"  style="font-size: 0.9em;" for="custo_metro">Custo (metro) <span style="color: red;">*</span> </label>
+                        <input type="text" class="form-control" id="custo_metro" name="custo_metro" value="<?php echo $row_update['custo_metro']; ?>" style="font-size: 0.9em;">
+                      </div>
+                      <div class="mb-1 ms-2">
+                        <label class="form-label"  style="font-size: 0.8em;" for="desconto_corte_perfil">Desconto Corte Perfil(mm)</label>
+                        <input type="text" class="form-control" id="desconto_corte_perfil" name="desconto_corte_perfil" value="<?php echo $row_update['desconto_corte_perfil']; ?>" style="font-size: 0.9em;">
+                      </div>
+                      <div class="mb-1 ms-2">
+                        <label class="form-label"  style="font-size: 0.8em;" for="desconto_corte_vidro">Desconto Corte Vidro (mm) </label>
+                        <input type="text" class="form-control" id="desconto_corte_vidro" name="desconto_corte_vidro" value="<?php echo $row_update['desconto_corte_vidro']; ?>" style="font-size: 0.9em;">
+                      </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                    
+                      <div class="mb-1 mt-2 ms-2">
+                        <label class="form-label" style="font-size: 0.8em;" for="desconto_corte_travessa">Desconto Corte Travessa (mm) </label>
+                        <input type="text" class="form-control" id="desconto_corte_travessa" name="desconto_corte_travessa" value="<?php echo $row_update['desconto_corte_travessa']; ?>" style="font-size: 0.9em;">
+                      </div>
+                      
+                      <div class="mb-1 ms-2 mt-2">
+                        <label class="form-label" style="font-size: 0.8em;" for="desconto_corte_travessa_oculta">Desconto Corte Travessa Oculta (mm) </label>
+                        <input type="text" class="form-control" id="desconto_corte_travessa_oculta" name="desconto_corte_travessa_oculta" value="<?php echo $row_update['desconto_corte_travessa_oculta']; ?>" style="font-size: 0.8em;">
+                      </div>
+                        
+                      <div class="mb-1 ms-2 mt-4">
+                        <label class="form-label" style="font-size: 0.8em;" for="perda_bordas">  Perdas Bordas<span style="color: red;">*</span> </label>
+                        <input type="text" class="form-control" id="perda_bordas" name="perda_bordas" value="<?php echo $row_update['perda_bordas']; ?>" style="font-size: 0.8em;">
+                      </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                      <div class="mb-1">
+                        <label class="form-label" style="font-size: 0.8em;" for="perda_corte">Perda Corte (mm) <span style="color: red;">*</span> </label>
+                        <input type="text" class="form-control" id="perda_corte" name="perda_corte" value="<?php echo $row_update['perda_corte']; ?>" style="font-size: 0.8em;">
+                      </div>
+
+                      <div class="mb-1 ms-2">
+                        <label class="form-label" style="font-size: 0.8em;" for="dimensao">Dimensão (mm) <span style="color: red;">*</span> </label>
+                        <input type="number" class="form-control" id="dimensao" name="dimensao" value="<?php echo $row_update['dimensao']; ?>" style="font-size: 0.8em;">
+                      </div>
+
+                      <div class="mb-1 ms-2">
+                        <label class="form-label" style="font-size: 0.8em;" for="perda_bordas_retalho">Perda Bordas Retalho (mm)</label>
+                        <input type="text" class="form-control" id="perda_bordas_retalho" name="perda_bordas_retalho" value="<?php echo $row_update['perda_bordas_retalho']; ?>" style="font-size: 0.9em;">
+                      </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                      
+
+                      <div class="mb-1 ms-2">
+                        <label class="form-label" style="font-size: 0.8em;" for="perda_corte_retalho">Perda Corte Retalho (mm)  </label>
+                        <input type="text" class="form-control" id="perda_corte_retalho" name="perda_corte_retalho" value="<?php echo $row_update['perda_corte_retalho']; ?>" style="font-size: 0.9em;">
+                      </div>
+
+                      <div class="mb-1 ms-2">  
+                        <label class="form-label"  style="font-size: 0.8em;" for="codigo_produto">Código Produto </label>                    
+                        <input type="text" class="form-control" value="<?php echo $row_update['codigo_produto']; ?>" name="codigo_produto" id="codigo_produto">
+                      </div>
+
+                      <div class="mb-1 ms-2">
+                        <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração <span style="color: red;">*</span> </label>
+                        <input type="text" class="form-control" id="ultima_alteracao" name="ultima_alteracao" value="<?php echo $row_update['ultima_alteracao']; ?>" style="font-size: 0.8em;">
+                      </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                      <div class="mb-1">  
+                        <label class="form-label"  style="font-size: 0.8em;" for="largura_da_mascara">Largura da Máscara </label>                    
+                        <input type="text" class="form-control" value="<?php echo $row_update['largura_da_mascara']; ?>" name="largura_da_mascara" id="largura_da_mascara">
+                      </div>
+
+                      <div class="mb-1 ms-2">  
+                        <label class="form-label"  style="font-size: 0.8em;" for="codigo_da_fabrica">Código da Fábrica </label>                    
+                        <input type="text" class="form-control" value="<?php echo $row_update['codigo_da_fabrica']; ?>" name="codigo_da_fabrica" id="codigo_da_fabrica">
+                      </div>
+                    </div>
+
+                  </div>
+                  <?php }?>
+                </div>
+                <div class="row justify-content-center push">
+                <?php
+                    require_once "../controllers/controllers_perfil.php";
+                    $selecionar_perfil_id = new controllers_perfil();
+                    $idDescriptografado = base64_decode($_GET['atualizar_perfil']); 
+                    
+                    $id_update = $idDescriptografado;
+                    $update = $selecionar_perfil_id->selecionar_perfil_id($id_update);                   
+                    foreach($update as $row_update){
+                  ?>
+                  <div class="mb-1 col-md-6">
+                    <label class="form-label" style="font-size: 0.8em;" for="referencias_do_mercado">Referências do Mercado <span style="color: red;">*</span> </label>
+                    <textarea name="referencias_do_mercado" id="referencias_do_mercado" class="form-control" cols="10" rows="4" style="font-size: 0.9em;"><?php echo $row_update['referencias_do_mercado']; ?></textarea>
+                  </div>
+
+                  <div class="mb-1 col-md-6">
+                    <label class="form-label" style="font-size: 0.9em;" for="detalhes">Detalhes <span style="color: red;">*</span> </label>
+                    <textarea name="detalhes" id="detalhes" class="form-control" cols="10" rows="4" style="font-size: 0.9em;"><?php echo $row_update['detalhes']; ?></textarea>
+                  </div>
+                  <input type="hidden" name="id_atualizar" value="<?php $idDescriptografado = base64_decode($_GET['atualizar_perfil']); $id_update = $idDescriptografado; echo $id_update; ?>">
+                </div>
+                <?php } ?>
+                <div class="row justify-content-center pushA">                
+                  <div class="mb-1">                      
+                    <input type="checkbox" name="ativo" id="ativo">
+                    <label class="form-label" checkad style="font-size: 0.9em;" for="ativo">Ativo </label>
+                  </div>
+                  <div class="block-content bg-body-light">
+                    <div class="row justify-content-center push">
+                      <div class="col-md-12">
+                        <button type="submit" name="btn_atualizar_perfil" class="btn btn-alt-primary">
+                          <i class="fa fa-fw fa-check opacity-50 me-1"></i> Atualizar Perfil
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </form>
+          <div class="block-content bg-body-light">
+            <style>
+              .round 
+              {                      
+                  cursor: pointer;
+                  margin-left: -20px;
+              }
+              /* .round  input[type='file']
+              {
+                  position: absolute;
+                  transform: scale(2);
+                  opacity: 0; 
+              } */
+            </style>
+            <form action="processar_atualizacao_imagem.php" enctype="multipart/form-data" method="post" class="uploadA">
+              <div class="row justify-content-center push">
+                <div class="mb-4 col-md-12" style="display: flex; align-items: center; justify-content: center;">
+                  <?php
+                    require_once "../controllers/controllers_perfil.php";
+                    $selecionar_perfil_id = new controllers_perfil();
+                    $idDescriptografado = base64_decode($_GET['atualizar_perfil']); 
+                    
+                    $id_update = $idDescriptografado;
+                    $update = $selecionar_perfil_id->selecionar_perfil_id($id_update);                   
+                    foreach($update as $row_update){
+                  ?>
+                  <div>
+                    <?php if($row_update['imagem'] == ""){ ?>
+                        <img style="width: 150px; height: 150px; border-radius: 150px; border: 1px solid black; display: block; margin: auto;" src="../assets/img/avatars/avatar10.jpg" alt="Avatar">
+                      <?php  } else { ?>
+                        <img style="width: 150px; height: 150px; border-radius: 150px; border: 1px solid black; display: block; margin: auto;" id="profileDisplay" onclick="triggerClick()" src="<?php echo $row_update['imagem']; ?>" alt="">
+                      <?php }?>
+                  </div>
+                  <input type="hidden" name="id_atualizar" value="<?php $idDescriptografado = base64_decode($_GET['atualizar_perfil']); $id_update = $idDescriptografado; echo $id_update; ?>">
+                  <?php }?>
+                  <div class="round">
+                    <input class="form-control" type="file" id="profileImage" name="imagem" style="display: none;" onchange="displayImage(this)" type="images/">
+                    <img src="../assets/img/cameraa.png" alt="avatar" onclick="triggerClick()" width="40px" style="border-radius: 1000px;">
+                  </div>
+                  <div class="row justify-content-center push">
+                    <div class="col-md-12">
+                      <button type="submit" name="btn_atualizar_imagem" class="btn btn-alt-primary">
+                        <i class="fa fa-fw fa-check opacity-50 me-1"></i> Atualizar Imagem
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </form>
+          </div>
+          <!-- END New Post -->
+        </div>
+        <!-- END Page Content -->
+      </main>
+      <!-- END Main Container -->
+
+      <!-- Footer -->
+      <?php require_once "../template/footer.php" ?>
+      <!-- END Footer -->
+    </div>
+    <!-- END Page Container -->
+
+  </body>
+</html>
+<!--Mascara no input-->
+<script>
+    $("#telefone").mask("(99) 99999-99999");
+    $("#cpf").mask("999.999.999-99")
+    $("#cep").mask("99999-999");
+    // $("#cnpj").mask("99.999.999/9999-99")
+    $("#nascimento").mask("99/99/9999")
+
+  </script>
+
+  <!--Preview Image-->
+  <script src="../assets//js/preview.js"></script>
