@@ -3,7 +3,7 @@
     session_start();
     require_once "../conexao-bd.php";
     if(!isset($_SESSION['email'])){
-        header('location: ../login.php');
+        header('location: ../index.php');
     }
 
   $servidor = "localhost";
@@ -102,28 +102,9 @@ $total_parceiros = mysqli_num_rows($resultado_parceiros);
     </div>
     <!-- END Left Section -->
 
-    <!-- Right Section -->
-    <div class="space-x-1">
-        <!-- User Dropdown -->
-        <div class="dropdown d-inline-block">
-            <span class="d-sm-inline-block">Bem vindo(a), Marcieli</span>
-        </div>  
-        <div class="dropdown d-inline-block">
-        <button type="button" class="btn btn-alt-secondary" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-fw fa-user"></i>
-            <i class="fa fa-fw fa-angle-down opacity-50 ms-1 d-none d-sm-inline-block"></i>
-        </button>
-        <div class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="page-header-user-dropdown">
-            
-            <div class="p-2">
-            <div role="separator" class="dropdown-divider"></div>
-            <a class="dropdown-item" href="../logout.php">
-                <i class="far fa-fw fa-arrow-alt-circle-left me-1"></i> Terminar Sessão
-            </a>
-            </div>
-        </div>
-        </div>
-    </div>
+    <?php require_once "../template/btn_logout.php"; ?>
+
+
     <!-- Header Search -->
     <div id="page-header-search" class="overlay-header bg-header-dark">
           <div class="bg-white-10">
@@ -312,7 +293,7 @@ $total_parceiros = mysqli_num_rows($resultado_parceiros);
     <!-- END Page Container -->
 
 
-    <script src="../assets/js/cdn.jsdelivr.net_npm_bootstrap@5.3.0-alpha1_dist_js_bootstrap.bundle.min.js"></script>
+    <!-- <script src="../assets/js/cdn.jsdelivr.net_npm_bootstrap@5.3.0-alpha1_dist_js_bootstrap.bundle.min.js"></script> -->
     <script>
       let idProdutoParaExcluir;
 
@@ -369,5 +350,26 @@ $total_parceiros = mysqli_num_rows($resultado_parceiros);
     title: 'Erro ao Eliminar!'
     })
   </script>
+
+<?php } elseif(isset($_GET['atualizado'])){ ?>
+  <script>
+    const Atualizado = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+    })
+
+    Atualizado.fire({
+    icon: 'success',
+    title: 'Atualizado com Sucesso!'
+    })
+  </script>
 <?php } ?>
+
 

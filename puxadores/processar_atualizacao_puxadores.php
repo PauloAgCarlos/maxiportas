@@ -31,11 +31,11 @@
         $atualizar = $controllers_puxadores->atualizar_puxadores($descricao, $usinagem_box_tres, $medida_maxima_para_usinagem, $agregar, $unidade, $codigo_da_fabrica, $codigo_produto, $ponteira_obrigatoria, $referencias_do_mercado, $custo_metro, $markup, $metragem_minima, $valor, $desconto_corte, $perda, $perda_bordas, $perda_corte, $dimensao, $perda_bordas_retalho, $perda_corte_retalho, $ultima_alteracao, $ativo, $id_atualizar);
         if($atualizar)
         {
-            header('Location: visualizar_puxadores.php');
+            header('Location: visualizar_puxadores.php?atualizado');
         }
         else 
         {
-            header('Location: visualizar_puxadores.php?error');
+            header('Location: atualizar_puxadores.php?nao-atualizado');
         }
     endif;
 ?>

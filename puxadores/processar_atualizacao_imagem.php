@@ -37,11 +37,11 @@
 
             if($atualizar)
             {
-                header('Location: visualizar_puxadores.php');
+                header('Location: visualizar_puxadores.php?atualizado');
             }
             else 
             {
-                header('Location: visualizar_puxadores.php?error');
+                header('Location: atualizar_puxadores.php?nao-atualizado');
             }
         }
     endif;

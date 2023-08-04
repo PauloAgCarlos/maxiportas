@@ -52,7 +52,7 @@
         <!-- Page Content -->
         <div class="content content-full content-boxed">
           <!-- New Post -->
-          <form action="cadastrar_servicos.php" method="POST" enctype="multipart/form-data">
+          <form action="servicos.php" method="POST" enctype="multipart/form-data">
             <div class="block">
               <div class="block-header block-header-default">
                 <a class="btn btn-alt-secondary" href="servicos.php">
@@ -82,34 +82,15 @@
                           <option value="Produto">Produto</option>
                         </select>
                       </div>
-                    </div>
 
-                    <div class="mb-1"> Cálculo                     
-                      <input type="radio" name="calculo" id="perimetro">
-                      <label class="form-label"  style="font-size: 0.8em;" for="perimetro">Perímetro </label>
-                    </div> <div class="mb-1">                      
-                      <input type="radio" name="calculo" id="area">
-                      <label class="form-label"  style="font-size: 0.8em;" for="area">Área </label>
-                    </div> <div class="mb-1">                      
-                      <input type="radio" name="calculo" id="unidade">
-                      <label class="form-label"  style="font-size: 0.8em;" for="unidade">Unidade </label>
-                    </div> 
+                      <div class="mb-1">                      
+                        <input type="checkbox" name="exibe_no_orcamento" id="exibe_no_orcamento">
+                        <label class="form-label"  style="font-size: 0.8em;" for="exibe_no_orcamento">Exibe no Orçamento </label>
+                      </div> 
 
-
-                    <div class="mb-1">                      
-                      <input type="checkbox" name="permite_pintura" id="permite_pintura">
-                      <label class="form-label"  style="font-size: 0.8em;" for="permite_pintura">Exibe no Orçamento </label>
-                    </div> 
-
-                    <div class="mb-1">                      
-                      <input type="checkbox" name="permite_pintura" id="permite_pintura">
-                      <label class="form-label"  style="font-size: 0.8em;" for="permite_pintura">Exibe na Lista de Corte </label>
-                    </div>
-
-                    <div class="row justify-content-around">
-                      <div class="mb-1 ms-2" style="width: 150px;">  
-                        <label class="form-label"  style="font-size: 0.8em;" for="codigo_da_fabrica">Código da Fábrica </label>                    
-                        <input type="text" class="form-control" style="font-size: 0.8em;" placeholder="0" name="codigo_da_fabrica" id="codigo_da_fabrica">
+                      <div class="mb-1">                      
+                        <input type="checkbox" name="exibe_na_lista_de_corte" id="exibe_na_lista_de_corte">
+                        <label class="form-label"  style="font-size: 0.8em;" for="exibe_na_lista_de_corte">Exibe na Lista de Corte </label>
                       </div>
                     </div>
 
@@ -144,10 +125,31 @@
                       </div>
                     </div>
 
-                    <div class="mt-5" style="display: flex; align-items: center; justify-content: space-between;"> 
+                    <div style="display: flex; align-items: center; justify-content: space-between;"> 
+
+                      <div class="mt-4" style="display: flex; flex-direction: column; align-items: start; justify-content: flex-right;"> 
+                        <div class="mb-1"> Cálculo <br>                     
+                          <input type="radio" name="calculo" id="perimetro">
+                          <label class="form-label"  style="font-size: 0.8em;" for="perimetro">Perímetro </label>
+                        </div> 
+                        <div class="mb-1">                      
+                          <input type="radio" name="calculo" id="area">
+                          <label class="form-label"  style="font-size: 0.8em;" for="area">Área </label>
+                        </div> 
+                        <div class="mb-1">                      
+                          <input type="radio" name="calculo" id="unidade">
+                          <label class="form-label"  style="font-size: 0.8em;" for="unidade">Unidade </label>
+                        </div> 
+                      </div>
 
                       <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <div class="mb-1">
+
+                        <div class="mb-1" style="width: 150px;">  
+                          <label class="form-label"  style="font-size: 0.8em;" for="codigo_da_fabrica">Código da Fábrica </label>                    
+                          <input type="text" class="form-control" style="font-size: 0.8em;" placeholder="0" name="codigo_da_fabrica" id="codigo_da_fabrica">
+                        </div>
+
+                        <div class="mb-1 ms-2">
                           <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração <span style="color: red;">*</span> </label>
                           <input type="date" class="form-control" id="ultima_alteracao" name="ultima_alteracao"  style="font-size: 0.8em;">
                         </div>
@@ -157,10 +159,9 @@
                           <label class="form-label" checkad style="font-size: 0.8em;" for="ativo">Ativo </label>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-md-6" style="display: flex; align-items: center; justify-content: space-around;">
-                  </div>
 
+                    </div>
+                    
                   </div>
                 </div>
                 <div style="display: flex; align-items: center; justify-content: center;">
@@ -193,41 +194,9 @@
       <!-- END Footer -->
     </div>
     <!-- END Page Container -->
-
+  <!--Evitar Reenvio de Form-->
+  <script src="../assets/js/evitar_reenvio_form.js"></script>
   </body>
 </html>
-<!--Mascara no input-->
-<script>
-    $("#telefone").mask("(99) 99999-99999");
-    $("#cpf").mask("999.999.999-99")
-    $("#cep").mask("99999-999");
-    // $("#cnpj").mask("99.999.999/9999-99")
-    $("#nascimento").mask("99/99/9999")
 
-</script>
-
-<!--Preview Image-->
-<script src="../assets/js/preview.js"></script>
-
-
-<!-- Exibir mensagem de sucesso -->
-<?php if (isset($_GET['success']) && $_GET['success'] == '1'): ?>
-  <script>
-      const Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-      })
-
-      Toast.fire({
-      icon: 'success',
-      title: 'Cadastrado Com Sucesso!'
-      })
-  </script>
-  <?php endif; ?>
+<?php include_once "cadastrar_servicos.php"; ?>

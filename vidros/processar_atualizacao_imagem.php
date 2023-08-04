@@ -37,11 +37,11 @@
 
             if($atualizar)
             {
-                header('Location: visualizar_vidros.php');
+                header('Location: visualizar_vidros.php?atualizado');
             }
             else 
             {
-                header('Location: visualizar_vidros.php?error');
+                header('Location: atualizar_vidros.php?nao-atualizado');
             }
         }
     endif;

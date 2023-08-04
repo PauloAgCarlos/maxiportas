@@ -52,9 +52,9 @@
               <div class="block block-rounded block-mode-loading-refresh">
                 <div class="block-header block-header-default">
                   <h3 class="block-title">
-                    <a href="visualizar_vidros.php">
+                    <a href="visualizar_servicos.php">
                         <i class="fa fa-arrow-left ms-1"></i>
-                        Visualizar Vidros
+                        Visualizar Serviços
                     </a>
                   </h3>
                 </div>
@@ -63,20 +63,20 @@
                     <h1 class="fw-bold text-white  ">
 
                       <?php
-                      require_once "../controllers/controllers_vidros.php";
+                      require_once "../controllers/controllers_servicos.php";
 
-                      $selecionar_vidros_id = new controllers_vidros();
-                      $idDescriptografado = base64_decode($_GET['view_vidros']); 
+                      $selecionar_servicos_id = new controllers_servicos();
+                      $idDescriptografado = base64_decode($_GET['view_servicos']); 
               
-                      foreach($selecionar_vidros_id->selecionar_vidros_id($idDescriptografado) as $row_vidros_id){ 
-                      echo addslashes($row_vidros_id['descricao']); } ?>
+                      foreach($selecionar_servicos_id->selecionar_servicos_id($idDescriptografado) as $row_servicos_id){ 
+                      echo addslashes($row_servicos_id['descricao']); } ?>
                     </h1>
                   </div>
                   <div style=" margin-left:73%; margin-top: -5%;">
-                    <a class="btn btn-hero btn-primary" href="./atualizar_vidros.php?atualizar_vidros=<?php $idCriptografado = base64_encode($row_vidros_id['id']); echo $idCriptografado; ?>" data-toggle="click-ripple">
+                    <a class="btn btn-hero btn-primary" href="./atualizar_servicos.php?atualizar_servicos=<?php $idCriptografado = base64_encode($row_servicos_id['id']); echo $idCriptografado; ?>" data-toggle="click-ripple">
                       <i class="fa fa-pencil-alt"></i>
                     </a>
-                    <a class="btn  btn-hero btn-primary my-2" href="./visualizar_vidros.php">
+                    <a class="btn  btn-hero btn-primary my-2" href="./visualizar_servicos.php">
                       <i class="fa fa-reply" aria-hidden="true"></i>
                       <span class="d-none d-sm-inline ms-1"></span>
                     </a>
@@ -91,30 +91,23 @@
                         <div class="block block-rounded">
 
                           <?php
-                            require_once "../controllers/controllers_vidros.php";
+                            require_once "../controllers/controllers_servicos.php";
 
-                            $selecionar_vidros_id = new controllers_vidros();
-                            $idDescriptografado = base64_decode($_GET['view_vidros']); 
-                            foreach($selecionar_vidros_id->selecionar_vidros_id($idDescriptografado) as $row_vidros_id){ ?>
+                            $selecionar_servicos_id = new controllers_servicos();
+                            $idDescriptografado = base64_decode($_GET['view_servicos']); 
+                            foreach($selecionar_servicos_id->selecionar_servicos_id($idDescriptografado) as $row_servicos_id){ ?>
 
                             <div class="block-header block-header-default">
-                              <h3 class="block-title">Código Produto: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['codigo_produto']); ?></h3>
+                              <h3 class="block-title">Código Produto: <span class="fs-sm text-muted"><?php echo addslashes($row_servicos_id['codigo_produto']); ?></h3>
                             </div>
 
                             <div class="block-content">
-                              <div class="fs-4 mb-1">Custo (metro): <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['custo_metro']); ?></span></div>
+                              <div class="fs-4 mb-1">Custo (metro): <span class="fs-sm text-muted"><?php echo addslashes($row_servicos_id['custo_metro']); ?></span></div>
                               <address class="fs-sm"> 
-                                  Valor: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['valor']); ?></span><br>
-                                  Valor Avulso: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['valor_avulso']); ?></span><br> 
-                                  Valor com Perda: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['valor_com_perda']); ?></span><br> 
-                                  Perda: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['perda']); ?></span><br> 
-                                  Perda Avulso: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['perda_avulso']); ?></span><br> 
-                                  Perda Bordas: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['perda_bordas']); ?></span><br>  
-                                  Perda Corte (mm): <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['perda_corte']); ?></span><br>                                  
-                                  Perda Bordas Retalho (mm): <span class="fs-sm text-muted"> <?php echo addslashes($row_vidros_id['perda_bordas_retalho']); ?> </span><br>   
-                                  Perda Corte Retalho (mm): <span class="fs-sm text-muted"> <?php echo addslashes($row_vidros_id['perda_corte_retalho']); ?></span><br>                           
-                                  
-                                  
+                                  Valor: <span class="fs-sm text-muted"><?php echo addslashes($row_servicos_id['valor']); ?></span><br>    
+                                  Tipo de Serviço: <span class="fs-sm text-muted"><?php echo addslashes($row_servicos_id['tipo_de_servico']); ?></span><br>        
+                                  Exibe no Orçamento: <span class="fs-sm text-muted"><?php echo addslashes($row_servicos_id['exibe_no_orcamento']); ?></span><br>  
+                                  Exibe na Lista de Corte: <span class="fs-sm text-muted"><?php echo addslashes($row_servicos_id['exibe_na_lista_de_corte']); ?></span><br>                                            
                               </address>
                             </div>
                             <?php } ?>
@@ -124,54 +117,21 @@
                         <div class="col-sm-4">
                           <div class="block block-rounded">
                             <?php
-                              require_once "../controllers/controllers_vidros.php";
+                              require_once "../controllers/controllers_servicos.php";
 
-                              $selecionar_vidros_id = new controllers_vidros();
-                              $idDescriptografado = base64_decode($_GET['view_vidros']); 
+                              $selecionar_servicos_id = new controllers_servicos();
+                              $idDescriptografado = base64_decode($_GET['view_servicos']); 
 
-                              foreach($selecionar_vidros_id->selecionar_vidros_id($idDescriptografado) as $row_vidros_id_id){ ?>
+                              foreach($selecionar_servicos_id->selecionar_servicos_id($idDescriptografado) as $row_servicos_id_id){ ?>
                               <div class="block-header block-header-default">
-                                <h3 class="block-title">Agregar: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['agregar']); ?></span></h3>
-                              </div>
+                              <h3 class="block-title">Código da Fabrica: <span class="fs-sm text-muted"><?php echo addslashes($row_servicos_id['codigo_da_fabrica']); ?></h3>
+                            </div>
                               <div class="block-content">
-                                  Markup: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['markup']); ?></span><br>
-                                  Markup Avulso: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['markup_avulso']); ?></span><br>
-                                  Metragem Minima: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['metragem_minima']); ?></span><br> 
-                                  Unidade: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['unidade']); ?></span><br>
-                                  Última Alteração: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['ultima_alteracao']); ?></span><br>
-                                  Liberado Para: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['liberado_para']); ?></span><br>
-                                  Permite Pintura: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['permite_pintura']); ?></span><br>
-                                  <div class="fs-4 mb-1">
-                                  Código da Fábrica: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['codigo_da_fabrica']); ?></span>
-                                  <div class="fs-4 mb-1">
-                                  Dimensão (mm): <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['dimensao']); ?></span>
-                                  </div>
-                                  </div>
+                                  Markup: <span class="fs-sm text-muted"><?php echo addslashes($row_servicos_id['markup']); ?></span><br>
+                                  Última Alteração: <span class="fs-sm text-muted"><?php echo addslashes($row_servicos_id['ultima_alteracao']); ?></span><br>
+                                  Adiciona para o Corte: <span class="fs-sm text-muted"><?php echo addslashes($row_servicos_id['adiciona_para_o_corte']); ?></span><br>
+                                  Calculo: <span class="fs-sm text-muted"><?php echo addslashes($row_servicos_id['calculo']); ?></span>
                               </address>
-                              </div>
-                              <?php } ?>
-                          </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                          <div class="block block-rounded">
-                            <?php
-                              require_once "../controllers/controllers_vidros.php";
-
-                              $selecionar_vidros_id = new controllers_vidros();
-                              $idDescriptografado = base64_decode($_GET['view_vidros']); 
-
-                              foreach($selecionar_vidros_id->selecionar_vidros_id($idDescriptografado) as $row_vidros_id_id){ ?>
-                              <div class="block-header block-header-default">
-                                <h3 class="block-title text-center">Imagem:</h3>
-                              </div>
-
-                              <div style="margin: auto; margin-top: 5%; display: flex; align-items: center; justify-content: center;">
-                                <?php if($row_vidros_id_id['imagem'] == ""){ ?>
-                                  <img style="width: 150px; height: 150px; border-radius: 150px; border: 1px solid black; display: block; margin: auto;" src="../assets/img/avatars/avatar10.jpg" alt="Avatar">
-                                <?php  } else { ?>
-                                  <img style="width: 150px; height: 150px; border-radius: 150px; border: 1px solid black; display: block; margin: auto;" src="<?php echo $row_vidros_id_id['imagem']; ?>" alt="">
-                                <?php }?>
                               </div>
                               <?php } ?>
                           </div>
@@ -182,26 +142,26 @@
                       <div class="col-md-6">
                         <div class="block-header block-header-default">
                           <?php
-                              require_once "../controllers/controllers_vidros.php";
+                              require_once "../controllers/controllers_servicos.php";
 
-                              $selecionar_vidros_id = new controllers_vidros();
-                              $idDescriptografado = base64_decode($_GET['view_vidros']); 
+                              $selecionar_servicos_id = new controllers_servicos();
+                              $idDescriptografado = base64_decode($_GET['view_servicos']); 
 
-                              foreach($selecionar_vidros_id->selecionar_vidros_id($idDescriptografado) as $row_vidros_id_id){ ?>
-                          <h3 class="block-title">Descrição: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['descricao']); ?></h3>
+                              foreach($selecionar_servicos_id->selecionar_servicos_id($idDescriptografado) as $row_servicos_id_id){ ?>
+                          <h3 class="block-title">Descrição: <span class="fs-sm text-muted"><?php echo addslashes($row_servicos_id['descricao']); ?></h3>
                           <?php }?>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="block-header block-header-default">
                           <?php
-                              require_once "../controllers/controllers_vidros.php";
+                              require_once "../controllers/controllers_servicos.php";
 
-                              $selecionar_vidros_id = new controllers_vidros();
-                              $idDescriptografado = base64_decode($_GET['view_vidros']); 
+                              $selecionar_servicos_id = new controllers_servicos();
+                              $idDescriptografado = base64_decode($_GET['view_servicos']); 
 
-                              foreach($selecionar_vidros_id->selecionar_vidros_id($idDescriptografado) as $row_vidros_id_id){ ?>
-                          <h3 class="block-title">Observação: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['observacao']); ?></h3>
+                              foreach($selecionar_servicos_id->selecionar_servicos_id($idDescriptografado) as $row_servicos_id_id){ ?>
+                          <h3 class="block-title">Observação: <span class="fs-sm text-muted"><?php echo addslashes($row_servicos_id['observacao']); ?></h3>
                           <?php }?>
                         </div>
                       </div>

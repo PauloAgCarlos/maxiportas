@@ -141,29 +141,89 @@
                         </ul>
                     </li>
                     <li class="nav-main-item">
-                    <a class="nav-main-link" href="#">
-                        <span class="nav-main-link-name">Serviços</span>
-                    </a>
+                        <a href="#" class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"  aria-expanded="false">
+                            <span class="nav-main-link-name">Serviços</span>
+                        </a>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../servicos/servicos.php">
+                                <span class="nav-main-link-name">Cadastrar</span>
+                            </a>
+                            </li>
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../servicos/visualizar_servicos.php">
+                                <span class="nav-main-link-name">Visualizar</span>
+                            </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-main-item">
-                    <a class="nav-main-link" href="#">
-                        <span class="nav-main-link-name">Esquadretas</span>
-                    </a>
+                        <a href="#" class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"  aria-expanded="false">
+                            <span class="nav-main-link-name">Esquadretas</span>
+                        </a>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../esquadretas/esquadretas.php">
+                                <span class="nav-main-link-name">Cadastrar</span>
+                            </a>
+                            </li>
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../esquadretas/visualizar_esquadretas.php">
+                                <span class="nav-main-link-name">Visualizar</span>
+                            </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-main-item">
-                    <a class="nav-main-link" href="#">
-                        <span class="nav-main-link-name">Acessórios</span>
-                    </a>
+                        <a href="#" class="nav-main-link Anav-main-link-submenu" data-toggle="Asubmenu" aria-haspopup="true"  aria-expanded="false">
+                            <span class="nav-main-link-name">Acessórios</span>
+                        </a>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../acessorios/acessorios.php">
+                                <span class="nav-main-link-name">Cadastrar</span>
+                            </a>
+                            </li>
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../acessorios/visualizar_acessorios.php">
+                                <span class="nav-main-link-name">Visualizar</span>
+                            </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-main-item">
-                    <a class="nav-main-link" href="#">
-                        <span class="nav-main-link-name">Insumos</span>
-                    </a>
+                        <a href="#" class="nav-main-link Anav-main-link-submenu" data-toggle="Asubmenu" aria-haspopup="true"  aria-expanded="false">
+                            <span class="nav-main-link-name">Insumos</span>
+                        </a>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../insumos/insumos.php">
+                                <span class="nav-main-link-name">Cadastrar</span>
+                            </a>
+                            </li>
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../insumos/visualizar_insumos.php">
+                                <span class="nav-main-link-name">Visualizar</span>
+                            </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-main-item">
-                    <a class="nav-main-link" href="#">
-                        <span class="nav-main-link-name">Agregar</span>
-                    </a>
+                        <a href="#" class="nav-main-link Anav-main-link-submenu" data-toggle="Asubmenu" aria-haspopup="true"  aria-expanded="false">
+                            <span class="nav-main-link-name">Agregar</span>
+                        </a>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../agregar/agregar.php">
+                                <span class="nav-main-link-name">Cadastrar</span>
+                            </a>
+                            </li>
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../agregar/visualizar_agregar.php">
+                                <span class="nav-main-link-name">Visualizar</span>
+                            </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-main-item">
                     <a class="nav-main-link" href="#">

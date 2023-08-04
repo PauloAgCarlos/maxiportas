@@ -28,11 +28,11 @@
 
         if($atualizar)
         {
-            header('Location: visualizar_travessas.php');
+            header('Location: visualizar_travessas.php?atualizado');
         }
         else 
         {
-            header('Location: visualizar_travessas.php?error');
+            header('Location: atualizar_travessas.php?nao-atualizado');
         }
     endif;
 ?>

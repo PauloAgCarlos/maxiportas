@@ -16,26 +16,26 @@ $conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
 //Verificar se está sendo passado na URL a página atual, senao é atribuido a pagina 
 $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
-//Selecionar todos os vidros da tabela
-$result_vidros = "SELECT * FROM vidros ORDER BY id DESC";
-$resultado_vidros = mysqli_query($conn, $result_vidros);
+//Selecionar todos os servicos da tabela
+$result_servicos = "SELECT * FROM servicos ORDER BY id DESC";
+$resultado_servicos = mysqli_query($conn, $result_servicos);
 
-//Contar o total de vidros
-$total_vidros = mysqli_num_rows($resultado_vidros);
+//Contar o total de servicos
+$total_servicos = mysqli_num_rows($resultado_servicos);
 
-//Seta a quantidade de vidros por pagina
+//Seta a quantidade de servicos por pagina
 $quantidade_pg = 10;
 
-//calcular o número de pagina necessárias para apresentar os vidros
-$num_pagina = ceil($total_vidros/$quantidade_pg);
+//calcular o número de pagina necessárias para apresentar os servicos
+$num_pagina = ceil($total_servicos/$quantidade_pg);
 
 //Calcular o inicio da visualizacao
 $incio = ($quantidade_pg*$pagina)-$quantidade_pg;
 
-//Selecionar os vidros a serem apresentado na página
-$result_vidros = "SELECT * FROM vidros ORDER BY id DESC limit $incio, $quantidade_pg";
-$resultado_vidros = mysqli_query($conn, $result_vidros);
-$total_vidros = mysqli_num_rows($resultado_vidros);
+//Selecionar os servicos a serem apresentado na página
+$result_servicos = "SELECT * FROM servicos ORDER BY id DESC limit $incio, $quantidade_pg";
+$resultado_servicos = mysqli_query($conn, $result_servicos);
+$total_servicos = mysqli_num_rows($resultado_servicos);
 
 ?>
 <!doctype html>
@@ -102,33 +102,13 @@ $total_vidros = mysqli_num_rows($resultado_vidros);
     </div>
     <!-- END Left Section -->
 
-    <!-- Right Section -->
-    <div class="space-x-1">
-        <!-- User Dropdown -->
-        <div class="dropdown d-inline-block">
-            <span class="d-sm-inline-block">Bem vindo(a), Marcieli</span>
-        </div>  
-        <div class="dropdown d-inline-block">
-        <button type="button" class="btn btn-alt-secondary" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-fw fa-user"></i>
-            <i class="fa fa-fw fa-angle-down opacity-50 ms-1 d-none d-sm-inline-block"></i>
-        </button>
-        <div class="dropdown-menu dropdown-menu-end p-0" aria-labelledby="page-header-user-dropdown">
-            
-            <div class="p-2">
-            <div role="separator" class="dropdown-divider"></div>
-            <a class="dropdown-item" href="../logout.php">
-                <i class="far fa-fw fa-arrow-alt-circle-left me-1"></i> Terminar Sessão
-            </a>
-            </div>
-        </div>
-        </div>
-    </div>
+    <?php require_once "../template/btn_logout.php"; ?>
+
     <!-- Header Search -->
     <div id="page-header-search" class="overlay-header bg-header-dark">
           <div class="bg-white-10">
             <div class="content-header">
-              <form class="w-100" action="pesquisar_vidros.php" method="GET">
+              <form class="w-100" action="pesquisar_servicos.php" method="GET">
                 <div class="input-group">
                   <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
                   <button type="button" class="btn btn-alt-primary" data-toggle="layout" data-action="header_search_off">
@@ -171,61 +151,61 @@ $total_vidros = mysqli_num_rows($resultado_vidros);
               <div class="block block-rounded block-mode-loading-refresh">
                 <div class="block-header block-header-default">
                   <h3 class="block-title">
-                    Visualizar Vidros
+                    Visualizar servicos
                   </h3>
-                  <a class="btn btn-alt-secondary" href="vidros.php">
-                    Cadastrar Vidros
+                  <a class="btn btn-alt-secondary" href="servicos.php">
+                    Cadastrar servicos
                   </a>
                 </div>
                 <div class="table-responsive">
                   <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
                   <?php
-                    require_once "../controllers/controllers_vidros.php";
+                    require_once "../controllers/controllers_servicos.php";
 
-                    $selecionar_vidros = new controllers_vidros();
-                    $result_vidros = $selecionar_vidros->selecionar_vidros();
-                    if(count($result_vidros) > 0)
+                    $selecionar_servicos = new controllers_servicos();
+                    $result_servicos = $selecionar_servicos->selecionar_servicos();
+                    if(count($result_servicos) > 0)
                     { ?>
                     <thead style="text-align: center;">
                       <tr class="text-uppercase">
                         <th>Código Produto</th>
                         <th>Descrição</th>
                         <th>Custo(metro)</th>
-                        <th>Dimensão</th>
+                        <th>Valor</th>
                         <th>Ver Mais</th>
                       </tr>
                     </thead>
                     <?php }?>
                     <tbody style="text-align: center;">
                         <?php
-                            require_once "../controllers/controllers_vidros.php";
+                            require_once "../controllers/controllers_servicos.php";
 
-                            $selecionar_vidros = new controllers_vidros();
-                            $result_vidros = $selecionar_vidros->selecionar_vidros();
-                            if(count($result_vidros) > 0)
+                            $selecionar_servicos = new controllers_servicos();
+                            $result_servicos = $selecionar_servicos->selecionar_servicos();
+                            if(count($result_servicos) > 0)
                             {
-                              while($row_vidros = mysqli_fetch_assoc($resultado_vidros)){ ?>
+                              while($row_servicos = mysqli_fetch_assoc($resultado_servicos)){ ?>
                                 <tr style="text-align: center;">
                                   <td>
-                                      <span class="fw-semibold"><?php echo $row_vidros['codigo_produto']; ?></span>
+                                      <span class="fw-semibold"><?php echo $row_servicos['codigo_produto']; ?></span>
                                   </td>
                                   <td>
-                                    <span class="fs-sm text-muted"><?php echo $row_vidros['descricao'];?></span>
+                                    <span class="fs-sm text-muted"><?php echo $row_servicos['descricao'];?></span>
                                   </td>
                                   <td>
-                                    <?php echo $row_vidros['custo_metro']; ?>
+                                    <?php echo $row_servicos['custo_metro']; ?>
                                   </td>
                                   <td>
-                                      <span class="fw-semibold"><?php echo $row_vidros['dimensao']; ?> m</span>
+                                      <span class="fw-semibold"><?php echo $row_servicos['valor']; ?></span>
                                   </td>
                                   <td class="text-center text-nowrap fw-medium" style="display: flex; justify-content: center; align-items: center;">
 
-                                    <a href="vermais_vidros.php?view_vidros=<?php $idCriptografado = base64_encode($row_vidros['id']); echo $idCriptografado;?>">
+                                    <a href="vermais_servicos.php?view_servicos=<?php $idCriptografado = base64_encode($row_servicos['id']); echo $idCriptografado;?>">
                                         <i class="fa fa-eye me-1 opacity-50"></i>
                                     </a>
 
                                     <?php
-                                       echo "<button class='btn' onclick='abrirModal(".$row_vidros['id'].")'><i class='fa fa-fw fa-times text-danger'></i></button>";
+                                       echo "<button class='btn' onclick='abrirModal(".$row_servicos['id'].")'><i class='fa fa-fw fa-times text-danger'></i></button>";
                                     ?>
                                   </td>
                                 </tr>
@@ -245,7 +225,7 @@ $total_vidros = mysqli_num_rows($resultado_vidros);
                     <li>
                       <?php
                       if($pagina_anterior != 0){ ?>
-                        <a href="visualizar_vidros.php?pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous">
+                        <a href="visualizar_servicos.php?pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous">
                           <span aria-hidden="true">&laquo;</span>
                         </a>
                       <?php }else{ ?>
@@ -255,13 +235,13 @@ $total_vidros = mysqli_num_rows($resultado_vidros);
                     <?php 
                     //Apresentar a paginacao
                     for($i = 1; $i < $num_pagina + 1; $i++){ ?>
-                      <li><a href="visualizar_vidros.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
+                      <li><a href="visualizar_servicos.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
                       </li>
                     <?php } ?>
                     <li>
                       <?php
                       if($pagina_posterior <= $num_pagina){ ?>
-                        <a href="visualizar_vidros.php?pagina=<?php echo $pagina_posterior; ?>" aria-label="Previous">
+                        <a href="visualizar_servicos.php?pagina=<?php echo $pagina_posterior; ?>" aria-label="Previous">
                           <span aria-hidden="true">&raquo;</span>
                         </a>
                       <?php }else{ ?>
@@ -280,7 +260,7 @@ $total_vidros = mysqli_num_rows($resultado_vidros);
                                 <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Tem certeza de que deseja eliminar este Vidro?
+                                Tem certeza de que deseja eliminar este Serviço?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -305,7 +285,7 @@ $total_vidros = mysqli_num_rows($resultado_vidros);
     </div>
     <!-- END Page Container -->
     
-    <script src="../assets/js/cdn.jsdelivr.net_npm_bootstrap@5.3.0-alpha1_dist_js_bootstrap.bundle.min.js"></script>
+    <!-- <script src="../assets/js/cdn.jsdelivr.net_npm_bootstrap@5.3.0-alpha1_dist_js_bootstrap.bundle.min.js"></script> -->
     <script>
       let idProdutoParaExcluir;
 
@@ -316,7 +296,7 @@ $total_vidros = mysqli_num_rows($resultado_vidros);
       }
 
       document.getElementById('btnConfirmarExclusao').addEventListener('click', function() {
-          window.location.href = `eliminar_vidros.php?id=${idProdutoParaExcluir}`;
+          window.location.href = `eliminar_servicos.php?id=${idProdutoParaExcluir}`;
       });
     </script>
   </body>
@@ -361,4 +341,25 @@ $total_vidros = mysqli_num_rows($resultado_vidros);
     title: 'Erro ao Eliminar!'
     })
   </script>
+
+<?php } elseif(isset($_GET['atualizado'])){ ?>
+  <script>
+    const Atualizado = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+    })
+
+    Atualizado.fire({
+    icon: 'success',
+    title: 'Atualizado com Sucesso!'
+    })
+  </script>
 <?php } ?>
+

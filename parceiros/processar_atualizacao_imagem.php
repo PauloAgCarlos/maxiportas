@@ -37,11 +37,11 @@
 
             if($atualizar)
             {
-                header('Location: visualizar_parceiros.php');
+                header('Location: visualizar_parceiros.php?atualizado');
             }
             else 
             {
-                header('Location: visualizar_parceiros.php?error');
+                header('Location: atualizar_parceiros.php?nao-atualizado');
             }
         }
     endif;

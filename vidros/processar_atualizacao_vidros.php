@@ -34,11 +34,11 @@
         $atualizar = $controllers_vidros->atualizar_vidros($descricao, $agregar, $unidade, $liberado_para, $permite_pintura, $codigo_da_fabrica, $codigo_produto, $observacao, $custo_metro, $markup, $markup_avulso, $metragem_minima, $valor, $valor_avulso, $valor_com_perda, $perda, $perda_avulso, $perda_bordas, $perda_corte, $perda_bordas_retalho, $perda_corte_retalho, $dimensao, $ultima_alteracao, $ativo, $id_atualizar);
         if($atualizar)
         {
-            header('Location: visualizar_vidros.php');
+            header('Location: visualizar_vidros.php?atualizado');
         }
         else 
         {
-            header('Location: visualizar_vidros.php?nao-atualizado');
+            header('Location: atualizar_vidros.php?nao-atualizado');
         }
     endif;
 ?>

@@ -37,11 +37,11 @@
 
             if($atualizar)
             {
-                header('Location: visualizar_perfil.php');
+                header('Location: visualizar_perfil.php?atualizado');
             }
             else 
             {
-                header('Location: visualizar_perfil.php?error');
+                header('Location: atualizar_perfil.php?nao-atualizado');
             }
         }
     endif;

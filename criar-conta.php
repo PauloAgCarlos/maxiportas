@@ -18,18 +18,6 @@
     <meta property="og:url" content="">
     <meta property="og:image" content="">
 
-    <!--Mascara no input cpf-->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script> -->
-    <!-- <script>
-      function formatarCPF(campo) {
-        campo.value = campo.value.replace(/\D/g, '');
-        campo.value = campo.value.replace(/(\d{3})(\d)/, '$1.$2');
-        campo.value = campo.value.replace(/(\d{3})(\d)/, '$1.$2');        
-        campo.value = campo.value.replace(/(\d{3})(\d)/, '$1.$2');
-        campo.value = campo.value.replace(/(\d{3})(\d{1,2,3})$/, '$1-$2');
-      }
-    </script> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 
@@ -46,6 +34,9 @@
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <link rel="stylesheet" id="css-theme" href="assets/css/themes/xwork.min.css">
     <!-- END Stylesheets -->
+    
+    <!--SwitAlert Success ao Cadastrar-->
+    <script src="assets/js/cdn.jsdelivr.net_npm_sweetalert2@11.0.18_dist_sweetalert2.all.min.js"></script>
   </head>
   <body>
     <div id="page-container">
@@ -160,6 +151,9 @@
 
     <!-- Page JS Code -->
     <script src="assets/js/pages/op_auth_signup.min.js"></script>
+
+    <!--Evitar Reenvio de Form-->
+    <script src="assets/js/evitar_reenvio_form.js"></script>
   </body>
 </html>
 
@@ -185,6 +179,7 @@ if(isset($_POST['btn_cadastrar'])) :
     $nivel = $_POST['nivel'];
     
 
+  try{
     $stmt = $conn->prepare("INSERT INTO logado (nome, email, senha, cpf, rg, cep, endereco, telefone, complemento, bairro, cidade, uf, nascimento, nivel) VALUES (:nome, :email, :senha, :cpf, :rg, :cep, :endereco, :telefone, :complemento, :bairro, :cidade, :uf, :nascimento, :nivel)");
     $stmt->bindParam(':nome', $username);
     $stmt->bindParam(':email', $email);
@@ -201,10 +196,55 @@ if(isset($_POST['btn_cadastrar'])) :
     $stmt->bindParam(':nascimento', $nascimento);
     $stmt->bindParam(':nivel', $nivel);
     $stmt->execute();
-    // if($stmt->execute()) {
-    //     header('Location: criar-conta.php?sucefull');
-    // } else {
-    //     header('Location: criar-conta.php.php?error');
-    // }
+
+    if($stmt)
+        { ?>
+
+        <script>
+          const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+          })
+
+          Toast.fire({
+          icon: 'success',
+          title: 'Cadastrado Com Sucesso!'
+          })
+        </script>
+
+        <?php }
+        exit();
+        
+        } catch (PDOException $e) {
+            $erro = $e->getMessage(); ?>
+            <script>
+              const Toaste = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+              })
+
+              Toaste.fire({
+              icon: 'error',
+              title: 'Erro ao Cadastradrar!'
+              })
+            </script>
+      <?php  }
+
+
+
 endif;
 ?>

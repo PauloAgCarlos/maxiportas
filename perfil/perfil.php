@@ -3,7 +3,7 @@
     session_start();
     require_once "../conexao-bd.php";
     if(!isset($_SESSION['email'])){
-        header('location: ../login.php');
+        header('location: ../index.php');
     }
 ?>
 <!doctype html>

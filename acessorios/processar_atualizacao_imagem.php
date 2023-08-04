@@ -1,6 +1,6 @@
 
 <?php
-    require_once "../controllers/controllers_vidros.php";
+    require_once "../controllers/controllers_esquadretas.php";
 
     if(isset($_POST['btn_atualizar_imagem'])):
         
@@ -14,7 +14,7 @@
         $formatos_permitidos = array("png", "jpeg", "jpg");
         if(!in_array($extensao_image, $formatos_permitidos))
         {
-            header('Location: visualizar_vidros.php?imagem_invalida');
+            header('Location: visualizar_esquadretas.php?imagem_invalida');
 
         }
         else
@@ -25,23 +25,23 @@
             $senha = "";
             $bdn = "maxportas";
             $conection_bd = mysqli_connect($servername, $user, $senha, $bdn);
-            $resul = $conection_bd->query("SELECT * FROM vidros WHERE id = $id_atualizar");
+            $resul = $conection_bd->query("SELECT * FROM esquadretas WHERE id = $id_atualizar");
             $row_image = $resul->fetch_array();
             unlink($row_image['imagem']);
 
             $path_image = $dir . $nameNew_image . "." . $extensao_image;
             move_uploaded_file($imagem['tmp_name'], $path_image);
     
-            $atualizar_imagem_vidros = new controllers_vidros();
-            $atualizar = $atualizar_imagem_vidros->atualizar_imagem_vidros($path_image, $id_atualizar);
+            $atualizar_imagem_esquadretas = new controllers_esquadretas();
+            $atualizar = $atualizar_imagem_esquadretas->atualizar_imagem_esquadretas($path_image, $id_atualizar);
 
             if($atualizar)
             {
-                header('Location: visualizar_vidros.php');
+                header('Location: visualizar_esquadretas.php?atualizado');
             }
             else 
             {
-                header('Location: visualizar_vidros.php?error');
+                header('Location: atualizar_esquadretas.php?nao-atualizado');
             }
         }
     endif;

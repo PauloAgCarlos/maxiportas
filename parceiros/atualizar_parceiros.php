@@ -3,7 +3,7 @@
     session_start();
     require_once "../conexao-bd.php";
     if(!isset($_SESSION['email'])){
-        header('location: ../login.php');
+        header('location: ../index.php');
     }
 ?>
 <!doctype html>
@@ -34,9 +34,10 @@
     <!-- END Icons -->
 
     <!-- Stylesheets -->
-    <!-- Fonts and Dashmix framework -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" id="css-main" href="../assets/css/dashmix.min.css">
+    
+    <!--SwitAlert Success ao Cadastrar-->
+    <script src="../assets/js/cdn.jsdelivr.net_npm_sweetalert2@11.0.18_dist_sweetalert2.all.min.js"></script>
 
   </head>
   <body>
@@ -282,3 +283,29 @@
 
   <!--Preview Image-->
   <script src="../assets//js/preview.js"></script>
+  
+<?php
+  
+  if(isset($_GET['nao-atualizado']))
+  { ?>
+
+  <script>
+    const Toaste = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+    })
+
+    Toaste.fire({
+    icon: 'error',
+    title: 'Não atualizado!'
+    })
+  </script>
+
+<?php } ?>

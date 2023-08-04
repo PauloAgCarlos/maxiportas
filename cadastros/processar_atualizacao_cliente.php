@@ -25,12 +25,12 @@
 
         if($atualizar)
         {
-            header('Location: visualizar_clientes.php');
+            header('Location: visualizar_clientes.php?atualizado');
             // echo $id_atualizar;
         }
         else 
         {
-            header('Location: visualizar_clientes.php?error');
+            header('Location: atualizar_clientes.php?nao-atualizado');
         }
     endif;
 
