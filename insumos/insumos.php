@@ -51,14 +51,14 @@
         <!-- Page Content -->
         <div class="content content-full content-boxed">
           <!-- New Post -->
-          <form action="esquadretas.php" method="POST" enctype="multipart/form-data">
+          <form action="insumos.php" method="POST" enctype="multipart/form-data">
             <div class="block">
               <div class="block-header block-header-default">
-                <a class="btn btn-alt-secondary" href="esquadretas.php">
-                  Cadastro de Esquadretas
+                <a class="btn btn-alt-secondary" href="insumos.php">
+                  Cadastro de Insumos
                 </a>
-                <a class="btn btn-alt-secondary" href="visualizar_esquadretas.php">
-                  Visualizar Esquadretas
+                <a class="btn btn-alt-secondary" href="visualizar_insumos.php">
+                  Visualizar Insumos
                 </a>
               </div>
               <div class="block-content" >
@@ -88,32 +88,22 @@
 
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
-                        <label class="form-label"  style="font-size: 0.8em;" for="custo_metro">Custo (Unitário) </label>
-                        <input type="text" class="form-control" id="custo_metro" name="custo_metro" placeholder="0,00" style="font-size: 0.8em;">
+                        <label class="form-label"  style="font-size: 0.8em;" for="custo">Custo </label>
+                        <input type="text" class="form-control" id="custo" name="custo" placeholder="0,00" style="font-size: 0.8em;">
                       </div>
                       <div class="mb-1 ms-3">
                         <label class="form-label"  style="font-size: 0.8em;" for="markup">Markup (%) </label>
                         <input type="text" class="form-control" id="markup" name="markup" placeholder="0,00" style="font-size: 0.8em;">
                       </div>
                       <div class="mb-1 ms-3">
-                        <label class="form-label"  style="font-size: 0.8em;" for="valor_unitario">Valor (Unitário) </label>
-                        <input type="text" class="form-control" id="valor_unitario" name="valor_unitario" placeholder="0(m^2)" style="font-size: 0.8em;">
+                        <label class="form-label"  style="font-size: 0.8em;" for="valor">Valor</label>
+                        <input type="text" class="form-control" id="valor" name="valor" placeholder="0,00" style="font-size: 0.8em;">
                       </div>
                       
                     </div>
                     <div class="mb-3" style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
-                        <label class="form-label" style="font-size: 0.8em;" for="agregar">Agregar </label>
-                        <select name="agregar" class="form-control" style="font-size: 0.8em;" id="agregar">
-                          <option value="Agregar Simples">Agregar Simples</option>
-                          <option value="Agregar Simples1">Agregar Simples1</option>
-                          <option value="Agregar Simples2">Agregar Simples2</option>
-                          <option value="Agregar Simples3">Agregar Simples3</option>
-                        </select>
-                      </div>
-
-                      <div class="mb-1">
-                        <label class="form-label"  style="font-size: 0.8em;" for="unidade">Unidade </label>
+                        <label class="form-label" style="font-size: 0.8em;" for="unidade">Unidade </label>
                         <select name="unidade" class="form-control" style="font-size: 0.8em;" id="unidade">
                           <option value="Unidade">Unidade</option>
                           <option value="Unidade1">Unidade1</option>
@@ -121,8 +111,18 @@
                           <option value="Unidade3">Unidade3</option>
                         </select>
                       </div>
-                    </div>
 
+                      <div class="mb-1 ms-2" style="width: 150px;">  
+                        <label class="form-label"  style="font-size: 0.8em;" for="codigo_da_fabrica">Código da Fábrica </label>                    
+                        <input type="text" class="form-control" style="font-size: 0.8em;" placeholder="0" name="codigo_da_fabrica" id="codigo_da_fabrica">
+                      </div>
+                     
+                      <div class="mb-1 ms-4">
+                        <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração <span style="color: red;">*</span> </label>
+                        <input type="date" class="form-control" id="ultima_alteracao" name="ultima_alteracao"  style="font-size: 0.8em;">
+                      </div>
+
+                    </div>
 
                     <div style="display: flex; align-items: center; justify-content: space-between;">  
 
@@ -137,16 +137,6 @@
                       </div>
 
                       <div style="display: flex; align-items: center; justify-content: space-between;">
-                        
-                          <div class="mb-1 ms-2" style="width: 150px;">  
-                            <label class="form-label"  style="font-size: 0.8em;" for="codigo_da_fabrica">Código da Fábrica </label>                    
-                            <input type="text" class="form-control" style="font-size: 0.8em;" placeholder="0" name="codigo_da_fabrica" id="codigo_da_fabrica">
-                          </div>
-                     
-                        <div class="mb-1 ms-4">
-                          <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração <span style="color: red;">*</span> </label>
-                          <input type="date" class="form-control" id="ultima_alteracao" name="ultima_alteracao"  style="font-size: 0.8em;">
-                        </div>
                   
                         <div class="mb-1 ms-5">                      
                           <input type="checkbox" name="ativo" id="ativo">
@@ -165,8 +155,8 @@
                     <div class="block-content bg-body-light push pb-4">
                       <div>
                         <div class="col-md-12">
-                          <button type="submit" name="btn_cadastrar_esquadretas" class="btn btn-alt-primary">
-                            <i class="fa fa-fw fa-check opacity-50 me-1"></i> Cadastrar esquadretas
+                          <button type="submit" name="btn_cadastrar_insumos" class="btn btn-alt-primary">
+                            <i class="fa fa-fw fa-check opacity-50 me-1"></i> Cadastrar Insumos
                           </button>
                         </div>
                       </div>
@@ -197,4 +187,4 @@
   </body>
 </html>
 
-<?php include_once "cadastrar_esquadretas.php"; ?>
+<?php include_once "cadastrar_insumos.php"; ?>

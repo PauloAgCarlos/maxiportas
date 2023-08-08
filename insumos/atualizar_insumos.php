@@ -51,26 +51,26 @@
         <!-- Page Content -->
         <div class="content content-full content-boxed">
           <!-- New Post -->
-          <form action="processar_atualizacao_acessorios.php" method="POST" enctype="multipart/form-data">
+          <form action="processar_atualizacao_insumos.php" method="POST" enctype="multipart/form-data">
             <div class="block">
               <div class="block-header block-header-default">
-                <a class="btn btn-alt-secondary" href="acessorios.php">
-                  Atualizar de Acessórios
+                <a class="btn btn-alt-secondary" href="insumos.php">
+                  Atualizar de Insumos
                 </a>
-                <a class="btn btn-alt-secondary" href="visualizar_acessorios.php">
-                  Visualizar Acessórios
+                <a class="btn btn-alt-secondary" href="visualizar_insumos.php">
+                  Visualizar Insumos
                 </a>
               </div>
               <div class="block-content" >
                 <div class="row justify-content-center push">
                   <div class="col-md-6">
                   <?php
-                    require_once "../controllers/controllers_acessorios.php";
-                    $selecionar_acessorios_id = new controllers_acessorios();
-                    $idDescriptografado = base64_decode($_GET['atualizar_acessorios']); 
+                    require_once "../controllers/controllers_insumos.php";
+                    $selecionar_insumos_id = new controllers_insumos();
+                    $idDescriptografado = base64_decode($_GET['atualizar_insumos']); 
                     
                     $id_update = $idDescriptografado;
-                    $update = $selecionar_acessorios_id->selecionar_acessorios_id($id_update);                   
+                    $update = $selecionar_insumos_id->selecionar_insumos_id($id_update);                   
                     foreach($update as $row_update){
                   ?>
                     <div class="mb-1">
@@ -99,16 +99,16 @@
 
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
-                        <label class="form-label"  style="font-size: 0.8em;" for="custo_unitario">Custo (Unitário) </label>
-                        <input type="text" class="form-control" id="custo_unitario" name="custo_unitario" value="<?php echo addslashes($row_update['custo_unitario']); ?>" style="font-size: 0.8em;">
+                        <label class="form-label"  style="font-size: 0.8em;" for="custo">Custo </label>
+                        <input type="text" class="form-control" id="custo" name="custo" value="<?php echo addslashes($row_update['custo']); ?>" style="font-size: 0.8em;">
                       </div>
                       <div class="mb-1 ms-3">
                         <label class="form-label"  style="font-size: 0.8em;" for="markup">Markup (%) </label>
                         <input type="text" class="form-control" id="markup" name="markup" value="<?php echo addslashes($row_update['markup']); ?>" style="font-size: 0.8em;">
                       </div>
                       <div class="mb-1 ms-3">
-                        <label class="form-label"  style="font-size: 0.8em;" for="valor_unitario">Valor (Unitário) </label>
-                        <input type="text" class="form-control" id="valor_unitario" name="valor_unitario" value="<?php echo addslashes($row_update['valor_unitario']); ?>" style="font-size: 0.8em;">
+                        <label class="form-label"  style="font-size: 0.8em;" for="valor">Valor</label>
+                        <input type="text" class="form-control" id="valor" name="valor" value="<?php echo addslashes($row_update['valor']); ?>" style="font-size: 0.8em;">
                       </div>
                       
                     </div>
@@ -124,45 +124,29 @@
                         </select>
                       </div>
 
-                      <div class="mb-1">
-                        <label class="form-label"  style="font-size: 0.8em;" for="tipo_do_acessorio">Tipo do Acessório </label>
-                        <select name="tipo_do_acessorio" class="form-control" style="font-size: 0.8em;" id="tipo_do_acessorio">
-                          <option value="<?php echo addslashes($row_update['tipo_do_acessorio']); ?>"><?php echo addslashes($row_update['tipo_do_acessorio']); ?></option>
-                          <option value="Outro">Outro</option>
-                          <option value="Outro1">Outro1</option>
-                          <option value="Outro2">Outro2</option>
-                          <option value="Outro3">Outro3</option>
-                        </select>
+                      <div class="mb-1 ms-2" style="width: 150px;">  
+                        <label class="form-label"  style="font-size: 0.8em;" for="codigo_da_fabrica">Código da Fábrica </label>                    
+                        <input type="text" class="form-control" style="font-size: 0.8em;" value="<?php echo addslashes($row_update['codigo_da_fabrica']); ?>" name="codigo_da_fabrica" id="codigo_da_fabrica">
+                      </div>
+                     
+                      <div class="mb-1 ms-4">
+                        <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração <span style="color: red;">*</span> </label>
+                        <input type="date" class="form-control" id="ultima_alteracao" value="<?php echo addslashes($row_update['ultima_alteracao']); ?>" name="ultima_alteracao"  style="font-size: 0.8em;">
                       </div>
 
-                      <div class="mb-1">
-                        <label class="form-label"  style="font-size: 0.8em;" for="desconto_corte">Desconto Corte (mm) </label>
-                        <input type="text" class="form-control" id="desconto_corte" name="desconto_corte" value="<?php echo addslashes($row_update['desconto_corte']); ?>" style="font-size: 0.8em;">
-                      </div>
                     </div>
-
 
                     <div style="display: flex; align-items: center; justify-content: space-between;">  
 
                       <div style="display: flex; align-items: center; justify-content: space-between;">
-                        
-                          <div class="mb-1 ms-2" style="width: 150px;">  
-                            <label class="form-label"  style="font-size: 0.8em;" for="codigo_da_fabrica">Código da Fábrica </label>                    
-                            <input type="text" class="form-control" style="font-size: 0.8em;" value="<?php echo addslashes($row_update['codigo_da_fabrica']); ?>" name="codigo_da_fabrica" id="codigo_da_fabrica">
-                          </div>
-                     
-                        <div class="mb-1 ms-4">
-                          <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração <span style="color: red;">*</span> </label>
-                          <input type="date" class="form-control" id="ultima_alteracao" value="<?php echo addslashes($row_update['ultima_alteracao']); ?>" name="ultima_alteracao"  style="font-size: 0.8em;">
-                        </div>
                   
                         <div class="mb-1 ms-5">                      
                           <input type="checkbox" name="ativo" id="ativo">
                           <label class="form-label" checkad style="font-size: 0.8em;" for="ativo">Ativo </label>
                         </div>
-                        <input type="hidden" name="id_atualizar" value="<?php $idDescriptografado = base64_decode($_GET['atualizar_acessorios']); $id_update = $idDescriptografado; echo $id_update; ?>">
-                        <?php } ?>
+                        <input type="hidden" name="id_atualizar" value="<?php $idDescriptografado = base64_decode($_GET['atualizar_insumos']); $id_update = $idDescriptografado; echo $id_update; ?>">
                       </div>
+                      <?php } ?>
                     </div>
                     <div class="col-md-6" style="display: flex; align-items: center; justify-content: space-around;">
                   </div>
@@ -175,8 +159,8 @@
                     <div class="block-content bg-body-light push pb-4">
                       <div>
                         <div class="col-md-12">
-                          <button type="submit" name="btn_atualizar_acessorios" class="btn btn-alt-primary">
-                            <i class="fa fa-fw fa-check opacity-50 me-1"></i> Atualizar Acessórios
+                          <button type="submit" name="btn_atualizar_insumos" class="btn btn-alt-primary">
+                            <i class="fa fa-fw fa-check opacity-50 me-1"></i> Atualizar Insumos
                           </button>
                         </div>
                       </div>
@@ -200,12 +184,12 @@
               <div class="row justify-content-center push">
                 <div class="mb-4 col-md-12" style="display: flex; align-items: center; justify-content: center;">
                   <?php
-                    require_once "../controllers/controllers_acessorios.php";
-                    $selecionar_acessorios_id = new controllers_acessorios();
-                    $idDescriptografado = base64_decode($_GET['atualizar_acessorios']); 
+                    require_once "../controllers/controllers_insumos.php";
+                    $selecionar_insumos_id = new controllers_insumos();
+                    $idDescriptografado = base64_decode($_GET['atualizar_insumos']); 
                     
                     $id_update = $idDescriptografado;
-                    $update = $selecionar_acessorios_id->selecionar_acessorios_id($id_update);                   
+                    $update = $selecionar_insumos_id->selecionar_insumos_id($id_update);                   
                     foreach($update as $row_update){
                   ?>
                   <div>
@@ -215,7 +199,7 @@
                         <img style="width: 150px; height: 150px; border-radius: 150px; border: 1px solid black; display: block; margin: auto;" id="profileDisplay" onclick="triggerClick()" src="<?php echo $row_update['imagem']; ?>" alt="">
                       <?php }?>
                   </div>
-                  <input type="hidden" name="id_atualizar" value="<?php $idDescriptografado = base64_decode($_GET['atualizar_acessorios']); $id_update = $idDescriptografado; echo $id_update; ?>">
+                  <input type="hidden" name="id_atualizar" value="<?php $idDescriptografado = base64_decode($_GET['atualizar_insumos']); $id_update = $idDescriptografado; echo $id_update; ?>">
                   <?php }?>
                   <div class="round">
                     <input class="form-control" type="file" id="profileImage" name="imagem" style="display: none;" onchange="displayImage(this)" type="images/">

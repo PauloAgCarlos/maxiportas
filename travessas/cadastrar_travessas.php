@@ -2,9 +2,11 @@
   if(isset($_POST['btn_cadastrar_travessas'])):
 
     $descricao = addslashes($_POST['descricao']);
-    $codigo_unico = uniqid();
+    $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
+    $codigo_produto = "CTHJ-" . $codigo_produto_digitado;
+    // $codigo_unico = uniqid();
     // $codigo_produto_reduzido = substr_replace($codigo_unico, 5,-1);
-    $codigo_produto = "CTHJ-" . substr($codigo_unico, 10);
+    // $codigo_produto = "CTHJ-" . substr($codigo_unico, 10);
     $agregar = addslashes($_POST['agregar']);
     $unidade = addslashes($_POST['unidade']);
     $esquadreta = addslashes($_POST['esquadreta']);
@@ -22,7 +24,7 @@
     $perda_corte_retalho = addslashes($_POST['perda_corte_retalho']);
     $ultima_alteracao = addslashes($_POST['ultima_alteracao']);
     $ativo = addslashes($_POST['ativo']);
-    
+        
     $imagem = $_FILES['imagem'];
     // if(!empty($imagem))
     // {

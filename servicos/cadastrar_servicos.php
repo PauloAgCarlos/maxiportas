@@ -8,8 +8,10 @@
         $exibe_na_lista_de_corte = addslashes($_POST['exibe_na_lista_de_corte']);  
         $observacao = addslashes($_POST['observacao']);      
         $custo_metro = addslashes($_POST['custo_metro']);
-        $codigo_unico = uniqid();
-        $codigo_produto = "CSeHJ-". substr($codigo_unico, 10);
+        $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
+        $codigo_produto = "CSeHJ-" . $codigo_produto_digitado;
+        // $codigo_unico = uniqid();
+        // $codigo_produto = "CSeHJ-". substr($codigo_unico, 10);
         $markup = addslashes($_POST['markup']);
         $valor = addslashes($_POST['valor']);
         $adiciona_para_o_corte = addslashes($_POST['adiciona_para_o_corte']);

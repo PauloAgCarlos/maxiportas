@@ -70,12 +70,12 @@
                         <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Decrição" style="font-size: 0.9em;" required>
                       </div>
                     </div>  
-                    <!-- <div class="mb-1">
+                    <div class="mb-1">
                       <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
-                      <div style="display: flex;">
-                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                      <div>
+                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="6" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
                       </div>
-                    </div>  -->
+                    </div>
 
                     <div class="mb-3" style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
@@ -198,8 +198,8 @@
                     </div>
                   
                     <div class="mb-1">                      
-                      <input type="checkbox" name="ativo" id="ativo">
-                      <label class="form-label" checkad style="font-size: 0.9em;" for="ativo">Ativo </label>
+                      <input type="checkbox" checked name="ativo" id="ativo">
+                      <label class="form-label" style="font-size: 0.9em;" for="ativo">Ativo </label>
                     </div>
                   </div>
 

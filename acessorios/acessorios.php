@@ -51,14 +51,14 @@
         <!-- Page Content -->
         <div class="content content-full content-boxed">
           <!-- New Post -->
-          <form action="esquadretas.php" method="POST" enctype="multipart/form-data">
+          <form action="acessorios.php" method="POST" enctype="multipart/form-data">
             <div class="block">
               <div class="block-header block-header-default">
-                <a class="btn btn-alt-secondary" href="esquadretas.php">
-                  Cadastro de Esquadretas
+                <a class="btn btn-alt-secondary" href="acessorios.php">
+                  Cadastro de Acessórios
                 </a>
-                <a class="btn btn-alt-secondary" href="visualizar_esquadretas.php">
-                  Visualizar Esquadretas
+                <a class="btn btn-alt-secondary" href="visualizar_acessorios.php">
+                  Visualizar Acessórios
                 </a>
               </div>
               <div class="block-content" >
@@ -71,6 +71,13 @@
                       </div>
                     </div>  
 
+                    <div class="mb-1">
+                      <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
+                      <div>
+                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="6" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                      </div>
+                    </div>
+
                     <div class="mb-1 col-md-12">
                       <label class="form-label" style="font-size: 0.8em;" for="observacao">Observação <span style="color: red;">*</span> </label>
                       <textarea name="observacao" id="observacao" class="form-control" cols="10" rows="4" style="font-size: 0.8em;"></textarea>
@@ -81,8 +88,8 @@
 
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
-                        <label class="form-label"  style="font-size: 0.8em;" for="custo_metro">Custo (Unitário) </label>
-                        <input type="text" class="form-control" id="custo_metro" name="custo_metro" placeholder="0,00" style="font-size: 0.8em;">
+                        <label class="form-label"  style="font-size: 0.8em;" for="custo_unitario">Custo (Unitário) </label>
+                        <input type="text" class="form-control" id="custo_unitario" name="custo_unitario" placeholder="0,00" style="font-size: 0.8em;">
                       </div>
                       <div class="mb-1 ms-3">
                         <label class="form-label"  style="font-size: 0.8em;" for="markup">Markup (%) </label>
@@ -96,23 +103,28 @@
                     </div>
                     <div class="mb-3" style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
-                        <label class="form-label" style="font-size: 0.8em;" for="agregar">Agregar </label>
-                        <select name="agregar" class="form-control" style="font-size: 0.8em;" id="agregar">
-                          <option value="Agregar Simples">Agregar Simples</option>
-                          <option value="Agregar Simples1">Agregar Simples1</option>
-                          <option value="Agregar Simples2">Agregar Simples2</option>
-                          <option value="Agregar Simples3">Agregar Simples3</option>
-                        </select>
-                      </div>
-
-                      <div class="mb-1">
-                        <label class="form-label"  style="font-size: 0.8em;" for="unidade">Unidade </label>
+                        <label class="form-label" style="font-size: 0.8em;" for="unidade">Unidade </label>
                         <select name="unidade" class="form-control" style="font-size: 0.8em;" id="unidade">
                           <option value="Unidade">Unidade</option>
                           <option value="Unidade1">Unidade1</option>
                           <option value="Unidade2">Unidade2</option>
                           <option value="Unidade3">Unidade3</option>
                         </select>
+                      </div>
+
+                      <div class="mb-1">
+                        <label class="form-label"  style="font-size: 0.8em;" for="tipo_do_acessorio">Tipo do Acessório </label>
+                        <select name="tipo_do_acessorio" class="form-control" style="font-size: 0.8em;" id="tipo_do_acessorio">
+                          <option value="Outro">Outro</option>
+                          <option value="Outro1">Outro1</option>
+                          <option value="Outro2">Outro2</option>
+                          <option value="Outro3">Outro3</option>
+                        </select>
+                      </div>
+
+                      <div class="mb-1">
+                        <label class="form-label"  style="font-size: 0.8em;" for="desconto_corte">Desconto Corte (mm) </label>
+                        <input type="text" class="form-control" id="desconto_corte" name="desconto_corte" placeholder="0(m^2)" style="font-size: 0.8em;">
                       </div>
                     </div>
 
@@ -158,8 +170,8 @@
                     <div class="block-content bg-body-light push pb-4">
                       <div>
                         <div class="col-md-12">
-                          <button type="submit" name="btn_cadastrar_esquadretas" class="btn btn-alt-primary">
-                            <i class="fa fa-fw fa-check opacity-50 me-1"></i> Cadastrar esquadretas
+                          <button type="submit" name="btn_cadastrar_acessorios" class="btn btn-alt-primary">
+                            <i class="fa fa-fw fa-check opacity-50 me-1"></i> Cadastrar Acessórios
                           </button>
                         </div>
                       </div>
@@ -190,4 +202,4 @@
   </body>
 </html>
 
-<?php include_once "cadastrar_esquadretas.php"; ?>
+<?php include_once "cadastrar_acessorios.php"; ?>

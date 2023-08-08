@@ -16,26 +16,26 @@ $conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
 //Verificar se está sendo passado na URL a página atual, senao é atribuido a pagina 
 $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
-//Selecionar todos os acessorios da tabela
-$result_acessorios = "SELECT * FROM acessorios ORDER BY id DESC";
-$resultado_acessorios = mysqli_query($conn, $result_acessorios);
+//Selecionar todos os insumos da tabela
+$result_insumos = "SELECT * FROM insumos ORDER BY id DESC";
+$resultado_insumos = mysqli_query($conn, $result_insumos);
 
-//Contar o total de acessorios
-$total_acessorios = mysqli_num_rows($resultado_acessorios);
+//Contar o total de insumos
+$total_insumos = mysqli_num_rows($resultado_insumos);
 
-//Seta a quantidade de acessorios por pagina
+//Seta a quantidade de insumos por pagina
 $quantidade_pg = 10;
 
-//calcular o número de pagina necessárias para apresentar os acessorios
-$num_pagina = ceil($total_acessorios/$quantidade_pg);
+//calcular o número de pagina necessárias para apresentar os insumos
+$num_pagina = ceil($total_insumos/$quantidade_pg);
 
 //Calcular o inicio da visualizacao
 $incio = ($quantidade_pg*$pagina)-$quantidade_pg;
 
-//Selecionar os acessorios a serem apresentado na página
-$result_acessorios = "SELECT * FROM acessorios ORDER BY id DESC limit $incio, $quantidade_pg";
-$resultado_acessorios = mysqli_query($conn, $result_acessorios);
-$total_acessorios = mysqli_num_rows($resultado_acessorios);
+//Selecionar os insumos a serem apresentado na página
+$result_insumos = "SELECT * FROM insumos ORDER BY id DESC limit $incio, $quantidade_pg";
+$resultado_insumos = mysqli_query($conn, $result_insumos);
+$total_insumos = mysqli_num_rows($resultado_insumos);
 
 ?>
 <!doctype html>
@@ -107,7 +107,7 @@ $total_acessorios = mysqli_num_rows($resultado_acessorios);
     <div id="page-header-search" class="overlay-header bg-header-dark">
           <div class="bg-white-10">
             <div class="content-header">
-              <form class="w-100" action="pesquisar_acessorios.php" method="GET">
+              <form class="w-100" action="pesquisar_insumos.php" method="GET">
                 <div class="input-group">
                   <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
                   <button type="button" class="btn btn-alt-primary" data-toggle="layout" data-action="header_search_off">
@@ -150,61 +150,61 @@ $total_acessorios = mysqli_num_rows($resultado_acessorios);
               <div class="block block-rounded block-mode-loading-refresh">
                 <div class="block-header block-header-default">
                   <h3 class="block-title">
-                    Visualizar Acessórios
+                    Visualizar Insumos
                   </h3>
-                  <a class="btn btn-alt-secondary" href="acessorios.php">
-                    Cadastrar Acessórios
+                  <a class="btn btn-alt-secondary" href="insumos.php">
+                    Cadastrar Insumos
                   </a>
                 </div>
                 <div class="table-responsive">
                   <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
                   <?php
-                    require_once "../controllers/controllers_acessorios.php";
+                    require_once "../controllers/controllers_insumos.php";
 
-                    $selecionar_acessorios = new controllers_acessorios();
-                    $result_acessorios = $selecionar_acessorios->selecionar_acessorios();
-                    if(count($result_acessorios) > 0)
+                    $selecionar_insumos = new controllers_insumos();
+                    $result_insumos = $selecionar_insumos->selecionar_insumos();
+                    if(count($result_insumos) > 0)
                     { ?>
                     <thead style="text-align: center;">
                       <tr class="text-uppercase">
                         <th>Código Produto</th>
                         <th>Descrição</th>
-                        <th>Custo(Unitário)</th>
-                        <th>Valor(Unitário)</th>
+                        <th>Custo</th>
+                        <th>Valor</th>
                         <th>Ver Mais</th>
                       </tr>
                     </thead>
                     <?php }?>
                     <tbody style="text-align: center;">
                         <?php
-                            require_once "../controllers/controllers_acessorios.php";
+                            require_once "../controllers/controllers_insumos.php";
 
-                            $selecionar_acessorios = new controllers_acessorios();
-                            $result_acessorios = $selecionar_acessorios->selecionar_acessorios();
-                            if(count($result_acessorios) > 0)
+                            $selecionar_insumos = new controllers_insumos();
+                            $result_insumos = $selecionar_insumos->selecionar_insumos();
+                            if(count($result_insumos) > 0)
                             {
-                              while($row_acessorios = mysqli_fetch_assoc($resultado_acessorios)){ ?>
+                              while($row_insumos = mysqli_fetch_assoc($resultado_insumos)){ ?>
                                 <tr style="text-align: center;">
                                   <td>
-                                      <span class="fw-semibold"><?php echo $row_acessorios['codigo_produto']; ?></span>
+                                      <span class="fw-semibold"><?php echo $row_insumos['codigo_produto']; ?></span>
                                   </td>
                                   <td>
-                                    <span class="fs-sm text-muted"><?php echo $row_acessorios['descricao'];?></span>
+                                    <span class="fs-sm text-muted"><?php echo $row_insumos['descricao'];?></span>
                                   </td>
                                   <td>
-                                    <?php echo $row_acessorios['custo_unitario']; ?>
+                                    <?php echo $row_insumos['custo']; ?>
                                   </td>
                                   <td>
-                                      <span class="fw-semibold"><?php echo $row_acessorios['valor_unitario']; ?></span>
+                                      <span class="fw-semibold"><?php echo $row_insumos['valor']; ?></span>
                                   </td>
                                   <td class="text-center text-nowrap fw-medium" style="display: flex; justify-content: center; align-items: center;">
 
-                                    <a href="vermais_acessorios.php?view_acessorios=<?php $idCriptografado = base64_encode($row_acessorios['id']); echo $idCriptografado;?>">
+                                    <a href="vermais_insumos.php?view_insumos=<?php $idCriptografado = base64_encode($row_insumos['id']); echo $idCriptografado;?>">
                                         <i class="fa fa-eye me-1 opacity-50"></i>
                                     </a>
 
                                     <?php
-                                       echo "<button class='btn' onclick='abrirModal(".$row_acessorios['id'].")'><i class='fa fa-fw fa-times text-danger'></i></button>";
+                                       echo "<button class='btn' onclick='abrirModal(".$row_insumos['id'].")'><i class='fa fa-fw fa-times text-danger'></i></button>";
                                     ?>
                                   </td>
                                 </tr>
@@ -224,7 +224,7 @@ $total_acessorios = mysqli_num_rows($resultado_acessorios);
                     <li>
                       <?php
                       if($pagina_anterior != 0){ ?>
-                        <a href="visualizar_acessorios.php?pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous">
+                        <a href="visualizar_insumos.php?pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous">
                           <span aria-hidden="true">&laquo;</span>
                         </a>
                       <?php }else{ ?>
@@ -234,13 +234,13 @@ $total_acessorios = mysqli_num_rows($resultado_acessorios);
                     <?php 
                     //Apresentar a paginacao
                     for($i = 1; $i < $num_pagina + 1; $i++){ ?>
-                      <li><a href="visualizar_acessorios.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
+                      <li><a href="visualizar_insumos.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
                       </li>
                     <?php } ?>
                     <li>
                       <?php
                       if($pagina_posterior <= $num_pagina){ ?>
-                        <a href="visualizar_acessorios.php?pagina=<?php echo $pagina_posterior; ?>" aria-label="Previous">
+                        <a href="visualizar_insumos.php?pagina=<?php echo $pagina_posterior; ?>" aria-label="Previous">
                           <span aria-hidden="true">&raquo;</span>
                         </a>
                       <?php }else{ ?>
@@ -259,7 +259,7 @@ $total_acessorios = mysqli_num_rows($resultado_acessorios);
                                 <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Tem certeza de que deseja eliminar este Acessório?
+                                Tem certeza de que deseja eliminar este Insumos?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -295,7 +295,7 @@ $total_acessorios = mysqli_num_rows($resultado_acessorios);
       }
 
       document.getElementById('btnConfirmarExclusao').addEventListener('click', function() {
-          window.location.href = `eliminar_acessorios.php?id=${idProdutoParaExcluir}`;
+          window.location.href = `eliminar_insumos.php?id=${idProdutoParaExcluir}`;
       });
     </script>
   </body>

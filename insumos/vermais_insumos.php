@@ -52,9 +52,9 @@
               <div class="block block-rounded block-mode-loading-refresh">
                 <div class="block-header block-header-default">
                   <h3 class="block-title">
-                    <a href="visualizar_acessorios.php">
+                    <a href="visualizar_insumos.php">
                         <i class="fa fa-arrow-left ms-1"></i>
-                        Visualizar Acessórios
+                        Visualizar Insumos
                     </a>
                   </h3>
                 </div>
@@ -63,20 +63,20 @@
                     <h1 class="fw-bold text-white  ">
 
                       <?php
-                      require_once "../controllers/controllers_acessorios.php";
+                      require_once "../controllers/controllers_insumos.php";
 
-                      $selecionar_acessorios_id = new controllers_acessorios();
-                      $idDescriptografado = base64_decode($_GET['view_acessorios']); 
+                      $selecionar_insumos_id = new controllers_insumos();
+                      $idDescriptografado = base64_decode($_GET['view_insumos']); 
               
-                      foreach($selecionar_acessorios_id->selecionar_acessorios_id($idDescriptografado) as $row_acessorios_id){ 
-                      echo addslashes($row_acessorios_id['descricao']); } ?>
+                      foreach($selecionar_insumos_id->selecionar_insumos_id($idDescriptografado) as $row_insumos_id){ 
+                      echo addslashes($row_insumos_id['descricao']); } ?>
                     </h1>
                   </div>
                   <div style=" margin-left:73%; margin-top: -5%;">
-                    <a class="btn btn-hero btn-primary" href="./atualizar_acessorios.php?atualizar_acessorios=<?php $idCriptografado = base64_encode($row_acessorios_id['id']); echo $idCriptografado; ?>" data-toggle="click-ripple">
+                    <a class="btn btn-hero btn-primary" href="./atualizar_insumos.php?atualizar_insumos=<?php $idCriptografado = base64_encode($row_insumos_id['id']); echo $idCriptografado; ?>" data-toggle="click-ripple">
                       <i class="fa fa-pencil-alt"></i>
                     </a>
-                    <a class="btn  btn-hero btn-primary my-2" href="./visualizar_acessorios.php">
+                    <a class="btn  btn-hero btn-primary my-2" href="./visualizar_insumos.php">
                       <i class="fa fa-reply" aria-hidden="true"></i>
                       <span class="d-none d-sm-inline ms-1"></span>
                     </a>
@@ -91,21 +91,19 @@
                         <div class="block block-rounded">
 
                           <?php
-                            require_once "../controllers/controllers_acessorios.php";
+                            require_once "../controllers/controllers_insumos.php";
 
-                            $selecionar_acessorios_id = new controllers_acessorios();
-                            $idDescriptografado = base64_decode($_GET['view_acessorios']); 
-                            foreach($selecionar_acessorios_id->selecionar_acessorios_id($idDescriptografado) as $row_acessorios_id){ ?>
+                            $selecionar_insumos_id = new controllers_insumos();
+                            $idDescriptografado = base64_decode($_GET['view_insumos']); 
+                            foreach($selecionar_insumos_id->selecionar_insumos_id($idDescriptografado) as $row_insumos_id){ ?>
 
                             <div class="block-header block-header-default">
-                              <h3 class="block-title">Código Produto: <span class="fs-sm text-muted"><?php echo addslashes($row_acessorios_id['codigo_produto']); ?></h3>
+                              <h3 class="block-title">Código Produto: <span class="fs-sm text-muted"><?php echo addslashes($row_insumos_id['codigo_produto']); ?></h3>
                             </div>
 
                             <div class="block-content"> 
-                                Tipo do Acessório: <span class="fs-sm text-muted"><?php echo addslashes($row_acessorios_id['tipo_do_acessorio']); ?></span><br>
-                                Valor (Unitário): <span class="fs-sm text-muted"><?php echo addslashes($row_acessorios_id['valor_unitario']); ?></span><br>
-                                Desconto Corte: <span class="fs-sm text-muted"><?php echo addslashes($row_acessorios_id['desconto_corte']); ?></span><br>
-                                Código da Fábrica: <span class="fs-sm text-muted"><?php echo addslashes($row_acessorios_id['codigo_da_fabrica']); ?></span>    
+                                Valor: <span class="fs-sm text-muted"><?php echo addslashes($row_insumos_id['valor']); ?></span><br>
+                                Código da Fábrica: <span class="fs-sm text-muted"><?php echo addslashes($row_insumos_id['codigo_da_fabrica']); ?></span>    
                             </div>
                             <?php } ?>
                         </div>
@@ -114,19 +112,19 @@
                         <div class="col-sm-4">
                           <div class="block block-rounded">
                             <?php
-                              require_once "../controllers/controllers_acessorios.php";
+                              require_once "../controllers/controllers_insumos.php";
 
-                              $selecionar_acessorios_id = new controllers_acessorios();
-                              $idDescriptografado = base64_decode($_GET['view_acessorios']); 
+                              $selecionar_insumos_id = new controllers_insumos();
+                              $idDescriptografado = base64_decode($_GET['view_insumos']); 
 
-                              foreach($selecionar_acessorios_id->selecionar_acessorios_id($idDescriptografado) as $row_acessorios_id_id){ ?>
+                              foreach($selecionar_insumos_id->selecionar_insumos_id($idDescriptografado) as $row_insumos_id_id){ ?>
                               <div class="block-header block-header-default">
-                                <h3 class="block-title">Custo (Unitário): <span class="fs-sm text-muted"><?php echo addslashes($row_acessorios_id['custo_unitario']); ?></span></h3>
+                                <h3 class="block-title">Custo: <span class="fs-sm text-muted"><?php echo addslashes($row_insumos_id['custo']); ?></span></h3>
                               </div>
                               <div class="block-content">
-                                  Markup: <span class="fs-sm text-muted"><?php echo addslashes($row_acessorios_id['markup']); ?></span><br>
-                                  Unidade: <span class="fs-sm text-muted"><?php echo addslashes($row_acessorios_id['unidade']); ?></span><br>
-                                  Última Alteração: <span class="fs-sm text-muted"><?php echo addslashes($row_acessorios_id['ultima_alteracao']); ?></span><br>
+                                  Markup: <span class="fs-sm text-muted"><?php echo addslashes($row_insumos_id['markup']); ?></span><br>
+                                  Unidade: <span class="fs-sm text-muted"><?php echo addslashes($row_insumos_id['unidade']); ?></span><br>
+                                  Última Alteração: <span class="fs-sm text-muted"><?php echo addslashes($row_insumos_id['ultima_alteracao']); ?></span><br>
                               </div>
                               <?php } ?>
                           </div>
@@ -135,21 +133,21 @@
                         <div class="col-sm-4">
                           <div class="block block-rounded">
                             <?php
-                              require_once "../controllers/controllers_acessorios.php";
+                              require_once "../controllers/controllers_insumos.php";
 
-                              $selecionar_acessorios_id = new controllers_acessorios();
-                              $idDescriptografado = base64_decode($_GET['view_acessorios']); 
+                              $selecionar_insumos_id = new controllers_insumos();
+                              $idDescriptografado = base64_decode($_GET['view_insumos']); 
 
-                              foreach($selecionar_acessorios_id->selecionar_acessorios_id($idDescriptografado) as $row_acessorios_id_id){ ?>
+                              foreach($selecionar_insumos_id->selecionar_insumos_id($idDescriptografado) as $row_insumos_id_id){ ?>
                               <div class="block-header block-header-default">
                                 <h3 class="block-title text-center">Imagem:</h3>
                               </div>
 
                               <div style="margin: auto; margin-top: 5%; display: flex; align-items: center; justify-content: center;">
-                                <?php if($row_acessorios_id_id['imagem'] == ""){ ?>
+                                <?php if($row_insumos_id_id['imagem'] == ""){ ?>
                                   <img style="width: 150px; height: 150px; border-radius: 150px; border: 1px solid black; display: block; margin: auto;" src="../assets/img/avatars/avatar10.jpg" alt="Avatar">
                                 <?php  } else { ?>
-                                  <img style="width: 150px; height: 150px; border-radius: 150px; border: 1px solid black; display: block; margin: auto;" src="<?php echo $row_acessorios_id_id['imagem']; ?>" alt="">
+                                  <img style="width: 150px; height: 150px; border-radius: 150px; border: 1px solid black; display: block; margin: auto;" src="<?php echo $row_insumos_id_id['imagem']; ?>" alt="">
                                 <?php }?>
                               </div>
                               <?php } ?>
@@ -161,26 +159,26 @@
                       <div class="col-md-6">
                         <div class="block-header block-header-default">
                           <?php
-                              require_once "../controllers/controllers_acessorios.php";
+                              require_once "../controllers/controllers_insumos.php";
 
-                              $selecionar_acessorios_id = new controllers_acessorios();
-                              $idDescriptografado = base64_decode($_GET['view_acessorios']); 
+                              $selecionar_insumos_id = new controllers_insumos();
+                              $idDescriptografado = base64_decode($_GET['view_insumos']); 
 
-                              foreach($selecionar_acessorios_id->selecionar_acessorios_id($idDescriptografado) as $row_acessorios_id_id){ ?>
-                          <h3 class="block-title">Descrição: <span class="fs-sm text-muted"><?php echo addslashes($row_acessorios_id['descricao']); ?></h3>
+                              foreach($selecionar_insumos_id->selecionar_insumos_id($idDescriptografado) as $row_insumos_id_id){ ?>
+                          <h3 class="block-title">Descrição: <span class="fs-sm text-muted"><?php echo addslashes($row_insumos_id['descricao']); ?></h3>
                           <?php }?>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="block-header block-header-default">
                           <?php
-                              require_once "../controllers/controllers_acessorios.php";
+                              require_once "../controllers/controllers_insumos.php";
 
-                              $selecionar_acessorios_id = new controllers_acessorios();
-                              $idDescriptografado = base64_decode($_GET['view_acessorios']); 
+                              $selecionar_insumos_id = new controllers_insumos();
+                              $idDescriptografado = base64_decode($_GET['view_insumos']); 
 
-                              foreach($selecionar_acessorios_id->selecionar_acessorios_id($idDescriptografado) as $row_acessorios_id_id){ ?>
-                          <h3 class="block-title">Observação: <span class="fs-sm text-muted"><?php echo addslashes($row_acessorios_id['observacao']); ?></h3>
+                              foreach($selecionar_insumos_id->selecionar_insumos_id($idDescriptografado) as $row_insumos_id_id){ ?>
+                          <h3 class="block-title">Observação: <span class="fs-sm text-muted"><?php echo addslashes($row_insumos_id['observacao']); ?></h3>
                           <?php }?>
                         </div>
                       </div>

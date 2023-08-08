@@ -1,16 +1,17 @@
 <?php
 
-    if(isset($_POST['btn_cadastrar_esquadretas'])):
+    if(isset($_POST['btn_cadastrar_acessorios'])):
 
         $descricao = addslashes($_POST['descricao']);
+        $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
+        $codigo_produto = "CAcHJ-". $codigo_produto_digitado;
         $observacao = addslashes($_POST['observacao']);
-        $custo_metro = addslashes($_POST['custo_metro']);
-        $markup = addslashes($_POST['markup']);  
+        $custo_unitario = addslashes($_POST['custo_unitario']); 
+        $markup = addslashes($_POST['markup']); 
         $valor_unitario = addslashes($_POST['valor_unitario']);      
-        $agregar = addslashes($_POST['agregar']);
-        $codigo_unico = uniqid();
-        $codigo_produto = "CEsHJ-". substr($codigo_unico, 10);
         $unidade = addslashes($_POST['unidade']);
+        $tipo_do_acessorio = addslashes($_POST['tipo_do_acessorio']);
+        $desconto_corte = addslashes($_POST['desconto_corte']);
         $imagem = $_FILES['imagem'];
         $codigo_da_fabrica = addslashes($_POST['codigo_da_fabrica']);
         $ultima_alteracao = addslashes($_POST['ultima_alteracao']);
@@ -35,15 +36,16 @@
           $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
           // Consulta para inserir o usuário na tabela
-          $stmt = $pdo->prepare("INSERT INTO esquadretas (descricao, observacao, custo_metro, markup, valor_unitario, agregar, codigo_produto, unidade, imagem, codigo_da_fabrica, ultima_alteracao, ativo) VALUES (:descricao, :observacao, :custo_metro, :markup, :valor_unitario, :agregar, :codigo_produto, :unidade, :imagem, :codigo_da_fabrica, :ultima_alteracao, :ativo)");
+          $stmt = $pdo->prepare("INSERT INTO acessorios (descricao, codigo_produto, observacao, custo_unitario, markup, valor_unitario, unidade, tipo_do_acessorio, desconto_corte, imagem, codigo_da_fabrica, ultima_alteracao, ativo) VALUES (:descricao, :codigo_produto, :observacao, :custo_unitario, :markup, :valor_unitario, :unidade, :tipo_do_acessorio, :desconto_corte, :imagem, :codigo_da_fabrica, :ultima_alteracao, :ativo)");
           $stmt->bindParam(":descricao", $descricao);
+          $stmt->bindParam(":codigo_produto", $codigo_produto);
           $stmt->bindParam(":observacao", $observacao);
-          $stmt->bindParam(":custo_metro", $custo_metro);
+          $stmt->bindParam(":custo_unitario", $custo_unitario);
           $stmt->bindParam(":markup", $markup);
           $stmt->bindParam(":valor_unitario", $valor_unitario);
-          $stmt->bindParam(":agregar", $agregar);
-          $stmt->bindParam(":codigo_produto", $codigo_produto);
           $stmt->bindParam(":unidade", $unidade);
+          $stmt->bindParam(":tipo_do_acessorio", $tipo_do_acessorio);
+          $stmt->bindParam(":desconto_corte", $desconto_corte);
           $stmt->bindParam(":imagem", $path_image);
           $stmt->bindParam(":codigo_da_fabrica", $codigo_da_fabrica);
           $stmt->bindParam(":ultima_alteracao", $ultima_alteracao);

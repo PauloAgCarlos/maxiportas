@@ -52,7 +52,7 @@
                 <div class="block-content block-content-full px-xl-12 bg-body-extra-light">
                   <!-- Header -->
                   <div class="mb-2 text-center">
-                    <a class="link-fx fw-bold fs-1" href="index.html">
+                    <a class="link-fx fw-bold fs-1" href="criar-conta.php">
                       <img src="assets/img/logoHJ-Aluminio.jpg" alt="logotipo-hj">
                     </a>
                   </div>
@@ -65,11 +65,15 @@
                       <input type="password" class="form-control" id="signup-username" name="password" required style="font-size: 0.9em;" placeholder="Senha" style="font-size: 0.9em;">
                     </div>
 
-                    <div class="mb-4">
-                      <div class="input-group input-group-lg">
-                        <span style="color: red;">*</span>
-                        <input type="email" class="form-control" id="signup-username" name="email" required style="font-size: 0.9em;" placeholder="Login (e-mail)" style="font-size: 0.9em;">
-                      </div>
+                    <div class="input-group mb-3">
+                      <span style="color: red;">*</span>
+                      <input type="email" class="form-control" id="signup-username" name="email" required style="font-size: 0.9em;" placeholder="Login (e-mail)" style="font-size: 0.9em;">
+                      
+                      <span class="ms-3" style="color: red;">*</span>
+                      <select name="parceiro_colaborador" required class="form-control" id="">
+                        <option value="Parceiro">Parceiro</option>
+                        <option value="Colaborador">Colaborador</option>
+                      </select>
                     </div>
 
                     <div class="input-group mb-3">
@@ -164,26 +168,28 @@ include_once "conexao-bd.php";
 if(isset($_POST['btn_cadastrar'])) :
     $username = $_POST['nome'];
     //$nome = filter_var($nome, FILTER_SANITIZE_STRING);
-    $email = $_POST['email'];
-    $senha = $_POST['password'];
-    $cpf = $_POST['cpf'];
-    $rg = $_POST['rg'];
-    $cep = $_POST['cep'];
-    $endereco = $_POST['endereco'];
-    $telefone = $_POST['telefone'];
-    $complemento = $_POST['complemento'];
-    $bairro = $_POST['bairro'];
-    $cidade = $_POST['cidade'];
-    $uf = $_POST['uf'];
-    $nascimento = $_POST['nascimento'];
-    $nivel = $_POST['nivel'];
+    $email = addslashes($_POST['email']);
+    $senha = addslashes($_POST['password']);
+    $parceiro_colaborador = addslashes($_POST['parceiro_colaborador']);
+    $cpf = addslashes($_POST['cpf']);
+    $rg = addslashes($_POST['rg']);
+    $cep = addslashes($_POST['cep']);
+    $endereco = addslashes($_POST['endereco']);
+    $telefone = addslashes($_POST['telefone']);
+    $complemento = addslashes($_POST['complemento']);
+    $bairro = addslashes($_POST['bairro']);
+    $cidade = addslashes($_POST['cidade']);
+    $uf = addslashes($_POST['uf']);
+    $nascimento = addslashes($_POST['nascimento']);
+    $nivel = addslashes($_POST['nivel']);
     
 
   try{
-    $stmt = $conn->prepare("INSERT INTO logado (nome, email, senha, cpf, rg, cep, endereco, telefone, complemento, bairro, cidade, uf, nascimento, nivel) VALUES (:nome, :email, :senha, :cpf, :rg, :cep, :endereco, :telefone, :complemento, :bairro, :cidade, :uf, :nascimento, :nivel)");
+    $stmt = $conn->prepare("INSERT INTO logado (nome, email, senha, parceiro_colaborador, cpf, rg, cep, endereco, telefone, complemento, bairro, cidade, uf, nascimento, nivel) VALUES (:nome, :email, :senha, :parceiro_colaborador, :cpf, :rg, :cep, :endereco, :telefone, :complemento, :bairro, :cidade, :uf, :nascimento, :nivel)");
     $stmt->bindParam(':nome', $username);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':senha', $senha);
+    $stmt->bindParam(':parceiro_colaborador', $parceiro_colaborador);
     $stmt->bindParam(':cpf', $cpf);
     $stmt->bindParam(':rg', $rg);
     $stmt->bindParam('cep', $cep);

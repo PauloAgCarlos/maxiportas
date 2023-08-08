@@ -14,7 +14,7 @@ $dbname = "maxportas";
 //Verificar se está sendo passado na URL a página atual, senao é atribuido a pagina 
 $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 if(!isset($_GET['pesquisar'])){
-	header("Location: visualizar_esquadretas.php");
+	header("Location: visualizar_acessorios.php");
 }else{
 	$valor_pesquisar = $_GET['pesquisar'];
 }
@@ -22,26 +22,26 @@ if(!isset($_GET['pesquisar'])){
 //Criar a conexão
 $conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
 
-//Selecionar todos os esquadretas da tabela
-$result_curso = "SELECT * FROM esquadretas WHERE codigo_produto LIKE '%$valor_pesquisar%'";
+//Selecionar todos os acessorios da tabela
+$result_curso = "SELECT * FROM acessorios WHERE codigo_produto LIKE '%$valor_pesquisar%'";
 $resultado_curso = mysqli_query($conn, $result_curso);
 
-//Contar o total de esquadretas
-$total_esquadretas = mysqli_num_rows($resultado_curso);
+//Contar o total de acessorios
+$total_acessorios = mysqli_num_rows($resultado_curso);
 
-//Seta a quantidade de esquadretas por pagina
+//Seta a quantidade de acessorios por pagina
 $quantidade_pg = 1;
 
-//calcular o número de pagina necessárias para apresentar os esquadretas
-$num_pagina = ceil($total_esquadretas/$quantidade_pg);
+//calcular o número de pagina necessárias para apresentar os acessorios
+$num_pagina = ceil($total_acessorios/$quantidade_pg);
 
 //Calcular o inicio da visualizacao
 $incio = ($quantidade_pg*$pagina)-$quantidade_pg;
 
-//Selecionar os esquadretas a serem apresentado na página
-$result_esquadretas = "SELECT * FROM esquadretas WHERE codigo_produto LIKE '%$valor_pesquisar%' limit $incio, $quantidade_pg";
-$resultado_esquadretas = mysqli_query($conn, $result_esquadretas);
-$total_esquadretas = mysqli_num_rows($resultado_esquadretas);
+//Selecionar os acessorios a serem apresentado na página
+$result_acessorios = "SELECT * FROM acessorios WHERE codigo_produto LIKE '%$valor_pesquisar%' limit $incio, $quantidade_pg";
+$resultado_acessorios = mysqli_query($conn, $result_acessorios);
+$total_acessorios = mysqli_num_rows($resultado_acessorios);
 
 ?>
 <!doctype html>
@@ -115,7 +115,7 @@ $total_esquadretas = mysqli_num_rows($resultado_esquadretas);
     <div id="page-header-search" class="overlay-header bg-header-dark">
           <div class="bg-white-10">
             <div class="content-header">
-              <form class="w-100" action="pesquisar_esquadretas.php" method="GET">
+              <form class="w-100" action="pesquisar_acessorios.php" method="GET">
                 <div class="input-group">
                   <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
                   <button type="button" class="btn btn-alt-primary" data-toggle="layout" data-action="header_search_off">
@@ -158,26 +158,26 @@ $total_esquadretas = mysqli_num_rows($resultado_esquadretas);
               <div class="block block-rounded block-mode-loading-refresh">
                 <div class="block-header block-header-default">
                   <h3 class="block-title">
-                    Resultado da Esquadreta
+                    Resultado da Acessórios
                   </h3>
-                  <a class="btn btn-alt-secondary" href="visualizar_esquadretas.php">
-                    <i class="fa fa-arrow-left me-1"></i> Visualizar Esquadretas
+                  <a class="btn btn-alt-secondary" href="visualizar_acessorios.php">
+                    <i class="fa fa-arrow-left me-1"></i> Visualizar Acessórios
                   </a>
                 </div>
                 <div class="table-responsive">
                   <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
                   <?php
-                    require_once "../controllers/controllers_esquadretas.php";
+                    require_once "../controllers/controllers_acessorios.php";
 
-                    $selecionar_esquadretas = new controllers_esquadretas();
-                    $result_esquadretas = $selecionar_esquadretas->selecionar_esquadretas();
-                    if(count($result_esquadretas) > 0)
+                    $selecionar_acessorios = new controllers_acessorios();
+                    $result_acessorios = $selecionar_acessorios->selecionar_acessorios();
+                    if(count($result_acessorios) > 0)
                     { ?>
                     <thead style="text-align: center;">
                       <tr class="text-uppercase">
                         <th>Código Produto</th>
                         <th>Descrição</th>
-                        <th>Custo(metro)</th>
+                        <th>Custo(Unitário)</th>
                         <th>Valor(Unitário)</th>
                         <th>Ver Mais</th>
                       </tr>
@@ -185,34 +185,34 @@ $total_esquadretas = mysqli_num_rows($resultado_esquadretas);
                     <?php }?>
                     <tbody style="text-align: center;">
                         <?php
-                            require_once "../controllers/controllers_esquadretas.php";
+                            require_once "../controllers/controllers_acessorios.php";
 
-                            $selecionar_esquadretas = new controllers_esquadretas();
-                            $result_esquadretas = $selecionar_esquadretas->selecionar_esquadretas();
-                            if(count($result_esquadretas) > 0)
+                            $selecionar_acessorios = new controllers_acessorios();
+                            $result_acessorios = $selecionar_acessorios->selecionar_acessorios();
+                            if(count($result_acessorios) > 0)
                             {
-                              while($row_esquadretas = mysqli_fetch_assoc($resultado_esquadretas)){ ?>
+                              while($row_acessorios = mysqli_fetch_assoc($resultado_acessorios)){ ?>
                                 <tr style="text-align: center;">
                                   <td>
-                                      <span class="fw-semibold"><?php echo $row_esquadretas['codigo_produto']; ?></span>
+                                      <span class="fw-semibold"><?php echo $row_acessorios['codigo_produto']; ?></span>
                                   </td>
                                   <td>
-                                    <span class="fs-sm text-muted"><?php echo $row_esquadretas['descricao'];?></span>
+                                    <span class="fs-sm text-muted"><?php echo $row_acessorios['descricao'];?></span>
                                   </td>
                                   <td>
-                                    <?php echo $row_esquadretas['custo_metro']; ?>
+                                    <?php echo $row_acessorios['custo_unitario']; ?>
                                   </td>
                                   <td>
-                                      <span class="fw-semibold"><?php echo $row_esquadretas['valor_unitario']; ?></span>
+                                      <span class="fw-semibold"><?php echo $row_acessorios['valor_unitario']; ?></span>
                                   </td>
                                   <td class="text-center text-nowrap fw-medium" style="display: flex; justify-content: center; align-items: center;">
 
-                                    <a href="vermais_esquadretas.php?view_esquadretas=<?php $idCriptografado = base64_encode($row_esquadretas['id']); echo $idCriptografado;?>">
+                                    <a href="vermais_acessorios.php?view_acessorios=<?php $idCriptografado = base64_encode($row_acessorios['id']); echo $idCriptografado;?>">
                                         <i class="fa fa-eye me-1 opacity-50"></i>
                                     </a>
 
                                     <?php
-                                       echo "<button class='btn' onclick='abrirModal(".$row_esquadretas['id'].")'><i class='fa fa-fw fa-times text-danger'></i></button>";
+                                       echo "<button class='btn' onclick='abrirModal(".$row_acessorios['id'].")'><i class='fa fa-fw fa-times text-danger'></i></button>";
                                     ?>
                                   </td>
                                 </tr>
@@ -232,7 +232,7 @@ $total_esquadretas = mysqli_num_rows($resultado_esquadretas);
                         <li>
                             <?php
                             if($pagina_anterior != 0){ ?>
-                                <a href="pesquisar_esquadretas.php?pagina=<?php echo $pagina_anterior; ?>&pesquisar=<?php echo $valor_pesquisar; ?>" aria-label="Previous">
+                                <a href="pesquisar_acessorios.php?pagina=<?php echo $pagina_anterior; ?>&pesquisar=<?php echo $valor_pesquisar; ?>" aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             <?php }else{ ?>
@@ -242,12 +242,12 @@ $total_esquadretas = mysqli_num_rows($resultado_esquadretas);
                         <?php 
                         //Apresentar a paginacao
                         for($i = 1; $i < $num_pagina + 1; $i++){ ?>
-                            <li><a href="pesquisar_esquadretas.php?pagina=<?php echo $i; ?>&pesquisar=<?php echo $valor_pesquisar; ?>"><?php echo $i; ?></a></li>
+                            <li><a href="pesquisar_acessorios.php?pagina=<?php echo $i; ?>&pesquisar=<?php echo $valor_pesquisar; ?>"><?php echo $i; ?></a></li>
                         <?php } ?>
                         <li>
                             <?php
                             if($pagina_posterior <= $num_pagina){ ?>
-                                <a href="pesquisar_esquadretas.php?pagina=<?php echo $pagina_posterior; ?>&pesquisar=<?php echo $valor_pesquisar; ?>" aria-label="Previous">
+                                <a href="pesquisar_acessorios.php?pagina=<?php echo $pagina_posterior; ?>&pesquisar=<?php echo $valor_pesquisar; ?>" aria-label="Previous">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
                             <?php }else{ ?>
@@ -303,7 +303,7 @@ $total_esquadretas = mysqli_num_rows($resultado_esquadretas);
       }
 
       document.getElementById('btnConfirmarExclusao').addEventListener('click', function() {
-          window.location.href = `eliminar_esquadretas.php?id=${idProdutoParaExcluir}`;
+          window.location.href = `eliminar_acessorios.php?id=${idProdutoParaExcluir}`;
       });
     </script>
   </body>

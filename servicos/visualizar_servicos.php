@@ -151,10 +151,10 @@ $total_servicos = mysqli_num_rows($resultado_servicos);
               <div class="block block-rounded block-mode-loading-refresh">
                 <div class="block-header block-header-default">
                   <h3 class="block-title">
-                    Visualizar servicos
+                    Visualizar Serviços
                   </h3>
                   <a class="btn btn-alt-secondary" href="servicos.php">
-                    Cadastrar servicos
+                    Cadastrar Serviços
                   </a>
                 </div>
                 <div class="table-responsive">

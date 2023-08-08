@@ -1,3 +1,18 @@
+<?php
+    // session_start();
+    require_once "../conexao-bd.php";
+    // ob_start();
+    // session_destroy();
+    if(!isset($_SESSION['email'])){
+        header('location: ../login.php');
+    }
+    $email = $_SESSION['email'];
+    $selecinarUserLogado = $conn->prepare("SELECT * FROM logado WHERE email = :email");
+    $selecinarUserLogado->bindValue(':email', $email);
+    $selecinarUserLogado->execute();
+    $row = $selecinarUserLogado->fetch(PDO::FETCH_ASSOC);
+
+?>
 <!-- Header -->
 <header id="page-header">
     <!-- Header Content -->
@@ -20,7 +35,7 @@
     <div class="space-x-1">
         <!-- User Dropdown -->
         <div class="dropdown d-inline-block">
-            <span class="d-sm-inline-block">Bem vindo(a), Marcieli</span>
+            <span class="d-sm-inline-block">Bem vindo(a), <?php echo $row['nome']; ?></span>
         </div>  
         <div class="dropdown d-inline-block">
         <button type="button" class="btn btn-alt-secondary" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

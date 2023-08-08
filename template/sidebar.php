@@ -175,7 +175,7 @@
                         </ul>
                     </li>
                     <li class="nav-main-item">
-                        <a href="#" class="nav-main-link Anav-main-link-submenu" data-toggle="Asubmenu" aria-haspopup="true"  aria-expanded="false">
+                        <a href="#" class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"  aria-expanded="false">
                             <span class="nav-main-link-name">Acessórios</span>
                         </a>
                         <ul class="nav-main-submenu">
@@ -192,7 +192,7 @@
                         </ul>
                     </li>
                     <li class="nav-main-item">
-                        <a href="#" class="nav-main-link Anav-main-link-submenu" data-toggle="Asubmenu" aria-haspopup="true"  aria-expanded="false">
+                        <a href="#" class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"  aria-expanded="false">
                             <span class="nav-main-link-name">Insumos</span>
                         </a>
                         <ul class="nav-main-submenu">

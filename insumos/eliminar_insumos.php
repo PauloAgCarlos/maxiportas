@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     $senha = "";
     $bdn = "maxportas";
     $conection_bd = mysqli_connect($servername, $user, $senha, $bdn);
-    $resul = $conection_bd->query("SELECT * FROM acessorios WHERE id = $idProduto");
+    $resul = $conection_bd->query("SELECT * FROM insumos WHERE id = $idProduto");
     $row_image = $resul->fetch_array();
     unlink($row_image['imagem']);
 
@@ -21,14 +21,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     try {
         $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $pdo->prepare("DELETE FROM acessorios WHERE id = :id");
+        $stmt = $pdo->prepare("DELETE FROM insumos WHERE id = :id");
         $stmt->bindParam(':id', $idProduto);
         $stmt->execute();
-        header("Location: visualizar_acessorios.php?eliminado");
+        header("Location: visualizar_insumos.php?eliminado");
         exit;
     } catch (PDOException $e) {
         // echo "Erro de conexão com o banco de dados: " . $e->getMessage();
-        header("Location: visualizar_acessorios.php?error");
+        header("Location: visualizar_insumos.php?error");
 
     }
 }
