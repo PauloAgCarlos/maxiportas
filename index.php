@@ -8,7 +8,7 @@ ob_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <title>Dashmix - Bootstrap 5 Admin Template &amp; UI Framework</title>
+    <title>HJ Alúminio</title>
 
     <meta name="description" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
     <meta name="author" content="pixelcave">
@@ -146,7 +146,7 @@ ob_start();
                               header('Location: dashboard/dashboard.php');
                           break;
                           case 'user':
-                              header('Location: user.php');
+                              header('Location: cliente_paciente/index.php');
                           break;
                           default:
                               header('Location: index.php');

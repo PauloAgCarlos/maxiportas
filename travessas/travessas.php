@@ -73,7 +73,7 @@
                     <div class="mb-1">
                       <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
                       <div>
-                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="6" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="20" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
                       </div>
                     </div>
 
