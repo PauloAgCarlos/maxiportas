@@ -51,38 +51,54 @@
         <!-- Page Content -->
         <div class="content content-full content-boxed">
           <!-- New Post -->
-          <div class="row items-push">
-            <div class="col-sm-6 col-xl-3">
-              <div style="background-color: #9999ff;" class="block block-rounded text-center d-flex flex-column mb-0">
-                <div class="block-content block-content-fullA flex-grow-1" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
-                  <div class="item rounded-3 bg-body mx-auto mb-3">
-                    <i class="fa fa-wallet fa-lg text-primary"></i>
-                  </div>
-                  <div class="mb-3" style="color: #000000; font-weight: 600;">Ordens de Serviço</div>
-                </div> 
+          <form action="classificacao_de_clientes.php" method="POST" enctype="multipart/form-data">
+            <div class="block">
+              <div class="block-header block-header-default">
+                <a class="btn btn-alt-secondary" href="classificacao_de_clientes.php">
+                  Cadastro de Classificação de Clientes
+                </a>
+                <a class="btn btn-alt-secondary" href="visualizar_classificacao_de_clientes.php">
+                  Visualizar Classificação de Clientes
+                </a>
               </div>
-            </div>
-            <div class="col-sm-6 col-xl-3">
-              <div style="background-color: #ff9966;" class="block block-rounded text-center d-flex flex-column mb-0">
-                <div class="block-content block-content-fullA flex-grow-1" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
-                  <div class="item rounded-3 bg-body mx-auto mb-3">
-                    <i class="fa fa-level-up-alt fa-lg text-primary"></i>
+              <div class="block-content" >
+                <div class="row justify-content-center push">
+                  <div class="col-md-12">
+                    <div class="mb-1">
+                      <label class="form-label" for="descricao" style="font-size: 0.8em;">Descrição</label> <span style="color: red;">*</span>
+                      <div style="display: flex;">
+                        <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Decrição" style="font-size: 0.8em;" required>
+                      </div>
+                    </div>  
+
+                    <div class="mb-1">
+                      <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
+                      <div>
+                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="20" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                      </div>
+                    </div>                
                   </div>
-                  <div class="mb-3" style="color: #000000; font-weight: 600;">Compras</div>
+                
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center;">
+
+                  <div class="mb-4 push" style="display: flex; align-items: center; justify-content: center;">
+                    <div class="block-content bg-body-light push pb-4">
+                      <div>
+                        <div class="col-md-12">
+                          <button type="submit" name="btn_cadastrar_classificacao_de_clientes" class="btn btn-alt-primary">
+                            <i class="fa fa-fw fa-check opacity-50 me-1"></i> Cadastrar Classificação de Clientes
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
                 </div>
               </div>
+              
             </div>
-            <div class="col-sm-6 col-xl-3">
-              <div style="background-color: #33cccc;" class="block block-rounded text-center d-flex flex-column mb-0">
-                <div class="block-content block-content-fullA flex-grow-1" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
-                  <div class="item rounded-3 bg-body mx-auto mb-3">
-                    <i class="fa fa-chart-line fa-lg text-primary"></i>
-                  </div>
-                  <div class="mb-3" style="color: #000000; font-weight: 600;">Minha Conta</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </form>
           <!-- END New Post -->
         </div>
         <!-- END Page Content -->
@@ -101,3 +117,5 @@
 <script src="../assets/js/evitar_reenvio_form.js"></script>
   </body>
 </html>
+
+<?php include_once "cadastrar_classificacao_de_clientes.php"; ?>

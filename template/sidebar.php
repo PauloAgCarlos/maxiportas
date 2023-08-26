@@ -226,14 +226,38 @@
                         </ul>
                     </li>
                     <li class="nav-main-item">
-                    <a class="nav-main-link" href="#">
-                        <span class="nav-main-link-name">Tipo do Item - Agregar</span>
-                    </a>
+                        <a href="#" class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"  aria-expanded="false">
+                            <span class="nav-main-link-name">Tipo do Item - Agregar</span>
+                        </a>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../tipo_do_item_agregar/tipo_do_item_agregar.php">
+                                <span class="nav-main-link-name">Cadastrar</span>
+                            </a>
+                            </li>
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../tipo_do_item_agregar/visualizar_tipo_do_item_agregar.php">
+                                <span class="nav-main-link-name">Visualizar</span>
+                            </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-main-item">
-                    <a class="nav-main-link" href="#">
-                        <span class="nav-main-link-name">Parâmetros</span>
-                    </a>
+                        <a href="#" class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"  aria-expanded="false">
+                            <span class="nav-main-link-name">Parâmetros</span>
+                        </a>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../parametros/parametros.php">
+                                <span class="nav-main-link-name">Cadastrar</span>
+                            </a>
+                            </li>
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../parametros/visualizar_parametros.php">
+                                <span class="nav-main-link-name">Visualizar</span>
+                            </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-main-item">
                         <a href="#" class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"  aria-expanded="false">
@@ -369,14 +393,38 @@
                         </ul>
                     </li>
                     <li class="nav-main-item">
-                    <a class="nav-main-link" href="#">
-                        <span class="nav-main-link-name">Calendário</span>
-                    </a>
+                        <a href="#" class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"  aria-expanded="false">
+                            <span class="nav-main-link-name">Calendário</span>
+                        </a>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../calendario/calendario.php">
+                                <span class="nav-main-link-name">Cadastrar</span>
+                            </a>
+                            </li>
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../calendario/visualizar_calendario.php">
+                                <span class="nav-main-link-name">Visualizar</span>
+                            </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-main-item">
-                    <a class="nav-main-link" href="#">
-                        <span class="nav-main-link-name">Classificação de Clientes</span>
-                    </a>
+                        <a href="#" class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"  aria-expanded="false">
+                            <span class="nav-main-link-name">Classificação de Clientes</span>
+                        </a>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../classificacao_de_clientes/classificacao_de_clientes.php">
+                                <span class="nav-main-link-name">Cadastrar</span>
+                            </a>
+                            </li>
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../classificacao_de_clientes/visualizar_classificacao_de_clientes.php">
+                                <span class="nav-main-link-name">Visualizar</span>
+                            </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 </li>
@@ -403,9 +451,21 @@
                         </ul>
                     </li>
                     <li class="nav-main-item">
-                    <a class="nav-main-link" href="#">
-                        <span class="nav-main-link-name">Forma de Pagamento</span>
-                    </a>
+                        <a href="#" class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"  aria-expanded="false">
+                            <span class="nav-main-link-name">Forma de Pagamento</span>
+                        </a>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../forma_de_pagamento/forma_de_pagamento.php">
+                                <span class="nav-main-link-name">Cadastrar</span>
+                            </a>
+                            </li>
+                            <li class="nav-main-item">
+                            <a class="nav-main-link" href="../forma_de_pagamento/visualizar_forma_de_pagamento.php">
+                                <span class="nav-main-link-name">Visualizar</span>
+                            </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 </li>
@@ -419,19 +479,55 @@
             </a>
             <ul class="nav-main-submenu">
                 <li class="nav-main-item">
-                <a class="nav-main-link" href="#">
-                    <span class="nav-main-link-name">Indicadores</span>
-                </a>
+                    <a href="#" class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"  aria-expanded="false">
+                        <span class="nav-main-link-name">Indicadores</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                        <a class="nav-main-link" href="../indicadores/indicadores.php">
+                            <span class="nav-main-link-name">Cadastrar</span>
+                        </a>
+                        </li>
+                        <li class="nav-main-item">
+                        <a class="nav-main-link" href="../indicadores/visualizar_indicadores.php">
+                            <span class="nav-main-link-name">Visualizar</span>
+                        </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-main-item">
-                <a class="nav-main-link" href="#">
-                    <span class="nav-main-link-name">Painel- Vendas Mensais</span>
-                </a>
+                    <a href="#" class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"  aria-expanded="false">
+                        <span class="nav-main-link-name">Painel - Vendas Mensais</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                        <a class="nav-main-link" href="../painel_vendas_mensais/painel_vendas_mensais.php">
+                            <span class="nav-main-link-name">Visualizar</span>
+                        </a>
+                        </li>
+                        <!-- <li class="nav-main-item">
+                        <a class="nav-main-link" href="../painel_vendas_mensais/visualizar_painel_vendas_mensais.php">
+                            <span class="nav-main-link-name">Visualizar</span>
+                        </a>
+                        </li> -->
+                    </ul>
                 </li>
                 <li class="nav-main-item">
-                <a class="nav-main-link" href="#">
-                    <span class="nav-main-link-name">Painel - Pedidos/Orçamentos</span>
-                </a>
+                    <a href="#" class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"  aria-expanded="false">
+                        <span class="nav-main-link-name">Painel - Pedidos/Orçamentos</span>
+                    </a>
+                    <ul class="nav-main-submenu">
+                        <li class="nav-main-item">
+                        <a class="nav-main-link" href="../painel_pedidos_orcamentos/painel_pedidos_orcamentos.php">
+                            <span class="nav-main-link-name">Visualizar</span>
+                        </a>
+                        </li>
+                        <!-- <li class="nav-main-item">
+                        <a class="nav-main-link" href="../painel_pedidos_orcamentos/visualizar_painel_pedidos_orcamentos.php">
+                            <span class="nav-main-link-name">Visualizar</span>
+                        </a>
+                        </li> -->
+                    </ul>
                 </li>
                 <li class="nav-main-item">
                     <a href="#" class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"  aria-expanded="false">

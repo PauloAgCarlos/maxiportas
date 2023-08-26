@@ -6,14 +6,14 @@
 
     <title>HJ Alúminio</title>
 
-    <meta name="description" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+    <meta name="description" content="HJ Alúminio">
     <meta name="author" content="pixelcave">
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Open Graph Meta -->
-    <meta property="og:title" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework">
+    <meta property="og:title" content="HJ Alúminio">
     <meta property="og:site_name" content="Dashmix">
-    <meta property="og:description" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+    <meta property="og:description" content="HJ Alúminio">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
@@ -142,7 +142,6 @@
         $("#cep").mask("99999-999");
         // $("#cnpj").mask("99.999.999/9999-99")
         $("#nascimento").mask("99/99/9999")
-
       </script>
 
     <script src="assets/js/dashmix.app.min.js"></script>

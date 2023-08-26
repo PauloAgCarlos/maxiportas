@@ -10,14 +10,14 @@ ob_start();
 
     <title>HJ Alúminio</title>
 
-    <meta name="description" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+    <meta name="description" content="HJ Alúminio">
     <meta name="author" content="pixelcave">
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Open Graph Meta -->
-    <meta property="og:title" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework">
-    <meta property="og:site_name" content="Dashmix">
-    <meta property="og:description" content="Dashmix - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
+    <meta property="og:title" content="HJ Alúminio">
+    <meta property="og:site_name" content="HJ Alúminio">
+    <meta property="og:description" content="HJ Alúminio">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
@@ -30,13 +30,10 @@ ob_start();
     <!-- END Icons -->
 
     <!-- Stylesheets -->
-    <!-- Fonts and Dashmix framework -->
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"> -->
     <link rel="stylesheet" id="css-main" href="assets/css/dashmix.min.css">
 
-    <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
-    <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/xwork.min.css"> -->
-    <!-- END Stylesheets -->
+    <!--SwitAlert Success ao Cadastrar-->
+    <script src="./assets/js/cdn.jsdelivr.net_npm_sweetalert2@11.0.18_dist_sweetalert2.all.min.js"></script>
   </head>
   <body>
     <div id="page-container">
@@ -57,7 +54,7 @@ ob_start();
                     </a>
                     <p class="text-uppercase fw-bold fs-sm text-muted">Iniciar Sessão</p>
                   </div>
-                  <form class="js-validation-signup" action="#" method="POST">
+                  <form class="js-validation-signup" action="index.php" method="POST">
                     <div class="mb-4">
                       <div class="input-group input-group-lg">
                         <input type="email" class="form-control" id="signup-username" name="email" required placeholder="Digite seu e-mail">
@@ -156,7 +153,28 @@ ob_start();
                   endif;
 
               endwhile;
+          else: ?>
+            <script>
+              const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 4000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+              })
+
+              Toast.fire({
+              icon: 'error',
+              title: 'Os dados estão incorretos. Tente Novamente!'
+              })
+            </script>
+        <?php
           endif;
   }
-  
+
 ?>
+
