@@ -69,11 +69,20 @@
                       <div style="display: flex;">
                         <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Decrição" style="font-size: 0.9em;" required>
                       </div>
-                    </div>  
-                    <div class="mb-1">
-                      <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
-                      <div>
-                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="20" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                    </div> 
+                    <div style="display: flex; align-items: center; justify-content: space-between;"> 
+                      <div class="mb-1" style="width: 80%;">
+                        <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
+                        <div>
+                          <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="20" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                        </div>
+                      </div>
+
+                      <div class="mb-1 ms-4">
+                        <label class="form-label" for="quantidade" style="font-size: 0.9em;">Quantidade</label> <span style="color: red;">*</span>
+                        <div>
+                          <input type="text" class="form-control" id="quantidade" name="quantidade" placeholder="Quantidade" style="font-size: 0.9em;" required>
+                        </div>
                       </div>
                     </div>
 

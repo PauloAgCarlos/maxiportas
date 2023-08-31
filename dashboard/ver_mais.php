@@ -27,16 +27,15 @@
     <meta property="og:image" content="">
 
     <!-- Icons -->
+    <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
     <link rel="shortcut icon" href="../assets/media/favicons/favicon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="../assets/media/favicons/favicon-192x192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/media/favicons/apple-touch-icon-180x180.png">
     <!-- END Icons -->
 
+    <!-- Stylesheets -->
+    <!-- Fonts and Dashmix framework -->
     <link rel="stylesheet" id="css-main" href="../assets/css/dashmix.min.css">
-
-    
-    <!--SwitAlert Success ao Atualizar-->
-    <script src="../assets/js/cdn.jsdelivr.net_npm_sweetalert2@11.0.18_dist_sweetalert2.all.min.js"></script>
 
   </head>
   <body>
@@ -64,8 +63,8 @@
                     Pedidos / Orçamentos
                   </h3>
                   <div class="block-options">
-                    <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                      <i class="si si-refresh"></i>
+                    <button type="button" class="btn-block-option">
+                      <a href="dashboard.php">Voltar</a>
                     </button>
                   </div>
                 </div>
@@ -74,13 +73,9 @@
                   <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
                     <thead style="text-align: center; font-size: 0.8em; background-color: #2ab759; color: #fff;">
                       <tr class="text-uppercase">
-                        <!-- <th><input type="checkbox" name="" id=""></th> -->
-                        <!-- <th>XML <br> Cliente</th>
-                        <th>Ficha <br> de <br> Corte</th> -->
                         <th>Nome do <br> Cliente</th>
                         <th>Data Inicial</th>
                         <th>Data Final</th>
-                        <th>Vêr Mais</th>
                         <th>Ed</th>
                       </tr>
                     </thead>
@@ -88,7 +83,8 @@
                       <?php
                         require_once "../controllers/controllers_pedidos_dos_clientes.php";
                         $pedidos_dos_clientes = new controllers_pedidos_dos_clientes();
-                        $result_pedidos = $pedidos_dos_clientes->selecionar_pedidos_dos_clientes();
+                        $id_descripitografado = base64_decode($_GET['view']);
+                        $result_pedidos = $pedidos_dos_clientes->selecionar_pedidos_dos_clientes_id($id_descripitografado);
                         if(count($result_pedidos) > 0)
                         {
                           foreach($result_pedidos as $row_pedidos){
@@ -104,11 +100,6 @@
                           <?= $row_pedidos['data_final']; ?>
                         </td>
                         <td class="text-center d-xl-table-cell" style="color: blue;">
-                          <a href="ver_mais.php?view=<?php $idCriptografado = base64_encode($row_pedidos['id']); echo $idCriptografado;?>">
-                            <i class="fa fa-eye me-1 opacity-50 text-primary"></i>
-                          </a>
-                        </td>
-                        <td class="text-center d-xl-table-cell" style="color: blue;">
                             <a href="gestao_pedidos.php?view=<?php $idCriptografado = base64_encode($row_pedidos['id']); echo $idCriptografado;?>"><i class="fa fa-pencil-alt"></i></a>
                         </td>
                       </tr>
@@ -121,6 +112,17 @@
                       
                     </tbody>
                   </table>
+                  <div class="block-header block-header-default">
+                  <?php
+                      require_once "../controllers/controllers_pedidos_dos_clientes.php";
+                      $pedidos_dos_clientes = new controllers_pedidos_dos_clientes();
+                      $idDescriptografado = base64_decode($_GET['view']); 
+                      $result_pedidos = $pedidos_dos_clientes->selecionar_pedidos_dos_clientes_id($idDescriptografado);
+
+                      foreach($result_pedidos as $row_pedidos_id){ ?>
+                  <h3 class="block-title">Descrição Produto/Serviço: <span class="fs-sm text-muted"><?php echo addslashes($row_pedidos_id['descricao_pedido']); ?></h3>
+                  <?php }?>
+                </div>
                 </div>
                 </div>
               </div>
@@ -136,49 +138,7 @@
       <?php require_once "../template/footer.php"; ?>
     </div>
     <!-- END Page Container -->
+
+    
   </body>
 </html>
-
-<?php 
-
-  if(isset($_GET['atualizado'])){ ?>
-    <script>
-      const Atualizado = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-      })
-
-      Atualizado.fire({
-      icon: 'success',
-      title: 'Pedido Finalizado com Sucesso!'
-      })
-    </script>
-<?php } elseif(isset($_GET['nao-atualizado'])){ ?>
-
-  <script>
-    const Toaste = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-    })
-
-    Toaste.fire({
-    icon: 'error',
-    title: 'Erro ao Finalizar Pedido!'
-    })
-  </script>
-
-<?php }?>

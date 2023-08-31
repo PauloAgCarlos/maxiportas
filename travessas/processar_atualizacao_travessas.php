@@ -4,6 +4,9 @@
     if(isset($_POST['btn_atualizar_travessas'])):
 
         $descricao = addslashes($_POST['descricao']);
+        $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
+        $codigo_produto = "CTHJ-" . $codigo_produto_digitado;
+        $quantidade = addslashes($_POST['quantidade']);
         $agregar = addslashes($_POST['agregar']);
         $unidade = addslashes($_POST['unidade']);
         $esquadreta = addslashes($_POST['esquadreta']);
@@ -24,7 +27,7 @@
         $id_atualizar = $_POST['id_atualizar'];      
 
         $controllers_travessas = new controllers_travessas();
-        $atualizar = $controllers_travessas->atualizar_travessas($descricao, $agregar, $unidade, $esquadreta, $oculto, $referencias_do_mercado, $custo_metro, $markup, $valor, $desconto_corte_vidro, $perda, $perda_bordas, $perda_corte, $dimensao, $perda_bordas_retalho, $perda_corte_retalho, $ultima_alteracao, $ativo, $id_atualizar);     
+        $atualizar = $controllers_travessas->atualizar_travessas($descricao, $codigo_produto, $agregar, $unidade, $esquadreta, $oculto, $referencias_do_mercado, $custo_metro, $markup, $valor, $desconto_corte_vidro, $perda, $perda_bordas, $perda_corte, $dimensao, $perda_bordas_retalho, $perda_corte_retalho, $ultima_alteracao, $ativo, $quantidade, $id_atualizar);     
 
         if($atualizar)
         {

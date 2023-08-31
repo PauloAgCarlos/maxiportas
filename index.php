@@ -77,9 +77,6 @@ ob_start();
                       </button>
                     </div>
                     <p class="mt-3 mb-0 d-lg-flex justify-content-lg-between">
-                        <!-- <a href="recuperar-senha.php" class="btn btn-sm btn-alt-secondary d-block d-lg-inline-block mb-1">
-                            <i class="fa fa-exclamation-triangle opacity-50 me-1"></i> Recuperar Senha
-                        </a> -->
                         <a class="btn btn-sm btn-alt-secondary d-block d-lg-inline-block mb-1" href="criar-conta.php">
                         <i class="fa fa-plus opacity-50 me-1"></i> Cadastrar-se
                         </a>

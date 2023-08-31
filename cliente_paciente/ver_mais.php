@@ -254,14 +254,14 @@
                       <th class="text-center">Data Final</th>
                       <th class="text-center">Garantia</th>
                       <th class="text-center">Status</th>
-                      <th class="text-center">Ver Mais</th>
                     </tr>
                   </thead>
                   <tbody>
                   <?php
                         require_once "../controllers/controllers_pedidos_dos_clientes.php";
                         $pedidos_dos_clientes = new controllers_pedidos_dos_clientes();
-                        $result_pedidos = $pedidos_dos_clientes->selecionar_pedidos_dos_clientes();
+                        $idDescriptografado = base64_decode($_GET['view']); 
+                        $result_pedidos = $pedidos_dos_clientes->selecionar_pedidos_dos_clientes_id($idDescriptografado);
                         if(count($result_pedidos) > 0)
                         {
                           foreach($result_pedidos as $row_pedidos){
@@ -272,9 +272,6 @@
                       <td class="text-center"><?= $row_pedidos['data_final']; ?></td>
                       <td class="text-center"></td>
                       <td class="text-center"><?= $row_pedidos['status']; ?></td>
-                      <td class="text-center">
-                        <a href="ver_mais.php?view=<?php $idCriptografado = base64_encode($row_pedidos['id']); echo $idCriptografado;?>"><i class="fa fa-eye me-1 opacity-50 text-primary"></i></a>
-                      </td>
                     </tr>
                     <?php 
                         } } else 
@@ -285,50 +282,17 @@
          
                   </tbody>
                 </table>
-              </div>
-          </div>
-          <!-- END Partial Table -->
-
-
-          <!-- Partial Table -->
-        <div class="block block-rounded mb-5">
-            <div class="block-header block-header-default">
-              <h3 class="block-title">Últimas Compras</h3>
-            </div>
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped table-vcenter">
-                  <thead>
-                    <tr>
-                      <th class="text-center"># </th>
-                      <th class="text-center">Data Venda</th>
-                      <th class="text-center">Responsável</th>
-                      <th class="text-center">Faturado</th>
-                    </tr>
-                  </thead>
-                  <tbody>
+                <div class="block-header block-header-default">
                   <?php
-                        require_once "../controllers/controllers_pedidos_dos_clientes.php";
-                        $pedidos_dos_clientes = new controllers_pedidos_dos_clientes();
-                        $result_pedidos = $pedidos_dos_clientes->selecionar_pedidos_dos_clientes();
-                        if(count($result_pedidos) > 0)
-                        {
-                          foreach($result_pedidos as $row_pedidos){
-                      ?>
-                    <tr>
-                      <td class="text-center"><?= $row_pedidos['id']; ?></td>
-                      <td class="text-center"><?= $row_pedidos['data_final']; ?></td>
-                      <td class="text-center"><?= $row_pedidos['nome_responsavel']; ?></td>
-                      <td class="text-center"></td>
-                    </tr>
-                    <?php 
-                        } } else 
-                        {
-                          echo "<h1>Nenhum registo encontrado!</h1>";
-                        }
-                    ?>
-         
-                  </tbody>
-                </table>
+                      require_once "../controllers/controllers_pedidos_dos_clientes.php";
+                      $pedidos_dos_clientes = new controllers_pedidos_dos_clientes();
+                      $idDescriptografado = base64_decode($_GET['view']); 
+                      $result_pedidos = $pedidos_dos_clientes->selecionar_pedidos_dos_clientes_id($idDescriptografado);
+
+                      foreach($result_pedidos as $row_pedidos_id){ ?>
+                  <h3 class="block-title">Descrição Produto/Serviço: <span class="fs-sm text-muted"><?php echo addslashes($row_pedidos_id['descricao_pedido']); ?></h3>
+                  <?php }?>
+                </div>
               </div>
           </div>
           <!-- END Partial Table -->
@@ -361,6 +325,20 @@
     </div>
   </div>
 </footer>
+
+<script>
+  let idProdutoParaExcluir;
+
+  function abrirModal(idProduto) {
+      idProdutoParaExcluir = idProduto;
+      const modal = new bootstrap.Modal(document.getElementById('modalConfirmacao'), {});
+      modal.show();
+  }
+
+  // document.getElementById('btnConfirmarExclusao').addEventListener('click', function() {
+  //     window.location.href = `eliminar_insumos.php?id=${idProdutoParaExcluir}`;
+  // });
+</script>
 
 <script src="../assets/js/dashmix.app.min.js"></script>
 <!-- Page JS Plugins -->

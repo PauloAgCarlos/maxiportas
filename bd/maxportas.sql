@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 25-Ago-2023 às 19:12
+-- Tempo de geração: 29-Ago-2023 às 01:19
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -549,6 +549,30 @@ INSERT INTO `parceiros` (`id`, `razaosocial`, `nomefantasia`, `complemento`, `ci
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `pedidos_dos_clientes`
+--
+
+CREATE TABLE `pedidos_dos_clientes` (
+  `id` int(11) NOT NULL,
+  `nome_cliente` varchar(255) NOT NULL,
+  `descricao_pedido` text NOT NULL,
+  `data_inicial` varchar(255) NOT NULL,
+  `data_final` varchar(255) NOT NULL,
+  `garantia` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `pedidos_dos_clientes`
+--
+
+INSERT INTO `pedidos_dos_clientes` (`id`, `nome_cliente`, `descricao_pedido`, `data_inicial`, `data_final`, `garantia`, `status`) VALUES
+(1, 'Torres Code', '<p><strong>Porta</strong></p>', '', '29/08/2023', '', ''),
+(6, 'Torres Code', '<p>Travessa</p>', '28/08/2023', '', '', '');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `perfil`
 --
 
@@ -1000,6 +1024,12 @@ ALTER TABLE `parceiros`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `pedidos_dos_clientes`
+--
+ALTER TABLE `pedidos_dos_clientes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `perfil`
 --
 ALTER TABLE `perfil`
@@ -1158,7 +1188,7 @@ ALTER TABLE `linha_de_produto`
 -- AUTO_INCREMENT de tabela `logado`
 --
 ALTER TABLE `logado`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de tabela `movimentacao_consumo_de_materia_prima`
@@ -1189,6 +1219,12 @@ ALTER TABLE `parametros`
 --
 ALTER TABLE `parceiros`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+
+--
+-- AUTO_INCREMENT de tabela `pedidos_dos_clientes`
+--
+ALTER TABLE `pedidos_dos_clientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `perfil`

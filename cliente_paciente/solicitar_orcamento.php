@@ -21,6 +21,9 @@
 <link rel="stylesheet" href="dist/ui/trumbowyg.min.css">
 <link rel="stylesheet" href="dist/plugins/emoji/ui/trumbowyg.emoji.min.css">
 
+<!--SwitAlert Success ao Cadastrar-->
+<script src="../assets/js/cdn.jsdelivr.net_npm_sweetalert2@11.0.18_dist_sweetalert2.all.min.js"></script>
+
 <body>
 <div class="app-container app-theme-white body-tabs-shadow fixed-header fixed-sidebar">
 <div class="app-header header-shadow">
@@ -81,10 +84,24 @@
 <div class="widget-content-left">
 <div class="btn-group">
 
-<div class="space-x-1">
-    <div class="dropdown d-inline-block">
-        <span class="d-sm-inline-block">
-      </span>
+<?php
+    session_start();
+    require_once "../conexao-bd.php";
+
+    if(!isset($_SESSION['email'])){
+        header('location: ../login.php');
+    }
+    $email = $_SESSION['email'];
+    $selecinarUserLogado = $conn->prepare("SELECT * FROM logado WHERE email = :email");
+    $selecinarUserLogado->bindValue(':email', $email);
+    $selecinarUserLogado->execute();
+    $row = $selecinarUserLogado->fetch(PDO::FETCH_ASSOC);
+
+?>
+  <div class="space-x-1">
+     <!-- User Dropdown -->
+     <div class="dropdown d-inline-block">
+        <span class="d-sm-inline-block">Bem vindo(a), <?php echo $row['nome']; ?></span>
     </div>  
     <div class="dropdown d-inline-block">
         <button type="button" class="btn btn-alt-secondary" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -140,7 +157,7 @@
 </a>
 <ul>
 <li>
-<a href="index.php" class="Amm-active">
+<a href="solicitar_orcamento.php" class="Amm-active">
 <i class="nav-main-link-icon fa fa-rocket text-white"></i>
 <span class="nav-main-link-name text-white">Solicitar Orçamento</span>
 </a>
@@ -201,38 +218,60 @@
             </div>
             <!-- Reply -->
             <div class="block block-rounded">
-              <!-- <div class="block-content block-content-full"> -->
-                <!-- <div id="js-ckeditor5-classic"></div>
-                <button type="button" class="btn btn-alt-primary mt-2">Send Message</button>
+
+            <form action="solicitar_orcamento.php" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="nome_cliente" value="<?= $row['nome']; ?>" id="">
+              <input type="hidden" name="data_inicial" value="<?= date("d/m/Y") ?>" >
+              <input type="hidden" name="data_final" value="<?= date("d/m/Y") ?>" >
+              <input type="hidden" name="status" value="Em Andamento" >
+              
+              <!-- <div class="mb-1">
+                <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Produto</label> <span style="color: red;">*</span>
+                <div>
+                  <select name="produto_servico" class="form-control">
+                    <php
+
+                      $host = "localhost";
+                      $user = "root";
+                      $password = "";
+                      $bd_name = "maxportas";
+
+                      try
+                      {
+                          $conn = new PDO("mysql:host=$host;dbname=" . $bd_name, $user, $password);
+                      }
+                      catch(PDOException $error)
+                      {
+                          die("Erro: Conexão com banco de dados não foi realizada com sucesso. Erro gerado: " . $error->getMessage());
+                      }
+                      $result_travessas = $conn->prepare("SELECT descricao FROM travessas ORDER BY id DESC");
+                      $result_travessas->execute();
+                      $row = $result_travessas->fetchAll(PDO::FETCH_ASSOC);
+
+                    ?>
+              
+                    <option>Selecione o tipo de Produto/Serviço</option>  
+                    <optgroup>
+                      <php foreach($row as $row_travessas){ ?>                  
+                        <option value="<php echo addslashes($row_travessas['descricao']); ?>"><php echo addslashes($row_travessas['descricao']); ?></option>                
+                      <php }?> 
+                    </optgroup>
+
+                    <option value="Finalizado">Finalizado</option>
+                  </select>
+                </div>
               </div> -->
-              <form action="solicitar_orcamento.php" method="POST" enctype="multipart/form-data">
             <div class="block">
-              <div class="block-header block-header-default">
+              <div class="block-header block-header-default" style="margin-bottom: -40px;">
                 <a class="btn btn-alt-secondary" href="solicitar_orcamento.php">
                   Descrição Produto/Serviço
                 </a>
               </div>
               <div class="block-content" >
                 <div class="row justify-content-center push">
-                  <div class="col-md-12">
-                    <!-- <div class="mb-1">
-                      <label class="form-label" for="descricao" style="font-size: 0.8em;">Descrição</label> <span style="color: red;">*</span>
-                      <div style="display: flex;">
-                        <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Decrição" style="font-size: 0.8em;" required>
-                      </div>
-                    </div>   -->
-                    <!-- <div class="mb-1">
-                      <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
-                      <div>
-                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="6" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
-                      </div>
-                    </div> -->
-
-                    <!-- <div class="mb-1 col-md-12" style="height: 200px !important;"> -->
-                      <textarea name="solicitacao" id="trumbowyg-editor"  class="form-control" style="font-size: 0.8em;"></textarea>
-                    <!-- </div>                      -->
+                  <div class="col-md-12">                   
+                      <textarea name="descricao_pedido" id="trumbowyg-editor"  class="form-control" style="font-size: 0.8em;"></textarea>
                   </div>
-                  
                 </div>
                 <div style="display: flex; align-items: center; justify-content: center;">
 
@@ -296,6 +335,12 @@
 </div>
 </div>
 </div>
-<div class="app-drawer-overlay d-none animated fadeIn"></div><script type="text/javascript" src="assets/scripts/main.d810cf0ae7f39f28f336.js"></script></body>
+<div class="app-drawer-overlay d-none animated fadeIn">
 
+</div>
+<script type="text/javascript" src="assets/scripts/main.d810cf0ae7f39f28f336.js"></script>
+
+</body>
 </html>
+
+<?php require_once "cadastrar_solicitacao.php"; ?>

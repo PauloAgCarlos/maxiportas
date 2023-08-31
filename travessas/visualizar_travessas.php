@@ -17,7 +17,7 @@ $conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
 $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
 //Selecionar todos os travessas da tabela
-$result_travessas = "SELECT * FROM travessas";
+$result_travessas = "SELECT * FROM travessas ORDER BY id DESC";
 $resultado_travessas = mysqli_query($conn, $result_travessas);
 
 //Contar o total de travessas
@@ -33,7 +33,7 @@ $num_pagina = ceil($total_travessas/$quantidade_pg);
 $incio = ($quantidade_pg*$pagina)-$quantidade_pg;
 
 //Selecionar os travessas a serem apresentado na página
-$result_travessas = "SELECT * FROM travessas limit $incio, $quantidade_pg";
+$result_travessas = "SELECT * FROM travessas ORDER BY id DESC limit $incio, $quantidade_pg";
 $resultado_travessas = mysqli_query($conn, $result_travessas);
 $total_travessas = mysqli_num_rows($resultado_travessas);
 

@@ -1,0 +1,15 @@
+1. Uma dúvida, o Cliente acessa o site e vai ser redirecionado pra sua Página, sabendo que tem as opções de: Solicitar Orçamento, Compras, Minha Conta e Ordens de Serviço.
+
+Uma pagina para mostrar os Produtos que a empresa vende para o Cliente poder visualizar e escolher Produtos X, Y e Z.
+
+Stock
+1. Ao cadastrar um Produto terá um campo para cadastrar a Quantidade desse Produto.
+2. Quando um Cliente Solicitar um Pedido vai informar a Quantidade que deseja e vai subitrair no Stock desse Produto.
+3. Stock de Segurança, quando tiver 10 Produtos em Stock o adm receberá uma notificação informando: Stock baixo do Produto de Travessas, 10 Produtos no Stock.
+4. Quando o Stock de um Produto acabar o adm e o Cliente receberam uma notificação dizendo: Produto fora de Stock. 
+
+
+
+
+Conclusão:
+Depois do Cliente efectuar o Solicitação do Pedido e adm receber, ao atualizar em vez de somente manipular o Stock(Em Andamento ou Finalizado) Vai selecionar o Produto(s) e o Stock.

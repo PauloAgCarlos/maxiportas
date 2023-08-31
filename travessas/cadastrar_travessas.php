@@ -4,6 +4,7 @@
     $descricao = addslashes($_POST['descricao']);
     $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
     $codigo_produto = "CTHJ-" . $codigo_produto_digitado;
+    $quantidade = addslashes($_POST['quantidade']);
     // $codigo_unico = uniqid();
     // $codigo_produto_reduzido = substr_replace($codigo_unico, 5,-1);
     // $codigo_produto = "CTHJ-" . substr($codigo_unico, 10);
@@ -48,7 +49,7 @@
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Consulta para inserir o usuário na tabela
-        $stmt = $pdo->prepare("INSERT INTO travessas (descricao, codigo_produto, agregar, unidade, esquadreta, oculto, referencias_do_mercado, custo_metro, markup, valor, desconto_corte_vidro, perda, perda_bordas, perda_corte, dimensao, perda_bordas_retalho, perda_corte_retalho, imagem, ultima_alteracao, ativo) VALUES (:descricao, :codigo_produto, :agregar, :unidade, :esquadreta, :oculto, :referencias_do_mercado, :custo_metro, :markup, :valor, :desconto_corte_vidro, :perda, :perda_bordas, :perda_corte, :dimensao, :perda_bordas_retalho, :perda_corte_retalho, :imagem, :ultima_alteracao, :ativo)");
+        $stmt = $pdo->prepare("INSERT INTO travessas (descricao, codigo_produto, agregar, unidade, esquadreta, oculto, referencias_do_mercado, custo_metro, markup, valor, desconto_corte_vidro, perda, perda_bordas, perda_corte, dimensao, perda_bordas_retalho, perda_corte_retalho, imagem, ultima_alteracao, ativo, quantidade_stock) VALUES (:descricao, :codigo_produto, :agregar, :unidade, :esquadreta, :oculto, :referencias_do_mercado, :custo_metro, :markup, :valor, :desconto_corte_vidro, :perda, :perda_bordas, :perda_corte, :dimensao, :perda_bordas_retalho, :perda_corte_retalho, :imagem, :ultima_alteracao, :ativo, :quantidade_stock)");
         $stmt->bindParam(":descricao", $descricao);
         $stmt->bindParam(":codigo_produto", $codigo_produto);
         $stmt->bindParam(":agregar", $agregar);
@@ -69,6 +70,7 @@
         $stmt->bindParam(":imagem", $path_image);
         $stmt->bindParam(":ultima_alteracao", $ultima_alteracao);
         $stmt->bindParam(":ativo", $ativo);
+        $stmt->bindParam(":quantidade_stock", $quantidade);
         $stmt->execute();
 
         if($stmt)

@@ -51,17 +51,6 @@ class controllers_agregar extends database
         
     }
 
-    // public function atualizar_imagem_agregar($path_image, $id_atualizar)
-    // {
-
-    //     $atualizar_imagem_agregar = $this->conn->prepare("UPDATE agregar SET imagem = ?  WHERE id = ?");
-    //     $atualizar_imagem_agregar->bindParam(1, $path_image);
-    //     $atualizar_imagem_agregar->bindParam(2, $id_atualizar);
-
-    //     return $atualizar_imagem_agregar->execute();
-        
-    // }
-
     public function delete($id_delete) 
     {     
         $delete = $this->conn->prepare("DELETE FROM agregar WHERE id = ?");
