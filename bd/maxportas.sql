@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Ago-2023 às 01:19
+-- Tempo de geração: 01-Set-2023 às 15:01
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -405,7 +405,8 @@ CREATE TABLE `logado` (
 
 INSERT INTO `logado` (`id`, `nome`, `email`, `senha`, `parceiro_colaborador`, `cpf`, `rg`, `cep`, `endereco`, `telefone`, `complemento`, `bairro`, `cidade`, `uf`, `nascimento`, `nivel`) VALUES
 (15, 'Paulo', 'paulo@gmail.com', '121212', '', 1001, 1, 100, 'Endereço Paulo', '(00) 93593-59359', 'Complemento Paulo', 'Bairro Paulo', 'Cidade Paulo', '001', '01/01/2000', 'adm'),
-(23, 'Torres Code', 'torres@teste.com', '121212', 'Parceiro', 0, 2, 11111, 'V2', '', '44', 'São', '2ww', '001', '11/11/1111', 'user');
+(23, 'Torres Code', 'torres@teste.com', '121212', 'Parceiro', 0, 2, 11111, 'V2', '', '44', 'São', '2ww', '001', '11/11/1111', 'user'),
+(25, 'Carlos', 'carlos@carlos.com', '121212', '', 111111, 2, 11111, 'V1', '935593163', 'err', 'Bairro', 'Huíla', '11111', '01/01/2000', 'adm');
 
 -- --------------------------------------------------------
 
@@ -559,16 +560,17 @@ CREATE TABLE `pedidos_dos_clientes` (
   `data_inicial` varchar(255) NOT NULL,
   `data_final` varchar(255) NOT NULL,
   `garantia` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL
+  `status` varchar(255) NOT NULL,
+  `nome_responsavel` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `pedidos_dos_clientes`
 --
 
-INSERT INTO `pedidos_dos_clientes` (`id`, `nome_cliente`, `descricao_pedido`, `data_inicial`, `data_final`, `garantia`, `status`) VALUES
-(1, 'Torres Code', '<p><strong>Porta</strong></p>', '', '29/08/2023', '', ''),
-(6, 'Torres Code', '<p>Travessa</p>', '28/08/2023', '', '', '');
+INSERT INTO `pedidos_dos_clientes` (`id`, `nome_cliente`, `descricao_pedido`, `data_inicial`, `data_final`, `garantia`, `status`, `nome_responsavel`) VALUES
+(9, 'Torres Code', '<p>TTTTT</p>', '30/08/2023', '01/09/2023', '', 'Em Andamento', 'Carlos'),
+(10, 'Torres Code', '<p>10 Portas</p><p>5 Travessas</p>', '31/08/2023', '31/08/2023', '', 'Finalizado', 'Paulo');
 
 -- --------------------------------------------------------
 
@@ -699,7 +701,7 @@ CREATE TABLE `puxadores` (
 --
 
 INSERT INTO `puxadores` (`id`, `descricao`, `usinagem_box_tres`, `medida_maxima_para_usinagem`, `agregar`, `unidade`, `codigo_da_fabrica`, `codigo_produto`, `ponteira_obrigatoria`, `referencias_do_mercado`, `custo_metro`, `markup`, `metragem_minima`, `valor`, `desconto_corte`, `perda`, `perda_bordas`, `perda_corte`, `dimensao`, `perda_bordas_retalho`, `perda_corte_retalho`, `imagem`, `ultima_alteracao`, `ativo`) VALUES
-(8, 'DescriçãoUpdate', 'Usinagem Ogrigatória', '9', '', 'Metro', '', 'CPuHJ-hfr999', 'on', 'jgvjk', '0', '0', '0', '0', '', '0', '0', '0', '0', '0', '0', 'upload/64d14df8a4715.png', '2023-08-24', 'on');
+(8, 'Puxadores', 'Usinagem Ogrigatória', '9', '', 'Metro', '', 'CPuHJ-hfr999', 'on', 'jgvjk', '0', '0', '0', '0', '', '0', '0', '0', '0', '0', '0', 'upload/64d14df8a4715.png', '2023-08-24', 'on');
 
 -- --------------------------------------------------------
 
@@ -804,17 +806,18 @@ CREATE TABLE `travessas` (
   `perda_corte_retalho` decimal(10,2) NOT NULL,
   `imagem` varchar(255) NOT NULL,
   `ultima_alteracao` date NOT NULL,
-  `ativo` tinyint(1) NOT NULL
+  `ativo` tinyint(1) NOT NULL,
+  `quantidade_stock` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `travessas`
 --
 
-INSERT INTO `travessas` (`id`, `descricao`, `codigo_produto`, `agregar`, `unidade`, `esquadreta`, `oculto`, `referencias_do_mercado`, `custo_metro`, `markup`, `valor`, `desconto_corte_vidro`, `perda`, `perda_bordas`, `perda_corte`, `dimensao`, `perda_bordas_retalho`, `perda_corte_retalho`, `imagem`, `ultima_alteracao`, `ativo`) VALUES
-(16, 'DescriçãoUpdate', 'CTHJ-456', 'Agregar Simples', 'Metro', 'Esquadreta', 'on', '', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 'upload/64c8e360ef47e.png', '0000-00-00', 0),
-(17, 'Descrição 1', 'CTHJ-e56', 'Agregar Simples', 'Metro', 'Esquadreta', 'on', '', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 'upload/64c8e383a9e62.png', '0000-00-00', 0),
-(18, 'Descrição21', 'CTHJ-af4589', 'Agregar Simples', 'Metro', 'Esquadreta', 'on', 'hbj', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 'upload/64d14d6945cc2.png', '2023-09-02', 0);
+INSERT INTO `travessas` (`id`, `descricao`, `codigo_produto`, `agregar`, `unidade`, `esquadreta`, `oculto`, `referencias_do_mercado`, `custo_metro`, `markup`, `valor`, `desconto_corte_vidro`, `perda`, `perda_bordas`, `perda_corte`, `dimensao`, `perda_bordas_retalho`, `perda_corte_retalho`, `imagem`, `ultima_alteracao`, `ativo`, `quantidade_stock`) VALUES
+(17, 'Travessa 1', 'CTHJ-e56', 'Agregar Simples', 'Metro', 'Esquadreta', 'on', '', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 'upload/64c8e383a9e62.png', '0000-00-00', 0, ''),
+(18, 'Travessa 2', 'CTHJ-af4589', 'Agregar Simples', 'Metro', 'Esquadreta', 'on', 'hbj', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 'upload/64d14d6945cc2.png', '2023-09-02', 0, ''),
+(19, 'Travessas', 'CTHJ-AD', 'Agregar Simples', 'Metro', 'Esquadreta', 'on', 'fbehflerhfjkler', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 'upload/64f067e0e78fa.png', '2023-08-20', 0, '85');
 
 -- --------------------------------------------------------
 
@@ -989,7 +992,8 @@ ALTER TABLE `linha_de_produto`
 -- Índices para tabela `logado`
 --
 ALTER TABLE `logado`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Índices para tabela `movimentacao_consumo_de_materia_prima`
@@ -1188,7 +1192,7 @@ ALTER TABLE `linha_de_produto`
 -- AUTO_INCREMENT de tabela `logado`
 --
 ALTER TABLE `logado`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de tabela `movimentacao_consumo_de_materia_prima`
@@ -1224,7 +1228,7 @@ ALTER TABLE `parceiros`
 -- AUTO_INCREMENT de tabela `pedidos_dos_clientes`
 --
 ALTER TABLE `pedidos_dos_clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `perfil`
@@ -1266,7 +1270,7 @@ ALTER TABLE `tipo_do_item_agregar`
 -- AUTO_INCREMENT de tabela `travessas`
 --
 ALTER TABLE `travessas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `unidades_de_produto`

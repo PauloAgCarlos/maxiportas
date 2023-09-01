@@ -100,7 +100,12 @@
                           <?= $row_pedidos['data_final']; ?>
                         </td>
                         <td class="text-center d-xl-table-cell" style="color: blue;">
-                            <a href="gestao_pedidos.php?view=<?php $idCriptografado = base64_encode($row_pedidos['id']); echo $idCriptografado;?>"><i class="fa fa-pencil-alt"></i></a>
+                          <form action="gestao_pedidos.php" method="post">
+                            <input type="hidden" name="view" value="<?php $idCriptografado = base64_encode($row_pedidos['id']); echo $idCriptografado;?>">
+                            <button type="submit" style="cursor: pointer; border: none; background-color: transparent;">
+                              <i class="fa fa-pencil-alt" style="color: blue;"></i>
+                            </button>
+                          </form>
                         </td>
                       </tr>
                       <?php 

@@ -105,7 +105,7 @@
                               <div class="fs-4 mb-1">Custo (metro): <span class="fs-sm text-muted"><?php echo addslashes($row_travessas_id['custo_metro']); ?></span></div>
                               <address class="fs-sm">
                                   Valor: <?php echo addslashes($row_travessas_id['valor']); ?><br>
-                                  Quantidade: <?php echo addslashes($row_travessas_id['quantidade_stock']); ?><br>
+                                  <span style="font-weight: bolder;">Quantidade Stock: <?php echo addslashes($row_travessas_id['quantidade_stock']); ?></span><br>
                                   Desconto Corte Vidro (mm)	: <span class="fs-sm text-muted"><?php echo addslashes($row_travessas_id['desconto_corte_vidro']); ?></span><br>
                                   Markup: <span class="fs-sm text-muted"><?php echo addslashes($row_travessas_id['markup']); ?></span><br>
                                   Custo Metro: <span class="fs-sm text-muted"><?php echo addslashes($row_travessas_id['custo_metro']); ?></span><br>

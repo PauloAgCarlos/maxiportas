@@ -74,9 +74,6 @@
                   <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
                     <thead style="text-align: center; font-size: 0.8em; background-color: #2ab759; color: #fff;">
                       <tr class="text-uppercase">
-                        <!-- <th><input type="checkbox" name="" id=""></th> -->
-                        <!-- <th>XML <br> Cliente</th>
-                        <th>Ficha <br> de <br> Corte</th> -->
                         <th>Nome do <br> Cliente</th>
                         <th>Data Inicial</th>
                         <th>Data Final</th>
@@ -109,7 +106,12 @@
                           </a>
                         </td>
                         <td class="text-center d-xl-table-cell" style="color: blue;">
-                            <a href="gestao_pedidos.php?view=<?php $idCriptografado = base64_encode($row_pedidos['id']); echo $idCriptografado;?>"><i class="fa fa-pencil-alt"></i></a>
+                          <form action="gestao_pedidos.php" method="post">
+                            <input type="hidden" name="view" value="<?php $idCriptografado = base64_encode($row_pedidos['id']); echo $idCriptografado;?>">
+                            <button type="submit" style="cursor: pointer; border: none; background-color: transparent;">
+                              <i class="fa fa-pencil-alt" style="color: blue;"></i>
+                            </button>
+                          </form>
                         </td>
                       </tr>
                       <?php 
@@ -181,4 +183,68 @@
     })
   </script>
 
-<?php }?>
+<?php } elseif(isset($_GET['stock_baixo'])){ ?>
+
+<script>
+  const Toastsb = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+  })
+
+  Toastsb.fire({
+  icon: 'error',
+  title: 'Stock Baixo!'
+  })
+</script>
+
+<?php } elseif(isset($_GET['campos_vasio'])){ ?>
+
+<script>
+  const Toastvasio = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 5000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+  })
+
+  Toastvasio.fire({
+  icon: 'error',
+  title: 'Preencha Produto e Quantidade!'
+  })
+</script>
+
+<?php } elseif(isset($_GET['produto_vazio'])){ ?>
+
+<script>
+  const Toastvq = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 5000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+  })
+
+  Toastvq.fire({
+  icon: 'error',
+  title: 'Preencha o Produto/Serviço!'
+  })
+</script>
+
+<?php } ?>
+
