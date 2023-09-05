@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Set-2023 às 15:01
+-- Tempo de geração: 04-Set-2023 às 21:42
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -570,7 +570,8 @@ CREATE TABLE `pedidos_dos_clientes` (
 
 INSERT INTO `pedidos_dos_clientes` (`id`, `nome_cliente`, `descricao_pedido`, `data_inicial`, `data_final`, `garantia`, `status`, `nome_responsavel`) VALUES
 (9, 'Torres Code', '<p>TTTTT</p>', '30/08/2023', '01/09/2023', '', 'Em Andamento', 'Carlos'),
-(10, 'Torres Code', '<p>10 Portas</p><p>5 Travessas</p>', '31/08/2023', '31/08/2023', '', 'Finalizado', 'Paulo');
+(10, 'Torres Code', '<p>10 Portas</p><p>5 Travessas</p>', '31/08/2023', '31/08/2023', '', 'Finalizado', 'Paulo'),
+(11, 'Torres Code', '<p>10 Travessas</p>', '04/09/2023', '04/09/2023', '', 'Finalizado', 'Paulo');
 
 -- --------------------------------------------------------
 
@@ -817,7 +818,7 @@ CREATE TABLE `travessas` (
 INSERT INTO `travessas` (`id`, `descricao`, `codigo_produto`, `agregar`, `unidade`, `esquadreta`, `oculto`, `referencias_do_mercado`, `custo_metro`, `markup`, `valor`, `desconto_corte_vidro`, `perda`, `perda_bordas`, `perda_corte`, `dimensao`, `perda_bordas_retalho`, `perda_corte_retalho`, `imagem`, `ultima_alteracao`, `ativo`, `quantidade_stock`) VALUES
 (17, 'Travessa 1', 'CTHJ-e56', 'Agregar Simples', 'Metro', 'Esquadreta', 'on', '', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 'upload/64c8e383a9e62.png', '0000-00-00', 0, ''),
 (18, 'Travessa 2', 'CTHJ-af4589', 'Agregar Simples', 'Metro', 'Esquadreta', 'on', 'hbj', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 'upload/64d14d6945cc2.png', '2023-09-02', 0, ''),
-(19, 'Travessas', 'CTHJ-AD', 'Agregar Simples', 'Metro', 'Esquadreta', 'on', 'fbehflerhfjkler', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 'upload/64f067e0e78fa.png', '2023-08-20', 0, '85');
+(19, 'Travessas', 'CTHJ-AD', 'Agregar Simples', 'Metro', 'Esquadreta', 'on', 'fbehflerhfjkler', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', 'upload/64f067e0e78fa.png', '2023-08-20', 0, '75');
 
 -- --------------------------------------------------------
 
@@ -1228,7 +1229,7 @@ ALTER TABLE `parceiros`
 -- AUTO_INCREMENT de tabela `pedidos_dos_clientes`
 --
 ALTER TABLE `pedidos_dos_clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `perfil`
