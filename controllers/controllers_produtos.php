@@ -5,10 +5,10 @@
 class controllers_produtos extends database
 {
 
-    public function inserir($descricao_do_produto, $codigo_produto, $codigo_da_fabrica, $referencia, $libera_para_venda, $bloqueia_estoque_negativo, $embalagem_fornecedor, $consumo_medio, $massa, $ultima_alteracao, $ativo, $custo_atual, $markup, $venda, $ipi, $unidade_basica, $estoque, $estoque_minimo, $estoque_de_seguranca, $tempo_de_reposicao, $linha, $embalagem, $localizador, $classificacao_fiscal, $volume)
+    public function inserir($descricao_do_produto, $codigo_produto, $codigo_da_fabrica, $referencia, $libera_para_venda, $bloqueia_estoque_negativo, $embalagem_fornecedor, $consumo_medio, $massa, $ultima_alteracao, $ativo, $custo_atual, $markup, $venda, $ipi, $unidade_basica, $estoque, $estoque_minimo, $estoque_de_seguranca, $tempo_de_reposicao, $linha, $embalagem, $localizador, $classificacao_fiscal, $volume, $quantidade)
     {
 
-        $insert = $this->conn->prepare("INSERT INTO produtos (descricao_do_produto, codigo_produto, codigo_da_fabrica, referencia, libera_para_venda, bloqueia_estoque_negativo, embalagem_fornecedor, consumo_medio, massa, ultima_alteracao, ativo, custo_atual, markup, venda, ipi, unidade_basica, estoque, estoque_minimo, estoque_de_seguranca, tempo_de_reposicao, linha, embalagem, localizador, classificacao_fiscal, volume) VALUES (:descricao_do_produto, :codigo_produto, :codigo_da_fabrica, :referencia, :libera_para_venda, :bloqueia_estoque_negativo, :embalagem_fornecedor, :consumo_medio, :massa, :ultima_alteracao, :ativo, :custo_atual, :markup, :venda, :ipi, :unidade_basica, :estoque, :estoque_minimo, :estoque_de_seguranca, :tempo_de_reposicao, :linha, :embalagem, :localizador, :classificacao_fiscal, :volume)");
+        $insert = $this->conn->prepare("INSERT INTO produtos (descricao_do_produto, codigo_produto, codigo_da_fabrica, referencia, libera_para_venda, bloqueia_estoque_negativo, embalagem_fornecedor, consumo_medio, massa, ultima_alteracao, ativo, custo_atual, markup, venda, ipi, unidade_basica, estoque, estoque_minimo, estoque_de_seguranca, tempo_de_reposicao, linha, embalagem, localizador, classificacao_fiscal, volume, quantidade_stock) VALUES (:descricao_do_produto, :codigo_produto, :codigo_da_fabrica, :referencia, :libera_para_venda, :bloqueia_estoque_negativo, :embalagem_fornecedor, :consumo_medio, :massa, :ultima_alteracao, :ativo, :custo_atual, :markup, :venda, :ipi, :unidade_basica, :estoque, :estoque_minimo, :estoque_de_seguranca, :tempo_de_reposicao, :linha, :embalagem, :localizador, :classificacao_fiscal, :volume, :quantidade_stock)");
  
         $insert->bindParam(":descricao_do_produto", $descricao_do_produto);
         $insert->bindParam(":codigo_produto", $codigo_produto);
@@ -35,6 +35,7 @@ class controllers_produtos extends database
         $insert->bindParam(":localizador", $localizador);
         $insert->bindParam(":classificacao_fiscal", $classificacao_fiscal);
         $insert->bindParam(":volume", $volume);
+        $insert->bindParam(":quantidade_stock", $quantidade);
         return $insert->execute();
 
     }
@@ -60,10 +61,10 @@ class controllers_produtos extends database
         
     }
 
-    public function atualizar_produtos($descricao_do_produto, $codigo_produto, $codigo_da_fabrica, $referencia, $libera_para_venda, $bloqueia_estoque_negativo, $embalagem_fornecedor, $consumo_medio, $massa, $ultima_alteracao, $ativo, $custo_atual, $markup, $venda, $ipi, $unidade_basica, $estoque, $estoque_minimo, $estoque_de_seguranca, $tempo_de_reposicao, $linha, $embalagem, $localizador, $classificacao_fiscal, $volume, $id_atualizar)
+    public function atualizar_produtos($descricao_do_produto, $codigo_produto, $codigo_da_fabrica, $referencia, $libera_para_venda, $bloqueia_estoque_negativo, $embalagem_fornecedor, $consumo_medio, $massa, $ultima_alteracao, $ativo, $custo_atual, $markup, $venda, $ipi, $unidade_basica, $estoque, $estoque_minimo, $estoque_de_seguranca, $tempo_de_reposicao, $linha, $embalagem, $localizador, $classificacao_fiscal, $volume, $quantidade, $id_atualizar)
     {
 
-        $atualizar_produtos = $this->conn->prepare("UPDATE produtos SET descricao_do_produto = ?, codigo_produto = ?, codigo_da_fabrica = ?, referencia = ?, libera_para_venda = ?, bloqueia_estoque_negativo = ?, embalagem_fornecedor = ?, consumo_medio = ?, massa = ?, ultima_alteracao = ?, ativo = ?, custo_atual = ?, markup = ?, venda = ?, ipi = ?, unidade_basica = ?, estoque = ?, estoque_minimo = ?, estoque_de_seguranca = ?, tempo_de_reposicao = ?, linha = ?, embalagem = ?, localizador = ?, classificacao_fiscal = ?, volume = ?  WHERE id = ?");
+        $atualizar_produtos = $this->conn->prepare("UPDATE produtos SET descricao_do_produto = ?, codigo_produto = ?, codigo_da_fabrica = ?, referencia = ?, libera_para_venda = ?, bloqueia_estoque_negativo = ?, embalagem_fornecedor = ?, consumo_medio = ?, massa = ?, ultima_alteracao = ?, ativo = ?, custo_atual = ?, markup = ?, venda = ?, ipi = ?, unidade_basica = ?, estoque = ?, estoque_minimo = ?, estoque_de_seguranca = ?, tempo_de_reposicao = ?, linha = ?, embalagem = ?, localizador = ?, classificacao_fiscal = ?, volume = ?, quantidade_stock = ? WHERE id = ?");
         $atualizar_produtos->bindParam(1, $descricao_do_produto);
         $atualizar_produtos->bindParam(2, $codigo_produto);
         $atualizar_produtos->bindParam(3, $codigo_da_fabrica);
@@ -89,7 +90,8 @@ class controllers_produtos extends database
         $atualizar_produtos->bindParam(23, $localizador);
         $atualizar_produtos->bindParam(24, $classificacao_fiscal);
         $atualizar_produtos->bindParam(25, $volume);
-        $atualizar_produtos->bindParam(26, $id_atualizar);
+        $atualizar_produtos->bindParam(26, $quantidade);
+        $atualizar_produtos->bindParam(27, $id_atualizar);
         return $atualizar_produtos->execute();
         
     }

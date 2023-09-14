@@ -74,11 +74,11 @@
                   <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
                     <thead style="text-align: center; font-size: 0.8em; background-color: #2ab759; color: #fff;">
                       <tr class="text-uppercase">
+                        <!-- <th>Vêr Mais</th> -->
+                        <th>Ed</th>
                         <th>Nome do <br> Cliente</th>
                         <th>Data Inicial</th>
                         <th>Data Final</th>
-                        <th>Vêr Mais</th>
-                        <th>Ed</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -91,6 +91,19 @@
                           foreach($result_pedidos as $row_pedidos){
                       ?>
                       <tr>
+                        <!-- <td class="text-center d-xl-table-cell" style="color: blue;">
+                          <a href="ver_mais.php?view=<php $idCriptografado = base64_encode($row_pedidos['id']); echo $idCriptografado;?>">
+                            <i class="fa fa-eye me-1 opacity-50 text-primary"></i>
+                          </a>
+                        </td> -->
+                        <td class="text-center d-xl-table-cell" style="color: blue;">
+                          <form action="gestao_pedidos.php" method="post">
+                            <input type="hidden" name="view" value="<?php $idCriptografado = base64_encode($row_pedidos['id']); echo $idCriptografado;?>">
+                            <button type="submit" style="cursor: pointer; border: none; background-color: transparent;">
+                              <i class="fa fa-pencil-alt" style="color: blue;"></i>
+                            </button>
+                          </form>
+                        </td>
                         <td class="text-center text-end fw-medium">
                           <?= $row_pedidos['nome_cliente']; ?>
                         </td>
@@ -100,19 +113,7 @@
                         <td class="text-center text-end fw-medium">
                           <?= $row_pedidos['data_final']; ?>
                         </td>
-                        <td class="text-center d-xl-table-cell" style="color: blue;">
-                          <a href="ver_mais.php?view=<?php $idCriptografado = base64_encode($row_pedidos['id']); echo $idCriptografado;?>">
-                            <i class="fa fa-eye me-1 opacity-50 text-primary"></i>
-                          </a>
-                        </td>
-                        <td class="text-center d-xl-table-cell" style="color: blue;">
-                          <form action="gestao_pedidos.php" method="post">
-                            <input type="hidden" name="view" value="<?php $idCriptografado = base64_encode($row_pedidos['id']); echo $idCriptografado;?>">
-                            <button type="submit" style="cursor: pointer; border: none; background-color: transparent;">
-                              <i class="fa fa-pencil-alt" style="color: blue;"></i>
-                            </button>
-                          </form>
-                        </td>
+                        
                       </tr>
                       <?php 
                         } } else 

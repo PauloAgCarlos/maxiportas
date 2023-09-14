@@ -72,10 +72,100 @@
                     </button>
                   </div>
                 </div>
-                <div class="content content-full content-boxed">
+
+                
+        <!-- Page Content -->
+        <div class="content">
+
+<!-- Latest Orders + Stats -->
+<div class="row">
+  <div class="col-md-12">
+    <!--  Latest Orders -->
+
+    <div class="block block-rounded block-mode-loading-refresh">
+      <!-- <div class="block-header block-header-default">
+        <h3 class="block-title">
+          Pedidos / Orçamentos
+        </h3>
+        <div class="block-options">
+          <button type="button" class="btn-block-option">
+            <a href="dashboard.php">Voltar</a>
+          </button>
+        </div>
+      </div> -->
+      <div class="table-responsive">
+
+        <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
+          <thead style="text-align: center; font-size: 0.8em; background-color: #2ab759; color: #fff;">
+            <tr class="text-uppercase">
+              <th>Nome do <br> Cliente</th>
+              <th>Data Inicial</th>
+              <th>Data Final</th>
+              <!-- <th>Ed</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+              require_once "../controllers/controllers_pedidos_dos_clientes.php";
+              $pedidos_dos_clientes = new controllers_pedidos_dos_clientes();
+              $id_descripitografado = base64_decode($_POST['view']); 
+              // $idDescriptografado = base64_decode($_POST['view']);
+              $result_pedidos = $pedidos_dos_clientes->selecionar_pedidos_dos_clientes_id($id_descripitografado);
+              if(count($result_pedidos) > 0)
+              {
+                foreach($result_pedidos as $row_pedidos){
+            ?>
+            <tr>
+              <td class="text-center text-end fw-medium">
+                <?= $row_pedidos['nome_cliente']; ?>
+              </td>
+              <td class="text-center text-end fw-medium">
+                <?= $row_pedidos['data_inicial']; ?>
+              </td>
+              <td class="text-center text-end fw-medium">
+                <?= $row_pedidos['data_final']; ?>
+              </td>
+              <!-- <td class="text-center d-xl-table-cell" style="color: blue;">
+                <form action="gestao_pedidos.php" method="post">
+                  <input type="hidden" name="view" value="<php $idCriptografado = base64_encode($row_pedidos['id']); echo $idCriptografado;?>">
+                  <button type="submit" style="cursor: pointer; border: none; background-color: transparent;">
+                    <i class="fa fa-pencil-alt" style="color: blue;"></i>
+                  </button>
+                </form>
+              </td> -->
+            </tr>
+            <?php 
+              } } else 
+              {
+                echo "<h1>Nenhum registo encontrado!</h1>";
+              }
+            ?>
+            
+          </tbody>
+        </table>
+        <div class="block-header block-header-default">
+        <?php
+            require_once "../controllers/controllers_pedidos_dos_clientes.php";
+            $pedidos_dos_clientes = new controllers_pedidos_dos_clientes();
+            $idDescriptografado = base64_decode($_POST['view']); 
+            $result_pedidos = $pedidos_dos_clientes->selecionar_pedidos_dos_clientes_id($idDescriptografado);
+
+            foreach($result_pedidos as $row_pedidos_id){ ?>
+        <h3 class="block-title">Descrição Produto/Serviço: <span class="fs-sm text-muted"><?php echo addslashes($row_pedidos_id['descricao_pedido']); ?></h3>
+        <?php }?>
+      </div>
+      </div>
+      </div>
+    </div>
+    <!-- END Latest Orders -->
+  </div>
+</div>
+<!-- END Latest Orders + Stats -->
+
           
-                <form action="processar_gestao_validar.php" method="POST" enctype="multipart/form-data">
-                  <div class="blockA">
+                <form action="teste.php" method="POST" enctype="multipart/form-data">
+                  <div class="blockA" id="formulario">
+                      <input type="hidden" name="qnt_campo" id="qnt_campo">
                       <div class="block-header">
                         <?php
                           $host = "localhost";
@@ -101,7 +191,7 @@
                         <h3 class="block-title mt-3 text-center p-2 mb-1" style="background-color: #ddd; color:blue;">Solicitação de Pedido do Cliente <span style="font-weight: bolder; font-size: 1.2em"><?php echo addslashes($row['nome_cliente']); ?></span> Finalizado por:</h3>
                         <?php } else { ?>
 
-                          <h3 class="block-title mt-3 text-center p-2 mb-1" style="background-color: #97e125; color:blue;">Finalizar a Solicitação de Pedido do Cliente <span style="font-weight: bolder; font-size: 1.2em"><?php echo addslashes($row['nome_cliente']); ?></span></h3>
+                          <h3 class="block-title text-center p-2 mb-1" style="background-color: #97e125; color:blue;">Finalizar a Solicitação de Pedido do Cliente <span style="font-weight: bolder; font-size: 1.2em"><?php echo addslashes($row['nome_cliente']); ?></span></h3>
 
                         <?php }?>  
                       </div>
@@ -143,7 +233,7 @@
 
                               foreach($update as $row_update){
                             ?>
-                            <input type="hidden" name="responsavel" value="<?= $row['nome']; ?>">
+                            <!-- <input type="hidden" name="responsavel" value="<= $row['nome']; ?>"> -->
                             <input type="hidden" name="data_final" value="<?= date("d/m/Y") ?>" >
 
                             <div class="mb-1">
@@ -162,77 +252,40 @@
                           
                             <div style="display: flex;">
                               <div class="mb-1" style="width: 80%;">
-                                <label class="form-label" for="produto_servico" style="font-size: 0.9em;">Produto</label> <span style="color: red;">*</span>
+                                <label class="form-label" for="produto_servico" style="font-size: 0.9em;">Produto</label> 
+                                <span style="color: red;">*</span>
                                 <div>
-                                  <select name="produto_servico" class="form-control">
-                                    <?php
-
-                                      $host = "localhost";
-                                      $user = "root";
-                                      $password = "";
-                                      $bd_name = "maxportas";
-                                      try
-                                      {
-                                          $conn = new PDO("mysql:host=$host;dbname=" . $bd_name, $user, $password);
-                                      }
-                                      catch(PDOException $error)
-                                      {
-                                          die("Erro: Conexão com banco de dados não foi realizada com sucesso. Erro gerado: " . $error->getMessage());
-                                      }
-                                      //Travessas
-                                      $result_travessas = $conn->prepare("SELECT descricao FROM travessas ORDER BY id DESC");
-                                      $result_travessas->execute();
-                                      $row_travessa = $result_travessas->fetchAll(PDO::FETCH_ASSOC);
-                                      //Last Travessas
-
-                                      //Puxadores
-                                      $result_puxadores = $conn->prepare("SELECT descricao FROM puxadores ORDER BY id DESC");
-                                      $result_puxadores->execute();
-                                      $row_puxador = $result_puxadores->fetchAll(PDO::FETCH_ASSOC);
-                                      //Last Puxadores
-
-                                    ?>                          
-                                    <option value="">Selecione o tipo de Produto/Serviço</option> 
-
-                                    <!--Travessas--> 
-                                    <?php foreach($row_travessa as $row_travessas){ ?>                  
-                                      <option value="<?php echo addslashes($row_travessas['descricao']); ?>"><?php echo addslashes($row_travessas['descricao']); ?></option>                
-                                    <?php }?>
-                                    <!--Last Travessas-->
-
-                                    <!--Puxadores--> 
-                                    <?php foreach($row_puxador as $row_puxadores){ ?>                  
-                                      <option value="<?php echo addslashes($row_puxadores['descricao']); ?>"><?php echo addslashes($row_puxadores['descricao']); ?></option>                
-                                    <?php }?>
-                                    <!--Last Puxadores-->
-                                  </select>
+                                  <input type="text" name="produto_servico[]" placeholder="Produto" class="form-control">
                                 </div>
                               </div><!--Last Produto-->
 
                               <div class="mb-1 ms-2">
                                 <label class="form-label" for="quantidade_produto_servico" style="font-size: 0.9em;">Quantidade</label> <span style="color: red;">*</span>
                                 <div>
-                                  <input type="text" name="quantidade_produto_servico" placeholder="Quantidade" class="form-control">
+                                  <input type="text" name="quantidade_produto_servico[]" placeholder="Quantidade" class="form-control">
                                 </div>
                               </div><!--Last Quantidade-->
-                            </div>
 
-                          </div>
-                        
-                          <div class="row">
-                            <div class="col-md-4 mt-5">                          
-                              <input type="hidden" name="id_atualizar" value="<?php $idDescriptografado = base64_decode($_POST['view']); $id_update = $idDescriptografado; echo $id_update; ?>">
-                              <?php } ?>
-                              <button type="submit" name="btn_validar_pedido" class="btn btn-alt-primary">
-                                <i class="fa fa-fw fa-check opacity-50 me-1"></i> Validar Pedido
-                              </button>
+                              <div class="mb-1 ms-2" style="margin-top: 30px;">
+                                <div>
+                                  <button type="button" class="form-control" onclick="adicionarCampo()">+</button>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
-
                       <?php } ?>
                     </div>
                     
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 mt-5">                          
+                      <input type="hidden" name="id_atualizar" value="<?php $idDescriptografado = base64_decode($_POST['view']); $id_update = $idDescriptografado; echo $id_update; ?>">
+                      <?php } ?>
+                      <button type="submit" name="btn_validar_pedido" class="btn btn-alt-primary">
+                        <i class="fa fa-fw fa-check opacity-50 me-1"></i> Validar Pedido
+                      </button>
+                    </div>
                   </div>
                 </form>
                 </div>
@@ -247,6 +300,7 @@
       </main>
       <!-- END Main Container -->
 
+      <script src="adicionar_campos.js"></script>
       <?php require_once "../template/footer.php"; ?>
     </div>
     <!-- END Page Container -->

@@ -6,6 +6,7 @@
         $descricao_do_produto = addslashes($_POST['descricao_do_produto']);
         $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
         $codigo_produto = "CProdHJ-". $codigo_produto_digitado;
+        $quantidade = addslashes($_POST['quantidade']);
         $codigo_da_fabrica = addslashes($_POST['codigo_da_fabrica']);
         $referencia = addslashes($_POST['referencia']);
         $libera_para_venda = addslashes($_POST['libera_para_venda']); 
@@ -32,7 +33,7 @@
         $id_atualizar = $_POST['id_atualizar'];        
 
         $controllers_produtos = new controllers_produtos();
-        $atualizar = $controllers_produtos->atualizar_produtos($descricao_do_produto, $codigo_produto, $codigo_da_fabrica, $referencia, $libera_para_venda, $bloqueia_estoque_negativo, $embalagem_fornecedor, $consumo_medio, $massa, $ultima_alteracao, $ativo, $custo_atual, $markup, $venda, $ipi, $unidade_basica, $estoque, $estoque_minimo, $estoque_de_seguranca, $tempo_de_reposicao, $linha, $embalagem, $localizador, $classificacao_fiscal, $volume, $id_atualizar);
+        $atualizar = $controllers_produtos->atualizar_produtos($descricao_do_produto, $codigo_produto, $codigo_da_fabrica, $referencia, $libera_para_venda, $bloqueia_estoque_negativo, $embalagem_fornecedor, $consumo_medio, $massa, $ultima_alteracao, $ativo, $custo_atual, $markup, $venda, $ipi, $unidade_basica, $estoque, $estoque_minimo, $estoque_de_seguranca, $tempo_de_reposicao, $linha, $embalagem, $localizador, $classificacao_fiscal, $volume, $quantidade, $id_atualizar);
         if($atualizar)
         {
             header('Location: visualizar_produtos.php?atualizado');

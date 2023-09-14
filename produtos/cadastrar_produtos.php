@@ -5,6 +5,7 @@
         $descricao_do_produto = addslashes($_POST['descricao_do_produto']);
         $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
         $codigo_produto = "CProdHJ-". $codigo_produto_digitado;
+        $quantidade = addslashes($_POST['quantidade']); 
         $codigo_da_fabrica = addslashes($_POST['codigo_da_fabrica']);
         $referencia = addslashes($_POST['referencia']);
         $libera_para_venda = addslashes($_POST['libera_para_venda']); 
@@ -41,7 +42,7 @@
           $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
           // Consulta para inserir o usuário na tabela
-          $stmt = $pdo->prepare("INSERT INTO produtos (descricao_do_produto, codigo_produto, codigo_da_fabrica, referencia, libera_para_venda, bloqueia_estoque_negativo, embalagem_fornecedor, consumo_medio, massa, ultima_alteracao, ativo, custo_atual, markup, venda, ipi, unidade_basica, estoque, estoque_minimo, estoque_de_seguranca, tempo_de_reposicao, linha, embalagem, localizador, classificacao_fiscal, volume) VALUES (:descricao_do_produto, :codigo_produto, :codigo_da_fabrica, :referencia, :libera_para_venda, :bloqueia_estoque_negativo, :embalagem_fornecedor, :consumo_medio, :massa, :ultima_alteracao, :ativo, :custo_atual, :markup, :venda, :ipi, :unidade_basica, :estoque, :estoque_minimo, :estoque_de_seguranca, :tempo_de_reposicao, :linha, :embalagem, :localizador, :classificacao_fiscal, :volume)");
+          $stmt = $pdo->prepare("INSERT INTO produtos (descricao_do_produto, codigo_produto, codigo_da_fabrica, referencia, libera_para_venda, bloqueia_estoque_negativo, embalagem_fornecedor, consumo_medio, massa, ultima_alteracao, ativo, custo_atual, markup, venda, ipi, unidade_basica, estoque, estoque_minimo, estoque_de_seguranca, tempo_de_reposicao, linha, embalagem, localizador, classificacao_fiscal, volume, quantidade_stock) VALUES (:descricao_do_produto, :codigo_produto, :codigo_da_fabrica, :referencia, :libera_para_venda, :bloqueia_estoque_negativo, :embalagem_fornecedor, :consumo_medio, :massa, :ultima_alteracao, :ativo, :custo_atual, :markup, :venda, :ipi, :unidade_basica, :estoque, :estoque_minimo, :estoque_de_seguranca, :tempo_de_reposicao, :linha, :embalagem, :localizador, :classificacao_fiscal, :volume, :quantidade_stock)");
           $stmt->bindParam(":descricao_do_produto", $descricao_do_produto);
           $stmt->bindParam(":codigo_produto", $codigo_produto);
           $stmt->bindParam(":codigo_da_fabrica", $codigo_da_fabrica);
@@ -67,6 +68,7 @@
           $stmt->bindParam(":localizador", $localizador);
           $stmt->bindParam(":classificacao_fiscal", $classificacao_fiscal);
           $stmt->bindParam(":volume", $volume);
+          $stmt->bindParam(":quantidade_stock", $quantidade);
           $stmt->execute();
 
           if($stmt)

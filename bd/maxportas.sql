@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04-Set-2023 às 21:42
+-- Tempo de geração: 14-Set-2023 às 17:36
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -571,7 +571,9 @@ CREATE TABLE `pedidos_dos_clientes` (
 INSERT INTO `pedidos_dos_clientes` (`id`, `nome_cliente`, `descricao_pedido`, `data_inicial`, `data_final`, `garantia`, `status`, `nome_responsavel`) VALUES
 (9, 'Torres Code', '<p>TTTTT</p>', '30/08/2023', '01/09/2023', '', 'Em Andamento', 'Carlos'),
 (10, 'Torres Code', '<p>10 Portas</p><p>5 Travessas</p>', '31/08/2023', '31/08/2023', '', 'Finalizado', 'Paulo'),
-(11, 'Torres Code', '<p>10 Travessas</p>', '04/09/2023', '04/09/2023', '', 'Finalizado', 'Paulo');
+(11, 'Torres Code', '<p>10 Travessas</p>', '04/09/2023', '04/09/2023', '', 'Finalizado', 'Paulo'),
+(12, 'Torres Code', '<p>10 Portas com uma fechadura</p>', '07/09/2023', '07/09/2023', '', 'Em Andamento', ''),
+(13, 'Torres Code', '<p>10 Porta 3 Dobradissas</p>', '14/09/2023', '14/09/2023', '', 'Em Andamento', '');
 
 -- --------------------------------------------------------
 
@@ -654,15 +656,19 @@ CREATE TABLE `produtos` (
   `embalagem` varchar(100) NOT NULL,
   `localizador` varchar(255) NOT NULL,
   `classificacao_fiscal` varchar(100) NOT NULL,
-  `volume` varchar(100) NOT NULL
+  `volume` varchar(100) NOT NULL,
+  `quantidade_stock` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `produtos`
 --
 
-INSERT INTO `produtos` (`id`, `descricao_do_produto`, `codigo_produto`, `codigo_da_fabrica`, `referencia`, `libera_para_venda`, `bloqueia_estoque_negativo`, `embalagem_fornecedor`, `consumo_medio`, `massa`, `ultima_alteracao`, `ativo`, `custo_atual`, `markup`, `venda`, `ipi`, `unidade_basica`, `estoque`, `estoque_minimo`, `estoque_de_seguranca`, `tempo_de_reposicao`, `linha`, `embalagem`, `localizador`, `classificacao_fiscal`, `volume`) VALUES
-(4, 'Produto 1 Update', 'CProdHJ-vrejgkbrehigy43', '63672e', 'eferfr', 'on', 'on', '2', '3', '4', '2023-09-03', 'on', '10', '4', '22', '3', 'Unidade', '4', '5', '6', '8', 'Linha', '43', 'ff44', '4', '6');
+INSERT INTO `produtos` (`id`, `descricao_do_produto`, `codigo_produto`, `codigo_da_fabrica`, `referencia`, `libera_para_venda`, `bloqueia_estoque_negativo`, `embalagem_fornecedor`, `consumo_medio`, `massa`, `ultima_alteracao`, `ativo`, `custo_atual`, `markup`, `venda`, `ipi`, `unidade_basica`, `estoque`, `estoque_minimo`, `estoque_de_seguranca`, `tempo_de_reposicao`, `linha`, `embalagem`, `localizador`, `classificacao_fiscal`, `volume`, `quantidade_stock`) VALUES
+(5, 'Porta', 'CProdHJ-392774238', '11', 'eferfr', 'on', 'on', '12', '5', '9', '2023-09-29', 'on', '1000', '11', '22', '2', 'Unidade', '100', '10', '12', '2', 'Linha', '1', 's', '2', '22', '10'),
+(6, 'Dobradissas', 'CProdHJ-9896', '11', 'eferfry', 'on', 'on', '5', '8', '90', '2023-09-28', 'on', '10', '11', '22', '8', 'Unidade1', '45', '9', '90', '8', 'Linha1', '8', 'default', '7', '4', '1'),
+(7, 'Travessa', 'CProdHJ-jhfgfuek', 'guhjb', 'eferfr', 'on', 'on', '21', '89', '90', '2023-09-21', 'on', '1000', '11', '22', '9', 'Unidade1', '100', '90', '9', '8', 'Linha1', '9', 'sd', '8', '6', '100'),
+(10, 'Produto', 'CProdHJ-hlbkm', 'u9ui', 'eferfry', 'on', 'on', '4', '2', '8', '2023-09-21', 'on', '10', '11', '22', '8', 'Unidade2', '8', '99', '8', '10', 'Linha2', '8', 'ff44', '8', '9', '1');
 
 -- --------------------------------------------------------
 
@@ -1229,7 +1235,7 @@ ALTER TABLE `parceiros`
 -- AUTO_INCREMENT de tabela `pedidos_dos_clientes`
 --
 ALTER TABLE `pedidos_dos_clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `perfil`
@@ -1241,7 +1247,7 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `puxadores`

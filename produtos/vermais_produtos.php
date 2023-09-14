@@ -103,6 +103,7 @@
 
                             <div class="block-content"> 
                                 Venda (R$): <span class="fs-sm text-muted"><?php echo addslashes($row_produtos_id['venda']); ?></span><br>
+                                <span style="font-weight: bolder;">Quantidade Stock: <?php echo addslashes($row_produtos_id['quantidade_stock']); ?></span><br>
                                 Consumo Medio: <span class="fs-sm text-muted"><?php echo addslashes($row_produtos_id['consumo_medio']); ?></span><br>
                                 Embalagem Fornecedor: <span class="fs-sm text-muted"><?php echo addslashes($row_produtos_id['embalagem_fornecedor']); ?></span><br>
                                 Massa: <span class="fs-sm text-muted"><?php echo addslashes($row_produtos_id['massa']); ?></span><br>
