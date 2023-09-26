@@ -61,7 +61,7 @@
               <div class="block block-rounded block-mode-loading-refresh">
                 <div class="block-header block-header-default">
                   <h3 class="block-title">
-                    Pedidos / Orçamentos
+                    Orçamentos
                   </h3>
                   <div class="block-options">
                     <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
@@ -70,8 +70,29 @@
                   </div>
                 </div>
                 <div class="table-responsive">
+
+                  <div style="margin: 5px; display: flex; justify-content: space-between;">
+                    <button style="border-radius: 5px; border: 1px solid #ccc; background-color: transparent; width: 200px; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Busca rápida</a></button>
+
+                    <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Novo</a></button>
+
+                    <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Imprimir</a></button>
+                  </div>
           
                   <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
+                    <!-- <thead style="text-align: center; font-size: 0.8em; color: #fff;">
+                      <tr class="text-lowecase">
+                        <th>
+                          <button style="border-radius: 5px; border: 1px solid #ccc; background-color: transparent; padding: 6px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 1.1em;">Busca rápida</a></button>
+                        </th>
+                        <th>
+                          <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 6px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 1.1em;">Novo</a></button>
+                        </th>
+                        <th>
+                          <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 6px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 1.1em;">Imprimir</a></button>
+                        </th>
+                      </tr>
+                    </thead> -->
                     <thead style="text-align: center; font-size: 0.8em; background-color: #2ab759; color: #fff;">
                       <tr class="text-uppercase">
                         <!-- <th>Vêr Mais</th> -->

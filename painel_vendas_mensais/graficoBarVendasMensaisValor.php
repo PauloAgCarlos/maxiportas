@@ -1,17 +1,17 @@
 <?php
     $conn = mysqli_connect("localhost", "root", "", "maxportas");
 
-    $selectdados = mysqli_query($conn, "SELECT ano_mes, valor FROM painel_vendas_mensais ORDER BY ano_mes ASC");
-    $ano_mes = [];
-    $valor = [];
+    $selectdados = mysqli_query($conn, "SELECT valor, descricao_produto_pedido, ano, SUM(valor) as total_valor FROM painel_pedidos_orcamentos WHERE status = 'Finalizado' GROUP BY ano ORDER BY ano ASC");
+    $ano = [];
+    $total_valor = [];
 
     while($linha = mysqli_fetch_array($selectdados, MYSQLI_ASSOC)){
-        $ano_mes[] = "'{$linha['ano_mes']}'";
-        $valor[] = $linha['valor'];
+        $ano[] = "'{$linha['ano']}'";
+        $total_valor[] = $linha['total_valor'];
     }
 
-    $ano_mes = implode(',', $ano_mes);
-    $valor = implode(',', $valor);
+    $ano = implode(',', $ano);
+    $total_valor = implode(',', $total_valor);
 ?>
 
 <!DOCTYPE html>
@@ -52,12 +52,12 @@
             series: [
                 {
                     name: "HJ Alúminio - Valor (R$)",
-                    data: [<?= $valor;?>],
+                    data: [<?= $total_valor;?>],
                     backgrounColor: barColor
                 }
             ],
             xaxis: {
-                categories: [<?= $ano_mes;?>],
+                categories: [<?= $ano;?>],
             }
         };
         let chart = new ApexCharts(el, options);

@@ -143,8 +143,7 @@ $total_indicadores = mysqli_num_rows($resultado_indicadores);
               <div class="block block-rounded block-mode-loading-refresh">
                 <div class="block-header block-header-default">
                   <h3 class="block-title text-center">
-                    Comparativo Pedido/Orçamento<br>
-                    Valor (R$)
+                    Perfil
                   </h3>                  
                 </div>
 
@@ -170,7 +169,7 @@ $total_indicadores = mysqli_num_rows($resultado_indicadores);
                       }
                   </style>
                    <main id="main_grafico">
-                      <section class="child_grafico"><?php include "graficoBarOrcamentoValor.php"; ?></section> 
+                      <section class="child_grafico"><?php include "graficoPerfil.php"; ?></section> 
                   </main>
                 </div>
                 
@@ -184,8 +183,7 @@ $total_indicadores = mysqli_num_rows($resultado_indicadores);
               <div class="block block-rounded block-mode-loading-refresh">
                 <div class="block-header block-header-default">
                   <h3 class="block-title text-center" style="font-size: 1em;">
-                    Comparativo Pedido/Orçamento<br>
-                    <span style="font-size: 0.9em;">Quantidade dos Produtos</span>
+                    Vidro
                   </h3>
                 </div>
 
@@ -199,7 +197,7 @@ $total_indicadores = mysqli_num_rows($resultado_indicadores);
                       align-items: stretch;
                       flex-wrap: wrap;
                       width: 100%;
-                      height: 500px;
+                      /* height: 500px; */
                       border: 1px solid #ddd;
                       margin: auto !important;
                     }
@@ -212,16 +210,96 @@ $total_indicadores = mysqli_num_rows($resultado_indicadores);
                       }
                   </style>
                    <main id="main_grafico_quantidade">
-                      <section class="child_grafico_quantidade"><?php include "graficoBarOrcamentoQuantidade.php"; ?></section> 
+                      <section class="child_grafico_quantidade"><?php include "graficoVidro.php"; ?></section> 
                   </main>
                 </div>
 
               </div>
                
-            </div>
-            
+            </div>            
         </div>
         <!-- END Page Content -->
+
+        <div class="row">
+            <div class="col-md-6">
+              <!--  Latest Orders -->
+              <div class="block block-rounded block-mode-loading-refresh">
+                <div class="block-header block-header-default">
+                  <h3 class="block-title text-center">
+                    Montagem
+                  </h3>                  
+                </div>
+
+                <div>
+                  <style>
+                    #main_graficomontagem 
+                    {
+                      z-index: 0 !important;
+                      display: flex;
+                      justify-content: space-around;
+                      align-items: center;
+                      flex-wrap: wrap;
+                      width: 100%;
+                      border: 1px solid #ddd;
+                      margin: auto !important;
+                    }
+
+                      .child_graficomontagem 
+                      {
+                        margin: auto !important;
+                        background-color: #fff;
+                        border-radius: 10px;
+                      }
+                  </style>
+                   <main id="main_graficomontagem">
+                      <section class="child_graficomontagem"><?php include_once "graficoMontagem.php"; ?></section> 
+                  </main>
+                </div>
+                
+              </div>
+               
+            </div>
+              <!-- END Latest Orders -->
+
+              <div class="col-md-6">
+              <!--  Latest Orders -->
+              <div class="block block-rounded block-mode-loading-refresh">
+                <div class="block-header block-header-default">
+                  <h3 class="block-title text-center" style="font-size: 1em;">
+                    Embalagem
+                  </h3>
+                </div>
+
+                <div>
+                  <style>
+                    #main_grafico_quantidadeE 
+                    {
+                      z-index: 0 !important;
+                      display: flex;
+                      justify-content: space-around;
+                      align-items: stretch;
+                      flex-wrap: wrap;
+                      width: 100%;
+                      border: 1px solid #ddd;
+                      margin: auto !important;
+                    }
+
+                      .child_grafico_quantidadeE 
+                      {
+                        margin: auto !important;
+                        background-color: #fff;
+                        border-radius: 1px;
+                      }
+                  </style>
+                   <main id="main_grafico_quantidadeE">
+                      <section class="child_grafico_quantidadeE"><?php include "graficoEmbalagem.php"; ?></section> 
+                  </main>
+                </div>
+
+              </div>
+               
+            </div>            
+        </div>
       </main>
       <!-- END Main Container -->
 

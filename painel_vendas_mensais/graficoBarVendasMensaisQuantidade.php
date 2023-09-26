@@ -1,17 +1,17 @@
 <?php
     $conn = mysqli_connect("localhost", "root", "", "maxportas");
 
-    $selectdados = mysqli_query($conn, "SELECT ano_mes, quantidade FROM painel_vendas_mensais ORDER BY ano_mes ASC");
-    $ano_mes = [];
-    $quantidade = [];
+    $selectdados = mysqli_query($conn, "SELECT qtd_produto_pedido, ano, SUM(qtd_produto_pedido) as total_qtd FROM painel_pedidos_orcamentos WHERE status = 'Finalizado' GROUP BY ano ORDER BY ano ASC");
+    $ano = [];
+    $total_qtd = [];
 
     while($linha = mysqli_fetch_array($selectdados, MYSQLI_ASSOC)){
-        $ano_mes[] = "'{$linha['ano_mes']}'";
-        $quantidade[] = $linha['quantidade'];
+        $ano[] = "'{$linha['ano']}'";
+        $total_qtd[] = $linha['total_qtd'];
     }
 
-    $ano_mes = implode(',', $ano_mes);
-    $quantidade = implode(',', $quantidade);
+    $ano = implode(',', $ano);
+    $total_qtd = implode(',', $total_qtd);
 ?>
 
 <!DOCTYPE html>
@@ -59,11 +59,11 @@
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: [<?= $ano_mes;?>],
+        labels: [<?= $ano;?>],
         datasets: [{
           label: '',
           backgroundColor: ['darkblue', 'red', 'blue', 'yellow', 'orange', 'darkblue'],
-          data: [<?= $quantidade;?>],
+          data: [<?= $total_qtd;?>],
           borderWidth: 1
         }]
       },

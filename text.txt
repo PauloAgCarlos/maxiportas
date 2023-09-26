@@ -1,0 +1,24 @@
+Painel Vendas Mensais(ano_mes, valor, quantidade)
+os dados seram alimentados da tbl(pedidos_dos_clientes), vou criar um group_by em ano_mes, em vez de listar varios produtos do mesmo ano vou agrupar pelo ano.
+
+* qunatidade será alimentada com os dados quantidade(que sera criada na tbl_pedidos_dos_clientes, depois de atualizar a quantidade da tbl_produtos vai enviar too para tbl_pedidos_dos_clientes no atributo quantidade)
+
+* quantidade poderá puxar a quantidade da tbl_produtos.
+
+
+********************************************************************************************************
+
+tbl_painel_pedidos_orcamentos
+reestruturar os atributos para: descricao_produto_pedido, status, qtd_produto_pedido, pedidos, valor/orcamento(vai pegar o valor do produto que está na tbl_produtos e enviar na tbl_painel_pedidos_orcamentos where descricao_produto_pedido = produto da tbl_produtos).
+
+Esses atributos seram alimentados toda vez que o adm/colaborador finalizar Pedido(s) do/a(s) Cliente(s). E só vou mostrar aqueles que têm status Finalizado.
+Depois para mostrar esses dados dou um group_by pela descricao_produto_pedido, evitando repetições do mesmo Produto.
+
+
+
+********************************************************************************************
+Last Page Ordem de Produção
+The btn Incluir será of type submit para enviar os dados dos inputs of baixo na tbl_ordem_producao.
+Quando clicar on btn Imprimir vai listar all files of tbl_ordem_producao and selecionar the file que deseja imprimir(os dados pra).
+
+Na aba Portas/Vidros quando clica num item and tras as imagens (será feito basiando-se on filter do Ecommerce of Sidebar)

@@ -15,7 +15,7 @@ catch(PDOException $error)
 
 //produtos
 $stock_seguranca = 10;
-$result_produtos = $conn->prepare("SELECT * FROM produtos WHERE quantidade_stock <= 10");
+$result_produtos = $conn->prepare("SELECT * FROM produtos");
 $result_produtos->bindParam(1, $stock_seguranca);
 $result_produtos->execute();
 $row_produtos = $result_produtos->fetchAll(PDO::FETCH_ASSOC);
@@ -26,53 +26,53 @@ for($i = 0; $i < count($row_produtos); $i++){
 }
 die();
 
-// $array_meu = [2, 3, 5, 6];
-// echo count($row_produtos); die();
-if(count($row_produtos) > 0)
-{
+// // $array_meu = [2, 3, 5, 6];
+// // echo count($row_produtos); die();
+// if(count($row_produtos) > 0)
+// {
 
-    if($row_produtos[0]['quantidade_stock'] <= 5)
-    {
-        foreach($row_produtos as $ro)
-        {
-            echo "<p style='color: #f00;'> O Produto: ". $ro['descricao_do_produto'] . " - esta com Stock minimo de " . $ro['quantidade_stock'] . " Quantidade(s)<br></p>";
-        }
-    }else{
-        echo "Vasio";
-    }
-}else{
-    echo "Sem Stock minimo";
-}
-//     // Array bidimensional de exemplo
-// $bidimensionalArray = array(
-//     array('A', 'B', 'C'),
-//     array('D', 'E', 'F'),
-//     array('G', 'H', 'I')
-// );
-// echo "<pre>";   
-// print_r($bidimensionalArray);
-// // die();
-// // Inicialize um novo array unidimensional
-// $unidimensionalArray = array();
-
-// // Percorra o array bidimensional
-// foreach ($row_produtos as $row) {
-//     foreach ($row as $value) {
-//         // Adicione cada valor ao novo array unidimensional
-//         $unidimensionalArray[] = $value;
+//     if($row_produtos[0]['quantidade_stock'] <= 5)
+//     {
+//         foreach($row_produtos as $ro)
+//         {
+//             echo "<p style='color: #f00;'> O Produto: ". $ro['descricao_do_produto'] . " - esta com Stock minimo de " . $ro['quantidade_stock'] . " Quantidade(s)<br></p>";
+//         }
+//     }else{
+//         echo "Vasio";
 //     }
+// }else{
+//     echo "Sem Stock minimo";
 // }
+//     // Array bidimensional de exemplo
+$bidimensionalArray = array(
+    array('Teste' => 'A', 'B', 'C'),
+    array('D', 'E', 'F'),
+    array('G', 'H', 'I')
+);
+echo "<pre>";   
+print_r($bidimensionalArray);
+// die();
+// Inicialize um novo array unidimensional
+$unidimensionalArray = array();
 
-// // O novo array unidimensional conterá todos os valores do array bidimensional
+// Percorra o array bidimensional
+foreach ($bidimensionalArray as $row) {
+    foreach ($row as $key => $value) {
+        // Adicione cada valor ao novo array unidimensional
+        $unidimensionalArray[][] = $key . $value;
+    }
+}
+
+// O novo array unidimensional conterá todos os valores do array bidimensional
 // echo "<pre>";   
 // print_r($unidimensionalArray);
 
-// foreach($unidimensionalArray as $ro)
-// {
-//     echo $ro . "<br>";
-//     echo "<hr>";
-// }
-// die();
+foreach($unidimensionalArray as $key => $ro)
+{
+    echo $key . $ro . "<br>";
+    echo "<hr>";
+}
+die();
 
 //         //Começa AQui        
 //         $host = "localhost";

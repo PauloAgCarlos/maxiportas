@@ -123,7 +123,7 @@ $total_indicadores = mysqli_num_rows($resultado_indicadores);
               <div class="block block-rounded block-mode-loading-refresh">
                 <div class="block-header block-header-default">
                   <h3 class="block-title text-center">
-                    Vendas Mensais (Valor R$)
+                    Vendas (Valor R$)
                   </h3>                  
                 </div>
 
@@ -162,8 +162,8 @@ $total_indicadores = mysqli_num_rows($resultado_indicadores);
               <!--  Latest Orders -->
               <div class="block block-rounded block-mode-loading-refresh">
                 <div class="block-header block-header-default">
-                  <h3 class="block-title">
-                    Vendas Mensais (Quantidade)
+                  <h3 class="block-title text-center">
+                    Vendas (Quantidade)
                   </h3>
                 </div>
 

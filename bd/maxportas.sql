@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 14-Set-2023 às 17:36
+-- Tempo de geração: 26-Set-2023 às 10:48
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -450,22 +450,39 @@ INSERT INTO `movimentacao_consumo_de_materia_prima` (`id`, `descricao`, `codigo_
 CREATE TABLE `painel_pedidos_orcamentos` (
   `id` int(11) NOT NULL,
   `valor` varchar(255) NOT NULL,
-  `quantidade_de_quadros` varchar(255) NOT NULL,
-  `quantidade_de_portas` varchar(255) NOT NULL,
-  `quantidade_de_vidros` varchar(255) NOT NULL,
-  `orcamentos` varchar(255) NOT NULL,
   `pedidos` varchar(255) NOT NULL,
-  `tipos_orcamento` varchar(255) NOT NULL
+  `descricao_produto_pedido` varchar(255) NOT NULL,
+  `qtd_produto_pedido` int(255) NOT NULL,
+  `orcamento` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `ano` year(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `painel_pedidos_orcamentos`
 --
 
-INSERT INTO `painel_pedidos_orcamentos` (`id`, `valor`, `quantidade_de_quadros`, `quantidade_de_portas`, `quantidade_de_vidros`, `orcamentos`, `pedidos`, `tipos_orcamento`) VALUES
-(1, '2000', '28', '33', '50', '92', '90', 'Quantidade de Quadros'),
-(2, '1000', '20', '50', '70', '202', '200', 'Quantidade de Portas'),
-(3, '3000', '50', '60', '100', '300', '150', 'Quantidade de Vidros');
+INSERT INTO `painel_pedidos_orcamentos` (`id`, `valor`, `pedidos`, `descricao_produto_pedido`, `qtd_produto_pedido`, `orcamento`, `status`, `ano`) VALUES
+(5, '250', '', 'Travessa', 10, '', '', 2023),
+(6, '210', '', 'Porta', 20, '', '', 2023),
+(7, '220', '', 'Travessa', 25, '', '', 2023),
+(8, '210', '', 'Dobradissas', 50, '', '', 2022),
+(9, '250', '', 'Travessa', 12, '', 'Em Andamento', 2020),
+(10, '250', '', 'Porta', 10, '', 'Finalizado', 2023),
+(11, '300', '', 'Travessa', 10, '', 'Finalizado', 2022),
+(12, '230', '', 'Travessa', 12, '', 'Finalizado', 2022),
+(13, '310', '', 'Porta', 12, '', 'Finalizado', 2022),
+(14, '230', '', 'Dobradissas', 60, '', 'Finalizado', 2021),
+(17, '22', '', 'Travessa', 1, '', 'Em Andamento', 2021),
+(18, '22', '', 'Porta', 1, '', 'Finalizado', 2020),
+(19, '22', '', 'Dobradissas', 12, '', 'Finalizado', 2019),
+(20, '22', '', 'Porta', 1, '', 'Finalizado', 2023),
+(21, '22', '', 'Travessa', 2, '', 'Finalizado', 2023),
+(22, '22', '', 'Dobradissas', 5, '', 'Finalizado', 2023),
+(23, '22', '', 'Porta', 10, '', 'Em Andamento', 2023),
+(24, '22', '', 'Dobradissas', 3, '', 'Em Andamento', 2023),
+(25, '22', '', 'Porta', 10, '', 'Em Andamento', 2023),
+(26, '22', '', 'Dobradissas', 5, '', 'Finalizado', 2023);
 
 -- --------------------------------------------------------
 
@@ -665,10 +682,10 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `descricao_do_produto`, `codigo_produto`, `codigo_da_fabrica`, `referencia`, `libera_para_venda`, `bloqueia_estoque_negativo`, `embalagem_fornecedor`, `consumo_medio`, `massa`, `ultima_alteracao`, `ativo`, `custo_atual`, `markup`, `venda`, `ipi`, `unidade_basica`, `estoque`, `estoque_minimo`, `estoque_de_seguranca`, `tempo_de_reposicao`, `linha`, `embalagem`, `localizador`, `classificacao_fiscal`, `volume`, `quantidade_stock`) VALUES
-(5, 'Porta', 'CProdHJ-392774238', '11', 'eferfr', 'on', 'on', '12', '5', '9', '2023-09-29', 'on', '1000', '11', '22', '2', 'Unidade', '100', '10', '12', '2', 'Linha', '1', 's', '2', '22', '10'),
-(6, 'Dobradissas', 'CProdHJ-9896', '11', 'eferfry', 'on', 'on', '5', '8', '90', '2023-09-28', 'on', '10', '11', '22', '8', 'Unidade1', '45', '9', '90', '8', 'Linha1', '8', 'default', '7', '4', '1'),
-(7, 'Travessa', 'CProdHJ-jhfgfuek', 'guhjb', 'eferfr', 'on', 'on', '21', '89', '90', '2023-09-21', 'on', '1000', '11', '22', '9', 'Unidade1', '100', '90', '9', '8', 'Linha1', '9', 'sd', '8', '6', '100'),
-(10, 'Produto', 'CProdHJ-hlbkm', 'u9ui', 'eferfry', 'on', 'on', '4', '2', '8', '2023-09-21', 'on', '10', '11', '22', '8', 'Unidade2', '8', '99', '8', '10', 'Linha2', '8', 'ff44', '8', '9', '1');
+(5, 'Porta', 'CProdHJ-392774238', '11', 'eferfr', 'on', 'on', '12', '5', '9', '2023-09-29', 'on', '1000', '11', '22', '2', 'Unidade', '100', '10', '12', '2', 'Linha', '1', 's', '2', '22', '664'),
+(6, 'Dobradissas', 'CProdHJ-9896', '11', 'eferfry', 'on', 'on', '5', '8', '90', '2023-09-28', 'on', '10', '11', '22', '8', 'Unidade1', '45', '9', '90', '8', 'Linha1', '8', 'default', '7', '4', '410'),
+(7, 'Travessa', 'CProdHJ-jhfgfuek', 'guhjb', 'eferfr', 'on', 'on', '21', '89', '90', '2023-09-21', 'on', '1000', '11', '22', '9', 'Unidade1', '100', '90', '9', '8', 'Linha1', '9', 'sd', '8', '6', '968'),
+(10, 'Produto', 'CProdHJ-hlbkm', 'u9ui', 'eferfry', 'on', 'on', '4', '2', '8', '2023-09-21', 'on', '10', '11', '22', '8', 'Unidade2', '8', '99', '8', '10', 'Linha2', '8', 'ff44', '8', '9', '1000');
 
 -- --------------------------------------------------------
 
@@ -1211,7 +1228,7 @@ ALTER TABLE `movimentacao_consumo_de_materia_prima`
 -- AUTO_INCREMENT de tabela `painel_pedidos_orcamentos`
 --
 ALTER TABLE `painel_pedidos_orcamentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de tabela `painel_vendas_mensais`

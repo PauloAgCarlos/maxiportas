@@ -505,11 +505,6 @@
                             <span class="nav-main-link-name">Visualizar</span>
                         </a>
                         </li>
-                        <!-- <li class="nav-main-item">
-                        <a class="nav-main-link" href="../painel_vendas_mensais/visualizar_painel_vendas_mensais.php">
-                            <span class="nav-main-link-name">Visualizar</span>
-                        </a>
-                        </li> -->
                     </ul>
                 </li>
                 <li class="nav-main-item">
@@ -522,11 +517,6 @@
                             <span class="nav-main-link-name">Visualizar</span>
                         </a>
                         </li>
-                        <!-- <li class="nav-main-item">
-                        <a class="nav-main-link" href="../painel_pedidos_orcamentos/visualizar_painel_pedidos_orcamentos.php">
-                            <span class="nav-main-link-name">Visualizar</span>
-                        </a>
-                        </li> -->
                     </ul>
                 </li>
                 <li class="nav-main-item">
@@ -549,25 +539,44 @@
             </ul>
             </li>
             
-            <li class="nav-main-heading">Produção</li>
             <li class="nav-main-item">
-            <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
-                <i class="nav-main-link-icon fa fa-flask"></i>
-                <span class="nav-main-link-name">Produção</span>
-            </a>
-            <ul class="nav-main-submenu">
-                <li class="nav-main-item">
-                <a class="nav-main-link" href="#">
-                    <span class="nav-main-link-name">Programação - Painel</span>
+                <a href="#" class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true"  aria-expanded="false">
+                    <i class="nav-main-link-icon fa fa-flask"></i>
+                    <span class="nav-main-link-name">Produção</span>
                 </a>
-                </li>
+                <ul class="nav-main-submenu">
+                    <li class="nav-main-item">
+                    <a class="nav-main-link" href="../producao/producao.php">
+                        <span class="nav-main-link-name">Programação - Painel</span>
+                    </a>
+                    </li>
+                    <li class="nav-main-item">
+                    <a class="nav-main-link" href="../forma_de_pagamento/visualizar_forma_de_pagamento.php">
+                        <span class="nav-main-link-name">Visualizar</span>
+                    </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- <li class="nav-main-heading">Produção</li>
                 <li class="nav-main-item">
-                <a class="nav-main-link" href="#">
-                    <span class="nav-main-link-name">Programação - Resumo do Dia</span>
+                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                    <i class="nav-main-link-icon fa fa-flask"></i>
+                    <span class="nav-main-link-name">Produção</span>
                 </a>
-                </li>
-            </ul>
-            </li>          
+                <ul class="nav-main-submenu">
+                    <li class="nav-main-item">
+                    <a class="nav-main-link" href="#">
+                        <span class="nav-main-link-name">Programação - Painel</span>
+                    </a>
+                    </li>
+                    <li class="nav-main-item">
+                    <a class="nav-main-link" href="#">
+                        <span class="nav-main-link-name">Programação - Resumo do Dia</span>
+                    </a>
+                    </li>
+                </ul>
+            </li>           -->
         </ul>
         </div>
         <!-- END Side Navigation -->

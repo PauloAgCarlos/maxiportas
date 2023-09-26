@@ -43,52 +43,48 @@ $result = $conn->query($sql);
     <style> .apexcharts-toolbar { display:none !important; } </style>
 </head>
 <body>
-    <!-- <style>
-        #myChart 
-        {
-            height: 299px !important;
-        }
-        @media screen and (min-width: 600px) 
-        {
-            #myChart 
-            {
-                height: 515px !important; 
-            }
-        }
-    </style> -->
-  
-    <!-- <style>
-        .apexcharts-toolbar
-        {
-            display:none !important;
-        }
-    </style>
-      <div style="width: 100%; margin: auto;">
-        <canvas id="myChart" style="width: 100%; height: 515px;"></canvas>
-      </div>       -->
-      
-  <canvas id="myChart" style="width:150%; max-width:600px"></canvas>
+<canvas id="myChartV" style="width:180%;"></canvas>
 
-  <script>
-    var xValues = [<?php echo $descricaoProduto; ?>];
-    var yValues = [<?=  $totalQuantidade ?>];
-    var barColors = [
-      "#6699cc",
-      "#9999cc",
-      "#ff9966"
-    ];
+<script>
+    var xValues = ['Atrazados','Dentro do Prazo','Produzido'];
 
-    new Chart("myChart", {
-      type: "pie",
-      data: {
+    new Chart("myChartV", {
+    type: "line",
+    // with: 900,
+    // height: 1000,
+    data: {
         labels: xValues,
-        datasets: [{
-          backgroundColor: barColors,
-          data: yValues
+        datasets: [{ 
+        data: [],
+        borderColor: "red",
+        fill: false
+        }, { 
+        data: [],
+        borderColor: "green",
+        fill: false
+        }, { 
+        data: [],
+        borderColor: "blue",
+        fill: false
         }]
-      }
+        // datasets: [{ 
+        // data: [860,7830,2478],
+        // borderColor: "red",
+        // fill: false
+        // }, { 
+        // data: [1600,6000,7000],
+        // borderColor: "green",
+        // fill: false
+        // }, { 
+        // data: [300,700,2000],
+        // borderColor: "blue",
+        // fill: false
+        // }]
+    },
+    options: {
+        legend: {display: false}
+    }
     });
-  </script>
-
+</script>
 </body>
 </html>

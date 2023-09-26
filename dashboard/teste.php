@@ -36,8 +36,6 @@
                 $prefix = $keys[$innerKey];
                 $array_unido[$prefix. '_' .$innerKey] = $arr[$innerKey];
             }
-            // echo "<pre>";
-            // var_dump($array_unido); die();
         
         for ($i=0; $i<count($dados['produto_servico']); $i++)
         {        
@@ -63,6 +61,27 @@
                     $atualizar_estoque_produtos->bindParam(1, $qtd_atualizada);
                     $atualizar_estoque_produtos->bindParam(2, $dados["produto_servico"][$i]);
                     $qtd_stock_atualizado = $atualizar_estoque_produtos->execute();
+
+                    // Select valuer of tbl_produtos where 
+                    $produto_sel = $dados["produto_servico"][$i];
+                    $select_value_product = $conn->prepare("SELECT descricao_do_produto, venda FROM produtos WHERE descricao_do_produto = ?");
+                    $select_value_product->bindParam(1, $dados["produto_servico"][$i]);
+                    $select_value_product->execute();
+                    $row_select_value_product = $select_value_product->fetchAll(PDO::FETCH_ASSOC);
+
+                    for($c = 0; $c < count($row_select_value_product); $c++)
+                    {
+                        // echo $row_select_value_product[$c]['descricao_do_produto'] . '_' . $row_select_value_product[$c]['venda'] ; total_valor
+                        //Inserir dados na tbl_painel_pedidos_orcamentos
+                        $insert = $conn->prepare("INSERT INTO painel_pedidos_orcamentos (valor, descricao_produto_pedido, qtd_produto_pedido, status, ano) VALUES (?, ?, ?, ?, ?)");
+                        $insert->bindParam(1, $row_select_value_product[$c]['venda']);
+                        $insert->bindParam(2, $dados['produto_servico'][$i]);
+                        $insert->bindParam(3, $dados["quantidade_produto_servico"][$i]);
+                        $insert->bindParam(4, $dados['status']);
+                        $insert->bindValue(5, date('Y'));
+                        $insert->execute();
+
+                    }
 
                     if($qtd_stock_atualizado)
                     {

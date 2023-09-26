@@ -152,7 +152,7 @@
 
             foreach($result_pedidos as $row_pedidos_id){ ?>
         <h3 class="block-title">Descrição Produto/Serviço: <span class="fs-sm text-muted"><?php echo addslashes($row_pedidos_id['descricao_pedido']); ?></h3>
-        <?php }?>
+        <?php } die(); ?>
       </div>
       </div>
       </div>
@@ -262,8 +262,9 @@
                               <div class="mb-1 ms-2">
                                 <label class="form-label" for="quantidade_produto_servico" style="font-size: 0.9em;">Quantidade</label> <span style="color: red;">*</span>
                                 <div>
-                                  <input type="text" name="quantidade_produto_servico[]" placeholder="Quantidade" class="form-control">
+                                  <input type="text" id="quantity" name="quantidade_produto_servico[]" placeholder="Quantidade" maxlength="20" class="form-control">
                                 </div>
+                                <div id="result"></div>
                               </div><!--Last Quantidade-->
 
                               <div class="mb-1 ms-2" style="margin-top: 30px;">
@@ -299,6 +300,11 @@
         <!-- END Page Content -->
       </main>
       <!-- END Main Container -->
+
+      <!-- input AJAX -->
+      <script src="ajax.googleapis.com_ajax_libs_jquery_3.5.1_jquery.min.js"></script>
+      <script src="script.js"></script>
+      <!-- last input AJAX -->
 
       <script src="adicionar_campos.js"></script>
       <?php require_once "../template/footer.php"; ?>
