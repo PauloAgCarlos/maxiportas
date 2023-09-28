@@ -65,7 +65,7 @@
                   </h3>
                 </div>
                 <div class="table-responsiveA">
-
+                    <form action="" method="post">
                   <div style="margin: 5px; display: flex; justify-content: space-between;">
                     <button style="border-radius: 5px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="dashboard.php" style="color: #1d1d1d; font-size: 0.9em;">Voltar</a></button>
 
@@ -94,13 +94,68 @@
                             <p>22.111</p>
                         </div>
                         <div class="col-md-2">Parceiro <span style="color: #f00;">*</span>
-                            <form action="" method="post">
+                            <!-- <form action="" method="post"> -->
                                 <select name="" id="" class="form-control" required style="font-size: 1em;">
                                     <option value="">HJ Alúminios</option>
                                 </select>
-                            </form>
+                            <!-- </form> -->
                         </div>
-                        <div class="col-md-2">Cliente</div>
+                        <div class="col-md-2">Cliente
+                            <div  style="display: flex; justify-content: space-between">
+                                <input type="text" readonly class="form-control mb-2" id="id_clienteinput" name="cliente" style="border: none; background-color: white; width: 100%;">
+                                <?php
+                                    echo "
+                                        <button class='btn' class='ms-1' style='Amargin-right: 15px; border: none; background-color: transparent; border-radius: 1000px; width: 5px;' onclick='abrirModalCliente(2)' data-toggle='modal' data-target='#myModalCliente'>
+                                            <img src='../assets/svg/icons8-pesquisar.svg' width='25px' alt=''>
+                                        </button>"
+                                    ;
+                                ?>
+                            </div>
+                        </div>
+                        <!-- Modal Cliente -->
+                        <div class="modal fade" id="myModalCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header" style="background-color: #33cc66;">
+                                    <h5 class="modal-title" id="exampleModalLabel">Clientes Registados no Sistema</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <ul>
+                                        <?php
+                                            $conn = new mysqli('localhost', 'root', '', 'maxportas');
+                                            $query = 'SELECT id, nome_razao_socil FROM clientes';
+                                            $result = $conn->query($query);
+
+                                            if ($result->num_rows > 0) {
+                                                while ($row = $result->fetch_assoc()) {
+                                                echo '<li  style="color: #000; font-size: 1.1em;" data-bs-dismiss="modal"><a href="#" style="text-decoration: none; color: black;" class="select-data" data-id="' . $row['id'] . '">ID: ' .$row['id']. ' | Nome: ' . $row['nome_razao_socil'] . '</a></li>';
+                                                }
+                                            }
+                                        ?>
+                                    </ul>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            function abrirModalCliente(idProduto) {
+                                idProdutoParaExcluir = idProduto;
+                                const modal = new bootstrap.Modal(document.getElementById('myModalCliente'), {});
+                                modal.show();
+                            }
+                            document.querySelectorAll('.select-data').forEach(item => {
+                            item.addEventListener('click', event => {
+                                event.preventDefault();
+                                const selectedData = item.innerText;
+                                const input = document.getElementById('id_clienteinput');
+                                input.value = selectedData;
+                                $('#myModalCliente').modal('hide');
+                                });
+                            });
+                            </script>
+                        <!-- Last Modal Cliente -->
+
                         <div class="col-md-4">Nome Consumidor
                             <form action="" method="post">
                                 <input type="text" class="form-control" style="font-size: 1em;" name="name_consumidor">
@@ -196,8 +251,154 @@
                                                     </div>
                                                     <div class="p-2">
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
-                                                        <input type="number"  class="form-control mb-2" name="perfil" placeholder="0">
+                                                        <div style="display: flex; justify-content: space-around">
+                                                            <input type="text" id="id_perfilAdd" readonly class="form-control mb-2" name="perfil" placeholder="0">
+                                                            <?php
+                                                                echo "
+                                                                    <button class='btn' class='ms-1' style='margin-right: 15px; border: none; background-color: transparent; border-radius: 1000px; width: 5px;' onclick='abrirModalPerfil(2)' data-toggle='modal' data-target='#myModalPerfil'>
+                                                                        <img src='../assets/svg/icons8-pesquisar.svg' width='25px' alt=''>
+                                                                    </button>"
+                                                                ;
+                                                            ?>
+                                                        </div>
+                                                        <div>
+                                                            <?php
+                                                                if(!empty($_GET['id_filtroImage'])){
+                                                                    // var_dump($_GET['id_filtroImage']);
+                                                                    $id_getFilter = $_GET['id_filtroImage'];
+                                                                    // $id = INPUT_POST['name'];
+                                                                    $host = "localhost";
+                                                                    $user = "root";
+                                                                    $pass = "";
+                                                                    $bd = "maxportas";
+                                                                    $conn = new PDO ("mysql:host=$host; dbname=".$bd, $user, $pass);
+                                                                    
+                                                                    $select = $conn->prepare("SELECT * FROM perfil WHERE id = :id");
+                                                                    $select->bindParam(':id', $id_getFilter);
+                                                                    $select->execute();
+                                                                    $row_filterImageGet = $select->fetch(PDO::FETCH_ASSOC);
+                                                                    ?>
+                                                                        <img src="../perfil/<?php echo $row_filterImageGet['imagem'] ?>" width="100px" height="100px" alt="">
+                                                                <?php  
+                                                                        // }
+                                                                    // } 
+                                                                }
+                                                            ?>
+                                                            <!-- <img src="../assets/svg/icons8-pesquisar.svg" width='25px' alt=""> -->
+                                                        </div>
                                                     </div>
+                                                    <!-- Modal Perfil -->
+                                                    <div class="modal fade" id="myModalPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                            <div class="modal-header" style="background-color: #33cc66;">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Perfies Registados no Sistema</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <table>
+                                                                    <thead style="background-color: #33cc66; width: 100%;">
+                                                                        <tr>
+                                                                            <th>Selecionar</th>
+                                                                            <th>Código</th>
+                                                                            <th>Descrição</th>
+                                                                            <th>Observação</th>
+                                                                            <th>Detalhes</th>
+                                                                            <th>Foto</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                <!-- <ul> -->
+                                                                    <?php
+                                                                        $conn = new mysqli('localhost', 'root', '', 'maxportas');
+                                                                        $query = 'SELECT * FROM perfil';
+                                                                        $result = $conn->query($query);
+
+                                                                        if ($result->num_rows > 0) {
+                                                                            while ($row = $result->fetch_assoc()) {
+                                                                            // echo '<li  style="color: #000; font-size: 1.1em;" data-bs-dismiss="modal"> '. $row['custo_metro'] .' 
+                                                                            //     <a href="#" style="text-decoration: none; color: black;" class="select-dataPerfil" data-id="' . $row['id'] . '">'.$row['id'] .'</a>
+                                                                            // </li>';
+                                                                            ?>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <?php 
+                                                                                            echo '
+                                                                                        <td>
+                                                                                            <button data-bs-dismiss="modal">
+                                                                                            <a href="#" style="text-decoration: none; color: black;">Selecionar</a>
+                                                                                            </button>
+                                                                                        </td>
+                                                                                        ';
+                                                                                        ?>
+                                                                                        <td data-bs-dismiss="modal">
+                                                                                            <a class="select-dataPerfil" data-id="<?php $row['id'] ?>" href="ordem_producao.php?id_filtroImage=<?php echo $row['id']; ?>">
+                                                                                                <?php echo $row['id']; ?>
+                                                                                            </a>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <?php echo $row['descricao']; ?>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <?php echo $row['detalhes']; ?>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <img src="../perfil/<?php echo $row['imagem'] ?>" width="100px" height="100px" alt="">
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            <!-- <img width="150px" height="90px" src="../perfil/<php echo $row['imagem'] ?>" alt=''> -->
+                                                                        <?php    
+                                                                            }
+                                                                        }
+                                                                    ?>
+                                                                </table>
+                                                                <!-- </ul> -->
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <script>
+                                                        function abrirModalPerfil(idProdutoPerfil) {
+                                                            idProdutoPerfilParaExcluir = idProdutoPerfil;
+                                                            const modal = new bootstrap.Modal(document.getElementById('myModalPerfil'), {});
+                                                            modal.show();
+                                                        }
+                                                        document.querySelectorAll('.select-dataPerfil').forEach(item => {
+                                                        item.addEventListener('click', event => {
+                                                            event.preventDefault();
+                                                            const selectedData = item.innerText;
+                                                            const input = document.getElementById('id_perfilAdd');
+                                                            input.value = selectedData;
+                                                            $('#myModalPerfil').modal('hide');
+                                                            
+
+                                                            });
+                                                        });
+                                                        </script>
+                                                    <!-- Last Modal Perfil -->
+
+                                                    <!-- Modal de confirmação -->
+                                                    <!-- <div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-labelledby="modalConfirmacaoLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header bg-danger">
+                                                                    <h5 class="modal-title text-white" id="modalConfirmacaoLabel">Confirmar Eliminação</h5>
+                                                                    <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Tem certeza de que deseja eliminar este Perfil?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                                    <button type="button" class="btn btn-danger" id="btnConfirmarExclusao">Confirmar</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+                                                    <!--Last Modal-->
 
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
@@ -222,8 +423,21 @@
                                                     </div>
                                                     <div class="p-2">
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
-                                                        <input type="number"  class="form-control mb-2" name="perfil" placeholder="0">
+                                                        <div style="display: flex; justify-content: space-around">
+                                                            <input type="text" id="id_perfilAddA" readonly class="form-control mb-2" name="perfil" placeholder="0">
+                                                            <?php
+                                                                echo "
+                                                                    <button class='btn' class='ms-1' style='margin-right: 15px; border: none; background-color: transparent; border-radius: 1000px; width: 5px;' onclick='abrirModalPerfil(2)' data-toggle='modal' data-target='#myModalPerfil'>
+                                                                        <img src='../assets/svg/icons8-pesquisar.svg' width='25px' alt=''>
+                                                                    </button>"
+                                                                ;
+                                                            ?>
+                                                        </div>
                                                     </div>
+                                                    <!-- <div class="p-2">
+                                                        <label for="">Perfil <span style="color: #f000;">*</span></label>
+                                                        <input type="number" readonly class="form-control mb-2" name="perfil" placeholder="0">
+                                                    </div> -->
 
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
@@ -248,7 +462,7 @@
                                                     </div>
                                                     <div class="p-2">
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
-                                                        <input type="number"  class="form-control mb-2" name="perfil" placeholder="0">
+                                                        <input type="number" readonly class="form-control mb-2" name="perfil" placeholder="0">
                                                     </div>
 
                                                     <div class="p-2">
@@ -274,7 +488,8 @@
                                                     </div>
                                                     <div class="p-2">
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
-                                                        <input type="number"  class="form-control mb-2" name="perfil" placeholder="0">
+                                                        <input type="number" readonly class="form-control mb-2" name="perfil" placeholder="0">
+
                                                     </div>
 
                                                     <div class="p-2">
@@ -876,6 +1091,7 @@
                     </div>
                   </section>
           
+                  </form>
                 </div>
                 </div>
               </div>
@@ -889,6 +1105,22 @@
       <!-- END Main Container -->
 
       <?php require_once "../template/footer.php"; ?>
+
+      <!--Modal-->
+      <script>
+      let idProdutoParaExcluir;
+
+      function abrirModal(idProduto) {
+          idProdutoParaExcluir = idProduto;
+          const modal = new bootstrap.Modal(document.getElementById('modalConfirmacao'), {});
+          modal.show();
+      }
+
+      document.getElementById('btnConfirmarExclusao').addEventListener('click', function() {
+          window.location.href = `eliminar_perfil.php?id=${idProdutoParaExcluir}`;
+      });
+    </script>
+    
     </div>
     <!-- END Page Container -->
   </body>
