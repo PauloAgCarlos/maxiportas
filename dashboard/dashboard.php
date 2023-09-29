@@ -80,22 +80,9 @@
                   </div>
           
                   <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
-                    <!-- <thead style="text-align: center; font-size: 0.8em; color: #fff;">
-                      <tr class="text-lowecase">
-                        <th>
-                          <button style="border-radius: 5px; border: 1px solid #ccc; background-color: transparent; padding: 6px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 1.1em;">Busca rápida</a></button>
-                        </th>
-                        <th>
-                          <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 6px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 1.1em;">Novo</a></button>
-                        </th>
-                        <th>
-                          <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 6px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 1.1em;">Imprimir</a></button>
-                        </th>
-                      </tr>
-                    </thead> -->
                     <thead style="text-align: center; font-size: 0.8em; background-color: #2ab759; color: #fff;">
                       <tr class="text-uppercase">
-                        <!-- <th>Vêr Mais</th> -->
+                        <th></th>
                         <th>Ed</th>
                         <th>Nome do <br> Cliente</th>
                         <th>Data Inicial</th>
@@ -112,11 +99,9 @@
                           foreach($result_pedidos as $row_pedidos){
                       ?>
                       <tr>
-                        <!-- <td class="text-center d-xl-table-cell" style="color: blue;">
-                          <a href="ver_mais.php?view=<php $idCriptografado = base64_encode($row_pedidos['id']); echo $idCriptografado;?>">
-                            <i class="fa fa-eye me-1 opacity-50 text-primary"></i>
-                          </a>
-                        </td> -->
+                        <td style="display: flex; justify-content: center; align-items: center;">
+                          <input type="checkbox" name="" id="">
+                        </td>
                         <td class="text-center d-xl-table-cell" style="color: blue;">
                           <form action="gestao_pedidos.php" method="post">
                             <input type="hidden" name="view" value="<?php $idCriptografado = base64_encode($row_pedidos['id']); echo $idCriptografado;?>">

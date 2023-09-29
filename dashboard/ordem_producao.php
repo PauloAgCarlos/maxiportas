@@ -70,21 +70,57 @@
                     <button style="border-radius: 5px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="dashboard.php" style="color: #1d1d1d; font-size: 0.9em;">Voltar</a></button>
 
                     <div>
+                    
                         <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Incluir</a></button>
-
+                        
+                        <form action="pdf_ordemProducao.php" method="post">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 0 5px 16px;">
+                                <a style="color: #1d1d1d; font-size: 0.9em;"  style="text-decoration: none;"  href="#" role="button" aria-expanded="false">Imprimir <img src="../assets/img/icons8-ordem-descendente-24.png" width="16px" alt=""></a>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button class="dropdown-item" type="submit" name="btn_submit" value="Primeiro BTN">Sintético - Cliente</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" type="button" name="btn_submit" value="Segundo BTN">Sintético 3 - Cliente</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" type="button" name="btn_submit" value="Terceiro BTN">Sintético 3 - Sem Valor</button>
+                                    </li>
+                                    <li style="width: 100%;"><hr class="dropdown-divider" style="color: black; padding: 1px;"></li>
+                                    <li>
+                                        <button class="dropdown-item" type="button" name="btn_submit" value="Terceiro BTN">Relátorio de Vendas (OP)</button>
+                                    </li>
+                                    <li>
+                                        <button class="dropdown-item" type="button" name="btn_submit" value="Terceiro BTN">Relátorio para Entrega Por Cliente</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- <div>
+                        <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Incluir</a></button>
+                        
                         <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 1px 6px;">
                             <li class="nav-item dropdown" style="list-style-type: none; ">
                                 <a style="color: #1d1d1d; font-size: 0.9em;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="text-decoration: none;" href="#" role="button" aria-expanded="false">Imprimir</a>
                                 <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                    <li>
+                                        <button type="submit" name="btn_submit" value="Primeiro BTN">
+                                            Primeiro
+                                        </button>
+                                    <li>
+                                    <li><a class="dropdown-item" href="#">Sintético - Cliente</a></li>
+                                    <li><a class="dropdown-item" href="#">Sintético 3 - Cliente</a></li>
+                                    <li><a class="dropdown-item" href="#">Sintético 3 - Sem Valor</a></li>
+                                    <li style="width: 100%;"><hr class="dropdown-divider" style="color: black; padding: 1px;"></li>
+                                    <li><a class="dropdown-item" href="#">Relátorio de Vendas (OP)</a></li>
+                                    <li><a class="dropdown-item" href="#">Relátorio para Entrega Por Cliente</a></li>
                                 </ul>
                             </li>
                         </button>
-                    </div>
+                    </div> -->
                   </div>
 
                   <section style="padding-bottom: 10px;">
