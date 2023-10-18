@@ -65,65 +65,53 @@
                   </h3>
                 </div>
                 <div class="table-responsiveA">
-                    <form action="" method="post">
+                <!-- <form action="recebe_ordem.php" method="post"> -->
                   <div style="margin: 5px; display: flex; justify-content: space-between;">
                     <button style="border-radius: 5px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="dashboard.php" style="color: #1d1d1d; font-size: 0.9em;">Voltar</a></button>
 
-                    <div>
-                    
-                        <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Incluir</a></button>
-                        
+                    <div>                    
+                        <!-- <button type="submit" name="btn_incluir" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;">    <a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Incluir</a>
+                        </button> -->                        
                         <form action="pdf_ordemProducao.php" method="post">
+                            <!-- <php $id_unik = uniqid(); ?> -->
+                            <input type="hidden" name="id_ordemProducao" id="idDoForm1" value="<?php if(!empty($_GET['id_filter'])){ echo $_GET['id_filter'];} ?>" >
                             <div class="btn-group">
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 0 5px 16px;">
                                 <a style="color: #1d1d1d; font-size: 0.9em;"  style="text-decoration: none;"  href="#" role="button" aria-expanded="false">Imprimir <img src="../assets/img/icons8-ordem-descendente-24.png" width="16px" alt=""></a>
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <button class="dropdown-item" type="submit" name="btn_submit" value="Primeiro BTN">Sintético - Cliente</button>
+                                        <button class="dropdown-item" type="submit" name="btn_submit" value="Sintético - Cliente">Sintético - Cliente</button>
                                     </li>
                                     <li>
-                                        <button class="dropdown-item" type="button" name="btn_submit" value="Segundo BTN">Sintético 3 - Cliente</button>
+                                        <button class="dropdown-item" type="submit" name="btn_submit" value="Sintético 3 - Cliente">Sintético 3 - Cliente</button>
                                     </li>
                                     <li>
-                                        <button class="dropdown-item" type="button" name="btn_submit" value="Terceiro BTN">Sintético 3 - Sem Valor</button>
+                                        <button class="dropdown-item" type="submit" name="btn_submit" value="Sintético 3 - Sem Valor">Sintético 3 - Sem Valor</button>
                                     </li>
                                     <li style="width: 100%;"><hr class="dropdown-divider" style="color: black; padding: 1px;"></li>
                                     <li>
-                                        <button class="dropdown-item" type="button" name="btn_submit" value="Terceiro BTN">Relátorio de Vendas (OP)</button>
+                                        <button class="dropdown-item" type="submit" name="btn_submit" value="Relátorio de Vendas (OP)">Relátorio de Vendas (OP)</button>
                                     </li>
                                     <li>
-                                        <button class="dropdown-item" type="button" name="btn_submit" value="Terceiro BTN">Relátorio para Entrega Por Cliente</button>
+                                        <button class="dropdown-item" type="submit" name="btn_submit" value="Relátorio para Entrega Por Cliente">Relátorio para Entrega Por Cliente</button>
                                     </li>
                                 </ul>
                             </div>
                         </form>
                     </div>
-                    <!-- <div>
-                        <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Incluir</a></button>
-                        
-                        <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 1px 6px;">
-                            <li class="nav-item dropdown" style="list-style-type: none; ">
-                                <a style="color: #1d1d1d; font-size: 0.9em;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="text-decoration: none;" href="#" role="button" aria-expanded="false">Imprimir</a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <button type="submit" name="btn_submit" value="Primeiro BTN">
-                                            Primeiro
-                                        </button>
-                                    <li>
-                                    <li><a class="dropdown-item" href="#">Sintético - Cliente</a></li>
-                                    <li><a class="dropdown-item" href="#">Sintético 3 - Cliente</a></li>
-                                    <li><a class="dropdown-item" href="#">Sintético 3 - Sem Valor</a></li>
-                                    <li style="width: 100%;"><hr class="dropdown-divider" style="color: black; padding: 1px;"></li>
-                                    <li><a class="dropdown-item" href="#">Relátorio de Vendas (OP)</a></li>
-                                    <li><a class="dropdown-item" href="#">Relátorio para Entrega Por Cliente</a></li>
-                                </ul>
-                            </li>
-                        </button>
-                    </div> -->
+                    <form action="recebe_ordem.php" method="post">
+                    <?php $id_unik = uniqid(); ?>
+                    <input type="hidden" name="id_unik" value="<?php echo $id_unik; ?>">
+                    <button type="submit" name="btn_incluir" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;">    
+                        <span style="color: #1d1d1d; font-size: 0.9em;">Incluir</span>
+                    </button>
+                    <!-- <button type="button" name="btn_incluir" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;" onclick="enviarForm1('<php echo $id_unik; ?>')">    
+                        <span style="color: #1d1d1d; font-size: 0.9em;">Incluir</span>
+                    </button> -->
                   </div>
-
                   <section style="padding-bottom: 10px;">
+
                     <hr style="width: 99%; margin: auto; margin-bottom: 10px;">
                     <div class="row" style="font-size: 0.9em; border: 1px solid #ddd; border-radius: 5px; width: 99%; margin: auto;">
                         <div class="col-md-2">OP
@@ -133,6 +121,7 @@
                             <!-- <form action="" method="post"> -->
                                 <select name="" id="" class="form-control" required style="font-size: 1em;">
                                     <option value="">HJ Alúminios</option>
+                                    <option value="Alúminios">HJ Alúminios</option>
                                 </select>
                             <!-- </form> -->
                         </div>
@@ -193,16 +182,16 @@
                         <!-- Last Modal Cliente -->
 
                         <div class="col-md-4">Nome Consumidor
-                            <form action="" method="post">
+                            <!-- <form action="" method="post"> -->
                                 <input type="text" class="form-control" style="font-size: 1em;" name="name_consumidor">
-                            </form>
+                            <!-- </form> -->
                         </div>
                         <div class="col-md-2">Orçamento
-                            <form action="" method="post">
+                            <!-- <form action="" method="post"> -->
                                 <select name="" id="" class="form-control" style="font-size: 1em;">
                                     <option value="">Orçamento</option>
                                 </select>
-                            </form>
+                            <!-- </form> -->
                         </div>
                     </div>
                   </section>
@@ -263,15 +252,15 @@
                                                 </div>
 
                                                 <div class="col-md-3">Qtd <span style="color: #f000;">*</span>
-                                                    <input type="number" name="" id="" placeholder="1" class="form-control">
+                                                    <input type="number" name="qtd" id="" placeholder="1" class="form-control">
                                                 </div>
 
                                                 <div class="col-md-3">Altura (mm)
-                                                    <input type="number" name="" id="" placeholder="1" class="form-control">
+                                                    <input type="number" name="altura" placeholder="1" class="form-control">
                                                 </div>
 
                                                 <div class="col-md-3">Largura (mm)
-                                                    <input type="number" name="" id="" placeholder="1" class="form-control">
+                                                    <input type="number" name="largura" id="" placeholder="1" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -288,7 +277,7 @@
                                                     <div class="p-2">
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
                                                         <div style="display: flex; justify-content: space-around">
-                                                            <input type="text" id="id_perfilAdd" readonly class="form-control mb-2" name="perfil" placeholder="0">
+                                                            <input type="text" id="id_perfilAdd" readonly class="form-control mb-2" name="perfil_lado_esquerdo" placeholder="0">
                                                             <?php
                                                                 echo "
                                                                     <button class='btn' class='ms-1' style='margin-right: 15px; border: none; background-color: transparent; border-radius: 1000px; width: 5px;' onclick='abrirModalPerfil(2)' data-toggle='modal' data-target='#myModalPerfil'>
@@ -437,15 +426,15 @@
                                                     <!--Last Modal-->
 
                                                     <div class="p-2">
-                                                        <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
-                                                        <select class="form-control mb-2" name="usinagem" id="">
+                                                        <label for="">Usinagem Para<span style="color: #f000;">*</span></label>
+                                                        <select class="form-control mb-2" name="usinagem_para_esquerdo" id="">
                                                             <option value="Sem Usinagem">Sem Usinagem</option>
                                                         </select>
                                                     </div>
 
                                                     <div class="p-2">
                                                         <label for="">Puxador</label>
-                                                        <select class="form-control mb-2" name="puxador" id="">
+                                                        <select class="form-control mb-2" name="puxador_esquerdo" id="">
                                                             <option value="">Selecione</option>
                                                         </select>
                                                     </div>
@@ -460,7 +449,7 @@
                                                     <div class="p-2">
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
                                                         <div style="display: flex; justify-content: space-around">
-                                                            <input type="text" id="id_perfilAddA" readonly class="form-control mb-2" name="perfil" placeholder="0">
+                                                            <input type="text" id="id_perfilAddA" readonly class="form-control mb-2" name="perfil_lado_direito" placeholder="0">
                                                             <?php
                                                                 echo "
                                                                     <button class='btn' class='ms-1' style='margin-right: 15px; border: none; background-color: transparent; border-radius: 1000px; width: 5px;' onclick='abrirModalPerfil(2)' data-toggle='modal' data-target='#myModalPerfil'>
@@ -477,14 +466,14 @@
 
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
-                                                        <select class="form-control mb-2" name="usinagem" id="">
+                                                        <select class="form-control mb-2" name="usinagem_para_direito" id="">
                                                             <option value="Sem Usinagem">Sem Usinagem</option>
                                                         </select>
                                                     </div>
 
                                                     <div class="p-2">
                                                         <label for="">Puxador</label>
-                                                        <select class="form-control mb-2" name="puxador" id="">
+                                                        <select class="form-control mb-2" name="puxador_direito" id="">
                                                             <option value="">Selecione</option>
                                                         </select>
                                                     </div>
@@ -498,19 +487,19 @@
                                                     </div>
                                                     <div class="p-2">
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
-                                                        <input type="number" readonly class="form-control mb-2" name="perfil" placeholder="0">
+                                                        <input type="number" readonly class="form-control mb-2" name="perfil_lado_superior" placeholder="0">
                                                     </div>
 
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
-                                                        <select class="form-control mb-2" name="usinagem" id="">
+                                                        <select class="form-control mb-2" name="usinagem_para_superior" id="">
                                                             <option value="Sem Usinagem">Sem Usinagem</option>
                                                         </select>
                                                     </div>
 
                                                     <div class="p-2">
                                                         <label for="">Puxador</label>
-                                                        <select class="form-control mb-2" name="puxador" id="">
+                                                        <select class="form-control mb-2" name="puxador_superior" id="">
                                                             <option value="">Selecione</option>
                                                         </select>
                                                     </div>
@@ -524,20 +513,20 @@
                                                     </div>
                                                     <div class="p-2">
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
-                                                        <input type="number" readonly class="form-control mb-2" name="perfil" placeholder="0">
+                                                        <input type="number" readonly class="form-control mb-2" name="perfil_lado_inferior" placeholder="0">
 
                                                     </div>
 
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
-                                                        <select class="form-control mb-2" name="usinagem" id="">
+                                                        <select class="form-control mb-2" name="usinagem_para_inferior" id="">
                                                             <option value="Sem Usinagem">Sem Usinagem</option>
                                                         </select>
                                                     </div>
 
                                                     <div class="p-2">
                                                         <label for="">Puxador</label>
-                                                        <select class="form-control mb-2" name="puxador" id="">
+                                                        <select class="form-control mb-2" name="puxador_inferior" id="">
                                                             <option value="">Selecione</option>
                                                         </select>
                                                     </div>
@@ -580,8 +569,7 @@
                                                         </h3>
                                                     </div>
                                                     <div class="p-2" style="width: 280px;">
-                                                        <!-- <label for="">Vidro</label> -->
-                                                        <select class="form-control mb-2" name="vidro" id="">
+                                                        <select class="form-control mb-2" name="servicos" id="">
                                                             <option value="Rebaixo">Rebaixo</option>
                                                             <option value="Usinagem Puxador">Usinagem Puxador</option>
                                                         </select>
@@ -600,7 +588,7 @@
                                                     </div>
                                                     <div class="p-2" style="width: 280px;">
                                                         <label for="">Sentido da Travessa</label>
-                                                        <select class="form-control mb-2" name="vidro" id="">
+                                                        <select class="form-control mb-2" name="travessa" id="">
                                                             <option value="">Sem Travessa</option>
                                                         </select>
                                                     </div>
@@ -619,7 +607,7 @@
                                                 <div class="col-md-2">
                                                     <div>
                                                         <label for="">Portas Pares</label>
-                                                        <select class="form-control mb-2" name="portas-pares" id="">
+                                                        <select class="form-control mb-2" name="portas_pares" id="">
                                                             <option value="">Selecione</option>
                                                         </select>
                                                     </div>
@@ -708,21 +696,21 @@
                                                 <div class="col-md-4">
                                                     <div>
                                                         <label for="valoritem-cliente">Valor Item - Cliente</label>
-                                                        <input type="number" class="form-control mb-2" name="valoritem-cliente" id="" placeholder="0,00">
+                                                        <input type="number" class="form-control mb-2" name="valor_item_cliente" id="" placeholder="0,00">
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="col-md-4">
                                                     <div>
                                                         <label for="desconto">% Desconto</label>
-                                                        <input type="number" class="form-control mb-2" name="desconto" id="" placeholder="0,00">
+                                                        <input type="number" class="form-control mb-2" name="porcento_desconto" id="" placeholder="0,00">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <div>
                                                         <label for="desconto2">Desconto</label>
-                                                        <input type="number" class="form-control mb-2" name="desconto2" id="" placeholder="0,00">
+                                                        <input type="number" class="form-control mb-2" name="desconto" id="" placeholder="0,00">
                                                     </div>
                                                 </div>
                                             </div>
@@ -819,13 +807,13 @@
                                         <div style="border: 1px solid #ddd; padding: 10px;">
                                             <div class="row">
                                                 <div class="col-md-3">Produto
-                                                    <select class="form-control" name="modo" id="">
+                                                    <select class="form-control" name="produto" id="">
                                                         <option value="">Selecione</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="col-md-3">Qtd <span style="color: #f000;">*</span>
-                                                    <input type="number" name="" id="" placeholder="1,000" class="form-control">
+                                                    <input type="number" name="prod_qtd" id="" placeholder="1,000" class="form-control">
                                                 </div>
                                             </div>
                                        </div>
@@ -839,7 +827,7 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div>
-                                                        <select name="produto_servicos" id="" class="form-control mb-2 ms-2 mt-2">
+                                                        <select name="prod_usinagem_puxador" id="" class="form-control mb-2 ms-2 mt-2">
                                                             <option value="Usinagem Puxador">Usinagem Puxador</option>
                                                         </select>
                                                     </div>
@@ -873,18 +861,18 @@
                                                 <div class="col-md-4">
                                                     <div>
                                                         <label for="valoritem-cliente">Valor Item - Cliente</label>
-                                                        <input type="number" class="form-control mb-2" name="valoritem-cliente" id="" placeholder="0,00">
+                                                        <input type="number" class="form-control mb-2" name="prod_valor_item_cliente" id="" placeholder="0,00">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div>
                                                         <label for="produto_desconto">% Desconto</label>
-                                                        <input type="number" class="form-control mb-2" name="produto_desconto" id="" placeholder="0,00">
+                                                        <input type="number" class="form-control mb-2" name="prod_porcento_desconto" id="" placeholder="0,00">
                                                     </div>
                                                 </div><div class="col-md-4">
                                                     <div>
                                                         <label for="produto_desconto2">Desconto</label>
-                                                        <input type="number" class="form-control mb-2" name="produto_desconto2" id="" placeholder="0,00">
+                                                        <input type="number" class="form-control mb-2" name="prod_desconto" id="" placeholder="0,00">
                                                     </div>
                                                 </div>
                                             </div>
@@ -937,17 +925,17 @@
                             <div style="border: 1px solid #ddd; padding: 10px;">
                                 <div class="row">
                                     <div class="col-md-4">Forma de Pagamento
-                                        <select class="form-control" name="" id="">
+                                        <select class="form-control" name="val_forma_pagamento" id="">
                                             <option value=""></option>
                                         </select>
                                     </div>
                                     <div class="col-md-4">Condição de Pagamento
-                                        <select class="form-control" name="" id="">
+                                        <select class="form-control" name="val_condicao_pagamento" id="">
                                             <option value=""></option>
                                         </select>
                                     </div>
                                     <div class="col-md-4">Situação Financeira
-                                        <select class="form-control" name="" id="">
+                                        <select class="form-control" name="val_situacao_financeira" id="">
                                             <option value=""></option>
                                         </select>
                                     </div>
@@ -955,40 +943,40 @@
 
                                 <div class="row mt-4">
                                     <div class="col-md-3" style="font-size: 0.9em;">Qtd Portas
-                                        <input type="text" name="" id="" style="font-size: 1em;" placeholder="0" class="form-control">
+                                        <input type="text" name="val_qtd_portas" id="" style="font-size: 1em;" placeholder="0" class="form-control">
                                     </div>
                                     <div class="col-md-3" style="font-size: 0.9em;">Qtd Vidros
-                                        <input type="text" name="" id="" placeholder="0" style="font-size: 1em;" class="form-control">
+                                        <input type="text" name="val_qtd_vidros" id="" placeholder="0" style="font-size: 1em;" class="form-control">
                                     </div>
                                     <div class="col-md-3" style="font-size: 0.9em;">Qtd Quadros
-                                        <input type="text" name="" id="" placeholder="0" style="font-size: 1em;" class="form-control">
+                                        <input type="text" name="val_qtd_quadros" id="" placeholder="0" style="font-size: 1em;" class="form-control">
                                     </div>
                                     <div class="col-md-3" style="font-size: 0.9em;">Qtd Total
-                                        <input type="text" name="" id="" style="font-size: 1em;" class="form-control">
+                                        <input type="text" name="val_qtd_total" id="" style="font-size: 1em;" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="row mt-4">
                                     <div class="col-md-2" style="font-size: 0.9em;">Total(Consumidor)
-                                        <input type="text" name="" id="" style="font-size: 1em;" placeholder="0" class="form-control">
+                                        <input type="text" name="val_total_consumidor" id="" style="font-size: 1em;" placeholder="0" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="row mt-4">
                                     <div class="col-md-4" style="font-size: 0.9em;">Valor dos Itens (Clientes)
-                                        <input type="text" name="" id="" style="font-size: 1em;" placeholder="0,00" class="form-control">
+                                        <input type="text" name="val_valor_itens_clientes" id="" style="font-size: 1em;" placeholder="0,00" class="form-control">
                                     </div>
                                     <div class="col-md-2" style="font-size: 0.9em;">% Desconto
-                                        <input type="text" name="" id="" placeholder="0,0000" style="font-size: 1em;" class="form-control">
+                                        <input type="text" name="val_porcento_desconto" id="" placeholder="0,0000" style="font-size: 1em;" class="form-control">
                                     </div>
                                     <div class="col-md-2" style="font-size: 0.9em;">Desconto
-                                        <input type="text" name="" id="" placeholder="0,00" style="font-size: 1em;" class="form-control">
+                                        <input type="text" name="val_desconto" id="" placeholder="0,00" style="font-size: 1em;" class="form-control">
                                     </div>
                                     <div class="col-md-2" style="font-size: 0.9em;">Frete
-                                        <input type="text" name="" id="" placeholder="0,00" style="font-size: 1em;" class="form-control">
+                                        <input type="text" name="val_frete" id="" placeholder="0,00" style="font-size: 1em;" class="form-control">
                                     </div>
                                     <div class="col-md-2" style="font-size: 0.9em;">Total(Cliente)
-                                        <input type="text" name="" id="" placeholder="0,00" style="font-size: 1em;" class="form-control">
+                                        <input type="text" name="val_total_cliente" id="" placeholder="0,00" style="font-size: 1em;" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -998,28 +986,28 @@
                             <div style="border: 1px solid #ddd; padding: 10px;">
                                 <div class="row mt-4">
                                     <div class="col-md-4" style="font-size: 0.9em;">Valor dos Itens (Parceiro)
-                                        <input type="text" name="" id="" style="font-size: 1em;" placeholder="0,00" class="form-control">
+                                        <input type="text" name="out_valor_itens_parceiro" id="" style="font-size: 1em;" placeholder="0,00" class="form-control">
                                     </div>
                                     <div class="col-md-2" style="font-size: 0.9em;">% Desconto
-                                        <input type="text" name="" id="" placeholder="0,0000" style="font-size: 1em;" class="form-control">
+                                        <input type="text" name="out_porcento_desconto" id="" placeholder="0,0000" style="font-size: 1em;" class="form-control">
                                     </div>
                                     <div class="col-md-2" style="font-size: 0.9em;">Desconto
-                                        <input type="text" name="" id="" placeholder="0,00" style="font-size: 1em;" class="form-control">
+                                        <input type="text" name="out_desconto" id="" placeholder="0,00" style="font-size: 1em;" class="form-control">
                                     </div>
                                     <div class="col-md-2" style="font-size: 0.9em;">Total(Parceiro)
-                                        <input type="text" name="" id="" placeholder="0,00" style="font-size: 1em;" class="form-control">
+                                        <input type="text" name="out_total_parceiro" id="" placeholder="0,00" style="font-size: 1em;" class="form-control">
                                     </div>
                                     <div class="col-md-2" style="font-size: 0.9em;">MArkup % (Parceiro)
-                                        <input type="text" name="" id="" placeholder="0,00" style="font-size: 1em;" class="form-control">
+                                        <input type="text" name="out_markup_parceiro" id="" placeholder="0,00" style="font-size: 1em;" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="row mt-4">
                                     <div class="col-md-4" style="font-size: 0.9em;">Total (Fábrica)
-                                        <input type="text" name="" id="" style="font-size: 1em;" placeholder="0,00" class="form-control">
+                                        <input type="text" name="out_total_fabrica" id="" style="font-size: 1em;" placeholder="0,00" class="form-control">
                                     </div>
                                     <div class="col-md-2" style="font-size: 0.9em;">Markup % (Fábrica)
-                                        <input type="text" name="" id="" placeholder="0,0000" style="font-size: 1em;" class="form-control">
+                                        <input type="text" name="out_markup_fabrica" id="" placeholder="0,0000" style="font-size: 1em;" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -1029,7 +1017,7 @@
                             <div style="border: 1px solid #ddd; padding: 10px;">
                                 <div class="row mt-4">
                                     <div class="col-md-8" style="font-size: 0.9em;">Obeservação
-                                        <textarea name="" id="" cols="10" rows="5" style="font-size: 1em;" class="form-control"></textarea>
+                                        <textarea name="obs_observacao_op" id="" cols="10" rows="5" style="font-size: 1em;" class="form-control"></textarea>
                                     </div>                                    
                                 </div>
                             </div>
@@ -1039,19 +1027,19 @@
                             <div style="border: 1px solid #ddd; padding: 10px;">
                                 <div class="row mt-4">
                                     <div class="col-md-3" style="font-size: 0.9em;">Aprovação do Cliente
-                                        <select name="" id="" style="font-size: 1em;" class="form-control">
+                                        <select name="ap_cli_aprovacao_cliente" id="" style="font-size: 1em;" class="form-control">
                                             <option value="">Aguardando Aprovação</option>
                                         </select>
                                     </div> 
                                     <div class="col-md-3" style="font-size: 0.9em;">Aprovação do Cliente
-                                        <input type="date" name="" id="" style="font-size: 1em;" class="form-control">
+                                        <input type="date" name="ap_cli_aprovacao_cliente_data" id="" style="font-size: 1em;" class="form-control">
                                     </div> 
                                     <div class="col-md-3 form-check form-switch" style="padding-left: 120px; margin-top: 15px;">
-                                        <input class="form-check-input" type="checkbox" value="" id="cliente-retira" name="cliente-retira" checked>
+                                        <input class="form-check-input" type="checkbox" value="" id="cliente-retira" name="ap_cli_cliente_retira" checked>
                                         <label class="form-check-label" for="cliente-retira">Cliente Retira</label>
                                     </div> 
                                     <div class="col-md-3" style="font-size: 0.9em;">Pedido Parceiro
-                                        <input type="text" name="" id="" style="font-size: 1em;" class="form-control">
+                                        <input type="text" name="ap_cli_pedido_parceiro" id="" style="font-size: 1em;" class="form-control">
                                     </div>                                    
                                 </div>
                             </div>
@@ -1062,29 +1050,29 @@
                             <div style="border: 1px solid #ddd; padding: 10px;">
                                 <div class="row mt-4">
                                     <div class="col-md-4" style="font-size: 0.9em;">Aprovação do Parceiro
-                                        <select name="" id="" style="font-size: 1em;" class="form-control">
+                                        <select name="ap_parc_aprovacao_parceiro" id="" style="font-size: 1em;" class="form-control">
                                             <option value="">Em Conferencia</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4" style="font-size: 0.9em;">Andamento Parceiro
-                                        <select name="" id="" style="font-size: 1em;" class="form-control">
+                                        <select name="ap_parc_andamento_parceiro" id="" style="font-size: 1em;" class="form-control">
                                             <option value="">Aguardando Aprovação</option>
                                         </select>
                                     </div> 
                                     <div class="col-md-4" style="font-size: 0.9em;">Entregue
-                                        <input type="date" name="" id="" style="font-size: 1em;" class="form-control">
+                                        <input type="date" name="ap_parc_entregue_data" id="" style="font-size: 1em;" class="form-control">
                                     </div>                                    
                                 </div>
 
                                 <div class="row mt-4">
                                     <div class="col-md-4" style="font-size: 0.9em;">Vendedor Interno
-                                        <input type="text" name="" id="" style="font-size: 1em;" placeholder="0" class="form-control">
+                                        <input type="text" name="ap_parc_vendedor_interno" id="" style="font-size: 1em;" placeholder="0" class="form-control">
                                     </div> 
                                     <div class="col-md-4" style="font-size: 0.9em;">Vendedor Externo
-                                        <input type="text" name="" id="" style="font-size: 1em;" placeholder="0" class="form-control">
+                                        <input type="text" name="ap_parc_vendedor_externo" id="" style="font-size: 1em;" placeholder="0" class="form-control">
                                     </div>  
                                     <div class="col-md-4" style="font-size: 0.9em;">Vendedor Pedido
-                                        <select name="" id="" style="font-size: 1em;" class="form-control">
+                                        <select name="ap_parc_vendedor_pedido" id="" style="font-size: 1em;" class="form-control">
                                             <option value="">Marciele Ap. Grosso Vicentini</option>
                                         </select>
                                     </div>                                    
@@ -1096,29 +1084,29 @@
                             <div style="border: 1px solid #ddd; padding: 10px;">
                                 <div class="row mt-4">
                                     <div class="col-md-3" style="font-size: 0.9em;">Aprovação Fábrica
-                                        <select name="" id="" style="font-size: 1em;" class="form-control">
+                                        <select name="ap_fab_aprovacao_fabrica" id="" style="font-size: 1em;" class="form-control">
                                             <option value="">Em Conferencia</option>
                                         </select>
                                     </div>
                                     <div class="col-md-3" style="font-size: 0.9em;">Pedido Fábrica
-                                        <input type="date" name="" id="" style="font-size: 1em;" class="form-control">
+                                        <input type="date" name="ap_fab_pedido_fabrica_data" id="" style="font-size: 1em;" class="form-control">
                                     </div>                                    
                                 </div>
 
                                 <div class="row mt-4">
                                     <div class="col-md-3" style="font-size: 0.9em;">Andamento
-                                        <select name="" id="" style="font-size: 1em;" class="form-control">
+                                        <select name="ap_fab_andamento" id="" style="font-size: 1em;" class="form-control">
                                             <option value="">Aguardando Aprovações</option>
                                         </select>
                                     </div> 
                                     <div class="col-md-3" style="font-size: 0.9em;">Entrou em Produção
-                                        <input type="date" name="" id="" style="font-size: 1em;" class="form-control">
+                                        <input type="date" name="ap_fab_entrou_producao_data" id="" style="font-size: 1em;" class="form-control">
                                     </div> 
                                     <div class="col-md-3" style="font-size: 0.9em;">Produzido
-                                        <input type="text" name="" id="" style="font-size: 1em;" placeholder="0" class="form-control">
+                                        <input type="text" name="ap_fab_produzido" id="" style="font-size: 1em;" placeholder="0" class="form-control">
                                     </div> 
                                     <div class="col-md-3" style="font-size: 0.9em;">Entregue
-                                        <input type="text" name="" id="" style="font-size: 1em;" placeholder="0" class="form-control">
+                                        <input type="text" name="ap_fab_entregue" id="" style="font-size: 1em;" placeholder="0" class="form-control">
                                     </div>                                  
                                 </div>
                             </div>
@@ -1157,20 +1145,48 @@
       });
     </script>
     
+    <script>
+        function enviarForm1(id_parm) {
+            // Simulando o envio e obtenção de um ID
+            const idDoForm1 = id_parm;  // Substitua isso pela lógica real para obter o ID
+
+            // Define o ID do Formulário 1 no campo correspondente no Formulário 2
+            document.getElementById("idDoForm1").value = idDoForm1;
+        }
+    </script>
     </div>
     <!-- END Page Container -->
   </body>
 </html>
 
+<?php
+    if(isset($_POST['btn_incluir']))
+    {
+        $id_unik = $_POST['id_unik'];
+        if($id_unik)
+        {
+            header('Location: ordem_producao.php');
+        }
+        // $modo = $_POST['modo'];
+        // $qtd = $_POST['qtd'];
+        // $altura = $_POST['altura'];
+        // $largura = $_POST['largura'];
+        // $perfil_lado_esquerdo = $_POST['perfil_lado_esquerdo'];
+
+        // echo $id_unik;
+        // .'__'. $qtd .'__'. $altura .'__'. $largura .'__'. $perfil_lado_esquerdo;
+    }
+?>
+
 <?php 
 
-  if(isset($_GET['atualizado'])){ ?>
+  if(isset($_GET['vazio'])){ ?>
     <script>
       const Atualizado = Swal.mixin({
       toast: true,
       position: 'top-end',
       showConfirmButton: false,
-      timer: 3000,
+      timer: 5000,
       timerProgressBar: true,
       didOpen: (toast) => {
           toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -1179,8 +1195,8 @@
       })
 
       Atualizado.fire({
-      icon: 'success',
-      title: 'Pedido Finalizado com Sucesso!'
+      icon: 'warning',
+      title: 'Preencha alguns dados para Incluir!'
       })
     </script>
 <?php } elseif(isset($_GET['nao-atualizado'])){ ?>

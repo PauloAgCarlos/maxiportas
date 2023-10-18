@@ -22,3 +22,13 @@ The btn Incluir será of type submit para enviar os dados dos inputs of baixo na
 Quando clicar on btn Imprimir vai listar all files of tbl_ordem_producao and selecionar the file que deseja imprimir(os dados pra).
 
 Na aba Portas/Vidros quando clica num item and tras as imagens (será feito basiando-se on filter do Ecommerce of Sidebar)
+
+
+
+
+Ordem de Produção
+Só vai selecionar um tipo de impressão se já preencheu os dados e Incliu.
+Depois de Incluir pega esse id passo como o valor no form de um input hidden do form Imprimir e recebo para efectuar a impressão.
+Se não incluir não terá o id e exiba um alert informando: Preencha alguns dados para Incluir.
+
+Depois de Preencher os dados do form e clicar em enviar, quero pegar esse id whith js e inserir como valor no input do type hidden.

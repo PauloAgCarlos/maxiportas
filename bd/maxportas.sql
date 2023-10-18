@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Set-2023 às 12:57
+-- Tempo de geração: 18-Out-2023 às 10:52
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -590,7 +590,8 @@ INSERT INTO `pedidos_dos_clientes` (`id`, `nome_cliente`, `descricao_pedido`, `d
 (10, 'Torres Code', '<p>10 Portas</p><p>5 Travessas</p>', '31/08/2023', '31/08/2023', '', 'Finalizado', 'Paulo'),
 (11, 'Torres Code', '<p>10 Travessas</p>', '04/09/2023', '04/09/2023', '', 'Finalizado', 'Paulo'),
 (12, 'Torres Code', '<p>10 Portas com uma fechadura</p>', '07/09/2023', '07/09/2023', '', 'Em Andamento', ''),
-(13, 'Torres Code', '<p>10 Porta 3 Dobradissas</p>', '14/09/2023', '14/09/2023', '', 'Em Andamento', '');
+(13, 'Torres Code', '<p>10 Porta 3 Dobradissas</p>', '14/09/2023', '14/09/2023', '', 'Em Andamento', ''),
+(14, 'Torres Code', '<p>testettt</p>', '12/10/2023', '12/10/2023', '', 'Em Andamento', '');
 
 -- --------------------------------------------------------
 
@@ -757,6 +758,90 @@ CREATE TABLE `servicos` (
 
 INSERT INTO `servicos` (`id`, `descricao`, `tipo_de_servico`, `exibe_no_orcamento`, `exibe_na_lista_de_corte`, `observacao`, `custo_metro`, `codigo_produto`, `markup`, `valor`, `adiciona_para_o_corte`, `calculo`, `codigo_da_fabrica`, `ultima_alteracao`, `ativo`) VALUES
 (6, 'hbjbj', 'Potra', 'on', 'on', 'jkvugkkm', '0', 'CSeHJ-nds99', '0', '0', '0', 'on', '', '0000-00-00', 'on');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tbl_ordem_producao`
+--
+
+CREATE TABLE `tbl_ordem_producao` (
+  `id` int(11) NOT NULL,
+  `id_uniq` text NOT NULL,
+  `cliente` varchar(255) NOT NULL,
+  `modo` varchar(255) NOT NULL,
+  `qtd` int(11) NOT NULL,
+  `altura` int(11) NOT NULL,
+  `largura` int(11) NOT NULL,
+  `perfil_lado_esquerdo` int(11) NOT NULL,
+  `usinagem_para_esquerdo` varchar(255) NOT NULL,
+  `puxador_esquerdo` varchar(255) NOT NULL,
+  `perfil_lado_direito` int(11) NOT NULL,
+  `usinagem_para_direito` varchar(255) NOT NULL,
+  `puxador_direito` varchar(255) NOT NULL,
+  `perfil_lado_superior` int(11) NOT NULL,
+  `usinagem_para_superior` varchar(255) NOT NULL,
+  `puxador_superior` varchar(255) NOT NULL,
+  `perfil_lado_inferior` int(11) NOT NULL,
+  `usinagem_para_inferior` varchar(255) NOT NULL,
+  `puxador_inferior` varchar(255) NOT NULL,
+  `vidro` varchar(255) NOT NULL,
+  `tv` varchar(255) NOT NULL,
+  `servicos` varchar(255) NOT NULL,
+  `travessa` varchar(255) NOT NULL,
+  `portas_pares` varchar(255) NOT NULL,
+  `reforco` varchar(255) NOT NULL,
+  `desempenador` varchar(255) NOT NULL,
+  `esquadreta` varchar(255) NOT NULL,
+  `ponteira` varchar(255) NOT NULL,
+  `kit` varchar(255) NOT NULL,
+  `valor_item_cliente` varchar(255) NOT NULL,
+  `porcento_desconto` varchar(255) NOT NULL,
+  `desconto` varchar(255) NOT NULL,
+  `produto` varchar(255) NOT NULL,
+  `prod_qtd` varchar(255) NOT NULL,
+  `prod_usinagem_puxador` varchar(255) NOT NULL,
+  `prod_valor_item_cliente` varchar(255) NOT NULL,
+  `prod_porcento_desconto` varchar(255) NOT NULL,
+  `prod_desconto` varchar(255) NOT NULL,
+  `val_forma_pagamento` varchar(255) NOT NULL,
+  `val_condicao_pagamento` varchar(255) NOT NULL,
+  `val_situacao_financeira` varchar(255) NOT NULL,
+  `val_qtd_portas` varchar(255) NOT NULL,
+  `val_qtd_vidros` varchar(255) NOT NULL,
+  `val_qtd_quadros` varchar(255) NOT NULL,
+  `val_qtd_total` varchar(255) NOT NULL,
+  `val_total_consumidor` varchar(255) NOT NULL,
+  `val_valor_itens_clientes` varchar(255) NOT NULL,
+  `val_porcento_desconto` varchar(255) NOT NULL,
+  `val_desconto` varchar(255) NOT NULL,
+  `val_frete` varchar(255) NOT NULL,
+  `val_total_cliente` varchar(255) NOT NULL,
+  `out_valor_itens_parceiro` varchar(255) NOT NULL,
+  `out_porcento_desconto` varchar(255) NOT NULL,
+  `out_desconto` varchar(255) NOT NULL,
+  `out_total_parceiro` varchar(255) NOT NULL,
+  `out_markup_parceiro` varchar(255) NOT NULL,
+  `out_total_fabrica` varchar(255) NOT NULL,
+  `out_markup_fabrica` varchar(255) NOT NULL,
+  `obs_observacao_op` varchar(255) NOT NULL,
+  `ap_cli_aprovacao_cliente` varchar(255) NOT NULL,
+  `ap_cli_aprovacao_cliente_data` varchar(255) NOT NULL,
+  `ap_cli_cliente_retira` varchar(255) NOT NULL,
+  `ap_cli_pedido_parceiro` varchar(255) NOT NULL,
+  `ap_parc_aprovacao_parceiro` varchar(255) NOT NULL,
+  `ap_parc_andamento_parceiro` varchar(255) NOT NULL,
+  `ap_parc_entregue_data` varchar(255) NOT NULL,
+  `ap_parc_vendedor_interno` varchar(255) NOT NULL,
+  `ap_parc_vendedor_externo` varchar(255) NOT NULL,
+  `ap_parc_vendedor_pedido` varchar(255) NOT NULL,
+  `ap_fab_aprovacao_fabrica` varchar(255) NOT NULL,
+  `ap_fab_pedido_fabrica_data` varchar(255) NOT NULL,
+  `ap_fab_andamento` varchar(255) NOT NULL,
+  `ap_fab_entrou_producao_data` varchar(255) NOT NULL,
+  `ap_fab_produzido` varchar(11) NOT NULL,
+  `ap_fab_entregue` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -1085,6 +1170,12 @@ ALTER TABLE `servicos`
   ADD UNIQUE KEY `codigo_produto` (`codigo_produto`);
 
 --
+-- Índices para tabela `tbl_ordem_producao`
+--
+ALTER TABLE `tbl_ordem_producao`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `tintas`
 --
 ALTER TABLE `tintas`
@@ -1252,7 +1343,7 @@ ALTER TABLE `parceiros`
 -- AUTO_INCREMENT de tabela `pedidos_dos_clientes`
 --
 ALTER TABLE `pedidos_dos_clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `perfil`
@@ -1277,6 +1368,12 @@ ALTER TABLE `puxadores`
 --
 ALTER TABLE `servicos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de tabela `tbl_ordem_producao`
+--
+ALTER TABLE `tbl_ordem_producao`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de tabela `tintas`

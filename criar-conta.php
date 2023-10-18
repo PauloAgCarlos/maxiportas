@@ -35,6 +35,87 @@
     <link rel="stylesheet" id="css-theme" href="assets/css/themes/xwork.min.css">
     <!-- END Stylesheets -->
     
+
+
+
+    
+    <!-- Last CEP -->
+    <!-- Adicionando Javascript -->
+    <script>
+    
+      function limpa_formulário_cep() {
+              //Limpa valores do formulário de cep.
+              document.getElementById('rua').value=("");
+              document.getElementById('bairro').value=("");
+              document.getElementById('cidade').value=("");
+              document.getElementById('uf').value=("");
+              document.getElementById('ibge').value=("");
+      }
+
+      function meu_callback(conteudo) {
+          if (!("erro" in conteudo)) {
+              //Atualiza os campos com os valores.
+              document.getElementById('rua').value=(conteudo.logradouro);
+              document.getElementById('bairro').value=(conteudo.bairro);
+              document.getElementById('cidade').value=(conteudo.localidade);
+              document.getElementById('uf').value=(conteudo.uf);
+              document.getElementById('ibge').value=(conteudo.ibge);
+          } //end if.
+          else {
+              //CEP não Encontrado.
+              limpa_formulário_cep();
+              alert("CEP não encontrado.");
+          }
+      }
+        
+      function pesquisacep(valor) {
+
+          //Nova variável "cep" somente com dígitos.
+          var cep = valor.replace(/\D/g, '');
+
+          //Verifica se campo cep possui valor informado.
+          if (cep != "") {
+
+              //Expressão regular para validar o CEP.
+              var validacep = /^[0-9]{8}$/;
+
+              //Valida o formato do CEP.
+              if(validacep.test(cep)) {
+
+                  //Preenche os campos com "..." enquanto consulta webservice.
+                  document.getElementById('rua').value="...";
+                  document.getElementById('bairro').value="...";
+                  document.getElementById('cidade').value="...";
+                  document.getElementById('uf').value="...";
+                  document.getElementById('ibge').value="...";
+
+                  //Cria um elemento javascript.
+                  var script = document.createElement('script');
+
+                  //Sincroniza com o callback.
+                  script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                  //Insere script no documento e carrega o conteúdo.
+                  document.body.appendChild(script);
+
+              } //end if.
+              else {
+                  //cep é inválido.
+                  limpa_formulário_cep();
+                  alert("Formato de CEP inválido.");
+              }
+          } //end if.
+          else {
+              //cep sem valor, limpa formulário.
+              limpa_formulário_cep();
+          }
+      };
+
+    </script>
+    <!-- Last CEP -->
+
+
+
     <!--SwitAlert Success ao Cadastrar-->
     <script src="assets/js/cdn.jsdelivr.net_npm_sweetalert2@11.0.18_dist_sweetalert2.all.min.js"></script>
   </head>
@@ -56,7 +137,7 @@
                       <img src="assets/img/logoHJ-Aluminio.jpg" alt="logotipo-hj">
                     </a>
                   </div>
-                  <form class="js-validation-signup " action="" method="POST">
+                  <form class="js-validation-signup " action="" method="GET">
                     <div class="input-group mb-3">
                       <span style="color: red;">*</span>
                       <input type="text" class="form-control input-sm" id="signup-username" name="nome" style="font-size: 0.9em;" placeholder="Nome" required>
@@ -83,7 +164,9 @@
                     </div>
 
                     <div class="input-group mb-3">
-                      <input type="text" class="form-control" id="cep" name="cep" style="font-size: 0.9em;" placeholder="CEP">
+                      <input name="cep" type="text" id="cep" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);" />
+                      <!-- <input type="text" class="form-control" name="cep" type="text" id="cep" value="" size="10" maxlength="9"
+                        onblur="pesquisacep(this.value);" style="font-size: 0.9em;" placeholder="CEP"> -->
                       
                       <input type="text" class="form-control ms-3" id="endereco" name="endereco" style="font-size: 0.9em;" placeholder="Endereço">
                     </div>
@@ -95,9 +178,14 @@
                     </div>
 
                     <div class="input-group mb-3">
-                      <input type="text" class="form-control" id="bairro" name="bairro" style="font-size: 0.9em;" placeholder="Bairro">
+                      <input name="bairro" type="text" id="bairro" size="40" />
+                      <!-- <input type="text" class="form-control" name="bairro" type="text" id="bairro" size="40" style="font-size: 0.9em;" placeholder="Bairro"> -->
                       
-                      <input type="text" class="form-control ms-3" id="cidade" name="cidade" style="font-size: 0.9em;" placeholder="Cidade">
+                      <input name="cidade" type="text" id="cidade" size="40" />
+                      <!-- <input type="text" class="form-control ms-3" name="cidade" type="text" id="cidade" style="font-size: 0.9em;" placeholder="Cidade"> -->
+                      <input name="uf" type="text" id="uf" size="2" />
+                      <input name="ibge" type="text" id="ibge" size="8" />
+                      <input name="rua" type="text" id="rua" size="60" />
                     </div>
 
                     <div class="input-group mb-3">
@@ -139,7 +227,7 @@
       <script>
         $("#telefone").mask("(99) 99999-99999");
         $("#cpf").mask("999.999.999-99")
-        $("#cep").mask("99999-999");
+        // $("#cep").mask("99999-999");
         // $("#cnpj").mask("99.999.999/9999-99")
         $("#nascimento").mask("99/99/9999")
       </script>

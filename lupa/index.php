@@ -63,17 +63,17 @@
 
 // Start
     // Função para lidar com o clique no botão
-    // function handleButtonClick(id) {
-    //   // Redirecionar para a URL com o ID
-    //   window.location.href = 'index.php?id=' + id;
-    // }
+    function handleButtonClick(id) {
+      // Redirecionar para a URL com o ID
+      window.location.href = 'index.php?id=' + id;
+    }
 
-    // // Exemplo de uso: associar essa função a um botão
-    // var idDoSeuDado = 123; // Substitua pelo ID real que você quer enviar
-    // var seuBotao = document.getElementById('seuBotao'); // Substitua pelo seu elemento real
-    // seuBotao.addEventListener('click', function() {
-    //   handleButtonClick(idDoSeuDado);
-    // });
+    // Exemplo de uso: associar essa função a um botão
+    var idDoSeuDado = 123; // Substitua pelo ID real que você quer enviar
+    var seuBotao = document.getElementById('seuBotao'); // Substitua pelo seu elemento real
+    seuBotao.addEventListener('click', function() {
+      handleButtonClick(idDoSeuDado);
+    });
 // Last
 
     document.querySelectorAll('.select-data').forEach(item => {
