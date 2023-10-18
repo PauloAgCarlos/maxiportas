@@ -1283,5 +1283,47 @@
   })
 </script>
 
+<?php } elseif(isset($_GET['id_filter'])){ ?>
+
+<script>
+  const Sucesso = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 5000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+  })
+
+  Sucesso.fire({
+  icon: 'success',
+  title: 'Incluido com Sucesso!'
+  })
+</script>
+
+<?php } elseif(isset($_GET['produto_vazio'])){ ?>
+
+<script>
+  const Sucessoe = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 5000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+  })
+
+  Sucessoe.fire({
+  icon: 'error',
+  title: 'Não Incluido com Sucesso!'
+  })
+</script>
+
 <?php } ?>
 

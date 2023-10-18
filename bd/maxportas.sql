@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18-Out-2023 às 10:52
+-- Tempo de geração: 18-Out-2023 às 22:45
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -843,6 +843,17 @@ CREATE TABLE `tbl_ordem_producao` (
   `ap_fab_entregue` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `tbl_ordem_producao`
+--
+
+INSERT INTO `tbl_ordem_producao` (`id`, `id_uniq`, `cliente`, `modo`, `qtd`, `altura`, `largura`, `perfil_lado_esquerdo`, `usinagem_para_esquerdo`, `puxador_esquerdo`, `perfil_lado_direito`, `usinagem_para_direito`, `puxador_direito`, `perfil_lado_superior`, `usinagem_para_superior`, `puxador_superior`, `perfil_lado_inferior`, `usinagem_para_inferior`, `puxador_inferior`, `vidro`, `tv`, `servicos`, `travessa`, `portas_pares`, `reforco`, `desempenador`, `esquadreta`, `ponteira`, `kit`, `valor_item_cliente`, `porcento_desconto`, `desconto`, `produto`, `prod_qtd`, `prod_usinagem_puxador`, `prod_valor_item_cliente`, `prod_porcento_desconto`, `prod_desconto`, `val_forma_pagamento`, `val_condicao_pagamento`, `val_situacao_financeira`, `val_qtd_portas`, `val_qtd_vidros`, `val_qtd_quadros`, `val_qtd_total`, `val_total_consumidor`, `val_valor_itens_clientes`, `val_porcento_desconto`, `val_desconto`, `val_frete`, `val_total_cliente`, `out_valor_itens_parceiro`, `out_porcento_desconto`, `out_desconto`, `out_total_parceiro`, `out_markup_parceiro`, `out_total_fabrica`, `out_markup_fabrica`, `obs_observacao_op`, `ap_cli_aprovacao_cliente`, `ap_cli_aprovacao_cliente_data`, `ap_cli_cliente_retira`, `ap_cli_pedido_parceiro`, `ap_parc_aprovacao_parceiro`, `ap_parc_andamento_parceiro`, `ap_parc_entregue_data`, `ap_parc_vendedor_interno`, `ap_parc_vendedor_externo`, `ap_parc_vendedor_pedido`, `ap_fab_aprovacao_fabrica`, `ap_fab_pedido_fabrica_data`, `ap_fab_andamento`, `ap_fab_entrou_producao_data`, `ap_fab_produzido`, `ap_fab_entregue`) VALUES
+(24, ':id_uniq', ':cliente', ':modo', 0, 0, 0, 0, ':usinagem_para_esquerdo', ':puxador_esquerdo', 0, ':usinagem_para_direito', ':puxador_direito', 0, ':usinagem_para_superior', ':puxador_superior', 0, ':usinagem_para_inferior', ':puxador_inferior', ':vidro', '', ':servicos', ':travessa', ':portas_pares', ':reforco', '', ':esquadreta', ':ponteira', ':kit', '', '', '', '', '', '', ':prod_valor_item_cliente', ':prod_porcento_desconto', ':prod_desconto', ':val_forma_pagamento', ':val_condicao_pagamento', ':val_situacao_financeira', ':val_qtd_portas', ':val_qtd_vidros', ':val_qtd_quadros', ':val_qtd_total', ':val_total_consumidor', ':val_valor_itens_clientes', ':val_porcento_desconto', ':val_desconto', ':val_frete', ':val_total_cliente', ':out_valor_itens_parceiro', ':out_porcento_desconto', ':out_desconto', ':out_total_parceiro', ':out_markup_parceiro', '', '', '', '', ':ap_cli_aprovacao_cliente_data', ':ap_cli_cliente_retira', ':ap_cli_pedido_parceiro', ':ap_parc_aprovacao_parceiro', ':ap_parc_andamento_parceiro', ':ap_parc_entregue_data', ':ap_parc_vendedor_interno', ':ap_parc_vendedor_externo', ':ap_parc_vendedor_pedido', ':ap_fab_aprovacao_fabrica', ':ap_fab_pedido_fabrica_data', ':ap_fab_andamento', ':ap_fab_entrou_producao_data', ':ap_fab_pro', 0),
+(25, '6530045890bc9', 'ID: 44 | Nome: HJ Allúminios Update', 'Porta', 100, 3243, 0, 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
+(26, '65302fea66a95', 'ID: 42 | Nome: HJ Allúminio', 'Porta', 1, 259, 1000, 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '1', '', '', '', '1', '100', '', '', '', '', '', '', '', '', '', '', '', 'Observação deste produto', '', '2023-10-12', '', '1', '', '', '', '', '', '', '', '', '', '', '', 0),
+(28, '653032427e06b', 'ID: 42 | Nome: HJ Allúminio', 'Porta', 1, 4000, 500, 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '90', '2', '2', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '100', '', '', '', '', '', '', '', '', '', '', '', 'Obs', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
+(29, '6530328f30687', 'ID: 42 | Nome: HJ Allúminio', 'Porta', 0, 0, 0, 19, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -1373,7 +1384,7 @@ ALTER TABLE `servicos`
 -- AUTO_INCREMENT de tabela `tbl_ordem_producao`
 --
 ALTER TABLE `tbl_ordem_producao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de tabela `tintas`
