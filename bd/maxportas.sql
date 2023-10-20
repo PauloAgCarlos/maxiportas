@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18-Out-2023 às 22:45
+-- Tempo de geração: 20-Out-2023 às 08:45
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 7.4.27
 
@@ -852,7 +852,14 @@ INSERT INTO `tbl_ordem_producao` (`id`, `id_uniq`, `cliente`, `modo`, `qtd`, `al
 (25, '6530045890bc9', 'ID: 44 | Nome: HJ Allúminios Update', 'Porta', 100, 3243, 0, 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
 (26, '65302fea66a95', 'ID: 42 | Nome: HJ Allúminio', 'Porta', 1, 259, 1000, 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '1', '', '', '', '1', '100', '', '', '', '', '', '', '', '', '', '', '', 'Observação deste produto', '', '2023-10-12', '', '1', '', '', '', '', '', '', '', '', '', '', '', 0),
 (28, '653032427e06b', 'ID: 42 | Nome: HJ Allúminio', 'Porta', 1, 4000, 500, 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '90', '2', '2', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '100', '', '', '', '', '', '', '', '', '', '', '', 'Obs', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
-(29, '6530328f30687', 'ID: 42 | Nome: HJ Allúminio', 'Porta', 0, 0, 0, 19, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0);
+(29, '6530328f30687', 'ID: 42 | Nome: HJ Allúminio', 'Porta', 0, 0, 0, 19, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
+(30, '6530451ee770f', 'HJ Allúminios Update', 'Porta', 1, 9000, 8899, 0, 'Sem Usinagem', '', 2000, 'Sem Usinagem', '', 35566, 'Sem Usinagem', '', 455465, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Obs Teste', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
+(31, '6530498436980', 'HJ Allúminios Update', 'Porta', 1, 9000, 5000, 0, 'Sem Usinagem', '', 90, 'Sem Usinagem', '', 9, 'Sem Usinagem', '', 90, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Texto Obs', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
+(32, '6530db16f1e14', 'HJ Allúminios Update', 'Porta', 1200, 0, 0, 18, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
+(33, '6530e267e4def', 'HJ Allúminios Update', 'Porta', 0, 0, 0, 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
+(34, '6530ed43b0269', 'HJ Allúminios Update', 'Porta', 12, 0, 0, 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '200', '2', '2', '12', '1200', '', '', '', '', '', '', '', 'Texto obs', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
+(35, '6530eeeb900bc', 'HJ Allúminio', 'Porta', 0, 0, 0, 19, 'Sem Usinagem', '', 20, 'Sem Usinagem', '', 21, 'Sem Usinagem', '', 22, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '1', 'Usinagem Puxador', '', '', '', '', '', '', '1', '1', '1', '1', '2000', '', '', '', '', '', '', '', '', '', '', '', '', 'Text', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
+(36, '6530efcd12203', 'HJ Allúminios Update', 'Porta', 1, 9000, 400, 18, 'Sem Usinagem', '', 20, 'Sem Usinagem', '', 21, 'Sem Usinagem', '', 22, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Text', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -1384,7 +1391,7 @@ ALTER TABLE `servicos`
 -- AUTO_INCREMENT de tabela `tbl_ordem_producao`
 --
 ALTER TABLE `tbl_ordem_producao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de tabela `tintas`

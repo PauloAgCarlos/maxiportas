@@ -125,12 +125,12 @@
                                 </select>
                             <!-- </form> -->
                         </div>
-                        <div class="col-md-2">Cliente
+                        <div class="col-md-3">Cliente
                             <div  style="display: flex; justify-content: space-between">
                                 <input type="text" readonly class="form-control mb-2" id="id_clienteinput" name="cliente" style="border: none; background-color: white; width: 100%;">
                                 <?php
                                     echo "
-                                        <button class='btn' class='ms-1' style='Amargin-right: 15px; border: none; background-color: transparent; border-radius: 1000px; width: 5px;' onclick='abrirModalCliente(2)' data-toggle='modal' data-target='#myModalCliente'>
+                                        <button class='btn' type='button' class='ms-1' style='Amargin-right: 15px; border: none; background-color: transparent; border-radius: 1000px; width: 5px;' onclick='abrirModalCliente(2)' data-toggle='modal' data-target='#myModalCliente'>
                                             <img src='../assets/svg/icons8-pesquisar.svg' width='25px' alt=''>
                                         </button>"
                                     ;
@@ -154,7 +154,7 @@
 
                                             if ($result->num_rows > 0) {
                                                 while ($row = $result->fetch_assoc()) {
-                                                echo '<li  style="color: #000; font-size: 1.1em;" data-bs-dismiss="modal"><a href="#" style="text-decoration: none; color: black;" class="select-data" data-id="' . $row['id'] . '">ID: ' .$row['id']. ' | Nome: ' . $row['nome_razao_socil'] . '</a></li>';
+                                                echo '<li  style="color: #000; font-size: 1.1em;" data-bs-dismiss="modal"><a href="#" style="text-decoration: none; color: black;" class="select-data">'. $row['nome_razao_socil'] . '</a></li>';
                                                 }
                                             }
                                         ?>
@@ -181,7 +181,7 @@
                             </script>
                         <!-- Last Modal Cliente -->
 
-                        <div class="col-md-4">Nome Consumidor
+                        <div class="col-md-3">Nome Consumidor
                             <!-- <form action="" method="post"> -->
                                 <input type="text" class="form-control" style="font-size: 1em;" name="name_consumidor">
                             <!-- </form> -->
@@ -280,11 +280,13 @@
                                                             <input type="text" id="id_perfilAdd" readonly class="form-control mb-2" name="perfil_lado_esquerdo" placeholder="0">
                                                             <?php
                                                                 echo "
-                                                                    <button class='btn' class='ms-1' style='margin-right: 15px; border: none; background-color: transparent; border-radius: 1000px; width: 5px;' onclick='abrirModalPerfil(2)' data-toggle='modal' data-target='#myModalPerfil'>
+                                                                    <button class='btn' type='button' class='ms-1' style='margin-right: 15px; border: none; background-color: transparent; border-radius: 1000px; width: 5px;' onclick='abrirModalPerfil(2)' data-toggle='modal' data-target='#myModalPerfil'>
                                                                         <img src='../assets/svg/icons8-pesquisar.svg' width='25px' alt=''>
                                                                     </button>"
                                                                 ;
                                                             ?>
+                                                            <!-- <button class="meuBotao" style="border: none; background-color: transparent;" onclick='abrirModalPerfil(2)' data-id="123"><img src='../assets/svg/icons8-pesquisar.svg' width='25px' alt=''></button> -->
+
                                                         </div>
                                                         <div>
                                                             <?php
@@ -386,6 +388,23 @@
                                                         </div>
                                                     </div>
                                                     <script>
+                                                         // Selecione todos os botões com a classe "meuBotao"
+                                                        var botoes = document.querySelectorAll('.meuBotao');
+
+                                                        // Adicione um ouvinte de evento de clique a cada botão
+                                                        botoes.forEach(function(botao) {
+                                                            botao.addEventListener('click', function() {
+                                                                // Obtenha o ID associado ao botão clicado
+                                                                var id = this.getAttribute('data-id');
+
+                                                                // Modifique a URL sem atualizar a página
+                                                                history.pushState({ id: id }, '', '?id=' + id);
+
+                                                                // Faça o que desejar com o ID aqui
+                                                                console.log('ID enviado: ' + id);
+                                                            });
+                                                        });
+
                                                         function abrirModalPerfil(idProdutoPerfil) {
                                                             idProdutoPerfilParaExcluir = idProdutoPerfil;
                                                             const modal = new bootstrap.Modal(document.getElementById('myModalPerfil'), {});
@@ -395,6 +414,7 @@
                                                         item.addEventListener('click', event => {
                                                             event.preventDefault();
                                                             const selectedData = item.innerText;
+                                                            history.pushState({ id: selectedData }, '', '?id=' + selectedData);
                                                             const input = document.getElementById('id_perfilAdd');
                                                             input.value = selectedData;
                                                             $('#myModalPerfil').modal('hide');
@@ -449,7 +469,7 @@
                                                     <div class="p-2">
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
                                                         <div style="display: flex; justify-content: space-around">
-                                                            <input type="text" id="id_perfilAddA" readonly class="form-control mb-2" name="perfil_lado_direito" placeholder="0">
+                                                            <input type="text" id="id_perfilAddA" class="form-control mb-2" name="perfil_lado_direito" placeholder="0">
                                                             <?php
                                                                 echo "
                                                                     <button class='btn' class='ms-1' style='margin-right: 15px; border: none; background-color: transparent; border-radius: 1000px; width: 5px;' onclick='abrirModalPerfil(2)' data-toggle='modal' data-target='#myModalPerfil'>
@@ -487,7 +507,7 @@
                                                     </div>
                                                     <div class="p-2">
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
-                                                        <input type="number" readonly class="form-control mb-2" name="perfil_lado_superior" placeholder="0">
+                                                        <input type="number" class="form-control mb-2" name="perfil_lado_superior" placeholder="0">
                                                     </div>
 
                                                     <div class="p-2">
@@ -513,7 +533,7 @@
                                                     </div>
                                                     <div class="p-2">
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
-                                                        <input type="number" readonly class="form-control mb-2" name="perfil_lado_inferior" placeholder="0">
+                                                        <input type="number" class="form-control mb-2" name="perfil_lado_inferior" placeholder="0">
 
                                                     </div>
 
@@ -1290,7 +1310,7 @@
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
-  timer: 5000,
+  timer: 2000,
   timerProgressBar: true,
   didOpen: (toast) => {
       toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -1311,7 +1331,7 @@
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
-  timer: 5000,
+  timer: 2000,
   timerProgressBar: true,
   didOpen: (toast) => {
       toast.addEventListener('mouseenter', Swal.stopTimer)

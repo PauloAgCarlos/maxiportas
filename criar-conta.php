@@ -164,7 +164,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                      <input name="cep" type="text" id="cep" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);" />
+                      <input name="cep" type="text" id="cep" class="form-control" placeholder="CEP" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);" />
                       <!-- <input type="text" class="form-control" name="cep" type="text" id="cep" value="" size="10" maxlength="9"
                         onblur="pesquisacep(this.value);" style="font-size: 0.9em;" placeholder="CEP"> -->
                       
@@ -178,14 +178,26 @@
                     </div>
 
                     <div class="input-group mb-3">
-                      <input name="bairro" type="text" id="bairro" size="40" />
+                      <input name="bairro" placeholder="Bairro" type="text" id="bairro" class="form-control" size="40" />
                       <!-- <input type="text" class="form-control" name="bairro" type="text" id="bairro" size="40" style="font-size: 0.9em;" placeholder="Bairro"> -->
-                      
-                      <input name="cidade" type="text" id="cidade" size="40" />
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <input name="cidade" type="text" id="cidade" placeholder="Cidade" class="form-control" size="40" />
                       <!-- <input type="text" class="form-control ms-3" name="cidade" type="text" id="cidade" style="font-size: 0.9em;" placeholder="Cidade"> -->
-                      <input name="uf" type="text" id="uf" size="2" />
-                      <input name="ibge" type="text" id="ibge" size="8" />
-                      <input name="rua" type="text" id="rua" size="60" />
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <input name="uf" type="text" placeholder="UF" class="form-control" id="uf" size="2" />
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <input name="ibge" type="text" placeholder="IBGE" class="form-control" id="ibge" size="8" />
+                      <input name="rua" type="text" placeholder="Rua" class="form-control ms-3" id="rua" size="60" />
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <input name="rua" type="text" placeholder="Rua" class="form-control" id="rua" size="60" />
                     </div>
 
                     <div class="input-group mb-3">
