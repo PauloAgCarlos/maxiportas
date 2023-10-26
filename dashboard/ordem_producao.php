@@ -290,9 +290,9 @@
                                                         </div>
                                                         <div>
                                                             <?php
-                                                                if(!empty($_GET['id_filtroImage'])){
+                                                                if(!empty($_GET['id'])){
                                                                     // var_dump($_GET['id_filtroImage']);
-                                                                    $id_getFilter = $_GET['id_filtroImage'];
+                                                                    $id_getFilter = $_GET['id'];
                                                                     // $id = INPUT_POST['name'];
                                                                     $host = "localhost";
                                                                     $user = "root";
@@ -401,7 +401,8 @@
                                                                 history.pushState({ id: id }, '', '?id=' + id);
 
                                                                 // Faça o que desejar com o ID aqui
-                                                                console.log('ID enviado: ' + id);
+                                                                console.log('ID enviado: ' + idd);
+                                                                
                                                             });
                                                         });
 
@@ -412,14 +413,13 @@
                                                         }
                                                         document.querySelectorAll('.select-dataPerfil').forEach(item => {
                                                         item.addEventListener('click', event => {
+                                                            //alert('OLAAAA')
                                                             event.preventDefault();
                                                             const selectedData = item.innerText;
                                                             history.pushState({ id: selectedData }, '', '?id=' + selectedData);
                                                             const input = document.getElementById('id_perfilAdd');
                                                             input.value = selectedData;
                                                             $('#myModalPerfil').modal('hide');
-                                                            
-
                                                             });
                                                         });
                                                         </script>
@@ -571,10 +571,10 @@
                                                     </div>
                                                 </div>                                                
                                             </div>
-
+                                            
                                             <div class="row">
                                                 <div class="col-md-3 form-check form-switch" style="padding-left: 70px; margin-top: 5px;">
-                                                    <input class="form-check-input" type="checkbox" value="" id="tv" name="tv">
+                                                    <input class="form-check-input" type="checkbox" value="0" id="tv" name="tv">
                                                     <label class="form-check-label" for="tv">TV</label>
                                                 </div> 
                                             </div>

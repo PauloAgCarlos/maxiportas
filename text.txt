@@ -32,3 +32,9 @@ Depois de Incluir pega esse id passo como o valor no form de um input hidden do 
 Se não incluir não terá o id e exiba um alert informando: Preencha alguns dados para Incluir.
 
 Depois de Preencher os dados do form e clicar em enviar, quero pegar esse id whith js e inserir como valor no input do type hidden.
+
+
+
+
+*************************************************************************************************
+Sabendo que nos pdfs vam contêr os dados dos Clientes(Nome, Endereço, Bairro, Cidade, Fone e CEP), quando um user Cadastrar-Se e quando o Adm/Colaborador Cadastrar um Usuario vam numa unica table tbl_clientes_system, com os dados dessa tablea é que vamos utilizar nos Cabeçalhos dos diferentes pdfs.

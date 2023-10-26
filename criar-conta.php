@@ -303,7 +303,19 @@ if(isset($_POST['btn_cadastrar'])) :
     $stmt->execute();
 
     if($stmt)
-        { ?>
+    { 
+      
+      //Cadastrar tbl_clientes_system
+      $tbl_clientes_system = $conn->prepare("INSERT INTO tbl_clientes_system (nome, endereco, bairro, cidade, fone, cep) VALUES (:nome, :endereco, :bairro, :cidade, :fone, :cep)");
+      $tbl_clientes_system->bindParam(":nome", $username);
+      $tbl_clientes_system->bindParam(":endereco", $endereco);
+      $tbl_clientes_system->bindParam(":bairro", $bairro);
+      $tbl_clientes_system->bindParam(":cidade", $cidade);
+      $tbl_clientes_system->bindParam(":fone", $telefone);
+      $tbl_clientes_system->bindParam(":cep", $cep);
+      $tbl_clientes_system->execute();
+    
+    ?>
 
         <script>
           const Toast = Swal.mixin({

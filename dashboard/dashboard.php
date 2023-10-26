@@ -152,11 +152,11 @@
                           <script>
                             function atualizarCheckboxes(id, checkbox) {
                                 var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                                checkboxes.forEach(function(cb) {
+                                /*checkboxes.forEach(function(cb) {
                                     if (cb !== checkbox) {
                                         cb.checked = false;
                                     }
-                                });
+                                });*/
 
                                 var campoOculto = document.getElementById('idOculto');
 
@@ -271,8 +271,78 @@
                   </table>
                 </div>
                 </div>
+
+
+          <!-- Latest Orders + Stats -->
+          <div class="row">
+            <div class="col-md-12">
+              <!--  Latest Orders -->
+
+              <div class="block block-rounded block-mode-loading-refresh">
+                <div class="block-header block-header-default">
+                  <h3 class="block-title">
+                    Pedidos
+                  </h3>
+                  <div class="block-options">
+                    <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
+                      <i class="si si-refresh"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="table-responsive">          
+                  <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
+                    <thead style="text-align: center; font-size: 0.8em; background-color: #2ab759; color: #fff;">
+                      <tr class="text-uppercase">
+                        <th>Cliente</th>
+                        <th>Consumidor</th>
+                        <th>Data Final</th>
+                        <th>Ver Mais</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                        require_once "../controllers/controllers_pedidos_dos_clientes.php";
+                        $pedidos_dos_clientes = new controllers_pedidos_dos_clientes();
+                        $result_pedidos = $pedidos_dos_clientes->selecionar_pedidos_dos_clientes();
+                        if(count($result_pedidos) > 0)
+                        {
+                          foreach($result_pedidos as $row_pedidos){
+                      ?>
+                      <tr>
+                        <td class="text-center text-end fw-medium">
+                          <?= $row_pedidos['nome_cliente']; ?>
+                        </td>
+                        <td class="text-center text-end fw-medium">
+                          <?= $row_pedidos['data_inicial']; ?>
+                        </td>
+                        <td class="text-center text-end fw-medium">
+                          <?= $row_pedidos['data_final']; ?>
+                        </td>
+                        <td class="text-center text-nowrap fw-medium" style="display: flex; justify-content: center; align-items: center;">
+
+                          <a href="vermais_pedidos.php?view_pedidos=<?php $idCriptografado = base64_encode($row_clientes['id']); echo $idCriptografado; ?>">
+                              <i class="fa fa-eye me-1 opacity-50"></i>
+                          </a>                          
+                      </td>
+                        
+                      </tr>
+                      <?php 
+                        } } else 
+                        {
+                          echo "<h1>Nenhum registo encontrado!</h1>";
+                        }
+                      ?>
+                      
+                    </tbody>
+                  </table>
+                </div>
+                </div>
               </div>
               <!-- END Latest Orders -->
+              </div>
+              <!-- END Latest Orders -->
+
+              
             </div>
           </div>
           <!-- END Latest Orders + Stats -->

@@ -46,7 +46,19 @@
         $stmt->execute();
 
         if($stmt)
-        { ?>
+        { 
+        
+          //Cadastrar tbl_clientes_system
+          $tbl_clientes_system = $pdo->prepare("INSERT INTO tbl_clientes_system (nome, endereco, bairro, cidade, fone, cep) VALUES (:nome, :endereco, :bairro, :cidade, :fone, :cep)");
+          $tbl_clientes_system->bindParam(":nome", $nome_razao_social);
+          $tbl_clientes_system->bindParam(":endereco", $rua);
+          $tbl_clientes_system->bindParam(":bairro", $bairro);
+          $tbl_clientes_system->bindParam(":cidade", $cidade);
+          $tbl_clientes_system->bindParam(":fone", $celular);
+          $tbl_clientes_system->bindParam(":cep", $cep);
+          $tbl_clientes_system->execute();
+
+        ?>
 
         <script>
           const Toast = Swal.mixin({
