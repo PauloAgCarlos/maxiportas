@@ -76,23 +76,17 @@
 
                     <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Novo</a></button>
 
-                    <div>    
-                        <!--form id="resultForm" action="testids.php" method="post">
-                            <input type="hidden" id="selectedIds" name="selectedIds">
-                            <button type="submit">Enviar para processamento</button>
-                        </form-->    
-
+                    <div>                                    
                         <form action="testids.php" method="post" id="resultForm">
                             <input type="hidden" id="selectedIds" name="selectedIds">
                             <!-- <input type="hidden" name="id_ordemProducao" id="idDoForm1" value="<php echo $_GET['id_filter']; ?>" > -->
                             <div class="btn-group">
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 0 5px 16px;">
-                                  <a style="color: #1d1d1d; font-size: 0.9em;"  style="text-decoration: none;"  href="#" role="button" aria-expanded="false">Imprimir <img src="../assets/img/icons8-ordem-descendente-24.png" width="16px" alt=""></a>
+                                <a style="color: #1d1d1d; font-size: 0.9em;"  style="text-decoration: none;"  href="#" role="button" aria-expanded="false">Imprimir <img src="../assets/img/icons8-ordem-descendente-24.png" width="16px" alt=""></a>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li> 
-                                        <button type="submit">Enviar para processamento</button>-
-                                        <!--button type="submit" name="btn_enviar_ids">Enviar IDs</button-->
+                                    <li>
+                                        <button type="submit" name="btn_enviar_ids">Enviar IDs</button>
                                     </li>
                                     <li>
                                         <button class="dropdown-item" type="submit" name="btn_submit" value="Sintético - Cliente">Sintético - Cliente</button>
@@ -138,13 +132,147 @@
                       ?>
                       <tr>
                         <td><?php echo $row_pedidos['id']; ?></td>
-                        <td>
+                        <!--td style="display: flex; justify-content: center; align-items: center;">
+                          <-- <form action="" method="get"> --
+                            <input type="hidden" value="<php echo $row_pedidos['id']; ?>" name="" id="">
+                            <-- <button type="submit" style="border: none; background-color: transparent;"> -->
+                              <!-- <input type="checkbox" name="id_checkbox" onclick="enviarIdAJAX(123)" value="<php echo $row_pedidos['id']; ?>"> --
+                              <php 
+                              echo '<input type="checkbox" id="habilitarEnvio_' . $row_pedidos['id'] . '" onchange="atualizarCheckboxes(' . $row_pedidos['id'] . ', this)"> ';
+                              // echo '
+                              //       <button style="background-color: transparent; border: none;" onclick="enviarID(' . $row_pedidos['id'] . ')">
+                              //         <input type="checkbox" id="habilitarEnvio_' . $row_pedidos['id'] . '" onchange="atualizarURL(' . $row_pedidos['id'] . ')">
+                              //       </button>
+                              //     ';
+                              ?>
+                              <-- <button style="background-color: transparent; border: none;" onclick="enviarID(12)">
+                                <input type="checkbox" id="habilitarEnvio_'.<php echo $id;?>.'" onchange="atualizarURL(12)">
+                              </button> -->
+                              <!-- <button onclick="enviarID('<php echo $row_pedidos['id']; ?>')" style="background-color: transparent; border: none;">
+                                <input type="checkbox" name="id_checkbox" value="<php echo $row_pedidos['id']; ?>">
+                              </button> -->
+                            <!-- </button>
+                          </form> --
+                          <script>
+                            function atualizarCheckboxes(id, checkbox) {
+                                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                                /*checkboxes.forEach(function(cb) {
+                                    if (cb !== checkbox) {
+                                        cb.checked = false;
+                                    }
+                                });*/
+                                var campoOculto = document.getElementById('idOculto');
+                                // Se este checkbox foi marcado
+                                if (checkbox.checked) {
+                                    // Atualize o campo oculto com o ID
+                                    campoOculto.value = id;
+                                } else {
+                                    // Se este checkbox foi desmarcado, limpe o campo oculto
+                                    campoOculto.value = '';
+                                }
+                            }
+                            function enviarID(id) {
+                                var campoOculto = document.getElementById('idOculto');
+
+                                // Verifica se o campo oculto tem um ID
+                                if (campoOculto.value) {
+                                    // Aqui você pode usar o ID como quiser
+                                    console.log('ID enviado:', campoOculto.value);
+                                } else {
+                                    console.log('Checkbox não está habilitado. Não enviando o ID.');
+                                }
+                            }
+                        </script>
+                          <-- <script>
+                              function atualizarURL(id) {
+                                  var checkbox = document.getElementById('habilitarEnvio_' + id);
+                                  if (!checkbox.checked) {
+                                      history.pushState({}, '', window.location.pathname);
+                                  }
+                              }
+                              function enviarID(id) {
+                                  var checkbox = document.getElementById('habilitarEnvio_' + id);
+                                  if (checkbox.checked) {
+                                      history.pushState({}, '', '?id_filter=' + id);
+                                  } else {
+                                      console.log('Checkbox não está habilitado. Não enviando o ID.');
+                                  }
+                              }
+                          </script> -->
+                          <!-- <script>
+                              function enviarID(id) {
+                                  // Aqui você pode usar o ID como quiser
+                                  console.log('ID enviado:', id);
+
+                                  // Atualize a URL sem recarregar a página
+                                  history.pushState({}, '', '?id=' + id);
+
+                                  // Agora você pode usar a variável 'id' em sua URL
+                                  // Exemplo de como acessar o ID na URL: window.location.search
+                              }
+                          </script> -->
+                          <!-- <script>
+                            function enviarIdAJAX(id) {
+                                // Cria um objeto XMLHttpRequest
+                                var xhr = new XMLHttpRequest();
+                                // Define a função a ser chamada quando a requisição for concluída
+                                xhr.onreadystatechange = function() {
+                                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                                        if (xhr.status === 200) {
+                                            // A requisição foi bem-sucedida, faça o que quiser com a resposta
+                                            console.log('Resposta do servidor:', xhr.responseText);
+                                        } else {
+                                            // Ocorreu um erro na requisição
+                                            console.error('Erro na requisição:', xhr.status);
+                                        }
+                                    }
+                                };
+                                // Abre uma requisição GET assíncrona para sua_pagina.php, passando o ID como parâmetro
+                                xhr.open('GET', 'dashboard.php?id=' + id, true);
+
+                                // Envia a requisição
+                                xhr.send();
+                            }
+                          </script> -->
+
+                          <!-- <script>
+                            function enviarIdParaUrl(id) {
+                                // Redireciona para uma nova URL com o ID como parâmetro
+                                window.location.href = 'dashboard.php?id=' + id;
+                            }
+                          </script> --
+                        </td-->
+
+                        <td style="display: flex; justify-content: center; align-items: center;">
+                          <!--form id="selectForm">
+                            <php echo '<input type="checkbox" name="selectedItems[]" value="' . $row_pedidos['id'] . '"> Item ' . $item . '<br>';?>
+                            <--input type="checkbox" name="item[]" value="<php echo $row_pedidos['id']; ?>"--
+                          </form-->
                           <form id="selectForm">
                               <?php
                               $items = array(1, 2, 3, 4, 5);
-                                echo '<input type="checkbox" name="selectedItems[]" value="' . $row_pedidos['id'] . '">';
+                              //foreach ($items as $item) {
+                                  echo '<input type="checkbox" name="selectedItems[]" value="' . 1 . '">';
+                              //}
                               ?>
                           </form>
+                          <script>
+                            const checkboxes = document.querySelectorAll("#selectForm input[type='checkbox']");
+                            const selectedIdsField = document.getElementById("selectedIds");
+
+                            checkboxes.forEach(checkbox => {
+                            checkbox.addEventListener("change", function () {
+                                // Selecionar todos os checkboxes marcados no primeiro formulário
+                                const checkedCheckboxes = Array.from(checkboxes).filter(checkbox => checkbox.checked);
+                                
+                                // Extrair os IDs dos checkboxes selecionados
+                                const selectedIds = checkedCheckboxes.map(checkbox => checkbox.value);
+                                
+                                // Definir o valor do campo de input no segundo formulário com os IDs selecionados como uma string JSON
+                                selectedIdsField.value = JSON.stringify(selectedIds);
+                            });
+                            });
+                          </script>
                         </td>
 
                         <td class="text-center d-xl-table-cell" style="color: blue;">
@@ -171,23 +299,9 @@
                         {
                           echo "<h1>Nenhum registo encontrado!</h1>";
                         }
-                      ?>                      
+                      ?>
+                      
                     </tbody>
-                    <script>
-                        const checkboxes = document.querySelectorAll("#selectForm input[type='checkbox']");
-                        const selectedIdsInput = document.getElementById("selectedIds");
-
-                        checkboxes.forEach((checkbox) => {
-                            checkbox.addEventListener("change", updateSelectedIds);
-                        });
-
-                        function updateSelectedIds() {
-                            const selectedCheckboxes = Array.from(checkboxes).filter((checkbox) => checkbox.checked);
-                            const selectedIds = selectedCheckboxes.map((checkbox) => checkbox.value);
-
-                            selectedIdsInput.value = JSON.stringify(selectedIds);
-                        }
-                    </script>
                   </table>
                 </div>
                 </div>
@@ -209,59 +323,10 @@
                     </button>
                   </div>
                 </div>
-                <div class="table-responsive">   
-                  
-                
-                <div style="margin: 5px; display: flex; justify-content: space-between;">
-                    <button style="border-radius: 5px; border: 1px solid #ccc; background-color: transparent; width: 200px; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Busca rápida</a></button>
-
-                    <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Novo</a></button>
-
-                    <div>    
-                        <!--form id="resultForm" action="testids.php" method="post">
-                            <input type="hidden" id="selectedIds" name="selectedIds">
-                            <button type="submit">Enviar para processamento</button>
-                        </form-->    
-
-                        <form action="testids.php" method="post" id="resultForm">
-                            <input type="hidden" id="selectedIds" name="selectedIds">
-                            <!-- <input type="hidden" name="id_ordemProducao" id="idDoForm1" value="<php echo $_GET['id_filter']; ?>" > -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 0 5px 16px;">
-                                  <a style="color: #1d1d1d; font-size: 0.9em;"  style="text-decoration: none;"  href="#" role="button" aria-expanded="false">Imprimir <img src="../assets/img/icons8-ordem-descendente-24.png" width="16px" alt=""></a>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li> 
-                                        <button type="submit">Enviar para processamento</button>-
-                                        <!--button type="submit" name="btn_enviar_ids">Enviar IDs</button-->
-                                    </li>
-                                    <li>
-                                        <button class="dropdown-item" type="submit" name="btn_submit" value="Sintético - Cliente">Sintético - Cliente</button>
-                                    </li>
-                                    <li>
-                                        <button class="dropdown-item" type="submit" name="btn_submit" value="Sintético 3 - Cliente">Sintético 3 - Cliente</button>
-                                    </li>
-                                    <li>
-                                        <button class="dropdown-item" type="button" name="btn_submit" value="Sintético 3 - Sem Valor">Sintético 3 - Sem Valor</button>
-                                    </li>
-                                    <li style="width: 100%;"><hr class="dropdown-divider" style="color: black; padding: 1px;"></li>
-                                    <li>
-                                        <button class="dropdown-item" type="button" name="btn_submit" value="Relátorio de Vendas (OP)">Relátorio de Vendas (OP)</button>
-                                    </li>
-                                    <li>
-                                        <button class="dropdown-item" type="button" name="btn_submit" value="Relátorio para Entrega Por Cliente">Relátorio para Entrega Por Cliente</button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </form>
-                    </div>
-                  </div>
-
-
+                <div class="table-responsive">          
                   <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
                     <thead style="text-align: center; font-size: 0.8em; background-color: #2ab759; color: #fff;">
                       <tr class="text-uppercase">
-                        <th><input type="checkbox"></th>
                         <th>Cliente</th>
                         <th>Produto</th>
                         <th>Quantidade</th>
@@ -278,14 +343,6 @@
                           foreach($result_p as $row_p){
                       ?>
                       <tr>
-                        <td class="text-center text-end fw-medium">
-                          <form id="selectForm">
-                              <?php
-                              $items = array(1, 2, 3, 4, 5);
-                                echo '<input type="checkbox" name="selectedItems[]" value="' . $row_pedidos['id'] . '">';
-                              ?>
-                          </form>
-                        </td>
                         <td class="text-center text-end fw-medium">
                           <?= $row_p['cliente']; ?>
                         </td>
@@ -315,21 +372,6 @@
                       ?>
                       
                     </tbody>
-                    <script>
-                        const checkboxes = document.querySelectorAll("#selectForm input[type='checkbox']");
-                        const selectedIdsInput = document.getElementById("selectedIds");
-
-                        checkboxes.forEach((checkbox) => {
-                            checkbox.addEventListener("change", updateSelectedIds);
-                        });
-
-                        function updateSelectedIds() {
-                            const selectedCheckboxes = Array.from(checkboxes).filter((checkbox) => checkbox.checked);
-                            const selectedIds = selectedCheckboxes.map((checkbox) => checkbox.value);
-
-                            selectedIdsInput.value = JSON.stringify(selectedIds);
-                        }
-                    </script>
                   </table>
                 </div>
                 </div>

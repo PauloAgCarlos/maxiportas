@@ -69,19 +69,16 @@
                     <h1 class="fw-bold text-white  ">
 
                       <?php
-                      require_once "../controllers/controllers_clientes.php";
+                      require_once "../controllers/controllers_ordem_producao.php";
 
-                      $selecionar_clientes_id = new controllers_clientes();
+                      $selecionar_tbl_ordem_producao_id = new controllers_ordem_producao();
                       $idDescriptografado = base64_decode($_GET['view_pedidos']);
                       $id = $idDescriptografado;
-                      foreach($selecionar_clientes_id->selecionar_clientes_id($id) as $row_clientes_id){ 
-                      echo addslashes($row_clientes_id['nome_razao_socil']); } ?>
+                      foreach($selecionar_tbl_ordem_producao_id->selecionar_tbl_ordem_producao_id($id) as $row_clientes_id){ 
+                      echo addslashes($row_clientes_id['cliente']); } ?>
                     </h1>
                   </div>
                   <div style=" margin-left:73%; margin-top: -5%;">
-                    <a class="btn btn-hero btn-primary" href="./atualizar_clientes.php?atualizar_clientes=<?php $idCriptografado = base64_encode($row_clientes_id['id']); echo $idCriptografado; ?>" data-toggle="click-ripple">
-                      <i class="fa fa-pencil-alt"></i>
-                    </a>
                     <!-- <a class="btn btn-hero btn-primary" href="eliminar_clientes.php?eliminar_clientes=<php echo $row_clientes_id['id']; ?>" data-toggle="click-ripple">
                       <i class="fa fa-trash" ></i>
                     </a> -->
@@ -106,25 +103,68 @@
                         <div class="block block-rounded">
 
                           <?php
-                            require_once "../controllers/controllers_clientes.php";
+                            require_once "../controllers/controllers_ordem_producao.php";
 
-                            $selecionar_clientes_id = new controllers_clientes();
+                            $selecionar_tbl_ordem_producao_id = new controllers_ordem_producao();
                             $idDescriptografado = base64_decode($_GET['view_pedidos']);
                             $id = $idDescriptografado;
-                            foreach($selecionar_clientes_id->selecionar_clientes_id($id) as $row_clientes_id){ ?>
+                            foreach($selecionar_tbl_ordem_producao_id->selecionar_tbl_ordem_producao_id($id) as $row_clientes_id){ ?>
 
                             <div class="block-header block-header-default">
-                              <h3 class="block-title">Nome: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['nome_razao_socil']); ?></h3>
+                              <h3 class="block-title">Cliente: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['cliente']); ?></h3>
                             </div>
 
                             <div class="block-content">
-                              <div class="fs-4 mb-1">CPF/CNPJ: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['cpf_cnpj']); ?></span></div>
+                              <div class="fs-4 mb-1">Modo: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['modo']); ?></span></div>
                               <address class="fs-sm">
-                                  Senha: <?php echo addslashes($row_clientes_id['senha']); ?><br>
-                                  <i class="fa fa-phone"></i> Contato: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['contato']); ?></span><br>
-                                  <i class="fa fa-phone"></i> Telefone: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['telefone']); ?></span><br>                                
-                                  <i class="fa fa-phone"></i> Celular: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['celular']); ?></span><br>
-                                  <i class="fa fa-envelope-o"></i><?php echo addslashes($row_clientes_id['email']); ?>
+                                  Quantidade: <?php echo addslashes($row_clientes_id['qtd']); ?><br>
+                                  Altura: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['altura']); ?></span><br>
+                                  Largura: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['largura']); ?></span><br>                                
+                                  
+                                  Perfil Lado Esquerdo: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['perfil_lado_esquerdo']); ?></span><br>
+                                  Usinagem Esquerdo: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['usinagem_esquerdo']); ?></span><br>
+                                  Puxador Esquerdo: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['puxador_esquerdo']); ?></span><br>
+                                  
+                                  Perfil Lado Direito: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['perfil_lado_direito']); ?></span><br>
+                                  Usinagem Direito: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['usinagem_direito']); ?></span><br>
+                                  Puxador Direito: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['puxador_direito']); ?></span><br>
+                                  
+                                  Perfil Lado Superior: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['perfil_lado_superior']); ?></span><br>
+                                  Usinagem Superior: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['usinagem_superior']); ?></span><br>
+                                  Puxador Superior: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['puxador_superior']); ?></span><br>
+
+                                  Perfil Lado Inferior: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['perfil_lado_inferior']); ?></span><br>
+                                  Usinagem Inferior: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['usinagem_inferior']); ?></span><br>
+                                  Puxador Inferior: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['puxador_inferior']); ?></span>
+                              </address>
+                              <div class="fs-4 mb-1">Vidro: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['vidro']); ?></span></div>
+                              <address class="fs-sm">
+                                  TV: <?php echo addslashes($row_clientes_id['tv']); ?><br>
+                                  Serviços: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['servicos']); ?></span><br>
+                                  Travessa: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['travessa']); ?></span><br>                                
+                                  
+                                  Portas Pares: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['portas_pares']); ?></span><br>
+                                  Reforço: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['reforco']); ?></span><br>
+                                  Desempenador: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['desempenador']); ?></span><br>
+                                  
+                                  Esquadreta: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['esquadreta']); ?></span><br>
+                                  Ponteira: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ponteira']); ?></span><br>
+                                  Kit: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['kit']); ?></span><br>
+                                  
+                                  Valor Item Cliente: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['valor_item_cliente']); ?></span><br>
+                                  Porcento Desconto: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['porcento_desconto']); ?></span><br>
+                                  Desconto: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['desconto']); ?></span><br>
+
+                                  Produto: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['produto']); ?></span><br>
+                                  Quantidade Produto: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['prod_qtd']); ?></span><br>
+                                  Usinagem Puxador do Produto: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['prod_usinagem_puxador']); ?></span><br>
+
+
+                                  Valor do Item Cliente Produto: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['prod_valor_item_cliente']); ?></span><br>
+                                  Porcento Desconto Produto: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['prod_porcento_desconto']); ?></span><br>
+                                  Desconto Produto: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['prod_desconto']); ?></span><br>
+
+                                                                    
                               </address>
                             </div>
                             <?php } ?>
@@ -135,23 +175,65 @@
                         <!-- Shipping Address -->
                         <div class="block block-rounded">
                           <?php
-                            require_once "../controllers/controllers_clientes.php";
+                            require_once "../controllers/controllers_ordem_producao.php";
 
-                            $selecionar_clientes_id = new controllers_clientes();
+                            $selecionar_tbl_ordem_producao_id = new controllers_ordem_producao();
                             $idDescriptografado = base64_decode($_GET['view_pedidos']);
                             $id = $idDescriptografado;
-                            foreach($selecionar_clientes_id->selecionar_clientes_id($id) as $row_clientes_id_id){ ?>
+                            foreach($selecionar_tbl_ordem_producao_id->selecionar_tbl_ordem_producao_id($id) as $row_clientes_id_id){ ?>
                             <div class="block-header block-header-default">
-                              <h3 class="block-title">Rua: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['rua']); ?></span></h3>
+                              <h3 class="block-title">Produto: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['produto']); ?></span></h3>
                             </div>
                             <div class="block-content">
-                            <div class="fs-4 mb-1">CEP: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['cep']); ?></span></div>
                             <address class="fs-sm">
-                            Complemento: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['complemento']); ?></span><br>
-                                Bairro: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['bairro']); ?></span><br>
-                                Cidade: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['cidade']); ?></span><br>
-                                Estado: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['estado']); ?></span><br>
-                                <i class="fa fa-phone"></i> Número: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['numero']); ?></span>
+                            Forma de Pagamento do Valor: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['val_forma_pagamento']); ?></span><br>
+                                  Condição de Pagamento do Valor: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['val_condicao_pagamento']); ?></span><br>
+                                  Situação Financeira do Valor: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['val_situacao_financeira']); ?></span><br>
+
+
+                                  Qtd de Portas do Valor: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['val_qtd_portas']); ?></span><br>
+                                  Qtd de Vidros do Valor: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['val_qtd_vidros']); ?></span><br>
+                                  Qtd de Quadros do Valor: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['val_qtd_quadros']); ?></span><br>
+
+                                  Qtd Total do Valor: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['val_qtd_total']); ?></span><br>
+                                  Valor Total Consumidor: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['val_total_consumidor']); ?></span><br>
+                                  Valor dos Itens dos Clientes: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['val_valor_itens_clientes']); ?></span><br>
+
+                                  Valor Porcento Desconto: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['val_porcento_desconto']); ?></span><br>
+                                  Desconto do Valor: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['val_desconto']); ?></span><br>
+                                  Valor do Frete: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['val_frete']); ?></span><br>
+                                Valor Total Cliente: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['val_total_cliente']); ?></span><br>
+                                  Outro Valor dos Itens do Parceiro: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['out_valor_itens_parceiro']); ?></span><br>
+                                  Outro Porcento Desconto: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['out_porcento_desconto']); ?></span><br>
+
+                                  Outro Desconto: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['out_desconto']); ?></span><br>
+                                  Outro Total Parceiro: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['out_total_parceiro']); ?></span><br>
+                                  Outro Markup Parceiro: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['out_markup_parceiro']); ?></span><br>
+
+                                  Outro Total Fábrica: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['out_total_fabrica']); ?></span><br>
+                                  Outro Markup Fábrica: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['out_markup_fabrica']); ?></span><br>
+                                  Observação OP: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['obs_observacao_op']); ?></span><br>
+
+                                  Aprovação Cliente: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ap_cli_aprovacao_cliente']); ?></span><br>
+                                  Aprovação Cliente Data: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ap_cli_aprovacao_cliente_data']); ?></span><br>
+                                  Cliente Retira: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ap_cli_cliente_retira']); ?></span><br>
+
+                                  Aprovação Cliente Pedido Parceiro: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ap_cli_pedido_parceiro']); ?></span><br>
+                                  Aprovação Parceiro: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ap_parc_aprovacao_parceiro']); ?></span><br>
+                                  Aprovação Andamento Parceiro: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ap_parc_andamento_parceiro']); ?></span><br>
+
+                                  Aprovação Parceiro Entregue Data: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ap_parc_entregue_data']); ?></span><br>
+                                  Aprovação Parceiro Vendedor Interno: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ap_parc_vendedor_interno']); ?></span><br>
+                                  Aprovação Parceiro Vendedor Externo: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ap_parc_vendedor_externo']); ?></span><br>
+
+                                  Aprovação Parceiro Vendedor Pedido: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ap_parc_vendedor_pedido']); ?></span><br>
+                                  Aprovação Parceiro Fábrica: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ap_fab_aprovacao_fabrica']); ?></span><br>
+                                  Aprovação Parceiro Fábrica Data: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ap_fab_pedido_fabrica_data']); ?></span><br>
+
+                                  Aprovação Fábrica Andamento: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ap_fab_andamento']); ?></span><br>
+                                  Data de Aprovação da Fábrica Entrou em Podução: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ap_fab_entrou_producao_data']); ?></span><br>
+                                  Aprovação Fábrica Produzido: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ap_fab_produzido']); ?></span><br>
+                                  Aprovação Fábrica Entregue: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['ap_fab_entregue']); ?></span><br>
                             </address>
                             </div>
                             <?php } ?>
@@ -159,7 +241,8 @@
                         <!-- END Shipping Address -->
                         </div>
                     </div>
-                    <!-- END Customer -->                  
+                    <!-- END Customer --> 
+                                     
                 </div>
                 </div>
               </div>

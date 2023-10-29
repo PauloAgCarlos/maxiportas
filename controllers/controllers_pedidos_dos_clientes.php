@@ -26,6 +26,16 @@ class controllers_pedidos_dos_clientes extends database
         
     }
 
+    public function selecionar_tbl_ordem_producao()
+    {
+        $selecionar_tbl_ordem_producao = $this->conn->prepare("SELECT * FROM tbl_ordem_producao ORDER BY id DESC");
+        $selecionar_tbl_ordem_producao->execute();
+
+        $resultbl_ordem_producao_all = $selecionar_tbl_ordem_producao->fetchAll(PDO::FETCH_ASSOC);
+        return $resultbl_ordem_producao_all;
+        
+    }
+
     public function selecionar_pedidos_dos_clientes_id($id)
     {
         $selecionar_pedidos_dos_clientes_id = $this->conn->prepare("SELECT * FROM pedidos_dos_clientes WHERE id = ? ORDER BY id DESC");

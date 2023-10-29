@@ -7,8 +7,49 @@
 </head>
 <body>
 
-
     <form id="selectForm">
+        <?php
+        /*$items = array(1, 2, 3, 4, 5);
+        echo "<pre>";
+        var_dump($items);
+        foreach ($items as $item) {
+            echo '<input type="checkbox" name="selectedItems[]" value="' . $item . '"> Item ' . $item . '<br>';
+        }*/
+        require_once "../conexao-bd.php";
+
+        require_once "../controllers/controllers_pedidos_dos_clientes.php";
+        $pedidos_dos_clientes = new controllers_pedidos_dos_clientes();
+        $result_pedidos = $pedidos_dos_clientes->selecionar_pedidos_dos_clientes();
+        
+            foreach($result_pedidos as $row_pedidos){ echo '<input type="checkbox" name="selectedItems[]" value="' . $row_pedidos['id'] . '"> Item ' . $row_pedidos['id'] . '<br>';
+            }
+        ?>
+    </form>
+
+    <form id="resultForm" action="testPHP.php" method="post">
+        <input type="hidden" id="selectedIds" name="selectedIds">
+        <button type="submit">Enviar para processamento</button>
+    </form>
+
+    <script>
+        const checkboxes = document.querySelectorAll("#selectForm input[type='checkbox']");
+        const selectedIdsInput = document.getElementById("selectedIds");
+
+        checkboxes.forEach((checkbox) => {
+            checkbox.addEventListener("change", updateSelectedIds);
+        });
+
+        function updateSelectedIds() {
+            const selectedCheckboxes = Array.from(checkboxes).filter((checkbox) => checkbox.checked);
+            const selectedIds = selectedCheckboxes.map((checkbox) => checkbox.value);
+
+            selectedIdsInput.value = JSON.stringify(selectedIds);
+        }
+
+    </script>
+
+
+    <!--form id="selectForm">
     <input type="checkbox" name="item" value="1"> Item 1
     <input type="checkbox" name="item" value="2"> Item 2
     <input type="checkbox" name="item" value="3"> Item 3
@@ -19,7 +60,7 @@
     <form id="resultForm" method="post">
     <input type="text" id="selectedIds" name="selectedIds">
     <button type="submit" name="btn_enviar_ids">Enviar IDs</button>
-    </form>
+    </form-->
 
     <script>
     const checkboxes = document.querySelectorAll("#selectForm input[type='checkbox']");
@@ -93,7 +134,7 @@
 
         // Enviar o segundo formulário (opcional)
         // document.getElementById("resultForm").submit();
-        });*/
+        });*
 
         document.getElementById("submitSelection").addEventListener("click", function () {
         // Selecionar todos os checkboxes marcados no primeiro formulário
