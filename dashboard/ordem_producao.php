@@ -277,174 +277,147 @@
                                                     <div class="p-2">
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
                                                         <div style="display: flex; justify-content: space-around">
-                                                            <input type="text" id="id_perfilAdd" readonly class="form-control mb-2" name="perfil_lado_esquerdo" placeholder="0">
+                                                            <input type="text" id="id_perfilAdd" readonly class="form-control mb-2 descriptionInput" name="perfil_lado_esquerdo" placeholder="0">
                                                             <?php
                                                                 echo "
-                                                                    <button class='btn' type='button' class='ms-1' style='margin-right: 15px; border: none; background-color: transparent; border-radius: 1000px; width: 5px;' onclick='abrirModalPerfil(2)' data-toggle='modal' data-target='#myModalPerfil'>
+                                                                    <button class='btn' id='openModalButton' type='button' class='ms-1' style='margin-right: 15px; border: none; background-color: transparent; border-radius: 1000px; width: 5px;' onclick='abrirModalPerfil(2)' data-toggle='modal' data-target='#myModalPerfil'>
                                                                         <img src='../assets/svg/icons8-pesquisar.svg' width='25px' alt=''>
                                                                     </button>"
                                                                 ;
                                                             ?>
-                                                            <!-- <button class="meuBotao" style="border: none; background-color: transparent;" onclick='abrirModalPerfil(2)' data-id="123"><img src='../assets/svg/icons8-pesquisar.svg' width='25px' alt=''></button> -->
 
                                                         </div>
                                                         <div>
-                                                            <?php
-                                                                if(!empty($_GET['id'])){
-                                                                    // var_dump($_GET['id_filtroImage']);
-                                                                    $id_getFilter = $_GET['id'];
-                                                                    // $id = INPUT_POST['name'];
-                                                                    $host = "localhost";
-                                                                    $user = "root";
-                                                                    $pass = "";
-                                                                    $bd = "maxportas";
-                                                                    $conn = new PDO ("mysql:host=$host; dbname=".$bd, $user, $pass);
-                                                                    
-                                                                    $select = $conn->prepare("SELECT * FROM perfil WHERE id = :id");
-                                                                    $select->bindParam(':id', $id_getFilter);
-                                                                    $select->execute();
-                                                                    $row_filterImageGet = $select->fetch(PDO::FETCH_ASSOC);
-                                                                    ?>
-                                                                        <img src="../perfil/<?php echo $row_filterImageGet['imagem'] ?>" width="100px" height="100px" alt="">
-                                                                <?php  
-                                                                        // }
-                                                                    // } 
-                                                                }
-                                                            ?>
-                                                            <!-- <img src="../assets/svg/icons8-pesquisar.svg" width='25px' alt=""> -->
+                                                            <?php  ?>
+                                                            <img class="responseImage" alt="Imagem" style="width: 50px; height: 50px;">
                                                         </div>
                                                     </div>
-                                                    <!-- Modal Perfil -->
+
+
+                                                  <!-- Modal Perfil -->
                                                     <div class="modal fade" id="myModalPerfil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                             <div class="modal-header" style="background-color: #33cc66;">
                                                                 <h5 class="modal-title" id="exampleModalLabel">Perfies Registados no Sistema</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeModalButton"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <table>
+                                                                <table style="width: 100%;">
                                                                     <thead style="background-color: #33cc66; width: 100%;">
                                                                         <tr>
-                                                                            <th>Selecionar</th>
-                                                                            <th>Código</th>
+                                                                            <th>ID</th>
                                                                             <th>Descrição</th>
-                                                                            <th>Observação</th>
-                                                                            <th>Detalhes</th>
                                                                             <th>Foto</th>
                                                                         </tr>
                                                                     </thead>
-                                                                <!-- <ul> -->
-                                                                    <?php
-                                                                        $conn = new mysqli('localhost', 'root', '', 'maxportas');
-                                                                        $query = 'SELECT * FROM perfil';
-                                                                        $result = $conn->query($query);
 
-                                                                        if ($result->num_rows > 0) {
-                                                                            while ($row = $result->fetch_assoc()) {
-                                                                            // echo '<li  style="color: #000; font-size: 1.1em;" data-bs-dismiss="modal"> '. $row['custo_metro'] .' 
-                                                                            //     <a href="#" style="text-decoration: none; color: black;" class="select-dataPerfil" data-id="' . $row['id'] . '">'.$row['id'] .'</a>
-                                                                            // </li>';
-                                                                            ?>
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <?php 
-                                                                                            echo '
-                                                                                        <td>
-                                                                                            <button data-bs-dismiss="modal">
-                                                                                            <a href="#" style="text-decoration: none; color: black;">Selecionar</a>
-                                                                                            </button>
-                                                                                        </td>
-                                                                                        ';
-                                                                                        ?>
-                                                                                        <td data-bs-dismiss="modal">
-                                                                                            <a class="select-dataPerfil" data-id="<?php $row['id'] ?>" href="ordem_producao.php?id_filtroImage=<?php echo $row['id']; ?>">
-                                                                                                <?php echo $row['id']; ?>
-                                                                                            </a>
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            <?php echo $row['descricao']; ?>
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            <?php echo $row['detalhes']; ?>
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            <img src="../perfil/<?php echo $row['imagem'] ?>" width="100px" height="100px" alt="">
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            <!-- <img width="150px" height="90px" src="../perfil/<php echo $row['imagem'] ?>" alt=''> -->
-                                                                        <?php    
+                                                                    <tbody>                                                                        
+                                                                        <?php
+                                                                            $conn = new mysqli('localhost', 'root', '', 'maxportas');
+                                                                            $query = 'SELECT * FROM perfil';
+                                                                            $result = $conn->query($query);
+
+                                                                            if ($result->num_rows > 0) {
+                                                                                while ($row = $result->fetch_assoc()) {
+                                                                        ?>
+                                                                        
+                                                                            <tr id="numberList">
+                                                                                <td>
+                                                                                    <a data-bs-dismiss="modal"  href="javascript:void(0);" data-number="<?php echo $row['id']; ?>"><?php echo $row['id'] ?></a>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <a data-bs-dismiss="modal"  href="javascript:void(0);" data-number="<?php echo $row['id']; ?>"><?php echo $row['descricao'] ?></a>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <img style="float: right;" src="../perfil/<?php echo $row['imagem'] ?>" width="90px" height="90px" alt="">
+                                                                                </td>
+                                                                            </tr>
+                                                                            <?php    
+                                                                                }
                                                                             }
-                                                                        }
-                                                                    ?>
+                                                                        ?>
+                                                                        </tbody>
                                                                 </table>
-                                                                <!-- </ul> -->
                                                             </div>
                                                             </div>
                                                         </div>
                                                     </div>
+
+
                                                     <script>
-                                                         // Selecione todos os botões com a classe "meuBotao"
-                                                        var botoes = document.querySelectorAll('.meuBotao');
+                                                        let activeInputs = null;
+                                                        let activeImages = null;
 
-                                                        // Adicione um ouvinte de evento de clique a cada botão
-                                                        botoes.forEach(function(botao) {
-                                                            botao.addEventListener('click', function() {
-                                                                // Obtenha o ID associado ao botão clicado
-                                                                var id = this.getAttribute('data-id');
+                                                        // Função para fazer a requisição AJAX
+                                                        function fetchData(id) {
+                                                            const url = `https://hjaluminio.com.br/sistema/api/public_html/api/user/${id}`;
 
-                                                                // Modifique a URL sem atualizar a página
-                                                                history.pushState({ id: id }, '', '?id=' + id);
+                                                            fetch(url)
+                                                                .then(response => response.json())
+                                                                .then(data => {
+                                                                    console.log(data)
+                                                                    data = data.data;
+                                                                    // Extrair os atributos do JSON
+                                                                    const { descricao, imagem } = data;
 
-                                                                // Faça o que desejar com o ID aqui
-                                                                console.log('ID enviado: ' + idd);
-                                                                
-                                                            });
+                                                                    // Preencher os campos de entrada com a descrição
+                                                                    activeInputs.forEach(input => {
+                                                                        input.value = descricao;
+                                                                    });
+
+                                                                    // Exibir as imagens nas respostas
+                                                                    activeImages.forEach(image => {
+                                                                        image.src = `https://hjaluminio.com.br/sistema/perfil/${imagem}`;
+                                                                        image.style.display = "block"; // Mostrar a imagem
+                                                                    });
+
+                                                                    // Fechar o modal após a conclusão da requisição
+                                                                    document.getElementById("modal").style.display = "none";
+                                                                })
+                                                                .catch(error => {
+                                                                    console.error("Erro na requisição:", error);
+                                                                });
+                                                        }
+
+                                                        // Abrir o modal quando o botão é clicado
+                                                        document.getElementById("openModalButton").addEventListener("click", function() {
+                                                            activeInputs = document.querySelectorAll(".descriptionInput");
+                                                            activeImages = document.querySelectorAll(".responseImage");
+                                                            document.getElementById("modal").style.display = "block";
                                                         });
 
+                                                        // Fechar o modal quando o botão "Fechar Modal" é clicado
+                                                        document.getElementById("closeModalButton").addEventListener("click", function() {
+                                                            activeInputs = null;
+                                                            activeImages = null;
+                                                            document.getElementById("modal").style.display = "none";
+                                                        });
+
+                                                        // Adicionar um evento de clique a cada link na lista
+                                                        const numberLinks = document.querySelectorAll("#numberList a");
+                                                        numberLinks.forEach(link => {
+                                                            link.addEventListener("click", function(event) {
+                                                                event.preventDefault();
+                                                                const number = link.getAttribute("data-number");
+                                                                fetchData(number);
+                                                            });
+                                                        });
+                                                    </script>
+
+
+
+
+
+
+                                                    <script>
                                                         function abrirModalPerfil(idProdutoPerfil) {
                                                             idProdutoPerfilParaExcluir = idProdutoPerfil;
                                                             const modal = new bootstrap.Modal(document.getElementById('myModalPerfil'), {});
                                                             modal.show();
                                                         }
-                                                        document.querySelectorAll('.select-dataPerfil').forEach(item => {
-                                                        item.addEventListener('click', event => {
-                                                            //alert('OLAAAA')
-                                                            event.preventDefault();
-                                                            const selectedData = item.innerText;
-                                                            history.pushState({ id: selectedData }, '', '?id=' + selectedData);
-                                                            const input = document.getElementById('id_perfilAdd');
-                                                            input.value = selectedData;
-                                                            $('#myModalPerfil').modal('hide');
-                                                            });
-                                                        });
                                                         </script>
-                                                    <!-- Last Modal Perfil -->
-
-                                                    <!-- Modal de confirmação -->
-                                                    <!-- <div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-labelledby="modalConfirmacaoLabel" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header bg-danger">
-                                                                    <h5 class="modal-title text-white" id="modalConfirmacaoLabel">Confirmar Eliminação</h5>
-                                                                    <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    Tem certeza de que deseja eliminar este Perfil?
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                                    <button type="button" class="btn btn-danger" id="btnConfirmarExclusao">Confirmar</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div> -->
-                                                    <!--Last Modal-->
-
+                                                    
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para<span style="color: #f000;">*</span></label>
                                                         <select class="form-control mb-2" name="usinagem_para_esquerdo" id="">
@@ -469,20 +442,9 @@
                                                     <div class="p-2">
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
                                                         <div style="display: flex; justify-content: space-around">
-                                                            <input type="text" id="id_perfilAddA" class="form-control mb-2" name="perfil_lado_direito" placeholder="0">
-                                                            <?php
-                                                                echo "
-                                                                    <button class='btn' class='ms-1' style='margin-right: 15px; border: none; background-color: transparent; border-radius: 1000px; width: 5px;' onclick='abrirModalPerfil(2)' data-toggle='modal' data-target='#myModalPerfil'>
-                                                                        <img src='../assets/svg/icons8-pesquisar.svg' width='25px' alt=''>
-                                                                    </button>"
-                                                                ;
-                                                            ?>
+                                                            <input type="text" readonly id="id_perfilAddA" class="form-control mb-2 descriptionInput" name="perfil_lado_direito" placeholder="0">
                                                         </div>
                                                     </div>
-                                                    <!-- <div class="p-2">
-                                                        <label for="">Perfil <span style="color: #f000;">*</span></label>
-                                                        <input type="number" readonly class="form-control mb-2" name="perfil" placeholder="0">
-                                                    </div> -->
 
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
@@ -507,7 +469,7 @@
                                                     </div>
                                                     <div class="p-2">
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
-                                                        <input type="number" class="form-control mb-2" name="perfil_lado_superior" placeholder="0">
+                                                        <input type="text" readonly class="form-control mb-2 descriptionInput" name="perfil_lado_superior" placeholder="0">
                                                     </div>
 
                                                     <div class="p-2">
@@ -533,7 +495,7 @@
                                                     </div>
                                                     <div class="p-2">
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
-                                                        <input type="number" class="form-control mb-2" name="perfil_lado_inferior" placeholder="0">
+                                                        <input type="text" readonly class="form-control mb-2 descriptionInput" name="perfil_lado_inferior" placeholder="0">
 
                                                     </div>
 
