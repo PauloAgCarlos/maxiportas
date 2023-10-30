@@ -277,7 +277,7 @@
                                                     <div class="p-2">
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
                                                         <div style="display: flex; justify-content: space-around">
-                                                            <input type="text" id="id_perfilAdd" readonly class="form-control mb-2 descriptionInput" name="perfil_lado_esquerdo" placeholder="0">
+                                                            <input type="text" id="id_perfilAdd" readonly class="form-control mb-2 descriptionInput" name="perfil_lado_esquerdo" placeholder="0" oninput="verificarValor()">
                                                             <?php
                                                                 echo "
                                                                     <button class='btn' id='openModalButton' type='button' class='ms-1' style='margin-right: 15px; border: none; background-color: transparent; border-radius: 1000px; width: 5px;' onclick='abrirModalPerfil(2)' data-toggle='modal' data-target='#myModalPerfil'>
@@ -288,8 +288,19 @@
 
                                                         </div>
                                                         <div>
-                                                            <?php  ?>
-                                                            <img class="responseImage" alt="Imagem" style="width: 50px; height: 50px;">
+                                                            <img class="responseImage" alt="Imagem" id="minhaImagem" style="display: none; width: 150px; margin: auto; height: 135px;" >
+                                                            <script>
+                                                                function verificarValor() {
+                                                                    const input = document.getElementById('meuInput');
+                                                                    const imagem = document.getElementById('minhaImagem');
+
+                                                                    if (input.value !== '') {
+                                                                        imagem.style.display = 'block'; // Se houver valor, mostra a imagem
+                                                                    } else {
+                                                                        imagem.style.display = 'none'; // Se não houver valor, esconde a imagem
+                                                                    }
+                                                                }
+                                                            </script>
                                                         </div>
                                                     </div>
 
@@ -444,6 +455,23 @@
                                                         <div style="display: flex; justify-content: space-around">
                                                             <input type="text" readonly id="id_perfilAddA" class="form-control mb-2 descriptionInput" name="perfil_lado_direito" placeholder="0">
                                                         </div>
+
+                                                        <div>
+                                                            <img class="responseImage" alt="Imagem" id="minhaImagem" style="display: none; width: 150px; margin: auto; height: 135px;" >
+                                                            <script>
+                                                                function verificarValor() {
+                                                                    const input = document.getElementById('meuInput');
+                                                                    const imagem = document.getElementById('minhaImagem');
+
+                                                                    if (input.value !== '') {
+                                                                        imagem.style.display = 'block'; // Se houver valor, mostra a imagem
+                                                                    } else {
+                                                                        imagem.style.display = 'none'; // Se não houver valor, esconde a imagem
+                                                                    }
+                                                                }
+                                                            </script>
+                                                        </div>
+                                                        
                                                     </div>
 
                                                     <div class="p-2">
@@ -471,6 +499,21 @@
                                                         <label for="">Perfil <span style="color: #f000;">*</span></label>
                                                         <input type="text" readonly class="form-control mb-2 descriptionInput" name="perfil_lado_superior" placeholder="0">
                                                     </div>
+                                                    <div>
+                                                            <img class="responseImage" alt="Imagem" id="minhaImagem" style="display: none; width: 150px; margin: auto; height: 135px;" >
+                                                            <script>
+                                                                function verificarValor() {
+                                                                    const input = document.getElementById('meuInput');
+                                                                    const imagem = document.getElementById('minhaImagem');
+
+                                                                    if (input.value !== '') {
+                                                                        imagem.style.display = 'block'; // Se houver valor, mostra a imagem
+                                                                    } else {
+                                                                        imagem.style.display = 'none'; // Se não houver valor, esconde a imagem
+                                                                    }
+                                                                }
+                                                            </script>
+                                                        </div>
 
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
@@ -498,6 +541,21 @@
                                                         <input type="text" readonly class="form-control mb-2 descriptionInput" name="perfil_lado_inferior" placeholder="0">
 
                                                     </div>
+                                                    <div>
+                                                            <img class="responseImage" alt="Imagem" id="minhaImagem" style="display: none; width: 150px; margin: auto; height: 135px;" >
+                                                            <script>
+                                                                function verificarValor() {
+                                                                    const input = document.getElementById('meuInput');
+                                                                    const imagem = document.getElementById('minhaImagem');
+
+                                                                    if (input.value !== '') {
+                                                                        imagem.style.display = 'block'; // Se houver valor, mostra a imagem
+                                                                    } else {
+                                                                        imagem.style.display = 'none'; // Se não houver valor, esconde a imagem
+                                                                    }
+                                                                }
+                                                            </script>
+                                                        </div>
 
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
