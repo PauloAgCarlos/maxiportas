@@ -149,7 +149,7 @@
                                     <ul>
                                         <?php
                                             $conn = new mysqli('localhost', 'root', '', 'maxportas');
-                                            $query = 'SELECT id, nome_razao_socil FROM clientes';
+                                            $query = 'SELECT id, nome_razao_socil FROM clientes ORDER BY id DESC';
                                             $result = $conn->query($query);
 
                                             if ($result->num_rows > 0) {
