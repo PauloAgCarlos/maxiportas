@@ -1,4 +1,4 @@
-<?php
+<!--php
     require_once "../controllers/controllers_pedidos_dos_clientes.php";
 
     if(isset($_POST['btn_validar_pedido']))
@@ -103,7 +103,7 @@
             } else{
                 echo "Não Existe";
             }
-        }
+        }*/
 
         // $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         // echo "<pre>";
@@ -111,4 +111,9 @@
         // echo "<pre>";
         // var_dump($dados["quantidade_produto_servico"]);
     }
+?>
+
+
+<?php
+
 ?>

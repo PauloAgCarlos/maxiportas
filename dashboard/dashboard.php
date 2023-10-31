@@ -82,7 +82,7 @@
                             <button type="submit">Enviar para processamento</button>
                         </form-->    
 
-                        <form action="testids.php" method="post" id="resultForm">
+                        <form action="pdf_solicitacaocliente.php" method="post" id="resultForm">
                             <input type="hidden" id="selectedIds" name="selectedIds">
                             <!-- <input type="hidden" name="id_ordemProducao" id="idDoForm1" value="<php echo $_GET['id_filter']; ?>" > -->
                             <div class="btn-group">
@@ -91,7 +91,7 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li> 
-                                        <button type="submit">Enviar para processamento</button>-
+                                        <button type="submit" name="btn_submit" value="PDF Cliente">Enviar para processamento</button>-
                                         <!--button type="submit" name="btn_enviar_ids">Enviar IDs</button-->
                                     </li>
                                     <li>
