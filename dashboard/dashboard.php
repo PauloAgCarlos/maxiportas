@@ -74,7 +74,7 @@
                   <div style="margin: 5px; display: flex; justify-content: space-between;">
                     <button style="border-radius: 5px; border: 1px solid #ccc; background-color: transparent; width: 200px; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Busca rápida</a></button>
 
-                    <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Novo</a></button>
+                    <!--button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Novo</a></button-->
 
                     <div>    
                         <!--form id="resultForm" action="testids.php" method="post">
@@ -91,24 +91,8 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li> 
-                                        <button type="submit" name="btn_submit" value="PDF Cliente">Enviar para processamento</button>-
+                                        <button class="dropdown-item" type="submit" name="btn_submit" value="PDF Cliente">Gerar</button>
                                         <!--button type="submit" name="btn_enviar_ids">Enviar IDs</button-->
-                                    </li>
-                                    <li>
-                                        <button class="dropdown-item" type="submit" name="btn_submit" value="Sintético - Cliente">Sintético - Cliente</button>
-                                    </li>
-                                    <li>
-                                        <button class="dropdown-item" type="submit" name="btn_submit" value="Sintético 3 - Cliente">Sintético 3 - Cliente</button>
-                                    </li>
-                                    <li>
-                                        <button class="dropdown-item" type="button" name="btn_submit" value="Sintético 3 - Sem Valor">Sintético 3 - Sem Valor</button>
-                                    </li>
-                                    <li style="width: 100%;"><hr class="dropdown-divider" style="color: black; padding: 1px;"></li>
-                                    <li>
-                                        <button class="dropdown-item" type="button" name="btn_submit" value="Relátorio de Vendas (OP)">Relátorio de Vendas (OP)</button>
-                                    </li>
-                                    <li>
-                                        <button class="dropdown-item" type="button" name="btn_submit" value="Relátorio para Entrega Por Cliente">Relátorio para Entrega Por Cliente</button>
                                     </li>
                                 </ul>
                             </div>
@@ -120,7 +104,7 @@
                     <thead style="text-align: center; font-size: 0.8em; background-color: #2ab759; color: #fff;">
                       <tr class="text-uppercase">
                         <th>ID</th>
-                        <th></th>
+                        <th class="text-center d-xl-table-cell"><input type="checkbox" name="" id=""></th>
                         <th>Ed</th>
                         <th>Nome do <br> Cliente</th>
                         <th>Data Inicial</th>
@@ -232,7 +216,7 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li> 
-                                        <button type="submit">Enviar para processamento</button>-
+                                        <button tclass="dropdown-item" type="submit" name="btn_submit">Enviar para processamento</button>-
                                         <!--button type="submit" name="btn_enviar_ids">Enviar IDs</button-->
                                     </li>
                                     <li>

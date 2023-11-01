@@ -72,9 +72,7 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                                     $btn_submit = $_POST['btn_submit'];
                                     //Repetição
 
-
-
-                                    $segundoHeader_bottom_margin = 239;
+                                    //$segundoHeader_bottom_margin = 239;
                                     $segundoHeader_height = 20;
                                     $pdf->setY(-$segundoHeader_height - $segundoHeader_bottom_margin);
                                     // Borda
@@ -86,10 +84,10 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                                     <br><strong>Bairro: </strong>VILA SAMPAIO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Cidade: </strong>ARAPONGAS-PR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>CNPJ/CPF: </strong>41.337.530/0001-07</div>');
                                     // Last segundoHeader
 
-                                    $terceira_borda = 52;
+                                    $terceira_borda = 48;
                                     // Borda
                                     $pdf->Rect(5, $eixo_x, $pdf->getPageWidth() - 10, $terceira_borda);
-                                    $pdf->writeHTMLCell(0, 0, 8, $eixo_x + 24, '<div style="font-size: 10px;"><strong>Descrição Pedido: </strong>'.$row['descricao_pedido'].'<strong>Data Inicial: </strong>'.$row['data_inicial'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Data Final: </strong>'.$row['data_final'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Garantia: </strong>'.$row['garantia'].' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Status: </strong>'.$row['status'].'<br><strong>Nome Responsavel: </strong>'.$row['nome_responsavel'].'</div>');
+                                    $pdf->writeHTMLCell(0, 0, 8, $eixo_x + 21, '<div style="font-size: 10px;"><strong>Descrição Pedido: </strong>'.$row['descricao_pedido'].'<strong>Data Inicial: </strong>'.$row['data_inicial'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Data Final: </strong>'.$row['data_final'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Garantia: </strong>'.$row['garantia'].' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Status: </strong>'.$row['status'].'<br><strong>Nome Responsavel: </strong>'.$row['nome_responsavel'].'</div>');
 
                                     $posicao += 1;
                                     $eixo_x += 57;
@@ -101,10 +99,15 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                                     {
                                         $pdf->SetAutoPageBreak(false, 0);
                                     }*/
-                                    if($posicao == 3)
+                                    if($posicao == 2)
                                     {
-                                        $borda = 90;
-                                        $pdf->writeHTMLCell(0, 0, 8, $eixo_x + 24, '<div style="font-size: 10px;"><strong>Desctgttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt</div>');
+                                        $borda = 900;
+
+                                        $terceira_borda = 48;
+                                        // Borda
+                                        $pdf->Rect(5, $eixo_x, $pdf->getPageWidth() - 10, $terceira_borda);
+                                        $pdf->writeHTMLCell(0, 0, 8, $eixo_x + 21, '<div style="font-size: 10px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>');
+                                        /*$pdf->writeHTMLCell(0, 0, 8, $eixo_x + 24, '<div style="font-size: 10px;"><strong>Desctgttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt</div>');*/
                                     }
 
                                     $pdf->writeHTMLCell(0, 0, 5, 290, '<div style="font-size: 10px; text-align: left;"><a href="https://www.exemplo.com" style=" color: #000;">https://www.exemplo.com</a></div>', 0, 0, false, true, 'L', true);

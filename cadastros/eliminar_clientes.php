@@ -11,16 +11,17 @@
 
     
 // Substitua essas informações pelas suas configurações de conexão com o banco de dados
-$host = 'localhost';
+/*$host = 'localhost';
 $dbname = 'maxportas';
 $username = 'root';
-$password = '';
+$password = '';*/
+require_once "../config.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     $idProduto = $_GET['id'];
 
     try {
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+        $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME;charset=utf8", $DBUSER, $DBPASS);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmt = $pdo->prepare("DELETE FROM clientes WHERE id = :id");
         $stmt->bindParam(':id', $idProduto);
