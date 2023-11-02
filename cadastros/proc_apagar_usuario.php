@@ -1,10 +1,7 @@
 <?php
 session_start();
-$servername = "localhost";
-$user = "root";
-$senha = "";
-$bdn = "maxportas";
-$conection_bd = mysqli_connect($servername, $user, $senha, $bdn);
+require_once "../config.php";
+$conection_bd = mysqli_connect($DBHOST, $DBUSER, $DBPASS, $DBNAME);
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 if(!empty($id)){

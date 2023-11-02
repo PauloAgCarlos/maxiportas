@@ -1,12 +1,9 @@
 <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "maxportas";
+require_once "../config.php";
 
 // Cria a conexão
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($DBHOST, $DBUSER, $DBPASS, $DBNAME);
 
 // Verifica a conexão
 if ($conn->connect_error) {

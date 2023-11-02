@@ -148,7 +148,8 @@
                                 <div class="modal-body">
                                     <ul>
                                         <?php
-                                            $conn = new mysqli('localhost', 'root', '', 'maxportas');
+                                            require_once "../config.php";
+                                            $conn = new mysqli($DBHOST, $DBUSER, $DBPASS, $DBNAME);
                                             $query = 'SELECT id, nome_razao_socil FROM clientes ORDER BY id DESC';
                                             $result = $conn->query($query);
 
@@ -325,7 +326,7 @@
 
                                                                     <tbody>                                                                        
                                                                         <?php
-                                                                            $conn = new mysqli('localhost', 'root', '', 'maxportas');
+                                                                            $conn = new mysqli($DBHOST, $DBUSER, $DBPASS, $DBNAME);
                                                                             $query = 'SELECT * FROM perfil';
                                                                             $result = $conn->query($query);
 

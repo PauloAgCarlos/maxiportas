@@ -13,10 +13,8 @@
         $ativo = addslashes($_POST['ativo']);
 
         // Configurações do banco de dados
-      $dbHost = "localhost";
-      $dbName = "maxportas";
-      $dbUsuario = "root";
-      $dbSenha = "";
+      require_once "../config.php";
+      $DBHOST, $DBUSER, $DBPASS, $DBNAME
 
       try {
           // Conexão com o banco de dados usando PDO

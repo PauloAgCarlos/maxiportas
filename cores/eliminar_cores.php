@@ -1,18 +1,11 @@
 <?php
 
-$host = 'localhost';
-$dbname = 'maxportas';
-$username = 'root';
-$password = '';
+require_once "../config.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     $idProduto = $_GET['id'];
 
-    $servername = "localhost";
-    $user = "root";
-    $senha = "";
-    $bdn = "maxportas";
-    $conection_bd = mysqli_connect($servername, $user, $senha, $bdn);
+    $conection_bd = mysqli_connect($DBHOST, $DBUSER, $DBPASS, $DBNAME);
     // $resul = $conection_bd->query("SELECT * FROM cores WHERE id = $idProduto");
     // $row_image = $resul->fetch_array();
     // unlink($row_image['imagem']);

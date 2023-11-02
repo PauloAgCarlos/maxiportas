@@ -1,10 +1,10 @@
 <?php
 
     //Mysql
-    const DBDRIVE = 'mysql';
-    const DBHOST = 'localhost';
-    const DBNAME = 'hjalum89_Maxi';
-    const DBUSER = 'hjalum89_maxi';
-    const DBPASS = 'HjAluminio123';
+    $DBDRIVE = 'mysql';
+    $DBHOST = 'localhost';
+    $DBNAME = 'hjalum89_Maxi';
+    $DBUSER = 'hjalum89_maxi';
+    $DBPASS = 'HjAluminio123';
 
 ?>

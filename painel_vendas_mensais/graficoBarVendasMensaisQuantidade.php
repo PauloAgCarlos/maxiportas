@@ -1,5 +1,7 @@
 <?php
-    $conn = mysqli_connect("localhost", "root", "", "maxportas");
+    
+    require_once "../config.php";
+    $conn = mysqli_connect($DBHOST, $DBUSER, $DBPASS, $DBNAME);
 
     $selectdados = mysqli_query($conn, "SELECT qtd_produto_pedido, ano, SUM(qtd_produto_pedido) as total_qtd FROM painel_pedidos_orcamentos WHERE status = 'Finalizado' GROUP BY ano ORDER BY ano ASC");
     $ano = [];

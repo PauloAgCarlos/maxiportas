@@ -231,11 +231,6 @@
                   <select name="produto_servico" class="form-control">
                     <php
 
-                      $host = "localhost";
-                      $user = "root";
-                      $password = "";
-                      $bd_name = "maxportas";
-
                       try
                       {
                           $conn = new PDO("mysql:host=$host;dbname=" . $bd_name, $user, $password);

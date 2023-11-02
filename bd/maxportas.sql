@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 29-Out-2023 às 17:40
+-- Tempo de geração: 02-Nov-2023 às 09:40
 -- Versão do servidor: 10.4.28-MariaDB
 -- versão do PHP: 8.2.4
 
@@ -157,7 +157,9 @@ INSERT INTO `clientes` (`id`, `cpf_cnpj`, `nome_razao_socil`, `contato`, `telefo
 (44, '111111', 'HJ Allúminios Update', '', '', '', '', '', '', '', '', '', '', '', 'Selecione...'),
 (47, '111111', 'HJ Allúminios Update', '9999999999', '', '', '', '', '', '', '', '', '', '', 'Selecione...'),
 (48, '111111', 'Ttt', '101011', '935593163', '(00)00000-000000000', 'aaaa@sss.com', '4t54t544545', '11111-111', 'São Paulo', '00000', 'Complemento HJ', 'Brasília', 'Huíla', 'Estado 1'),
-(49, '111111', 'Fredy', '9999999999', '935593163', '(00)00000-000000000', 'morador122@gmail.com', 'er34t54t54', '11111-111', 'São Paulo', '00000', 'Complemento HJ', 'Brasília', 'Huíla', 'Estado 1');
+(49, '111111', 'Fredy', '9999999999', '935593163', '(00)00000-000000000', 'morador122@gmail.com', 'er34t54t54', '11111-111', 'São Paulo', '00000', 'Complemento HJ', 'Brasília', 'Huíla', 'Estado 1'),
+(50, '01001-000', 'Name Cliente', '9999999999', '935593163', '(00)00000-000000000', 'gaivotas@gmail.com', '1234443', '11111-111', 'São Paulo', '00000', 'Complemento HJ', 'Brasília', 'Huíla', 'Estado 1'),
+(51, '22222', 'Teste', '9999999999', '935593163', '(00)00000-000000000', 'emailcondutor@teste.com', '345678', '11111-111', 'São Paulo', '00000', 'Complemento HJ', 'Brasília', 'Huíla', 'Selecione...');
 
 -- --------------------------------------------------------
 
@@ -407,8 +409,7 @@ CREATE TABLE `logado` (
 
 INSERT INTO `logado` (`id`, `nome`, `email`, `senha`, `parceiro_colaborador`, `cpf`, `rg`, `cep`, `endereco`, `telefone`, `complemento`, `bairro`, `cidade`, `uf`, `nascimento`, `nivel`) VALUES
 (15, 'Paulo', 'paulo@gmail.com', '121212', '', 1001, 1, 100, 'Endereço Paulo', '(00) 93593-59359', 'Complemento Paulo', 'Bairro Paulo', 'Cidade Paulo', '001', '01/01/2000', 'adm'),
-(23, 'Torres Code', 'torres@teste.com', '121212', 'Parceiro', 0, 2, 11111, 'V2', '', '44', 'São', '2ww', '001', '11/11/1111', 'user'),
-(25, 'Carlos', 'carlos@carlos.com', '121212', '', 111111, 2, 11111, 'V1', '935593163', 'err', 'Bairro', 'Huíla', '11111', '01/01/2000', 'adm');
+(23, 'Torres Code', 'torres@teste.com', '121212', 'Parceiro', 0, 2, 11111, 'V2', '', '44', 'São', '2ww', '001', '11/11/1111', 'user');
 
 -- --------------------------------------------------------
 
@@ -589,11 +590,11 @@ CREATE TABLE `pedidos_dos_clientes` (
 
 INSERT INTO `pedidos_dos_clientes` (`id`, `nome_cliente`, `descricao_pedido`, `data_inicial`, `data_final`, `garantia`, `status`, `nome_responsavel`) VALUES
 (9, 'Torres Code', '<p>TTTTT</p>', '30/08/2023', '01/09/2023', '', 'Em Andamento', 'Carlos'),
-(10, 'Torres Code', '<p>10 Portas</p><p>5 Travessas</p>', '31/08/2023', '31/08/2023', '', 'Finalizado', 'Paulo'),
-(11, 'Torres Code', '<p>10 Travessas</p>', '04/09/2023', '04/09/2023', '', 'Finalizado', 'Paulo'),
-(12, 'Torres Code', '<p>10 Portas com uma fechadura</p>', '07/09/2023', '07/09/2023', '', 'Em Andamento', ''),
-(13, 'Torres Code', '<p>10 Porta 3 Dobradissas</p>', '14/09/2023', '14/09/2023', '', 'Em Andamento', ''),
-(14, 'Torres Code', '<p>testettt</p>', '12/10/2023', '12/10/2023', '', 'Em Andamento', '');
+(10, 'TC', '<p>10 Portas</p><p>5 Travessas</p>', '31/08/2023', '31/08/2023', '', 'Finalizado', 'Paulo'),
+(11, 'Paulo Carlos', '<p>10 Travessas</p>', '04/09/2023', '04/09/2023', '', 'Finalizado', 'Paulo'),
+(12, 'PC', '<p>10 Portas com uma fechadura</p>', '07/09/2023', '07/09/2023', '', 'Em Andamento', ''),
+(13, 'Dev', '<p>10 Porta 3 Dobradissas</p>', '14/09/2023', '14/09/2023', '', 'Em Andamento', ''),
+(14, 'DevAholic', '<p>testettt</p>', '12/10/2023', '12/10/2023', '', 'Em Andamento', '');
 
 -- --------------------------------------------------------
 
@@ -782,7 +783,9 @@ CREATE TABLE `tbl_clientes_system` (
 --
 
 INSERT INTO `tbl_clientes_system` (`id`, `nome`, `endereco`, `bairro`, `cidade`, `fone`, `cep`) VALUES
-(1, 'Fredy', 'São Paulo', 'Brasília', 'Huíla', '(00)00000-000000000', '11111-111');
+(1, 'Fredy', 'São Paulo', 'Brasília', 'Huíla', '(00)00000-000000000', '11111-111'),
+(2, 'Name Cliente', 'São Paulo', 'Brasília', 'Huíla', '(00)00000-000000000', '11111-111'),
+(3, 'Teste', 'São Paulo', 'Brasília', 'Huíla', '(00)00000-000000000', '11111-111');
 
 -- --------------------------------------------------------
 
@@ -798,20 +801,20 @@ CREATE TABLE `tbl_ordem_producao` (
   `qtd` int(11) NOT NULL,
   `altura` int(11) NOT NULL,
   `largura` int(11) NOT NULL,
-  `perfil_lado_esquerdo` int(11) NOT NULL,
-  `usinagem_para_esquerdo` varchar(255) NOT NULL,
-  `puxador_esquerdo` varchar(255) NOT NULL,
-  `perfil_lado_direito` int(11) NOT NULL,
-  `usinagem_para_direito` varchar(255) NOT NULL,
-  `puxador_direito` varchar(255) NOT NULL,
-  `perfil_lado_superior` int(11) NOT NULL,
-  `usinagem_para_superior` varchar(255) NOT NULL,
-  `puxador_superior` varchar(255) NOT NULL,
-  `perfil_lado_inferior` int(11) NOT NULL,
-  `usinagem_para_inferior` varchar(255) NOT NULL,
-  `puxador_inferior` varchar(255) NOT NULL,
+  `perfil_lado_esquerdo` varchar(255) NOT NULL,
+  `usinagem_para_esquerdo` varchar(100) NOT NULL,
+  `puxador_esquerdo` varchar(100) NOT NULL,
+  `perfil_lado_direito` varchar(255) NOT NULL,
+  `usinagem_para_direito` varchar(100) NOT NULL,
+  `puxador_direito` varchar(100) NOT NULL,
+  `perfil_lado_superior` varchar(255) NOT NULL,
+  `usinagem_para_superior` varchar(100) NOT NULL,
+  `puxador_superior` varchar(100) NOT NULL,
+  `perfil_lado_inferior` varchar(255) NOT NULL,
+  `usinagem_para_inferior` varchar(100) NOT NULL,
+  `puxador_inferior` varchar(100) NOT NULL,
   `vidro` varchar(255) NOT NULL,
-  `tv` varchar(255) NOT NULL,
+  `tv` varchar(5) NOT NULL,
   `servicos` varchar(255) NOT NULL,
   `travessa` varchar(255) NOT NULL,
   `portas_pares` varchar(255) NOT NULL,
@@ -864,8 +867,8 @@ CREATE TABLE `tbl_ordem_producao` (
   `ap_fab_pedido_fabrica_data` varchar(255) NOT NULL,
   `ap_fab_andamento` varchar(255) NOT NULL,
   `ap_fab_entrou_producao_data` varchar(255) NOT NULL,
-  `ap_fab_produzido` varchar(11) NOT NULL,
-  `ap_fab_entregue` int(11) DEFAULT NULL
+  `ap_fab_produzido` varchar(50) NOT NULL,
+  `ap_fab_entregue` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -873,19 +876,9 @@ CREATE TABLE `tbl_ordem_producao` (
 --
 
 INSERT INTO `tbl_ordem_producao` (`id`, `id_uniq`, `cliente`, `modo`, `qtd`, `altura`, `largura`, `perfil_lado_esquerdo`, `usinagem_para_esquerdo`, `puxador_esquerdo`, `perfil_lado_direito`, `usinagem_para_direito`, `puxador_direito`, `perfil_lado_superior`, `usinagem_para_superior`, `puxador_superior`, `perfil_lado_inferior`, `usinagem_para_inferior`, `puxador_inferior`, `vidro`, `tv`, `servicos`, `travessa`, `portas_pares`, `reforco`, `desempenador`, `esquadreta`, `ponteira`, `kit`, `valor_item_cliente`, `porcento_desconto`, `desconto`, `produto`, `prod_qtd`, `prod_usinagem_puxador`, `prod_valor_item_cliente`, `prod_porcento_desconto`, `prod_desconto`, `val_forma_pagamento`, `val_condicao_pagamento`, `val_situacao_financeira`, `val_qtd_portas`, `val_qtd_vidros`, `val_qtd_quadros`, `val_qtd_total`, `val_total_consumidor`, `val_valor_itens_clientes`, `val_porcento_desconto`, `val_desconto`, `val_frete`, `val_total_cliente`, `out_valor_itens_parceiro`, `out_porcento_desconto`, `out_desconto`, `out_total_parceiro`, `out_markup_parceiro`, `out_total_fabrica`, `out_markup_fabrica`, `obs_observacao_op`, `ap_cli_aprovacao_cliente`, `ap_cli_aprovacao_cliente_data`, `ap_cli_cliente_retira`, `ap_cli_pedido_parceiro`, `ap_parc_aprovacao_parceiro`, `ap_parc_andamento_parceiro`, `ap_parc_entregue_data`, `ap_parc_vendedor_interno`, `ap_parc_vendedor_externo`, `ap_parc_vendedor_pedido`, `ap_fab_aprovacao_fabrica`, `ap_fab_pedido_fabrica_data`, `ap_fab_andamento`, `ap_fab_entrou_producao_data`, `ap_fab_produzido`, `ap_fab_entregue`) VALUES
-(25, '6530045890bc9', 'ID: 44 | Nome: HJ Allúminios Update', 'Porta', 100, 3243, 0, 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
-(26, '65302fea66a95', 'ID: 42 | Nome: HJ Allúminio', 'Porta', 1, 259, 1000, 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '1', '', '', '', '1', '100', '', '', '', '', '', '', '', '', '', '', '', 'Observação deste produto', '', '2023-10-12', '', '1', '', '', '', '', '', '', '', '', '', '', '', 0),
-(28, '653032427e06b', 'ID: 42 | Nome: HJ Allúminio', 'Porta', 1, 4000, 500, 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '90', '2', '2', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '100', '', '', '', '', '', '', '', '', '', '', '', 'Obs', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
-(29, '6530328f30687', 'ID: 42 | Nome: HJ Allúminio', 'Porta', 0, 0, 0, 19, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
-(30, '6530451ee770f', 'HJ Allúminios Update', 'Porta', 1, 9000, 8899, 0, 'Sem Usinagem', '', 2000, 'Sem Usinagem', '', 35566, 'Sem Usinagem', '', 455465, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Obs Teste', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
-(31, '6530498436980', 'HJ Allúminios Update', 'Porta', 1, 9000, 5000, 0, 'Sem Usinagem', '', 90, 'Sem Usinagem', '', 9, 'Sem Usinagem', '', 90, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Texto Obs', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
-(32, '6530db16f1e14', 'HJ Allúminios Update', 'Porta', 1200, 0, 0, 18, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
-(33, '6530e267e4def', 'HJ Allúminios Update', 'Porta', 0, 0, 0, 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
-(34, '6530ed43b0269', 'HJ Allúminios Update', 'Porta', 12, 0, 0, 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', 0, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '200', '2', '2', '12', '1200', '', '', '', '', '', '', '', 'Texto obs', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
-(35, '6530eeeb900bc', 'HJ Allúminio', 'Porta', 0, 0, 0, 19, 'Sem Usinagem', '', 20, 'Sem Usinagem', '', 21, 'Sem Usinagem', '', 22, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '1', 'Usinagem Puxador', '', '', '', '', '', '', '1', '1', '1', '1', '2000', '', '', '', '', '', '', '', '', '', '', '', '', 'Text', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
-(36, '6530efcd12203', 'HJ Allúminios Update', 'Porta', 1, 9000, 400, 18, 'Sem Usinagem', '', 20, 'Sem Usinagem', '', 21, 'Sem Usinagem', '', 22, 'Sem Usinagem', '', '', '', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Text', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0),
-(39, '653e00e13bdb2', 'HJ Allúminio', 'Porta', 12, 12, 12, 19, 'Sem Usinagem', '', 12, 'Sem Usinagem', '', 12, 'Sem Usinagem', '', 12, 'Sem Usinagem', '', '', '0', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '1', '', '', '', '', '', '', '', '', '', '', '12', 12),
-(40, '653e802583765', 'HJ Allúminios Update', 'Porta', 10, 10, 10, 19, 'Sem Usinagem', '', 10, 'Sem Usinagem', '', 10, 'Sem Usinagem', '', 10, 'Sem Usinagem', '', '', '0', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '100', 100);
+(45, '65400f1ca18b2', 'Fredy', 'Porta', 12, 16, 18, 'Nome Consulta 2', 'Sem Usinagem', '', 'Nome Consulta 2', 'Sem Usinagem', '', 'Nome Consulta 2', 'Sem Usinagem', '', 'Nome Consulta 2', 'Sem Usinagem', '', '', '0', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(46, '6540113cf351e', 'Name Cliente', 'Porta', 16, 78, 653, 'Descrição', 'Sem Usinagem', '', 'Descrição', 'Sem Usinagem', '', 'Descrição', 'Sem Usinagem', '', 'Descrição', 'Sem Usinagem', '', '', '0', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(47, '654011d1368d0', 'HJ Allúminios Update', 'Porta', 567, 56, 7, 'Descrição 22', 'Sem Usinagem', '', 'Descrição 22', 'Sem Usinagem', '', 'Descrição 22', 'Sem Usinagem', '', 'Descrição 22', 'Sem Usinagem', '', '', '0', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -1297,7 +1290,7 @@ ALTER TABLE `classificacao_de_clientes`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT de tabela `cores`
@@ -1423,13 +1416,13 @@ ALTER TABLE `servicos`
 -- AUTO_INCREMENT de tabela `tbl_clientes_system`
 --
 ALTER TABLE `tbl_clientes_system`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `tbl_ordem_producao`
 --
 ALTER TABLE `tbl_ordem_producao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de tabela `tintas`

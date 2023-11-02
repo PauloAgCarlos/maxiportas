@@ -1,8 +1,5 @@
 <!-- <php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "maxportas";
+    
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -79,7 +76,8 @@
 </html> -->
 
 <?php
-    $conn = mysqli_connect("localhost", "root", "", "maxportas");
+require_once "../config.php";
+    $conn = mysqli_connect($DBHOST, $DBUSER, $DBPASS, $DBNAME);
 
     $selectdados = mysqli_query($conn, "SELECT valor, descricao_produto_pedido, SUM(valor) as total_valor FROM painel_pedidos_orcamentos WHERE valor > 0 AND status = 'Finalizado' GROUP BY descricao_produto_pedido");
     $descricao_produto_pedido = [];

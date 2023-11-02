@@ -5,11 +5,7 @@
     if(!isset($_SESSION['email'])){
         header('location: ../index.php');
     }
-
-$servidor = "localhost";
-$usuario = "root";
-$senha = "";
-$dbname = "maxportas";
+require_once "../config.php";
 
 //Verificar se está sendo passado na URL a página atual, senao é atribuido a pagina 
 $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
@@ -20,7 +16,7 @@ if(!isset($_GET['pesquisar'])){
 }
 
 //Criar a conexão
-$conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
+$conn = mysqli_connect($DBHOST, $DBUSER, $DBPASS, $DBNAME);
 
 //Selecionar todos os agregar da tabela
 $result_curso = "SELECT * FROM agregar WHERE descricao LIKE '%$valor_pesquisar%'";

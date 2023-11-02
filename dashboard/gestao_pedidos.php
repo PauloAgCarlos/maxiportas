@@ -168,13 +168,10 @@
                       <input type="hidden" name="qnt_campo" id="qnt_campo">
                       <div class="block-header">
                         <?php
-                          $host = "localhost";
-                          $user = "root";
-                          $password = "";
-                          $bd_name = "maxportas";
+                          require_once "../config.php";
                           try
                           {
-                              $conn = new PDO("mysql:host=$host;dbname=" . $bd_name, $user, $password);
+                              $conn = new PDO("mysql:host=$DBHOST;dbname=" . $DBNAME, $DBUSER, $DBPASS);
                           }
                           catch(PDOException $error)
                           {

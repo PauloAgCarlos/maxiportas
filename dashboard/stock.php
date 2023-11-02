@@ -1,12 +1,9 @@
 <?php
 
-$host = "localhost";
-$user = "root";
-$password = "";
-$bd_name = "maxportas";
+require_once "../config.php";
 try
 {
-    $conn = new PDO("mysql:host=$host;dbname=" . $bd_name, $user, $password);
+    $conn = new PDO("mysql:host=$DBHOST;dbname=" . $DBNAME, $DBUSER, $DBPASS);
 }
 catch(PDOException $error)
 {
@@ -73,12 +70,6 @@ foreach($unidimensionalArray as $key => $ro)
     echo "<hr>";
 }
 die();
-
-//         //Começa AQui        
-//         $host = "localhost";
-//         $user = "root";
-//         $password = "";
-//         $bd_name = "maxportas";
 //         try
 //         {
 //             $conn = new PDO("mysql:host=$host;dbname=" . $bd_name, $user, $password);

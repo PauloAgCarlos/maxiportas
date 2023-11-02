@@ -1,7 +1,5 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$bd = "maxportas";
+require_once "config.php";
 
-$conn = new PDO ("mysql:host=$host; dbname=".$bd, $user, $pass);
+
+$conn = new PDO ("mysql:host=$DBHOST; dbname=".$DBNAME, $DBUSER, $DBPASS);

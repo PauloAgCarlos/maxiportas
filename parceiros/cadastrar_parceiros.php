@@ -27,14 +27,11 @@
         move_uploaded_file($imagem['tmp_name'], $path_image);
 
     // Configurações do banco de dados
-    $dbHost = "localhost";
-    $dbName = "maxportas";
-    $dbUsuario = "root";
-    $dbSenha = "";
+    require_once "../config.php";
 
     try {
         // Conexão com o banco de dados usando PDO
-        $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUsuario, $dbSenha);
+        $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Consulta para inserir o usuário na tabela

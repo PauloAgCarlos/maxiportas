@@ -5,10 +5,6 @@
     {
         $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         //Começa AQui        
-        $host = "localhost";
-        $user = "root";
-        $password = "";
-        $bd_name = "maxportas";
         try
         {
             $conn = new PDO("mysql:host=$host;dbname=" . $bd_name, $user, $password);

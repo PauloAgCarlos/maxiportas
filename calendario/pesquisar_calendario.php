@@ -6,10 +6,7 @@
         header('location: ../index.php');
     }
 
-$servidor = "localhost";
-$usuario = "root";
-$senha = "";
-$dbname = "maxportas";
+require_once "../config.php";
 
 //Verificar se está sendo passado na URL a página atual, senao é atribuido a pagina 
 $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;

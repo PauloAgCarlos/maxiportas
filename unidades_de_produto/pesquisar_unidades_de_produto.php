@@ -7,10 +7,7 @@
     }
 
 
-    $servidor = "localhost";
-    $usuario = "root";
-    $senha = "";
-    $dbname = "maxportas";
+   require_once "../config.php";
     
     //Verificar se está sendo passado na URL a página atual, senao é atribuido a pagina 
     $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
@@ -21,7 +18,7 @@
     }
     
     //Criar a conexão
-    $conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
+    $conn = mysqli_connect($DBHOST, $DBUSER, $DBPASS, $DBNAME);
     
     //Selecionar todos os linha_de_produto da tabela
     $result_curso = "SELECT * FROM linha_de_produto WHERE codigo_produto LIKE '%$valor_pesquisar%'";

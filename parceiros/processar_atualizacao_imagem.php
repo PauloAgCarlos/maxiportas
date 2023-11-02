@@ -20,11 +20,8 @@
         else
         {
             
-            $servername = "localhost";
-            $user = "root";
-            $senha = "";
-            $bdn = "maxportas";
-            $conection_bd = mysqli_connect($servername, $user, $senha, $bdn);
+            require_once "../config.php";
+            $conection_bd = mysqli_connect($DBHOST, $DBUSER, $DBPASS, $DBNAME);
             $resul = $conection_bd->query("SELECT * FROM parceiros WHERE id = $id_atualizar");
             $row_image = $resul->fetch_array();
             unlink($row_image['imagem']);

@@ -40,13 +40,10 @@
               <button type="button" class="btn btn-alt-secondary" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <?php
                     //Começa AQui        
-                    $host = "localhost";
-                    $user = "root";
-                    $password = "";
-                    $bd_name = "maxportas";
+                    require_once "../config.php";
                     try
                     {
-                        $conn = new PDO("mysql:host=$host;dbname=" . $bd_name, $user, $password);
+                        $conn = new PDO("mysql:host=$DBHOST;dbname=" . $DBNAME, $DBUSER, $DBPASS);
                     }
                     catch(PDOException $error)
                     {
@@ -71,13 +68,9 @@
                 <ul class="nav-items my-2">
                   <?php
                     //Começa AQui        
-                    $host = "localhost";
-                    $user = "root";
-                    $password = "";
-                    $bd_name = "maxportas";
                     try
                     {
-                        $conn = new PDO("mysql:host=$host;dbname=" . $bd_name, $user, $password);
+                        $conn = new PDO("mysql:host=$DBHOST;dbname=" . $DBNAME, $DBUSER, $DBPASS);
                     }
                     catch(PDOException $error)
                     {

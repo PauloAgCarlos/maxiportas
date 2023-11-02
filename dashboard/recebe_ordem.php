@@ -1,11 +1,8 @@
 <?php
-    $host = 'localhost';  // Host do banco de dados
-    $db = 'maxportas';  // Nome do banco de dados
-    $user = 'root';  // Nome de usuário do banco de dados
-    $pass = '';  // Senha do banco de dados
+    require_once "../config.php";
 
     try {
-        $conn = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
+        $conn = new PDO("mysql:host=$DBHOST;dbname=$DBNAME;charset=utf8", $DBUSER, $DBPASS);
         // Habilitar exceções PDO
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch(PDOException $e) {

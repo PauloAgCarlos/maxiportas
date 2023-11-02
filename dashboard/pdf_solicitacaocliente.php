@@ -22,11 +22,8 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
     // Last Header
 
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "maxportas";
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    require_once "../config.php";
+    $conn = new mysqli($DBHOST, $DBUSER, $DBPASS, $DBNAME);
     if ($conn->connect_error) {
         die("Conexão falhou: " . $conn->connect_error);
     }

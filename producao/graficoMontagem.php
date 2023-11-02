@@ -1,6 +1,5 @@
 <!-- <php
-    $conn = mysqli_connect("localhost", "root", "", "maxportas");
-
+   
     $selectdados = mysqli_query($conn, "SELECT valor, descricao_produto_pedido, SUM(valor) as total_valor FROM painel_pedidos_orcamentos WHERE valor > 0 AND status = 'Finalizado' GROUP BY descricao_produto_pedido");
     $descricao_produto_pedido = [];
     $valor = [];

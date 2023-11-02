@@ -12,13 +12,10 @@
         {
 
           // Configurações do banco de dados
-          $dbHost = "localhost";
-          $dbName = "maxportas";
-          $dbUsuario = "root";
-          $dbSenha = "";
+          require_once "../config.php";
 
           try {
-              $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUsuario, $dbSenha);
+              $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
               $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
               $stmt = $pdo->prepare("INSERT INTO pedidos_dos_clientes (nome_cliente, descricao_pedido, data_inicial, data_final, status) VALUES (:nome_cliente, :descricao_pedido, :data_inicial, :data_final, :status)");

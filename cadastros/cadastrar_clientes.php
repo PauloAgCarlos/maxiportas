@@ -17,10 +17,6 @@
     $estado = addslashes($_POST['estado']);
 
     // Configurações do banco de dados
-    /*$dbHost = "localhost";
-    $dbName = "maxportas";
-    $dbUsuario = "root";
-    $dbSenha = "";*/
     require_once "../config.php";
 
     try {

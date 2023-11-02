@@ -11,10 +11,6 @@
 
     
 // Substitua essas informações pelas suas configurações de conexão com o banco de dados
-/*$host = 'localhost';
-$dbname = 'maxportas';
-$username = 'root';
-$password = '';*/
 require_once "../config.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {

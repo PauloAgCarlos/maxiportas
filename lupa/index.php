@@ -33,7 +33,8 @@
           <?php
           // Conecte-se ao banco de dados e busque os dados
           // Substitua com sua lógica de conexão e consulta ao banco de dados
-          $conn = new mysqli('localhost', 'root', '', 'maxportas');
+          require_once "../config.php";
+          $conn = new mysqli($DBHOST, $DBUSER, $DBPASS, $DBNAME);
           $query = 'SELECT * FROM perfil';
           $result = $conn->query($query);
 
