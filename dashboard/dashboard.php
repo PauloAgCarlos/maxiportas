@@ -63,16 +63,16 @@
                   <h3 class="block-title">
                     Orçamentos
                   </h3>
-                  <div class="block-options">
+                  <!--div class="block-options">
                     <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
                       <i class="si si-refresh"></i>
                     </button>
-                  </div>
+                  </div-->
                 </div>
                 <div class="table-responsive">
 
-                  <div style="margin: 5px; display: flex; justify-content: space-between;">
-                    <button style="border-radius: 5px; border: 1px solid #ccc; background-color: transparent; width: 200px; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Busca rápida</a></button>
+                  <div style="margin: 5px; display: flex; justify-content: right;">
+                    <!--button style="border-radius: 5px; border: 1px solid #ccc; background-color: transparent; width: 200px; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Busca rápida</a></button-->
 
                     <!--button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Novo</a></button-->
 
@@ -105,7 +105,7 @@
                       <tr class="text-uppercase">
                         <th>ID</th>
                         <th class="text-center d-xl-table-cell"><input type="checkbox" name="" id=""></th>
-                        <th>Ed</th>
+                        <th><i class="fa fa-eye me-1 opacity-50" style="color: blue;"></i></th>
                         <th>Nome do <br> Cliente</th>
                         <th>Data Inicial</th>
                         <th>Data Final</th>
@@ -121,8 +121,8 @@
                           foreach($result_pedidos as $row_pedidos){
                       ?>
                       <tr>
-                        <td><?php echo $row_pedidos['id']; ?></td>
-                        <td>
+                        <td style="text-align: center;"><?php echo $row_pedidos['id']; ?></td>
+                        <td style="color: blue; text-align: center;">
                           <form id="selectForm">
                               <?php
                               $items = array(1, 2, 3, 4, 5);
@@ -131,11 +131,11 @@
                           </form>
                         </td>
 
-                        <td class="text-center d-xl-table-cell" style="color: blue;">
+                        <td class="text-center d-xl-table-cell" style="color: blue; margin: auto; text-align: center;">
                           <form action="gestao_pedidos.php" method="post">
                             <input type="hidden" name="view" value="<?php $idCriptografado = base64_encode($row_pedidos['id']); echo $idCriptografado;?>">
                             <button type="submit" style="cursor: pointer; border: none; background-color: transparent;">
-                              <i class="fa fa-pencil-alt" style="color: blue;"></i>
+                              <i class="fa fa-eye me-1 opacity-50" style="color: blue;"></i>
                             </button>
                           </form>
                         </td>
@@ -187,17 +187,17 @@
                   <h3 class="block-title">
                     Pedidos
                   </h3>
-                  <div class="block-options">
+                  <!--div class="block-options">
                     <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
                       <i class="si si-refresh"></i>
                     </button>
-                  </div>
+                  </div-->
                 </div>
                 <div class="table-responsive">   
                   
                 
                 <div style="margin: 5px; display: flex; justify-content: space-between;">
-                    <button style="border-radius: 5px; border: 1px solid #ccc; background-color: transparent; width: 200px; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Busca rápida</a></button>
+                    <!--button style="border-radius: 5px; border: 1px solid #ccc; background-color: transparent; width: 200px; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Busca rápida</a></button-->
 
                     <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Novo</a></button>
 

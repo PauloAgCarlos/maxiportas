@@ -158,13 +158,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                      <input type="text" class="form-control" id="cpf" name="cpf" style="font-size: 0.9em;" placeholder="CPF">
-                      
-                      <input type="text" class="form-control ms-3" id="signup-password-confirm" name="rg" style="font-size: 0.9em;" placeholder="RG">
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <input name="cep" type="text" id="cep" class="form-control" placeholder="CEP" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);" />
+                      <input name="cep" type="text" name="cpfcnpj" id="cep" class="form-control" placeholder="CPF/CNPJ" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);" />
                       <!-- <input type="text" class="form-control" name="cep" type="text" id="cep" value="" size="10" maxlength="9"
                         onblur="pesquisacep(this.value);" style="font-size: 0.9em;" placeholder="CEP"> -->
                       
@@ -179,21 +173,20 @@
 
                     <div class="input-group mb-3">
                       <input name="bairro" placeholder="Bairro" type="text" id="bairro" class="form-control" size="40" />
-                      <!-- <input type="text" class="form-control" name="bairro" type="text" id="bairro" size="40" style="font-size: 0.9em;" placeholder="Bairro"> -->
                     </div>
 
-                    <div class="input-group mb-3">
-                      <input name="cidade" type="text" id="cidade" placeholder="Cidade" class="form-control" size="40" />
-                      <!-- <input type="text" class="form-control ms-3" name="cidade" type="text" id="cidade" style="font-size: 0.9em;" placeholder="Cidade"> -->
-                    </div>
+                    <div style="display: flex; ">
+                      <div class="input-group mb-3">
+                        <input name="cidade" type="text" id="cidade" placeholder="Cidade" class="form-control" size="40" />
+                      </div>
 
-                    <div class="input-group mb-3">
-                      <input name="uf" type="text" placeholder="UF" class="form-control" id="uf" size="2" />
+                      <div class="input-group mb-3">
+                        <input name="uf" type="text" placeholder="UF" class="form-control ms-3" id="uf" size="2" />
+                      </div>
                     </div>
 
                     <div class="input-group mb-3">
                       <input name="ibge" type="text" placeholder="IBGE" class="form-control" id="ibge" size="8" />
-                      <input name="rua" type="text" placeholder="Rua" class="form-control ms-3" id="rua" size="60" />
                     </div>
 
                     <div class="input-group mb-3">
@@ -270,9 +263,9 @@ if(isset($_POST['btn_cadastrar'])) :
     $email = addslashes($_POST['email']);
     $senha = addslashes($_POST['password']);
     $parceiro_colaborador = addslashes($_POST['parceiro_colaborador']);
-    $cpf = addslashes($_POST['cpf']);
-    $rg = addslashes($_POST['rg']);
-    $cep = addslashes($_POST['cep']);
+    /*$cpf = addslashes($_POST['cpf']);
+    $rg = addslashes($_POST['rg']);*/
+    $cpfcnpj = addslashes($_POST['cpfcnpj']);
     $endereco = addslashes($_POST['endereco']);
     $telefone = addslashes($_POST['telefone']);
     $complemento = addslashes($_POST['complemento']);
@@ -284,14 +277,14 @@ if(isset($_POST['btn_cadastrar'])) :
     
 
   try{
-    $stmt = $conn->prepare("INSERT INTO logado (nome, email, senha, parceiro_colaborador, cpf, rg, cep, endereco, telefone, complemento, bairro, cidade, uf, nascimento, nivel) VALUES (:nome, :email, :senha, :parceiro_colaborador, :cpf, :rg, :cep, :endereco, :telefone, :complemento, :bairro, :cidade, :uf, :nascimento, :nivel)");
+    $stmt = $conn->prepare("INSERT INTO logado (nome, email, senha, parceiro_colaborador, cpf, endereco, telefone, complemento, bairro, cidade, uf, nascimento, nivel) VALUES (:nome, :email, :senha, :parceiro_colaborador, :cpfcnpj, :endereco, :telefone, :complemento, :bairro, :cidade, :uf, :nascimento, :nivel)");
     $stmt->bindParam(':nome', $username);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':senha', $senha);
     $stmt->bindParam(':parceiro_colaborador', $parceiro_colaborador);
-    $stmt->bindParam(':cpf', $cpf);
-    $stmt->bindParam(':rg', $rg);
-    $stmt->bindParam('cep', $cep);
+    $stmt->bindParam(':cpfcnpj', $cpfcnpj);
+    /*$stmt->bindParam(':rg', $rg);
+    $stmt->bindParam('cep', $cep);*/
     $stmt->bindParam(':endereco', $endereco);
     $stmt->bindParam(':telefone', $telefone);
     $stmt->bindParam(':complemento', $complemento);

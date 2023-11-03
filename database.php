@@ -3,9 +3,13 @@
     class database 
     {
         public $server = 'localhost';
+        public $user = 'root';
+        public $pass = '';
+        public $bdn = 'maxportas';
+        /*public $server = 'localhost';
         public $user = 'hjalum89_maxi';
         public $pass = 'HjAluminio123';
-        public $bdn = 'hjalum89_Maxi';
+        public $bdn = 'hjalum89_Maxi';*/
         public $conn;
         
         public function __construct()
