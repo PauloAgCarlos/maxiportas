@@ -103,7 +103,7 @@
                     <form action="recebe_ordem.php" method="post">
                     <?php $id_unik = uniqid(); ?>
                     <input type="hidden" name="id_unik" value="<?php echo $id_unik; ?>">
-                    <input type="text" name="imagem_perfil" value="">
+                    <input type="hidden" name="imagem_perfil" value="">
                     <button type="submit" name="btn_incluir" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;">    
                         <span style="color: #1d1d1d; font-size: 0.9em;">Incluir</span>
                     </button>
@@ -121,7 +121,7 @@
                         <div class="col-md-2">Parceiro <span style="color: #f00;">*</span>
                             <!-- <form action="" method="post"> -->
                                 <select name="" id="" class="form-control" required style="font-size: 1em;">
-                                    <option value="">HJ Alúminios</option>
+                                    <option value="">Selecione um parceiro</option>
                                     <option value="Alúminios">HJ Alúminios</option>
                                 </select>
                             <!-- </form> -->
@@ -254,15 +254,15 @@
                                                 </div>
 
                                                 <div class="col-md-3">Qtd <span style="color: #f000;">*</span>
-                                                    <input type="number" name="qtd" id="" placeholder="1" class="form-control">
+                                                    <input type="number" name="qtd" id="" required value="1" class="form-control">
                                                 </div>
 
                                                 <div class="col-md-3">Altura (mm)
-                                                    <input type="number" name="altura" placeholder="1" class="form-control">
+                                                    <input type="number" name="altura" required value="0" class="form-control">
                                                 </div>
 
                                                 <div class="col-md-3">Largura (mm)
-                                                    <input type="number" name="largura" id="" placeholder="1" class="form-control">
+                                                    <input type="number" required name="largura" id="" value="0" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -596,7 +596,7 @@
                                             
                                             <div class="row">
                                                 <div class="col-md-3 form-check form-switch" style="padding-left: 70px; margin-top: 5px;">
-                                                    <input class="form-check-input" type="checkbox" value="0" id="tv" name="tv">
+                                                    <input class="form-check-input" type="checkbox" value="1" id="tv" name="tv">
                                                     <label class="form-check-label" for="tv">TV</label>
                                                 </div> 
                                             </div>
@@ -665,7 +665,7 @@
                                                 </div>
                                                 
                                                 <div class="col-md-2 form-check form-switch" style="padding-left: 70px; margin-top: 19px;">
-                                                    <input class="form-check-input" type="checkbox" value="" id="desempenador" name="desempenador">
+                                                    <input class="form-check-input" type="checkbox" value="1" id="desempenador" name="desempenador">
                                                     <label class="form-check-label" for="desempenador">Desempenador</label>
                                                 </div> 
 
