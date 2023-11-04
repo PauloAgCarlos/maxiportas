@@ -100,7 +100,6 @@
                             </div>
                         </form>
                     </div>
-                    
                     <form action="recebe_ordem.php" method="post">
                     <?php $id_unik = uniqid(); ?>
                     <input type="hidden" name="id_unik" value="<?php echo $id_unik; ?>">
@@ -111,7 +110,6 @@
                     <!-- <button type="button" name="btn_incluir" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;" onclick="enviarForm1('<php echo $id_unik; ?>')">    
                         <span style="color: #1d1d1d; font-size: 0.9em;">Incluir</span>
                     </button> -->
-                    </form>
                   </div>
                   <section style="padding-bottom: 10px;">
 
@@ -373,31 +371,27 @@
                                                                 .then(data => {
                                                                     console.log(data)
                                                                     data = data.data;
-                                                                    // Extrair os atributos do JSON
                                                                     const { descricao, imagem } = data;
 
-                                                                    // Preencher os campos de entrada com a descrição
                                                                     activeInputs.forEach(input => {
                                                                         input.value = descricao;
                                                                     });
 
-                                                                    // Exibir as imagens nas respostas
                                                                     activeImages.forEach(image => {
                                                                         image.src = `https://hjaluminio.com.br/sistema/perfil/${imagem}`;
-                                                                        image.style.display = "block"; // Mostrar a imagem
+                                                                        image.style.display = "block";
                                                                     });
 
                                                                     // Atualiza o campo de input do formulário com a URL da imagem
                                                                     document.querySelector('input[name="imagem_perfil"]').value = `https://hjaluminio.com.br/sistema/perfil/${imagem}`;
 
-
-                                                                    // Fechar o modal após a conclusão da requisição
                                                                     document.getElementById("modal").style.display = "none";
                                                                 })
                                                                 .catch(error => {
                                                                     console.error("Erro na requisição:", error);
                                                                 });
                                                         }
+
 
                                                         // Abrir o modal quando o botão é clicado
                                                         document.getElementById("openModalButton").addEventListener("click", function() {

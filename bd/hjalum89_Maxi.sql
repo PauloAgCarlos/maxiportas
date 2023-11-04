@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Tempo de geração: 03-Nov-2023 às 10:44
--- Versão do servidor: 10.4.28-MariaDB
--- versão do PHP: 8.2.4
+-- Host: 192.185.176.183
+-- Tempo de geração: 04-Nov-2023 às 12:44
+-- Versão do servidor: 5.7.23-23
+-- versão do PHP: 8.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `maxportas`
+-- Banco de dados: `hjalum89_Maxi`
 --
 
 -- --------------------------------------------------------
@@ -42,14 +42,7 @@ CREATE TABLE `acessorios` (
   `codigo_da_fabrica` varchar(255) NOT NULL,
   `ultima_alteracao` date NOT NULL,
   `ativo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `acessorios`
---
-
-INSERT INTO `acessorios` (`id`, `descricao`, `codigo_produto`, `observacao`, `custo_unitario`, `markup`, `valor_unitario`, `unidade`, `tipo_do_acessorio`, `desconto_corte`, `imagem`, `codigo_da_fabrica`, `ultima_alteracao`, `ativo`) VALUES
-(1, 'Descrição Toorescode', 'CAcHJ-hrgfue', 'vugfchgkjm', 0, 0, 0, 'Unidade', 'Outro', 0, 'upload/64d21bc389cea.png', '11', '2023-08-10', '');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -63,7 +56,7 @@ CREATE TABLE `agregar` (
   `observacao` text NOT NULL,
   `ultima_alteracao` date NOT NULL,
   `ativo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -83,7 +76,7 @@ CREATE TABLE `basicos_usuarios` (
   `observacao` text NOT NULL,
   `ultima_alteracao` date NOT NULL,
   `ativo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `basicos_usuarios`
@@ -91,7 +84,8 @@ CREATE TABLE `basicos_usuarios` (
 
 INSERT INTO `basicos_usuarios` (`id`, `nome_ususario`, `telefone_usuario`, `email_login`, `libera_xml_pedido`, `libera_painel_producao`, `desconto_maximo`, `grupo_de_usuarios`, `observacao`, `ultima_alteracao`, `ativo`) VALUES
 (2, 'TC Update', '72y2223', 'er@dde.com', 'on', 'on', 0, 'Administradores da Empresa', '', '2023-08-03', 'on'),
-(3, 'TC', '89439223w', 'eAr@dde.com', '', 'on', 0, 'Administradores da Empresa', '', '2023-08-24', 'on');
+(3, 'TC', '89439223w', 'eAr@dde.com', '', 'on', 0, 'Administradores da Empresa', '', '2023-08-24', 'on'),
+(4, 'Julio Cezar', '43998145293', 'jctisolucoes@gmail.com', '', 'on', 0, 'Administradores da Empresa', '', '0000-00-00', 'on');
 
 -- --------------------------------------------------------
 
@@ -103,7 +97,7 @@ CREATE TABLE `calendario` (
   `id` int(11) NOT NULL,
   `ano_mes` varchar(100) NOT NULL,
   `dias_uteis` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -115,7 +109,7 @@ CREATE TABLE `classificacao_de_clientes` (
   `id` int(11) NOT NULL,
   `descricao` varchar(255) NOT NULL,
   `codigo_produto` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `classificacao_de_clientes`
@@ -146,20 +140,14 @@ CREATE TABLE `clientes` (
   `bairro` varchar(100) NOT NULL,
   `cidade` varchar(100) NOT NULL,
   `estado` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `clientes`
 --
 
 INSERT INTO `clientes` (`id`, `cpf_cnpj`, `nome_razao_socil`, `contato`, `telefone`, `celular`, `email`, `senha`, `cep`, `rua`, `numero`, `complemento`, `bairro`, `cidade`, `estado`) VALUES
-(42, '999999', 'HJ Allúminio', '', '', '', '', '', '', '', '', '', '', '', 'Selecione...'),
-(44, '111111', 'HJ Allúminios Update', '', '', '', '', '', '', '', '', '', '', '', 'Selecione...'),
-(47, '111111', 'HJ Allúminios Update', '9999999999', '', '', '', '', '', '', '', '', '', '', 'Selecione...'),
-(48, '111111', 'Ttt', '101011', '935593163', '(00)00000-000000000', 'aaaa@sss.com', '4t54t544545', '11111-111', 'São Paulo', '00000', 'Complemento HJ', 'Brasília', 'Huíla', 'Estado 1'),
-(49, '111111', 'Fredy', '9999999999', '935593163', '(00)00000-000000000', 'morador122@gmail.com', 'er34t54t54', '11111-111', 'São Paulo', '00000', 'Complemento HJ', 'Brasília', 'Huíla', 'Estado 1'),
-(50, '01001-000', 'Name Cliente', '9999999999', '935593163', '(00)00000-000000000', 'gaivotas@gmail.com', '1234443', '11111-111', 'São Paulo', '00000', 'Complemento HJ', 'Brasília', 'Huíla', 'Estado 1'),
-(51, '22222', 'Teste', '9999999999', '935593163', '(00)00000-000000000', 'emailcondutor@teste.com', '345678', '11111-111', 'São Paulo', '00000', 'Complemento HJ', 'Brasília', 'Huíla', 'Selecione...');
+(52, '03766882000270', 'TRIUNFAL COZINHAS E MODULADOS LTDA', '', '(43) 3027-5930', '', '', 'mudar123', '86.187-000', 'ROD CELSO GARCIA CID', '3073', 'QUADRA02 LOTE 14A', '', 'Cambe', 'Selecione...');
 
 -- --------------------------------------------------------
 
@@ -178,7 +166,7 @@ CREATE TABLE `cores` (
   `rendimento` varchar(100) NOT NULL,
   `ultima_alteracao` date NOT NULL,
   `ativo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `cores`
@@ -203,7 +191,7 @@ CREATE TABLE `dobradicas` (
   `distancia_primeiro_furo` int(11) NOT NULL,
   `ultima_alteracao` date NOT NULL,
   `ativo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `dobradicas`
@@ -233,17 +221,7 @@ CREATE TABLE `esquadretas` (
   `codigo_da_fabrica` varchar(100) NOT NULL,
   `ultima_alteracao` date NOT NULL,
   `ativo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `esquadretas`
---
-
-INSERT INTO `esquadretas` (`id`, `descricao`, `observacao`, `custo_metro`, `markup`, `valor_unitario`, `agregar`, `codigo_produto`, `unidade`, `imagem`, `codigo_da_fabrica`, `ultima_alteracao`, `ativo`) VALUES
-(2, 'Descrição', 'ffregrt', 0, 0, 0, 'Agregar Simples', 'CEsHJ-7d6', 'Unidade', 'upload/64ccf70a8f7df.png', '', '2023-08-16', 'on'),
-(3, 'Descrição 1 Updateaaa', 'sdfrsfweew', 2, 11, 21, 'Agregar Simples1', 'CEsHJ-91c', 'Unidade2', 'upload/64cd02e686e17.png', '11', '2023-08-23', 'on'),
-(4, 'DescriçãoUpdate', 'Afghfy', 2, 11, 21, 'Agregar Simples3', 'CEsHJ-d16', 'Unidade1', 'upload/64cd5052c0d2b.png', '11', '2023-08-24', 'on'),
-(5, 'Descrição', 'bjvjhm', 0, 0, 0, 'Agregar Simples', 'CEsHJ-bnjs88', 'Unidade', 'upload/64d14f9e30258.png', '', '2023-08-10', 'on');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -264,14 +242,7 @@ CREATE TABLE `financas_condicao_pagamento` (
   `prazo_segunda_parcela_dias` varchar(100) NOT NULL,
   `intervalo_entre_parcelas_dias` varchar(100) NOT NULL,
   `entrada` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `financas_condicao_pagamento`
---
-
-INSERT INTO `financas_condicao_pagamento` (`id`, `descricao`, `codigo_produto`, `tipo`, `ultima_alteracao`, `ativo`, `numero_de_parcelas`, `markup`, `prazo_primeira_parcela_dias`, `prazo_segunda_parcela_dias`, `intervalo_entre_parcelas_dias`, `entrada`) VALUES
-(3, 'Descrição', 'CFinHJ-ftyuyh', 'Dias Corridos 1', '2023-08-24', 'on', 8, '6', '4', '12', '2', '3');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -283,14 +254,7 @@ CREATE TABLE `forma_de_pagamento` (
   `id` int(11) NOT NULL,
   `descricao` varchar(255) NOT NULL,
   `codigo_produto` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `forma_de_pagamento`
---
-
-INSERT INTO `forma_de_pagamento` (`id`, `descricao`, `codigo_produto`) VALUES
-(1, 'DescriçãoUpdate', 'CItemAg-bdfglhirdgsrkf');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -301,7 +265,7 @@ INSERT INTO `forma_de_pagamento` (`id`, `descricao`, `codigo_produto`) VALUES
 CREATE TABLE `img_backup` (
   `id` int(11) NOT NULL,
   `imagem_backup` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `img_backup`
@@ -319,7 +283,7 @@ INSERT INTO `img_backup` (`id`, `imagem_backup`) VALUES
 CREATE TABLE `indicadores` (
   `id` int(11) NOT NULL,
   `ano_mes` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `indicadores`
@@ -347,14 +311,7 @@ CREATE TABLE `insumos` (
   `ultima_alteracao` date NOT NULL,
   `imagem` varchar(255) NOT NULL,
   `ativo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `insumos`
---
-
-INSERT INTO `insumos` (`id`, `descricao`, `codigo_produto`, `observacao`, `custo`, `markup`, `valor`, `unidade`, `codigo_da_fabrica`, `ultima_alteracao`, `imagem`, `ativo`) VALUES
-(2, 'Alfredo Torres', 'CInHJ-abc123', 'hjdfbvilerbh', 0, 0, 0, 'Unidade', '', '2023-08-24', 'upload/64d221d195fd2.png', 'on');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -369,7 +326,7 @@ CREATE TABLE `linha_de_produto` (
   `codigo_interno` varchar(255) NOT NULL,
   `ultima_alteracao` date NOT NULL,
   `ativo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `linha_de_produto`
@@ -401,7 +358,7 @@ CREATE TABLE `logado` (
   `uf` varchar(20) NOT NULL,
   `nascimento` varchar(100) NOT NULL,
   `nivel` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `logado`
@@ -433,7 +390,7 @@ CREATE TABLE `movimentacao_consumo_de_materia_prima` (
   `entrou_em_producao` date NOT NULL,
   `produzido` date NOT NULL,
   `ativo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `movimentacao_consumo_de_materia_prima`
@@ -459,7 +416,7 @@ CREATE TABLE `painel_pedidos_orcamentos` (
   `orcamento` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   `ano` year(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `painel_pedidos_orcamentos`
@@ -498,7 +455,7 @@ CREATE TABLE `painel_vendas_mensais` (
   `ano_mes` varchar(100) NOT NULL,
   `valor` varchar(255) NOT NULL,
   `quantidade` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `painel_vendas_mensais`
@@ -523,14 +480,7 @@ CREATE TABLE `parametros` (
   `codigo_produto` varchar(255) NOT NULL,
   `valor` int(255) NOT NULL,
   `observacao` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `parametros`
---
-
-INSERT INTO `parametros` (`id`, `descricao`, `codigo_produto`, `valor`, `observacao`) VALUES
-(2, 'Descrição 1', 'CParHJ-FT002', 43, 'rgre');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -557,15 +507,7 @@ CREATE TABLE `parceiros` (
   `numero` varchar(50) NOT NULL,
   `telefone` varchar(50) NOT NULL,
   `imagem` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `parceiros`
---
-
-INSERT INTO `parceiros` (`id`, `razaosocial`, `nomefantasia`, `complemento`, `cidade`, `endreco`, `email`, `instagram`, `facebook`, `codigointerno`, `bairro`, `cnpj`, `cep`, `uf`, `ie`, `numero`, `telefone`, `imagem`) VALUES
-(70, 'Name Razão Social', 'Name Fantasia', 'Complemento HJ', 'Cidade User', 'Endereço Name', 'gaivotas@teste.com', 'instagram', 'facebook', '1111111', 'Bairro User', '2022', '0000', '11', '2222222', '999999999', '(00) 93593-59359', 'upload/64c846bacf2f8.png'),
-(72, 'Name Razão SocialAAAAA', 'Name Fantasia', 'Complemento HJ', 'Cidade User', 'Endereço Name', 'gaivotas@teste.com', 'instagram', 'facebook', '1111111', 'Bairro User', '1111', '11111-111', '11', '2222222', '999999999', '(99) 12211-22222', 'upload/64c8481f96402.png');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -582,7 +524,7 @@ CREATE TABLE `pedidos_dos_clientes` (
   `garantia` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   `nome_responsavel` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `pedidos_dos_clientes`
@@ -634,16 +576,14 @@ CREATE TABLE `perfil` (
   `detalhes` text NOT NULL,
   `imagem` varchar(255) NOT NULL,
   `ativo` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `perfil`
 --
 
 INSERT INTO `perfil` (`id`, `descricao`, `puxadoracoplado`, `ponteira_acoplado`, `ponteira_obrigatoria`, `exige_pinturano_vidro`, `agregar`, `unidade`, `vidro`, `esquadreta`, `esquadreta_reforcada_a`, `esquadreta_reforcada_b`, `esquadreta_dupla`, `custo_metro`, `desconto_corte_perfil`, `desconto_corte_vidro`, `desconto_corte_travessa`, `desconto_corte_travessa_oculta`, `perda_bordas`, `perda_corte`, `dimensao`, `perda_bordas_retalho`, `perda_corte_retalho`, `codigo_produto`, `ultima_alteracao`, `largura_da_mascara`, `codigo_da_fabrica`, `referencias_do_mercado`, `detalhes`, `imagem`, `ativo`) VALUES
-(16, 'Nome Consulta 2', 'on', '', '', '', 'Agregar Simples', 'Metro', 'Vidro Simples', 'Esquadreta', 'Esquadreta Reforcada A ', 'Esquadreta Reforcada B ', 'on', 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'CPHJ-236', 0.00, 0.00, 0.00, '', '', 'upload/64c8e6b17f244.png', 'on'),
-(18, 'Descrição 22', 'on', 'on', 'on', 'on', 'Agregar Simples', 'Metro', 'Vidro Simples', 'Esquadreta', 'Esquadreta Reforcada A ', 'Esquadreta Reforcada B ', 'on', 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'CPHJ-gfruyu', 0.00, 0.00, 0.00, 'gfvk', 'bhjkjjhm', 'upload/64d14c9f86635.png', 'on'),
-(19, 'Descrição', 'on', 'on', 'on', 'on', 'Agregar Simples', 'Metro', 'Vidro Simples', 'Esquadreta', 'Esquadreta Reforcada A ', 'Esquadreta Reforcada B ', 'on', 2.00, 10.00, 10.00, 12.20, 12.00, 12.00, 22.00, 2.00, 6.00, 12.00, 'CPHJ-gj76fg', 22.00, 12.00, 11.00, 'Refrnn', 'Detalhes', 'upload/64d29ed5c9c2a.png', 'on');
+(20, 'Perfil 1', 'on', '', '', '', 'Agregar Simples1', 'Metro1', 'Vidro Simples', 'Esquadreta', 'Esquadreta Reforcada A ', 'Esquadreta Reforcada B ', 'on', 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'CPHJ-FT102', 0.00, 0.00, 0.00, '', '', 'upload/654639e1b9bcc.jpeg', 'on');
 
 -- --------------------------------------------------------
 
@@ -679,17 +619,7 @@ CREATE TABLE `produtos` (
   `classificacao_fiscal` varchar(100) NOT NULL,
   `volume` varchar(100) NOT NULL,
   `quantidade_stock` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `produtos`
---
-
-INSERT INTO `produtos` (`id`, `descricao_do_produto`, `codigo_produto`, `codigo_da_fabrica`, `referencia`, `libera_para_venda`, `bloqueia_estoque_negativo`, `embalagem_fornecedor`, `consumo_medio`, `massa`, `ultima_alteracao`, `ativo`, `custo_atual`, `markup`, `venda`, `ipi`, `unidade_basica`, `estoque`, `estoque_minimo`, `estoque_de_seguranca`, `tempo_de_reposicao`, `linha`, `embalagem`, `localizador`, `classificacao_fiscal`, `volume`, `quantidade_stock`) VALUES
-(5, 'Porta', 'CProdHJ-392774238', '11', 'eferfr', 'on', 'on', '12', '5', 9, '2023-09-29', 'on', 1000, 11, 22, '2', 'Unidade', '100', '10', '12', '2', 'Linha', '1', 's', '2', '22', '664'),
-(6, 'Dobradissas', 'CProdHJ-9896', '11', 'eferfry', 'on', 'on', '5', '8', 90, '2023-09-28', 'on', 10, 11, 22, '8', 'Unidade1', '45', '9', '90', '8', 'Linha1', '8', 'default', '7', '4', '410'),
-(7, 'Travessa', 'CProdHJ-jhfgfuek', 'guhjb', 'eferfr', 'on', 'on', '21', '89', 90, '2023-09-21', 'on', 1000, 11, 22, '9', 'Unidade1', '100', '90', '9', '8', 'Linha1', '9', 'sd', '8', '6', '968'),
-(10, 'Produto', 'CProdHJ-hlbkm', 'u9ui', 'eferfry', 'on', 'on', '4', '2', 8, '2023-09-21', 'on', 10, 11, 22, '8', 'Unidade2', '8', '99', '8', '10', 'Linha2', '8', 'ff44', '8', '9', '1000');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -722,14 +652,7 @@ CREATE TABLE `puxadores` (
   `imagem` varchar(255) NOT NULL,
   `ultima_alteracao` date NOT NULL,
   `ativo` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `puxadores`
---
-
-INSERT INTO `puxadores` (`id`, `descricao`, `usinagem_box_tres`, `medida_maxima_para_usinagem`, `agregar`, `unidade`, `codigo_da_fabrica`, `codigo_produto`, `ponteira_obrigatoria`, `referencias_do_mercado`, `custo_metro`, `markup`, `metragem_minima`, `valor`, `desconto_corte`, `perda`, `perda_bordas`, `perda_corte`, `dimensao`, `perda_bordas_retalho`, `perda_corte_retalho`, `imagem`, `ultima_alteracao`, `ativo`) VALUES
-(8, 'Puxadores', 'Usinagem Ogrigatória', '9', '', 'Metro', '', 'CPuHJ-hfr999', 'on', 'jgvjk', 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 'upload/64d14df8a4715.png', '2023-08-24', 'on');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -753,14 +676,7 @@ CREATE TABLE `servicos` (
   `codigo_da_fabrica` varchar(100) NOT NULL,
   `ultima_alteracao` date NOT NULL,
   `ativo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `servicos`
---
-
-INSERT INTO `servicos` (`id`, `descricao`, `tipo_de_servico`, `exibe_no_orcamento`, `exibe_na_lista_de_corte`, `observacao`, `custo_metro`, `codigo_produto`, `markup`, `valor`, `adiciona_para_o_corte`, `calculo`, `codigo_da_fabrica`, `ultima_alteracao`, `ativo`) VALUES
-(6, 'hbjbj', 'Potra', 'on', 'on', 'jkvugkkm', 0, 'CSeHJ-nds99', 0, 0, 0, 'on', '', '0000-00-00', 'on');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -776,7 +692,7 @@ CREATE TABLE `tbl_clientes_system` (
   `cidade` varchar(255) NOT NULL,
   `fone` varchar(255) NOT NULL,
   `cep` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `tbl_clientes_system`
@@ -785,7 +701,8 @@ CREATE TABLE `tbl_clientes_system` (
 INSERT INTO `tbl_clientes_system` (`id`, `nome`, `endereco`, `bairro`, `cidade`, `fone`, `cep`) VALUES
 (1, 'Fredy', 'São Paulo', 'Brasília', 'Huíla', '(00)00000-000000000', '11111-111'),
 (2, 'Name Cliente', 'São Paulo', 'Brasília', 'Huíla', '(00)00000-000000000', '11111-111'),
-(3, 'Teste', 'São Paulo', 'Brasília', 'Huíla', '(00)00000-000000000', '11111-111');
+(3, 'Teste', 'São Paulo', 'Brasília', 'Huíla', '(00)00000-000000000', '11111-111'),
+(4, 'TRIUNFAL COZINHAS E MODULADOS LTDA', 'ROD CELSO GARCIA CID', '', 'Cambe', '', '86.187-000');
 
 -- --------------------------------------------------------
 
@@ -801,6 +718,7 @@ CREATE TABLE `tbl_ordem_producao` (
   `qtd` int(11) NOT NULL,
   `altura` int(11) NOT NULL,
   `largura` int(11) NOT NULL,
+  `imagem_perfil` varchar(255) NOT NULL,
   `perfil_lado_esquerdo` varchar(255) NOT NULL,
   `usinagem_para_esquerdo` varchar(100) NOT NULL,
   `puxador_esquerdo` varchar(100) NOT NULL,
@@ -869,16 +787,19 @@ CREATE TABLE `tbl_ordem_producao` (
   `ap_fab_entrou_producao_data` varchar(255) NOT NULL,
   `ap_fab_produzido` varchar(50) NOT NULL,
   `ap_fab_entregue` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `tbl_ordem_producao`
 --
 
-INSERT INTO `tbl_ordem_producao` (`id`, `id_uniq`, `cliente`, `modo`, `qtd`, `altura`, `largura`, `perfil_lado_esquerdo`, `usinagem_para_esquerdo`, `puxador_esquerdo`, `perfil_lado_direito`, `usinagem_para_direito`, `puxador_direito`, `perfil_lado_superior`, `usinagem_para_superior`, `puxador_superior`, `perfil_lado_inferior`, `usinagem_para_inferior`, `puxador_inferior`, `vidro`, `tv`, `servicos`, `travessa`, `portas_pares`, `reforco`, `desempenador`, `esquadreta`, `ponteira`, `kit`, `valor_item_cliente`, `porcento_desconto`, `desconto`, `produto`, `prod_qtd`, `prod_usinagem_puxador`, `prod_valor_item_cliente`, `prod_porcento_desconto`, `prod_desconto`, `val_forma_pagamento`, `val_condicao_pagamento`, `val_situacao_financeira`, `val_qtd_portas`, `val_qtd_vidros`, `val_qtd_quadros`, `val_qtd_total`, `val_total_consumidor`, `val_valor_itens_clientes`, `val_porcento_desconto`, `val_desconto`, `val_frete`, `val_total_cliente`, `out_valor_itens_parceiro`, `out_porcento_desconto`, `out_desconto`, `out_total_parceiro`, `out_markup_parceiro`, `out_total_fabrica`, `out_markup_fabrica`, `obs_observacao_op`, `ap_cli_aprovacao_cliente`, `ap_cli_aprovacao_cliente_data`, `ap_cli_cliente_retira`, `ap_cli_pedido_parceiro`, `ap_parc_aprovacao_parceiro`, `ap_parc_andamento_parceiro`, `ap_parc_entregue_data`, `ap_parc_vendedor_interno`, `ap_parc_vendedor_externo`, `ap_parc_vendedor_pedido`, `ap_fab_aprovacao_fabrica`, `ap_fab_pedido_fabrica_data`, `ap_fab_andamento`, `ap_fab_entrou_producao_data`, `ap_fab_produzido`, `ap_fab_entregue`) VALUES
-(45, '65400f1ca18b2', 'Fredy', 'Porta', 12, 16, 18, 'Nome Consulta 2', 'Sem Usinagem', '', 'Nome Consulta 2', 'Sem Usinagem', '', 'Nome Consulta 2', 'Sem Usinagem', '', 'Nome Consulta 2', 'Sem Usinagem', '', '', '0', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(46, '6540113cf351e', 'Name Cliente', 'Porta', 16, 78, 653, 'Descrição', 'Sem Usinagem', '', 'Descrição', 'Sem Usinagem', '', 'Descrição', 'Sem Usinagem', '', 'Descrição', 'Sem Usinagem', '', '', '0', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-(47, '654011d1368d0', 'HJ Allúminios Update', 'Porta', 567, 56, 7, 'Descrição 22', 'Sem Usinagem', '', 'Descrição 22', 'Sem Usinagem', '', 'Descrição 22', 'Sem Usinagem', '', 'Descrição 22', 'Sem Usinagem', '', '', '0', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+INSERT INTO `tbl_ordem_producao` (`id`, `id_uniq`, `cliente`, `modo`, `qtd`, `altura`, `largura`, `imagem_perfil`, `perfil_lado_esquerdo`, `usinagem_para_esquerdo`, `puxador_esquerdo`, `perfil_lado_direito`, `usinagem_para_direito`, `puxador_direito`, `perfil_lado_superior`, `usinagem_para_superior`, `puxador_superior`, `perfil_lado_inferior`, `usinagem_para_inferior`, `puxador_inferior`, `vidro`, `tv`, `servicos`, `travessa`, `portas_pares`, `reforco`, `desempenador`, `esquadreta`, `ponteira`, `kit`, `valor_item_cliente`, `porcento_desconto`, `desconto`, `produto`, `prod_qtd`, `prod_usinagem_puxador`, `prod_valor_item_cliente`, `prod_porcento_desconto`, `prod_desconto`, `val_forma_pagamento`, `val_condicao_pagamento`, `val_situacao_financeira`, `val_qtd_portas`, `val_qtd_vidros`, `val_qtd_quadros`, `val_qtd_total`, `val_total_consumidor`, `val_valor_itens_clientes`, `val_porcento_desconto`, `val_desconto`, `val_frete`, `val_total_cliente`, `out_valor_itens_parceiro`, `out_porcento_desconto`, `out_desconto`, `out_total_parceiro`, `out_markup_parceiro`, `out_total_fabrica`, `out_markup_fabrica`, `obs_observacao_op`, `ap_cli_aprovacao_cliente`, `ap_cli_aprovacao_cliente_data`, `ap_cli_cliente_retira`, `ap_cli_pedido_parceiro`, `ap_parc_aprovacao_parceiro`, `ap_parc_andamento_parceiro`, `ap_parc_entregue_data`, `ap_parc_vendedor_interno`, `ap_parc_vendedor_externo`, `ap_parc_vendedor_pedido`, `ap_fab_aprovacao_fabrica`, `ap_fab_pedido_fabrica_data`, `ap_fab_andamento`, `ap_fab_entrou_producao_data`, `ap_fab_produzido`, `ap_fab_entregue`) VALUES
+(45, '65400f1ca18b2', 'Fredy', 'Porta', 12, 16, 18, '', 'Nome Consulta 2', 'Sem Usinagem', '', 'Nome Consulta 2', 'Sem Usinagem', '', 'Nome Consulta 2', 'Sem Usinagem', '', 'Nome Consulta 2', 'Sem Usinagem', '', '', '0', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(46, '6540113cf351e', 'Name Cliente', 'Porta', 16, 78, 653, '', 'Descrição', 'Sem Usinagem', '', 'Descrição', 'Sem Usinagem', '', 'Descrição', 'Sem Usinagem', '', 'Descrição', 'Sem Usinagem', '', '', '0', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(47, '654011d1368d0', 'HJ Allúminios Update', 'Porta', 567, 56, 7, '', 'Descrição 22', 'Sem Usinagem', '', 'Descrição 22', 'Sem Usinagem', '', 'Descrição 22', 'Sem Usinagem', '', 'Descrição 22', 'Sem Usinagem', '', '', '0', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(48, '654633f56461f', 'TRIUNFAL COZINHAS E MODULADOS LTDA', 'Porta', 12, 13, 14, '', '', 'Sem Usinagem', '', '', 'Sem Usinagem', '', '', 'Sem Usinagem', '', '', 'Sem Usinagem', '', '', '0', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(49, '6546343f21c71', 'TRIUNFAL COZINHAS E MODULADOS LTDA', 'Porta', 1, 22, 23, '', '', 'Sem Usinagem', '', '', 'Sem Usinagem', '', '', 'Sem Usinagem', '', '', 'Sem Usinagem', '', '', '0', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(50, '65463baf6deb6', 'TRIUNFAL COZINHAS E MODULADOS LTDA', 'Porta', 12, 67, 77, 'https://hjaluminio.com.br/sistema/perfil/upload/654639e1b9bcc.jpeg', 'Perfil 1', 'Sem Usinagem', '', 'Perfil 1', 'Sem Usinagem', '', 'Perfil 1', 'Sem Usinagem', '', 'Perfil 1', 'Sem Usinagem', '', '', '0', 'Rebaixo', '', '', '', '', '', '', '', '', '', '', '', '', 'Usinagem Puxador', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -895,15 +816,7 @@ CREATE TABLE `tintas` (
   `codigo_da_fabrica` varchar(100) NOT NULL,
   `ultima_alteracao` date NOT NULL,
   `ativo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `tintas`
---
-
-INSERT INTO `tintas` (`id`, `descricao`, `codigo_produto`, `unidade`, `custo`, `codigo_da_fabrica`, `ultima_alteracao`, `ativo`) VALUES
-(3, 'Tinta 5 Update', 'CtinHJ-j87329', 'Grama', 12, '12', '2023-08-23', 'on'),
-(4, 'Descrição 1', 'CTinHJ-gfhe73332', 'Grama', 12, '11', '2023-08-24', 'on');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -915,15 +828,7 @@ CREATE TABLE `tipo_do_item_agregar` (
   `id` int(11) NOT NULL,
   `descricao` varchar(255) NOT NULL,
   `codigo_produto` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `tipo_do_item_agregar`
---
-
-INSERT INTO `tipo_do_item_agregar` (`id`, `descricao`, `codigo_produto`) VALUES
-(1, 'DescriçãoUpdate', 'CItemAg-FT1024566'),
-(3, 'Nome Consulta', 'CItemAgHJ-fjkhierlre');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -954,16 +859,7 @@ CREATE TABLE `travessas` (
   `ultima_alteracao` date NOT NULL,
   `ativo` tinyint(1) NOT NULL,
   `quantidade_stock` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `travessas`
---
-
-INSERT INTO `travessas` (`id`, `descricao`, `codigo_produto`, `agregar`, `unidade`, `esquadreta`, `oculto`, `referencias_do_mercado`, `custo_metro`, `markup`, `valor`, `desconto_corte_vidro`, `perda`, `perda_bordas`, `perda_corte`, `dimensao`, `perda_bordas_retalho`, `perda_corte_retalho`, `imagem`, `ultima_alteracao`, `ativo`, `quantidade_stock`) VALUES
-(17, 'Travessa 1', 'CTHJ-e56', 'Agregar Simples', 'Metro', 'Esquadreta', 'on', '', 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'upload/64c8e383a9e62.png', '0000-00-00', 0, ''),
-(18, 'Travessa 2', 'CTHJ-af4589', 'Agregar Simples', 'Metro', 'Esquadreta', 'on', 'hbj', 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'upload/64d14d6945cc2.png', '2023-09-02', 0, ''),
-(19, 'Travessas', 'CTHJ-AD', 'Agregar Simples', 'Metro', 'Esquadreta', 'on', 'fbehflerhfjkler', 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'upload/64f067e0e78fa.png', '2023-08-20', 0, '75');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -979,15 +875,7 @@ CREATE TABLE `unidades_de_produto` (
   `abreviacao` varchar(100) NOT NULL,
   `ultima_alteracao` date NOT NULL,
   `ativo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `unidades_de_produto`
---
-
-INSERT INTO `unidades_de_produto` (`id`, `descricao`, `codigo_produto`, `codigo_interno`, `abreviacao`, `ultima_alteracao`, `ativo`) VALUES
-(2, 'Nome Consulta', 'CLinhProdHJ-feeeda', 'cbhwuwy', 'Asrf', '2023-08-24', 'on'),
-(3, 'Descrição 1', 'CLinhProdHJ-10', 'ejfh', 'adee', '2023-08-11', 'on');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -1022,14 +910,7 @@ CREATE TABLE `vidros` (
   `imagem` varchar(255) NOT NULL,
   `ultima_alteracao` date NOT NULL,
   `ativo` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `vidros`
---
-
-INSERT INTO `vidros` (`id`, `descricao`, `agregar`, `unidade`, `liberado_para`, `permite_pintura`, `codigo_da_fabrica`, `codigo_produto`, `observacao`, `custo_metro`, `markup`, `markup_avulso`, `metragem_minima`, `valor`, `valor_avulso`, `valor_com_perda`, `perda`, `perda_avulso`, `perda_bordas`, `perda_corte`, `perda_bordas_retalho`, `perda_corte_retalho`, `dimensao`, `imagem`, `ultima_alteracao`, `ativo`) VALUES
-(26, 'hihg', 'Agregar Simples', 'Metro', 'Portas', 'on', '11', 'CVHJ-j49334', 'dtcftcgf', 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 'upload/64d14e5c18f28.png', '2023-08-11', 'on');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Índices para tabelas despejadas
@@ -1272,7 +1153,7 @@ ALTER TABLE `agregar`
 -- AUTO_INCREMENT de tabela `basicos_usuarios`
 --
 ALTER TABLE `basicos_usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `calendario`
@@ -1290,7 +1171,7 @@ ALTER TABLE `classificacao_de_clientes`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT de tabela `cores`
@@ -1392,7 +1273,7 @@ ALTER TABLE `pedidos_dos_clientes`
 -- AUTO_INCREMENT de tabela `perfil`
 --
 ALTER TABLE `perfil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
@@ -1416,13 +1297,13 @@ ALTER TABLE `servicos`
 -- AUTO_INCREMENT de tabela `tbl_clientes_system`
 --
 ALTER TABLE `tbl_clientes_system`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `tbl_ordem_producao`
 --
 ALTER TABLE `tbl_ordem_producao`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de tabela `tintas`
