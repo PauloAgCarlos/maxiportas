@@ -63,28 +63,13 @@
                   <h3 class="block-title">
                     Orçamentos
                   </h3>
-                  <!--div class="block-options">
-                    <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                      <i class="si si-refresh"></i>
-                    </button>
-                  </div-->
                 </div>
                 <div class="table-responsive">
 
                   <div style="margin: 5px; display: flex; justify-content: right;">
-                    <!--button style="border-radius: 5px; border: 1px solid #ccc; background-color: transparent; width: 200px; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Busca rápida</a></button-->
-
-                    <!--button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Novo</a></button-->
-
-                    <div>    
-                        <!--form id="resultForm" action="testids.php" method="post">
-                            <input type="hidden" id="selectedIds" name="selectedIds">
-                            <button type="submit">Enviar para processamento</button>
-                        </form-->    
-
+                    <div>   
                         <form action="pdf_solicitacaocliente.php" method="post" id="resultForm">
                             <input type="hidden" id="selectedIds" name="selectedIds">
-                            <!-- <input type="hidden" name="id_ordemProducao" id="idDoForm1" value="<php echo $_GET['id_filter']; ?>" > -->
                             <div class="btn-group">
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 0 5px 16px;">
                                   <a style="color: #1d1d1d; font-size: 0.9em;"  style="text-decoration: none;"  href="#" role="button" aria-expanded="false">Imprimir <img src="../assets/img/icons8-ordem-descendente-24.png" width="16px" alt=""></a>
@@ -92,7 +77,6 @@
                                 <ul class="dropdown-menu">
                                     <li> 
                                         <button class="dropdown-item" type="submit" name="btn_submit" value="PDF Cliente">Gerar</button>
-                                        <!--button type="submit" name="btn_enviar_ids">Enviar IDs</button-->
                                     </li>
                                 </ul>
                             </div>
@@ -187,37 +171,23 @@
                   <h3 class="block-title">
                     Pedidos
                   </h3>
-                  <!--div class="block-options">
-                    <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                      <i class="si si-refresh"></i>
-                    </button>
-                  </div-->
                 </div>
                 <div class="table-responsive">   
                   
                 
                 <div style="margin: 5px; display: flex; justify-content: space-between;">
-                    <!--button style="border-radius: 5px; border: 1px solid #ccc; background-color: transparent; width: 200px; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Busca rápida</a></button-->
-
                     <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Novo</a></button>
 
                     <div>    
-                        <!--form id="resultForm" action="testids.php" method="post">
-                            <input type="hidden" id="selectedIds" name="selectedIds">
-                            <button type="submit">Enviar para processamento</button>
-                        </form-->    
-
-                        <form action="testids.php" method="post" id="resultForm">
-                            <input type="hidden" id="selectedIds" name="selectedIds">
-                            <!-- <input type="hidden" name="id_ordemProducao" id="idDoForm1" value="<php echo $_GET['id_filter']; ?>" > -->
+                        <form action="testids.php" method="post" id="resultFormPedidos">
+                            <input type="hidden" id="selectedIdsPedidos" name="selectedIdsPedidos">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 0 5px 16px;">
                                   <a style="color: #1d1d1d; font-size: 0.9em;"  style="text-decoration: none;"  href="#" role="button" aria-expanded="false">Imprimir <img src="../assets/img/icons8-ordem-descendente-24.png" width="16px" alt=""></a>
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li> 
-                                        <button tclass="dropdown-item" type="submit" name="btn_submit">Enviar para processamento</button>-
-                                        <!--button type="submit" name="btn_enviar_ids">Enviar IDs</button-->
+                                        <button class="dropdown-item" type="submit" name="btn_submit" value="PDF Cliente">Gerar</button>
                                     </li>
                                     <li>
                                         <button class="dropdown-item" type="submit" name="btn_submit" value="Sintético - Cliente">Sintético - Cliente</button>
@@ -245,6 +215,7 @@
                   <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
                     <thead style="text-align: center; font-size: 0.8em; background-color: #2ab759; color: #fff;">
                       <tr class="text-uppercase">
+                        <th>ID</th>
                         <th><input type="checkbox"></th>
                         <th>Cliente</th>
                         <th>Produto</th>
@@ -263,10 +234,13 @@
                       ?>
                       <tr>
                         <td class="text-center text-end fw-medium">
-                          <form id="selectForm">
+                          <?= $row_p['id']; ?>
+                        </td>
+                        <td class="text-center text-end fw-medium">
+                          <form id="selectFormPedidos">
                               <?php
                               $items = array(1, 2, 3, 4, 5);
-                                echo '<input type="checkbox" name="selectedItems[]" value="' . $row_pedidos['id'] . '">';
+                                echo '<input type="checkbox" name="selectedItemsPedidos[]" value="' . $row_p['id'] . '">';
                               ?>
                           </form>
                         </td>
@@ -285,9 +259,6 @@
                               <i class="fa fa-eye me-1 opacity-50"></i>
                           </a>
 
-                          <!--php
-                              echo "<button class='btn' onclick='abrirModal(".$row_p['id'].")'><i class='fa fa-fw fa-times text-danger'></i></button>";
-                          ?-->
                         </td>
                         
                       </tr>
@@ -299,19 +270,19 @@
                       ?>
                       
                     </tbody>
-                    <script>
-                        const checkboxes = document.querySelectorAll("#selectForm input[type='checkbox']");
-                        const selectedIdsInput = document.getElementById("selectedIds");
+                     <script>
+                        const checkboxesPedidos = document.querySelectorAll("#selectFormPedidos input[type='checkbox']");
+                        const selectedIdsPedidosInput = document.getElementById("selectedIdsPedidos");
 
-                        checkboxes.forEach((checkbox) => {
-                            checkbox.addEventListener("change", updateSelectedIds);
+                        checkboxesPedidos.forEach((checkbox) => {
+                            checkbox.addEventListener("change", updateSelectedIdsPedidos);
                         });
 
-                        function updateSelectedIds() {
-                            const selectedCheckboxes = Array.from(checkboxes).filter((checkbox) => checkbox.checked);
-                            const selectedIds = selectedCheckboxes.map((checkbox) => checkbox.value);
+                        function updateSelectedIdsPedidos() {
+                            const selectedCheckboxesPedidos = Array.from(checkboxesPedidos).filter((checkbox) => checkbox.checked);
+                            const selectedIdsPedidos = selectedCheckboxesPedidos.map((checkbox) => checkbox.value);
 
-                            selectedIdsInput.value = JSON.stringify(selectedIds);
+                            selectedIdsPedidosInput.value = JSON.stringify(selectedIdsPedidos);
                         }
                     </script>
                   </table>
