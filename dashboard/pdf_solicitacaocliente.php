@@ -7,115 +7,88 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
 
     $pdf->SetMargins(5, 10, 5, 0);
     $pdf->AddPage();
-    // Adiciona a imagem
-    $image_file = '../assets/img/logoHJ-Aluminio.jpg';  // Substitua pelo caminho real da sua imagem
-    $pdf->Image($image_file, 0, $pdf->GetY(), 30, 20);  // Ajuste as coordenadas e o tamanho conforme necessário
 
-    $header_height = 20;
-    // Adiciona uma borda ao rodapé
-    $pdf->Rect(5, $pdf->GetY(), $pdf->getPageWidth() - 10, $header_height);
+    // Adicione a imagem
+    $image_file = '../assets/img/logoHJ-Aluminio.jpg';  // Substitua pelo caminho real da sua imagem
+    $pdf->Image($image_file, 10, 10, 30, 20);  // Ajuste as coordenadas e o tamanho conforme necessário
+
+    // Estilo para o cabeçalho
+    $headerStyle = 'font-size: 11px;';
+    $boldStyle = 'font-weight: bold;';
+    $linkStyle = 'text-decoration: none; color: black;';
+
+    // Cabeçalho
+    $pdf->writeHTMLCell(0, 50, 60, 10, "
+        <div style='$headerStyle'>
+            <strong style='$boldStyle'>HJ Alumínios</strong><br>
+            43-3056-0052<br>
+            <a href='mailto:hjaluminio@hotmail.com' style='$linkStyle'>hjaluminio@hotmail.com</a>
+        </div>", 0, 0, false, true, 'L', true);
+
     $data = date("d/m/Y");
 
-    // Adiciona o conteúdo em divs
-    $pdf->writeHTMLCell(0, 50, 60, $pdf->GetY(), '<div style="font-size: 11px;"><strong style="font-size: 12px; padding: 50px; margin: 50px;">HJ Alumínios</strong><br><br>43-3056-0052<br><a href="malito:hjaluminio@hotmail.com" style="text-decoration: none; color: black;">hjaluminio@hotmail.com</a></div>', 0, 0, false, true, 'L', true);
-    $pdf->writeHTMLCell(0, 0, 150, $pdf->GetY(), '<div style="font-size: 11px; padding-left: 30px;"><strong>Pedido: 22.546<br>Data: ' . $data . '</strong><br>Aprovado ('.$data.')</div>', 0, 0, false, true, 'L', true);
-    // Last Header
+    // Informações do Pedido
+    $pdf->writeHTMLCell(0, 0, 150, 10, "
+        <div style='$headerStyle; padding-left: 30px;'>
+            <strong>Pedido: 22.546</strong><br>
+            <strong>Data: $data</strong><br>
+            Aprovado ($data)
+        </div>", 0, 0, false, true, 'L', true);
 
-
+    // Dados dos clientes
     require_once "../config.php";
     $conn = new mysqli($DBHOST, $DBUSER, $DBPASS, $DBNAME);
     if ($conn->connect_error) {
         die("Conexão falhou: " . $conn->connect_error);
     }
+
     $id = json_decode($_POST["selectedIds"]);
-    /*echo "<pre>";
-    var_dump($id);
-    die();*/
-    // echo $id_uniq; die();
-    if(empty($id))
-    {
+
+    if (empty($id)) {
         header('Location: dashboard.php?vazio');
-    }else
-    {
+    } else {
         $eixo_x = 33;
-        $posicao = 0;
 
-        //for($c = 0; $c < count($id); $c++){
-            ///echo $row_id;
-            
-            foreach($id as $row_id)
-            {
-                /*echo "<pre/>";
-                var_dump($id);
-                die();*/
-                
-                $sql = "SELECT * FROM pedidos_dos_clientes WHERE id = $row_id";
-                $result = $conn->query($sql);
-                $pedidos_dos_clientes = array();
-                //echo $row_id;
+        foreach ($id as $row_id) {
+            $sql = "SELECT * FROM pedidos_dos_clientes WHERE id = $row_id";
+            $result = $conn->query($sql);
 
-                // Altura do rodapé
-                $header_height = 26;
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    // Tabela para os dados do cliente
+                    $pdf->SetXY(10, $eixo_x);
+                    $pdf->SetFillColor(240, 240, 240);
+                    $pdf->SetFont('', 'B');
+                    $pdf->Cell(80, 6, 'Cliente', 1, 0, 'C', 1);
+                    $pdf->Cell(50, 6, 'Consumidor', 1, 0, 'C', 1);
+                    $pdf->Cell(60, 6, 'Fone / CEP', 1, 0, 'C', 1);
+                    $pdf->Ln();
+                    $pdf->SetFont('');
+                    $pdf->Cell(80, 6, $row['nome_cliente'], 1);
+                    $pdf->Cell(50, 6, '...', 1);
+                    $pdf->Cell(60, 6, '43996624492 / 86.705-560', 1);
+                    $pdf->Ln();
 
-                if ($result->num_rows > 0) {
-                    // Preenche o array com os dados dos pedidos_dos_clientes
-                    while ($row = $result->fetch_assoc()) {
-                        $pedidos_dos_clientes[] = array('id' => $row['id'], 'nome_cliente' => $row['nome_cliente'], 'descricao_pedido' => $row['descricao_pedido'], 'data_inicial' => $row['data_inicial'], 'data_final' => $row['data_final'], 'garantia' => $row['garantia'], 'status' => $row['status'], 'nome_responsavel' => $row['nome_responsavel'],);
+                    // Tabela para descrição do pedido
+                    $pdf->SetX(10);
+                    $pdf->SetFillColor(240, 240, 240);
+                    $pdf->SetFont('', 'B');
+                    $pdf->Cell(190, 6, 'Descrição Pedido', 1, 0, 'C', 1);
+                    $pdf->Ln();
+                    $pdf->SetFont('');
+                    $pdf->MultiCell(190, 6, $row['descricao_pedido'], 1);
+                    $pdf->Ln(10); // Espaçamento entre os clientes
 
-                            if(isset($_POST['btn_submit']) && $_POST['btn_submit'] == 'PDF Cliente')
-                            {
-                                foreach ($pedidos_dos_clientes as $row_odermproducao) 
-                                {
-                                    $btn_submit = $_POST['btn_submit'];
-                                    //Repetição
-
-                                    //$segundoHeader_bottom_margin = 239;
-                                    $segundoHeader_height = 20;
-                                    $pdf->setY(-$segundoHeader_height - $segundoHeader_bottom_margin);
-                                    // Borda
-                                    $pdf->Rect(5, $eixo_x, $pdf->getPageWidth() - 10, $segundoHeader_height);
-                                    // Content
-                                    $pdf->writeHTMLCell(0, 0, 6, $eixo_x + 1, '<div style="font-size: 10px;"><strong>Cliente: </strong>'.$row['nome_cliente'].' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>
-                                    <br><strong>Consumidor</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Fone: </strong>43996624492
-                                    <br><strong>Endereço: </strong>&nbsp;RUA AAA<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CEP:</strong> 86.705-560
-                                    <br><strong>Bairro: </strong>VILA SAMPAIO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Cidade: </strong>ARAPONGAS-PR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>CNPJ/CPF: </strong>41.337.530/0001-07</div>');
-                                    // Last segundoHeader
-
-                                    $terceira_borda = 48;
-                                    // Borda
-                                    $pdf->Rect(5, $eixo_x, $pdf->getPageWidth() - 10, $terceira_borda);
-                                    $pdf->writeHTMLCell(0, 0, 8, $eixo_x + 21, '<div style="font-size: 10px;"><strong>Descrição Pedido: </strong>'.$row['descricao_pedido'].'<strong>Data Inicial: </strong>'.$row['data_inicial'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Data Final: </strong>'.$row['data_final'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Garantia: </strong>'.$row['garantia'].' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Status: </strong>'.$row['status'].'<br><strong>Nome Responsavel: </strong>'.$row['nome_responsavel'].'</div>');
-
-                                    $posicao += 1;
-                                    $eixo_x += 57;
-
-                                    //Last Repetição                                
-                                    
-                                    // Desative o corte automático de página
-                                    /*if(count($id) <= 4)
-                                    {
-                                        $pdf->SetAutoPageBreak(false, 0);
-                                    }*/
-                                    if($posicao == 2)
-                                    {
-                                        $borda = 900;
-
-                                        $terceira_borda = 48;
-                                        // Borda
-                                        $pdf->Rect(5, $eixo_x, $pdf->getPageWidth() - 10, $terceira_borda);
-                                        $pdf->writeHTMLCell(0, 0, 8, $eixo_x + 21, '<div style="font-size: 10px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>');
-                                        /*$pdf->writeHTMLCell(0, 0, 8, $eixo_x + 24, '<div style="font-size: 10px;"><strong>Desctgttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt</div>');*/
-                                    }
-
-                                    $pdf->writeHTMLCell(0, 0, 5, 290, '<div style="font-size: 10px; text-align: left;"><a href="https://www.exemplo.com" style=" color: #000;">https://www.exemplo.com</a></div>', 0, 0, false, true, 'L', true);
-                                }
-
-                            }
-                        } 
-                    }
+                    $eixo_x = $pdf->GetY();
+                }
             }
-        //}
+        }
     }
+
+    // Rodapé
+    $pdf->SetXY(10, $pdf->GetY() + 10);
+    $pdf->SetFont('', 'I');
+    $pdf->writeHTMLCell(0, 0, 10, $pdf->GetY(), "<div style='$headerStyle; text-align: left;'><a href='https://www.exemplo.com' style='$linkStyle'>https://www.exemplo.com</a></div>", 0, 0, false, true, 'L', true);
 
     // id_uniq do arquivo
     $id_uniqArquivo = 'hjaluminio.pdf';
