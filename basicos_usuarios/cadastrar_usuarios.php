@@ -34,7 +34,17 @@
         $stmt->execute();
 
         if($stmt)
-        { ?>
+        { 
+          
+            // Consulta para inserir o usuário na tabela
+          $stmt_logado = $pdo->prepare("INSERT INTO logado (nome, email, senha, nivel) VALUES (:nome, :email, :senha, :nivel)");
+          $stmt_logado->bindParam(":nome", $nome_ususario);          
+          $stmt_logado->bindParam(":email", $email_login);
+          $stmt_logado->bindParam(":senha", $libera_xml_pedido);
+          $stmt_logado->bindParam(":nivel", $libera_painel_producao);
+          $stmt_logado->execute();
+          
+          ?>
 
         <script>
           const Toast = Swal.mixin({

@@ -64,12 +64,22 @@
               <div class="block-content" >
                 <div class="row justify-content-center push">
                   <div class="col-md-6">
-                    <div class="mb-1">
-                      <label class="form-label" for="nome_ususario" style="font-size: 0.9em;">Nome do Usuário</label> <span style="color: red;">*</span>
-                      <div style="display: flex;">
-                        <input type="text" class="form-control" id="nome_ususario" name="nome_ususario" placeholder="Nome do Usuário" style="font-size: 0.9em;" required>
+                    
+                    <div style="display: flex;">
+                      <div class="mb-1" style="width: 60%;">
+                        <label class="form-label" for="nome_ususario" style="font-size: 0.9em;">Nome do Usuário</label> <span style="color: red;">*</span>
+                        <div style="display: flex;">
+                          <input type="text" class="form-control" id="nome_ususario" name="nome_ususario" placeholder="Nome do Usuário" style="font-size: 0.9em;" required>
+                        </div>
                       </div>
-                    </div>  
+
+                      <div class="mb-1 ms-3">    
+                        <label class="form-label"  style="font-size: 0.9em;" for="libera_xml_pedido">Senha </label>                  
+                        <input type="password" class="form-control" placeholder="Senha" name="libera_xml_pedido" id="libera_xml_pedido">
+                      </div>
+
+                    </div> 
+
                     <div class="mb-1">
                       <label class="form-label" for="telefone_usuario" style="font-size: 0.9em;">Telefone Usuário</label> <span style="color: red;">*</span>
                       <div>
@@ -87,13 +97,8 @@
                     <div style="display: flex; align-items: center; justify-content: space-between;">
 
                       <div class="mb-1">                      
-                        <input type="checkbox" name="libera_xml_pedido" id="libera_xml_pedido">
-                        <label class="form-label"  style="font-size: 0.9em;" for="libera_xml_pedido">Libera XML Pedido </label>
-                      </div>
-
-                      <div class="mb-1">                      
-                        <input type="checkbox" name="libera_painel_producao" id="libera_painel_producao">
-                        <label class="form-label"  style="font-size: 0.9em;" for="libera_painel_producao">Libera Painel Produção </label>
+                        <input type="hidden" name="libera_painel_producao" value="adm" id="libera_painel_producao">
+                        <!--label class="form-label"  style="font-size: 0.9em;" for="libera_painel_producao">Libera Painel Produção </label-->
                       </div> 
                     </div>
                      
