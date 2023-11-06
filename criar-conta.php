@@ -35,84 +35,36 @@
     <link rel="stylesheet" id="css-theme" href="assets/css/themes/xwork.min.css">
     <!-- END Stylesheets -->
     
-
-
-
-    
-    <!-- Last CEP -->
-    <!-- Adicionando Javascript -->
+    <!--CNPJ-->
     <script>
-    
-      function limpa_formulário_cep() {
-              //Limpa valores do formulário de cep.
-              document.getElementById('rua').value=("");
-              document.getElementById('bairro').value=("");
-              document.getElementById('cidade').value=("");
-              document.getElementById('uf').value=("");
-              document.getElementById('ibge').value=("");
-      }
+        function buscarCNPJ() {
+            var cnpj = document.getElementById('cnpj').value;
 
-      function meu_callback(conteudo) {
-          if (!("erro" in conteudo)) {
-              //Atualiza os campos com os valores.
-              document.getElementById('rua').value=(conteudo.logradouro);
-              document.getElementById('bairro').value=(conteudo.bairro);
-              document.getElementById('cidade').value=(conteudo.localidade);
-              document.getElementById('uf').value=(conteudo.uf);
-              document.getElementById('ibge').value=(conteudo.ibge);
-          } //end if.
-          else {
-              //CEP não Encontrado.
-              limpa_formulário_cep();
-              alert("CEP não encontrado.");
-          }
-      }
-        
-      function pesquisacep(valor) {
-
-          //Nova variável "cep" somente com dígitos.
-          var cep = valor.replace(/\D/g, '');
-
-          //Verifica se campo cep possui valor informado.
-          if (cep != "") {
-
-              //Expressão regular para validar o CEP.
-              var validacep = /^[0-9]{8}$/;
-
-              //Valida o formato do CEP.
-              if(validacep.test(cep)) {
-
-                  //Preenche os campos com "..." enquanto consulta webservice.
-                  document.getElementById('rua').value="...";
-                  document.getElementById('bairro').value="...";
-                  document.getElementById('cidade').value="...";
-                  document.getElementById('uf').value="...";
-                  document.getElementById('ibge').value="...";
-
-                  //Cria um elemento javascript.
-                  var script = document.createElement('script');
-
-                  //Sincroniza com o callback.
-                  script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
-
-                  //Insere script no documento e carrega o conteúdo.
-                  document.body.appendChild(script);
-
-              } //end if.
-              else {
-                  //cep é inválido.
-                  limpa_formulário_cep();
-                  alert("Formato de CEP inválido.");
-              }
-          } //end if.
-          else {
-              //cep sem valor, limpa formulário.
-              limpa_formulário_cep();
-          }
-      };
-
+            fetch(`https://www.receitaws.com.br/v1/cnpj/${cnpj}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'OK') {
+                        console.log(data);
+                        document.getElementById('nome').value = data.nome;
+                        document.getElementById('atividade_principal').value = data.atividade_principal[0].text;
+                        document.getElementById('endereco').value = data.logradouro + ', ' + data.numero + ', ' + data.bairro + ', ' + data.municipio + ' - ' + data.uf;
+                        document.getElementById('abertura').value = data.abertura;
+                        document.getElementById('situacao').value = data.situacao;
+                        document.getElementById('tipo').value = data.tipo;
+                        document.getElementById('fantasia').value = data.fantasia;
+                        document.getElementById('porte').value = data.porte;
+                        document.getElementById('natureza_juridica').value = data.natureza_juridica;
+                        // ... e assim por diante para os outros campos
+                    } else {
+                        alert('Erro ao buscar dados do CNPJ: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar dados do CNPJ:', error);
+                });
+        }
     </script>
-    <!-- Last CEP -->
+    <!--LAST CNPJ-->
 
 
 
@@ -138,9 +90,18 @@
                     </a>
                   </div>
                   <form class="js-validation-signup " action="" method="GET">
-                    <div class="input-group mb-3">
+                    <div class="mb-3">
+                      <label class="form-label" for="cpfcnpj" style="font-size: 0.9em;">CPF/CNPJ</label> 
                       <span style="color: red;">*</span>
-                      <input type="text" class="form-control input-sm" id="signup-username" name="nome" style="font-size: 0.9em;" placeholder="Nome" required>
+                      <div  style="display: flex;">
+                        <input type="text" id="cnpj" placeholder="CPF/CNPJ" class="form-control" name="cnpj" pattern="\d{14}" title="Digite um CNPJ com 14 dígitos numéricos" required>
+                        <button type="button" class="btn btn-alt-primary" style="width: 200px; margin-left: 0.5em;" onclick="buscarCNPJ()">Buscar</button>  
+                      </div>                   
+                    </div>
+
+                    <div class="mb-3 d-flex">
+                      <span style="color: red;">*</span>
+                      <input type="text" placeholder="Nome" class="form-control" id="nome" name="nome" readonly>
                       
                       <span class="ms-3" style="color: red;">*</span>
                       <input type="password" class="form-control" id="signup-username" name="password" required style="font-size: 0.9em;" placeholder="Senha" style="font-size: 0.9em;">
@@ -157,15 +118,51 @@
                       </select>
                     </div>
 
-                    <div class="input-group mb-3">
-                      <input name="cep" type="text" name="cpfcnpj" id="cep" class="form-control" placeholder="CPF/CNPJ" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);" />
-                      <!-- <input type="text" class="form-control" name="cep" type="text" id="cep" value="" size="10" maxlength="9"
-                        onblur="pesquisacep(this.value);" style="font-size: 0.9em;" placeholder="CEP"> -->
-                      
-                      <input type="text" class="form-control ms-3" id="endereco" name="endereco" style="font-size: 0.9em;" placeholder="Endereço">
+                    <div class="mb-3">
+                      <label class="form-label" for="atividade_principal">Atividade Principal:</label>
+                      <input type="text" placeholder="Atividade Principal" class="form-control input-sm" id="atividade_principal" name="atividade_principal" readonly>
                     </div>
 
-                    <div class="input-group mb-3">
+                    <div class="mb-3">
+                      <label for="endereco">Endereço:</label>
+                      <input type="text" placeholder="Endereço" class="form-control input-sm" id="endereco" name="endereco" readonly>
+                    </div>
+
+                    <div style="display: flex;">
+                      <div class="mb-3" style="width: 50%;">
+                        <label for="situcao" class="form-label">Data de Abertura</label>
+                        <input type="text" placeholder="Data de Abertura" class="form-control input-sm" id="abertura" name="abertura" readonly>
+                      </div>
+
+                      <div class="mb-3" style="width: 50%; margin-right: 20px;">
+                        <label for="situcao" class="form-label ms-3">Porte</label>
+                        <input type="text" placeholder="Porte" class="form-control input-sm ms-3" id="porte" name="porte" readonly>
+                      </div>
+                    </div>
+
+                    <div style="display: flex;">
+                      <div class="mb-3" style="width: 50%;">
+                        <label for="situcao" class="form-label">Situação</label>
+                        <input type="text" placeholder="Situação" class="form-control input-sm" id="situacao" name="situacao" readonly>
+                      </div>
+
+                      <div class="mb-3" style="width: 50%; margin-right: 20px;">
+                        <label for="tipo" class="form-label ms-3">Tipo</label>
+                        <input type="text" placeholder="Tipo" class="form-control input-sm ms-3" id="tipo" name="tipo" readonly>
+                      </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                      <label for="fantasia" class="form-label">Nome Fantasia:</label>
+                      <input type="text" placeholder="Nome Fantasia" class="form-control input-sm" id="fantasia" name="fantasia" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="natureza_juridica">Natureza Jurídica:</label>
+                      <input type="text" placeholder="Natureza Jurídica" class="form-control input-sm" id="natureza_juridica" name="natureza_juridica" readonly>
+                    </div>
+
+                    <!--div class="input-group mb-3">
                       <input type="text" class="form-control" id="telefone" name="telefone" style="font-size: 0.9em;" placeholder="Número">
                       
                       <input type="text" class="form-control ms-3" id="complemento" name="complemento" style="font-size: 0.9em;" placeholder="Complemento">
@@ -199,6 +196,43 @@
                       <input type="text" class="form-control ms-3" id="nascimento" name="nascimento" style="font-size: 0.9em;" placeholder="Nascimento">
                     </div>
                       
+                    <input type="hidden" class="form-control ms-3" id="nivel" name="nivel" style="font-size: 0.9em;" placeholder="nivel" value="user"-->
+
+                    <!--div class="input-group mb-3">
+                      <input type="text" class="form-control" id="telefone" name="telefone" style="font-size: 0.9em;" placeholder="Número">
+                      
+                      <input type="text" class="form-control ms-3" id="complemento" name="complemento" style="font-size: 0.9em;" placeholder="Complemento">
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <input name="bairro" placeholder="Bairro" type="text" id="bairro" class="form-control" size="40" />
+                    </div>
+
+                    <div style="display: flex; ">
+                      <div class="input-group mb-3">
+                        <input name="cidade" type="text" id="cidade" placeholder="Cidade" class="form-control" size="40" />
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <input name="uf" type="text" placeholder="UF" class="form-control ms-3" id="uf" size="2" />
+                      </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <input name="ibge" type="text" placeholder="IBGE" class="form-control" id="ibge" size="8" />
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <input name="rua" type="text" placeholder="Rua" class="form-control" id="rua" size="60" />
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" id="uf" name="uf" style="font-size: 0.9em;" placeholder="UF">
+                      
+                      <input type="text" class="form-control ms-3" id="nascimento" name="nascimento" style="font-size: 0.9em;" placeholder="Nascimento">
+                    </div-->
+
+
                     <input type="hidden" class="form-control ms-3" id="nivel" name="nivel" style="font-size: 0.9em;" placeholder="nivel" value="user">
                     
                     <div class="text-center mb-4">

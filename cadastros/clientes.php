@@ -40,82 +40,39 @@
     <!--SwitAlert Success ao Cadastrar-->
     <script src="../assets/js/cdn.jsdelivr.net_npm_sweetalert2@11.0.18_dist_sweetalert2.all.min.js"></script>
 
-
-    
     <!-- Last CEP -->
-    <!-- Adicionando Javascript -->
+
+    <!--CNPJ-->
     <script>
-    
-      function limpa_formulário_cep() {
-              //Limpa valores do formulário de cep.
-              document.getElementById('rua').value=("");
-              document.getElementById('bairro').value=("");
-              document.getElementById('cidade').value=("");
-              document.getElementById('uf').value=("");
-              document.getElementById('ibge').value=("");
-      }
+        function buscarCNPJ() {
+            var cnpj = document.getElementById('cnpj').value;
 
-      function meu_callback(conteudo) {
-          if (!("erro" in conteudo)) {
-              //Atualiza os campos com os valores.
-              document.getElementById('rua').value=(conteudo.logradouro);
-              document.getElementById('bairro').value=(conteudo.bairro);
-              document.getElementById('cidade').value=(conteudo.localidade);
-              document.getElementById('uf').value=(conteudo.uf);
-              document.getElementById('ibge').value=(conteudo.ibge);
-          } //end if.
-          else {
-              //CEP não Encontrado.
-              limpa_formulário_cep();
-              alert("CEP não encontrado.");
-          }
-      }
-        
-      function pesquisacep(valor) {
-
-          //Nova variável "cep" somente com dígitos.
-          var cep = valor.replace(/\D/g, '');
-
-          //Verifica se campo cep possui valor informado.
-          if (cep != "") {
-
-              //Expressão regular para validar o CEP.
-              var validacep = /^[0-9]{8}$/;
-
-              //Valida o formato do CEP.
-              if(validacep.test(cep)) {
-
-                  //Preenche os campos com "..." enquanto consulta webservice.
-                  document.getElementById('rua').value="...";
-                  document.getElementById('bairro').value="...";
-                  document.getElementById('cidade').value="...";
-                  document.getElementById('uf').value="...";
-                  document.getElementById('ibge').value="...";
-
-                  //Cria um elemento javascript.
-                  var script = document.createElement('script');
-
-                  //Sincroniza com o callback.
-                  script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
-
-                  //Insere script no documento e carrega o conteúdo.
-                  document.body.appendChild(script);
-
-              } //end if.
-              else {
-                  //cep é inválido.
-                  limpa_formulário_cep();
-                  alert("Formato de CEP inválido.");
-              }
-          } //end if.
-          else {
-              //cep sem valor, limpa formulário.
-              limpa_formulário_cep();
-          }
-      };
-
+            fetch(`https://www.receitaws.com.br/v1/cnpj/${cnpj}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'OK') {
+                        console.log(data);
+                        document.getElementById('nome').value = data.nome;
+                        document.getElementById('atividade_principal').value = data.atividade_principal[0].text;
+                        document.getElementById('endereco').value = data.logradouro + ', ' + data.numero + ', ' + data.bairro + ', ' + data.municipio + ' - ' + data.uf;
+                        document.getElementById('abertura').value = data.abertura;
+                        document.getElementById('situacao').value = data.situacao;
+                        document.getElementById('tipo').value = data.tipo;
+                        document.getElementById('fantasia').value = data.fantasia;
+                        document.getElementById('porte').value = data.porte;
+                        document.getElementById('natureza_juridica').value = data.natureza_juridica;
+                        // ... e assim por diante para os outros campos
+                    } else {
+                        alert('Erro ao buscar dados do CNPJ: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar dados do CNPJ:', error);
+                });
+        }
     </script>
-    <!-- Last CEP -->
+    <!--LAST CNPJ-->
+
     
   </head>
   <body>
@@ -143,16 +100,19 @@
               <div class="block-content" >
                 <div class="row justify-content-center push">
                   <div class="col-md-6">
-                    <div class="mb-1">
-                      <label class="form-label" for="cpfcnpj" style="font-size: 0.9em;">CPF/CNPJ</label> <span style="color: red;">*</span>
+                    
+                    <div class="mb-3">
+                      <label class="form-label" for="cpfcnpj" style="font-size: 0.9em;">CPF/CNPJ</label> 
+                      <span style="color: red;">*</span>
                       <div  style="display: flex;">
-                        <input type="text" class="form-control" id="cpfcnpj" name="cpfcnpj" placeholder="CPF/CNPJ" style="font-size: 0.9em;" required>
-                        <button type="submit" class="btn btn-alt-primary" style="width: 200px; margin-left: 0.5em;">Buscar (CNPJ)</button>
-                      </div>
+                        <input type="text" id="cnpj" placeholder="CPF/CNPJ" class="form-control" name="cnpj" pattern="\d{14}" title="Digite um CNPJ com 14 dígitos numéricos" required>
+                        <button type="button" class="btn btn-alt-primary" style="width: 200px; margin-left: 0.5em;" onclick="buscarCNPJ()">Buscar (CNPJ)</button>  
+                      </div>                   
                     </div>
+                    
                     <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="nomerazaosocial">Nome/Razão Social <span style="color: red;">*</span> </label>
-                      <input type="text" class="form-control" id="nomerazaosocial" name="nomerazaosocial" placeholder="Nome/Razão social" style="font-size: 0.9em;" required>
+                      <label class="form-label"  style="font-size: 0.9em;" for="nomerazaosocial">Nome<span style="color: red;">*</span> </label>
+                      <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome/Razão social" style="font-size: 0.9em;" required>
                     </div>
                     <div class="mb-1">
                       <label class="form-label"  style="font-size: 0.9em;" for="contato">Contato</label>
@@ -177,26 +137,31 @@
                   </div>
 
                   <div class="col-md-6">
-                    <div class="mb-1">
-                      <label class="form-label" for="cep" style="font-size: 0.9em;">CEP</label>
-                      <input type="text" class="form-control" id="cep" name="cep" placeholder="CEP" style="font-size: 0.9em;">
+                    <div class="mb-4">
+                      <label>CEP (apenas números)</label>
+                      <input type="text" name="cep" id="cep" class="form-control" placeholder="" required size="10" maxlength="8" onblur="pesquisacep(this.value);">
                     </div>
+
                     <div class="mb-1">
                       <label class="form-label"  style="font-size: 0.9em;" for="rua">Rua </label>
-                      <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua" style="font-size: 0.9em;">
+                      <input type="text" name="rua" id="rua" class="form-control" placeholder="" required>
                     </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="numero">Número</label>
-                      <input type="text" class="form-control" id="numero" name="numero" placeholder="Número" style="font-size: 0.9em;">
-                    </div>
+
                     <div class="mb-1">
                       <label class="form-label"  style="font-size: 0.9em;" for="complemento">Complemento </label>
                       <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Complemento" style="font-size: 0.9em;">
                     </div>
+
                     <div class="mb-1">
                       <label class="form-label"  style="font-size: 0.9em;" for="bairro">Bairro </label>
                       <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" style="font-size: 0.9em;">
                     </div>
+
+                    <div class="mb-1">
+                      <label>Estado</label>
+                      <input type="text" name="uf" id="uf" class="form-control" placeholder="" required>
+                    </div>
+
                     <div class="mb-1">
                       <label class="form-label"  style="font-size: 0.9em;" for="cidade">Cidade </label>
                       <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" style="font-size: 0.9em;">
@@ -237,6 +202,84 @@
 
     <!--Evitar Reenvio de Form-->
     <script src="../assets/js/evitar_reenvio_form.js"></script>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+  <script>
+
+    function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('rua').value=("");
+            document.getElementById('bairro').value=("");
+            document.getElementById('cidade').value=("");
+            document.getElementById('uf').value=("");
+            document.getElementById('complemento').value=("");
+    }
+
+    function meu_callback(conteudo) {
+      console.log(conteudo)
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('rua').value=(conteudo.logradouro);
+            document.getElementById('bairro').value=(conteudo.bairro);
+            document.getElementById('cidade').value=(conteudo.localidade);
+            document.getElementById('uf').value=(conteudo.uf);
+            document.getElementById('complemento').value=(conteudo.complemento);
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('rua').value="...";
+                document.getElementById('bairro').value="...";
+                document.getElementById('cidade').value="...";
+                document.getElementById('uf').value="...";
+                document.getElementById('complemento').value="...";
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+
+    </script>
+
   </body>
 </html>
 
