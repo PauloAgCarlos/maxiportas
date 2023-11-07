@@ -89,7 +89,7 @@
                       <img src="assets/img/logoHJ-Aluminio.jpg" alt="logotipo-hj">
                     </a>
                   </div>
-                  <form class="js-validation-signup " action="" method="GET">
+                  <form action="criar-conta.php" method="POST">
                     <div class="mb-3">
                       <label class="form-label" for="cpfcnpj" style="font-size: 0.9em;">CPF/CNPJ</label> 
                       <span style="color: red;">*</span>
@@ -110,12 +110,6 @@
                     <div class="input-group mb-3">
                       <span style="color: red;">*</span>
                       <input type="email" class="form-control" id="signup-username" name="email" required style="font-size: 0.9em;" placeholder="Login (e-mail)" style="font-size: 0.9em;">
-                      
-                      <span class="ms-3" style="color: red;">*</span>
-                      <select name="parceiro_colaborador" required class="form-control" id="">
-                        <option value="Parceiro">Parceiro</option>
-                        <option value="Colaborador">Colaborador</option>
-                      </select>
                     </div>
 
                     <div class="mb-3">
@@ -162,78 +156,7 @@
                       <input type="text" placeholder="Natureza Jurídica" class="form-control input-sm" id="natureza_juridica" name="natureza_juridica" readonly>
                     </div>
 
-                    <!--div class="input-group mb-3">
-                      <input type="text" class="form-control" id="telefone" name="telefone" style="font-size: 0.9em;" placeholder="Número">
-                      
-                      <input type="text" class="form-control ms-3" id="complemento" name="complemento" style="font-size: 0.9em;" placeholder="Complemento">
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <input name="bairro" placeholder="Bairro" type="text" id="bairro" class="form-control" size="40" />
-                    </div>
-
-                    <div style="display: flex; ">
-                      <div class="input-group mb-3">
-                        <input name="cidade" type="text" id="cidade" placeholder="Cidade" class="form-control" size="40" />
-                      </div>
-
-                      <div class="input-group mb-3">
-                        <input name="uf" type="text" placeholder="UF" class="form-control ms-3" id="uf" size="2" />
-                      </div>
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <input name="ibge" type="text" placeholder="IBGE" class="form-control" id="ibge" size="8" />
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <input name="rua" type="text" placeholder="Rua" class="form-control" id="rua" size="60" />
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <input type="text" class="form-control" id="uf" name="uf" style="font-size: 0.9em;" placeholder="UF">
-                      
-                      <input type="text" class="form-control ms-3" id="nascimento" name="nascimento" style="font-size: 0.9em;" placeholder="Nascimento">
-                    </div>
-                      
-                    <input type="hidden" class="form-control ms-3" id="nivel" name="nivel" style="font-size: 0.9em;" placeholder="nivel" value="user"-->
-
-                    <!--div class="input-group mb-3">
-                      <input type="text" class="form-control" id="telefone" name="telefone" style="font-size: 0.9em;" placeholder="Número">
-                      
-                      <input type="text" class="form-control ms-3" id="complemento" name="complemento" style="font-size: 0.9em;" placeholder="Complemento">
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <input name="bairro" placeholder="Bairro" type="text" id="bairro" class="form-control" size="40" />
-                    </div>
-
-                    <div style="display: flex; ">
-                      <div class="input-group mb-3">
-                        <input name="cidade" type="text" id="cidade" placeholder="Cidade" class="form-control" size="40" />
-                      </div>
-
-                      <div class="input-group mb-3">
-                        <input name="uf" type="text" placeholder="UF" class="form-control ms-3" id="uf" size="2" />
-                      </div>
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <input name="ibge" type="text" placeholder="IBGE" class="form-control" id="ibge" size="8" />
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <input name="rua" type="text" placeholder="Rua" class="form-control" id="rua" size="60" />
-                    </div>
-
-                    <div class="input-group mb-3">
-                      <input type="text" class="form-control" id="uf" name="uf" style="font-size: 0.9em;" placeholder="UF">
-                      
-                      <input type="text" class="form-control ms-3" id="nascimento" name="nascimento" style="font-size: 0.9em;" placeholder="Nascimento">
-                    </div-->
-
-
-                    <input type="hidden" class="form-control ms-3" id="nivel" name="nivel" style="font-size: 0.9em;" placeholder="nivel" value="user">
+                    <input type="hidden" name="nivel" value="user">
                     
                     <div class="text-center mb-4">
                       <button type="submit" name="btn_cadastrar" class="btn btn-hero btn-primary">
@@ -273,16 +196,12 @@
 
     <script src="assets/js/dashmix.app.min.js"></script>
 
-    <!-- jQuery (required for jQuery Validation plugin) -->
     <script src="assets/js/lib/jquery.min.js"></script>
 
-    <!-- Page JS Plugins -->
     <script src="assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
 
-    <!-- Page JS Code -->
     <script src="assets/js/pages/op_auth_signup.min.js"></script>
 
-    <!--Evitar Reenvio de Form-->
     <script src="assets/js/evitar_reenvio_form.js"></script>
   </body>
 </html>
@@ -292,58 +211,46 @@
 include_once "conexao-bd.php";
 
 if(isset($_POST['btn_cadastrar'])) :
-    $username = $_POST['nome'];
-    //$nome = filter_var($nome, FILTER_SANITIZE_STRING);
+    $nome = $_POST['nome'];
     $email = addslashes($_POST['email']);
     $senha = addslashes($_POST['password']);
-    $parceiro_colaborador = addslashes($_POST['parceiro_colaborador']);
-    /*$cpf = addslashes($_POST['cpf']);
-    $rg = addslashes($_POST['rg']);*/
-    $cpfcnpj = addslashes($_POST['cpfcnpj']);
+    $atividade_principal = addslashes($_POST['atividade_principal']);
+    $cnpj = addslashes($_POST['cnpj']);
     $endereco = addslashes($_POST['endereco']);
-    $telefone = addslashes($_POST['telefone']);
-    $complemento = addslashes($_POST['complemento']);
-    $bairro = addslashes($_POST['bairro']);
-    $cidade = addslashes($_POST['cidade']);
-    $uf = addslashes($_POST['uf']);
-    $nascimento = addslashes($_POST['nascimento']);
+    $data_abertura = addslashes($_POST['abertura']);
+    $porte = addslashes($_POST['porte']);
+    $situacao = addslashes($_POST['situacao']);
+    $tipo = addslashes($_POST['tipo']);
+    $fantasia = addslashes($_POST['fantasia']);
+    $natureza_juridica = addslashes($_POST['natureza_juridica']);
     $nivel = addslashes($_POST['nivel']);
     
-
   try{
-    $stmt = $conn->prepare("INSERT INTO logado (nome, email, senha, parceiro_colaborador, cpf, endereco, telefone, complemento, bairro, cidade, uf, nascimento, nivel) VALUES (:nome, :email, :senha, :parceiro_colaborador, :cpfcnpj, :endereco, :telefone, :complemento, :bairro, :cidade, :uf, :nascimento, :nivel)");
-    $stmt->bindParam(':nome', $username);
+    $stmt = $conn->prepare("INSERT INTO `logado` (`id`, `nome`, `email`, `senha`, `atividade_principal`, `cpf`, `endereco`, `abertura`, `porte`, `situacao`, `tipo`, `fantasia`, `natureza_juridica`, `nivel`) VALUES (NULL, :nome, :email, :senha, :atividade_principal, :cpf, :endereco, :abertura, :porte, :situacao, :tipo, :fantasia, :natureza_juridica, :nivel)");
+    $stmt->bindParam(':nome', $nome);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':senha', $senha);
-    $stmt->bindParam(':parceiro_colaborador', $parceiro_colaborador);
-    $stmt->bindParam(':cpfcnpj', $cpfcnpj);
-    /*$stmt->bindParam(':rg', $rg);
-    $stmt->bindParam('cep', $cep);*/
+    $stmt->bindParam(':atividade_principal', $atividade_principal);
+    $stmt->bindParam(':cpf', $cnpj);
     $stmt->bindParam(':endereco', $endereco);
-    $stmt->bindParam(':telefone', $telefone);
-    $stmt->bindParam(':complemento', $complemento);
-    $stmt->bindParam(':bairro', $bairro);
-    $stmt->bindParam(':cidade', $cidade);
-    $stmt->bindParam(':uf', $uf);
-    $stmt->bindParam(':nascimento', $nascimento);
+    $stmt->bindParam(':abertura', $abertura);
+    $stmt->bindParam(':porte', $porte);
+    $stmt->bindParam(':situacao', $situacao);
+    $stmt->bindParam(':tipo', $tipo);
+    $stmt->bindParam(':fantasia', $fantasia);
+    $stmt->bindParam(':natureza_juridica', $natureza_juridica);
     $stmt->bindParam(':nivel', $nivel);
     $stmt->execute();
 
-    if($stmt)
+    if($stmt->rowCount() > 0)
     { 
-      
       //Cadastrar tbl_clientes_system
-      $tbl_clientes_system = $conn->prepare("INSERT INTO tbl_clientes_system (nome, endereco, bairro, cidade, fone, cep) VALUES (:nome, :endereco, :bairro, :cidade, :fone, :cep)");
-      $tbl_clientes_system->bindParam(":nome", $username);
+      $tbl_clientes_system = $conn->prepare("INSERT INTO `tbl_clientes_system` (`id`, `nome`, `endereco`, `cep`) VALUES (NULL, :nome, :endereco, :cep)");
+      $tbl_clientes_system->bindParam(":nome", $nome);
       $tbl_clientes_system->bindParam(":endereco", $endereco);
-      $tbl_clientes_system->bindParam(":bairro", $bairro);
-      $tbl_clientes_system->bindParam(":cidade", $cidade);
-      $tbl_clientes_system->bindParam(":fone", $telefone);
-      $tbl_clientes_system->bindParam(":cep", $cep);
+      $tbl_clientes_system->bindParam(":cep", $cnpj);
       $tbl_clientes_system->execute();
-    
     ?>
-
         <script>
           const Toast = Swal.mixin({
           toast: true,
@@ -364,10 +271,12 @@ if(isset($_POST['btn_cadastrar'])) :
         </script>
 
         <?php }
-        exit();
         
         } catch (PDOException $e) {
             $erro = $e->getMessage(); ?>
+            <script>
+              alert(<?php echo $erro ?>)
+            </script>
             <script>
               const Toaste = Swal.mixin({
               toast: true,
@@ -387,8 +296,5 @@ if(isset($_POST['btn_cadastrar'])) :
               })
             </script>
       <?php  }
-
-
-
 endif;
 ?>
