@@ -1,20 +1,19 @@
 <?php 
   if(isset($_POST['btn_cadastrar_clientes'])):
 
-    $cpf_cnpj = addslashes($_POST['cpfcnpj']);
-    $nome_razao_social = addslashes($_POST['nomerazaosocial']);
-    $contato = addslashes($_POST['contato']);
-    $telefone = addslashes($_POST['telefone']);
-    $celular = addslashes($_POST['celular']);
+    $cnpj = addslashes($_POST['cnpj']);
+    $nome = addslashes($_POST['nome']);
+    $password = addslashes($_POST['password']);
     $email = addslashes($_POST['email']);
-    $senha = addslashes($_POST['senha']);
-    $cep = addslashes($_POST['cep']);
-    $rua = addslashes($_POST['rua']);
-    $complemento = addslashes($_POST['complemento']);
-    $bairro = addslashes($_POST['bairro']);
-    $cidade = addslashes($_POST['cidade']);
-    $numero = addslashes($_POST['numero']);        
-    $estado = addslashes($_POST['estado']);
+    $atividade_principal = addslashes($_POST['atividade_principal']);
+    $endereco = addslashes($_POST['endereco']);
+    $abertura = addslashes($_POST['abertura']);
+    $porte = addslashes($_POST['porte']);
+    $situacao = addslashes($_POST['situacao']);
+    $tipo = addslashes($_POST['tipo']);
+    $fantasia = addslashes($_POST['fantasia']);
+    $natureza_juridica = addslashes($_POST['natureza_juridica']);
+    $nivel = addslashes($_POST['nivel']);
 
     // Configurações do banco de dados
     require_once "../config.php";
@@ -25,36 +24,50 @@
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Consulta para inserir o usuário na tabela
-        $stmt = $pdo->prepare("INSERT INTO clientes (cpf_cnpj, nome_razao_socil, contato, telefone, celular, email, senha, cep, rua, numero, complemento, bairro, cidade, estado) VALUES (:cpf_cnpj, :nome_razao_socil, :contato, :telefone, :celular, :email, :senha, :cep, :rua, :numero, :complemento, :bairro, :cidade, :estado)");
-        $stmt->bindParam(":cpf_cnpj", $cpf_cnpj);
-        $stmt->bindParam(":nome_razao_socil", $nome_razao_social);
-        $stmt->bindParam(":contato", $contato);
-        $stmt->bindParam(":telefone", $telefone);
-        $stmt->bindParam(":celular", $celular);
+        $stmt = $pdo->prepare("INSERT INTO clientes (cnpj, nome, senha, email, atividade_principal, endereco, abertura, porte, situacao, tipo, fantasia, natureza_juridica, nivel) VALUES (:cnpj, :nome, :senha, :email, :atividade_principal, :endereco, :abertura, :porte, :situacao, :tipo, :fantasia, :natureza_juridica, :nivel)");
+        $stmt->bindParam(":cnpj", $cnpj);
+        $stmt->bindParam(":nome", $nome);
+        $stmt->bindParam(":senha", $password);
         $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":senha", $senha);
-        $stmt->bindParam(":cep", $cep);
-        $stmt->bindParam(":rua", $rua);
-        $stmt->bindParam(":numero", $numero);
-        $stmt->bindParam(":complemento", $complemento);
-        $stmt->bindParam(":bairro", $bairro);
-        $stmt->bindParam(":cidade", $cidade);
-        $stmt->bindParam(":estado", $estado);
+        $stmt->bindParam(":atividade_principal", $atividade_principal);
+        $stmt->bindParam(":endereco", $endereco);
+        $stmt->bindParam(":abertura", $abertura);
+        $stmt->bindParam(":porte", $porte);
+        $stmt->bindParam(":situacao", $situacao);
+        $stmt->bindParam(":tipo", $tipo);
+        $stmt->bindParam(":fantasia", $fantasia);
+        $stmt->bindParam(":natureza_juridica", $natureza_juridica);
+        $stmt->bindParam(":nivel", $nivel);
         $stmt->execute();
 
         if($stmt)
-        { 
-        
+        {         
           //Cadastrar tbl_clientes_system
-          $tbl_clientes_system = $pdo->prepare("INSERT INTO tbl_clientes_system (nome, endereco, bairro, cidade, fone, cep) VALUES (:nome, :endereco, :bairro, :cidade, :fone, :cep)");
-          $tbl_clientes_system->bindParam(":nome", $nome_razao_social);
-          $tbl_clientes_system->bindParam(":endereco", $rua);
-          $tbl_clientes_system->bindParam(":bairro", $bairro);
-          $tbl_clientes_system->bindParam(":cidade", $cidade);
-          $tbl_clientes_system->bindParam(":fone", $celular);
-          $tbl_clientes_system->bindParam(":cep", $cep);
+          $tbl_clientes_system = $pdo->prepare("INSERT INTO `tbl_clientes_system` (`id`, `nome`, `endereco`, `cep`) VALUES (NULL, :nome, :endereco, :cep)");
+          $tbl_clientes_system->bindParam(":nome", $nome);
+          $tbl_clientes_system->bindParam(":endereco", $endereco);
+          $tbl_clientes_system->bindParam(":cep", $cnpj);
           $tbl_clientes_system->execute();
 
+          if($tbl_clientes_system->rowCount() > 0)
+          {
+            
+            $stmt_logado = $pdo->prepare("INSERT INTO `logado` (`id`, `nome`, `email`, `senha`, `atividade_principal`, `cpf`, `endereco`, `abertura`, `porte`, `situacao`, `tipo`, `fantasia`, `natureza_juridica`, `nivel`) VALUES (NULL, :nome, :email, :senha, :atividade_principal, :cpf, :endereco, :abertura, :porte, :situacao, :tipo, :fantasia, :natureza_juridica, :nivel)");
+            $stmt_logado->bindParam(':nome', $nome);
+            $stmt_logado->bindParam(':email', $email);
+            $stmt_logado->bindParam(':senha', $password);
+            $stmt_logado->bindParam(':atividade_principal', $atividade_principal);
+            $stmt_logado->bindParam(':cpf', $cnpj);
+            $stmt_logado->bindParam(':endereco', $endereco);
+            $stmt_logado->bindParam(':abertura', $abertura);
+            $stmt_logado->bindParam(':porte', $porte);
+            $stmt_logado->bindParam(':situacao', $situacao);
+            $stmt_logado->bindParam(':tipo', $tipo);
+            $stmt_logado->bindParam(':fantasia', $fantasia);
+            $stmt_logado->bindParam(':natureza_juridica', $natureza_juridica);
+            $stmt_logado->bindParam(':nivel', $nivel);
+            $stmt_logado->execute();
+          }
         ?>
 
         <script>

@@ -106,76 +106,70 @@
                       <span style="color: red;">*</span>
                       <div  style="display: flex;">
                         <input type="text" id="cnpj" placeholder="CPF/CNPJ" class="form-control" name="cnpj" pattern="\d{14}" title="Digite um CNPJ com 14 dígitos numéricos" required>
-                        <button type="button" class="btn btn-alt-primary" style="width: 200px; margin-left: 0.5em;" onclick="buscarCNPJ()">Buscar (CNPJ)</button>  
+                        <button type="button" class="btn btn-alt-primary" style="width: 200px; margin-left: 0.5em;" onclick="buscarCNPJ()">Buscar</button>  
                       </div>                   
                     </div>
                     
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="nomerazaosocial">Nome<span style="color: red;">*</span> </label>
-                      <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome/Razão social" style="font-size: 0.9em;" required>
+                    <div class="mb-3 d-flex">
+                      <span style="color: red;">*</span>
+                      <input type="text" placeholder="Nome" class="form-control" id="nome" name="nome" readonly>
+                      
+                      <span class="ms-3" style="color: red;">*</span>
+                      <input type="password" class="form-control" id="signup-username" name="password" required style="font-size: 0.9em;" placeholder="Senha" style="font-size: 0.9em;">
                     </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="contato">Contato</label>
-                      <input type="text" class="form-control" id="contato" name="contato" placeholder="Contato" style="font-size: 0.9em;">
+
+                    <div class="input-group mb-3">
+                      <span style="color: red;">*</span>
+                      <input type="email" class="form-control" id="signup-username" name="email" required style="font-size: 0.9em;" placeholder="Login (e-mail)" style="font-size: 0.9em;">
                     </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="telefone">Telefone </label>
-                      <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" style="font-size: 0.9em;">
+
+                    <div class="mb-3">
+                      <label class="form-label" for="atividade_principal">Atividade Principal:</label>
+                      <input type="text" placeholder="Atividade Principal" class="form-control input-sm" id="atividade_principal" name="atividade_principal" readonly>
                     </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="celular">Celular </label>
-                      <input type="text" class="form-control" id="celular" name="celular" placeholder="Celular" style="font-size: 0.9em;">
-                    </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="email">Email </label>
-                      <input type="email" class="form-control" id="email" name="email" placeholder="Email" style="font-size: 0.9em;">
-                    </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="senha">Senha </label>
-                      <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" style="font-size: 0.9em;">
-                    </div>                   
+
+                    <div class="mb-3">
+                      <label for="endereco">Endereço:</label>
+                      <input type="text" placeholder="Endereço" class="form-control input-sm" id="endereco" name="endereco" readonly>
+                    </div>                 
                   </div>
 
                   <div class="col-md-6">
+                    <div style="display: flex;">
+                      <div class="mb-3" style="width: 50%;">
+                        <label for="situcao" class="form-label">Data de Abertura</label>
+                        <input type="text" placeholder="Data de Abertura" class="form-control input-sm" id="abertura" name="abertura" readonly>
+                      </div>
+
+                      <div class="mb-3" style="width: 50%; margin-right: 20px;">
+                        <label for="situcao" class="form-label ms-3">Porte</label>
+                        <input type="text" placeholder="Porte" class="form-control input-sm ms-3" id="porte" name="porte" readonly>
+                      </div>
+                    </div> 
+
+                    <div style="display: flex;">
+                      <div class="mb-3" style="width: 50%;">
+                        <label for="situcao" class="form-label">Situação</label>
+                        <input type="text" placeholder="Situação" class="form-control input-sm" id="situacao" name="situacao" readonly>
+                      </div>
+
+                      <div class="mb-3" style="width: 50%; margin-right: 20px;">
+                        <label for="tipo" class="form-label ms-3">Tipo</label>
+                        <input type="text" placeholder="Tipo" class="form-control input-sm ms-3" id="tipo" name="tipo" readonly>
+                      </div>
+                    </div>
+
                     <div class="mb-4">
-                      <label>CEP (apenas números)</label>
-                      <input type="text" name="cep" id="cep" class="form-control" placeholder="" required size="10" maxlength="8" onblur="pesquisacep(this.value);">
+                      <label for="fantasia" class="form-label">Nome Fantasia:</label>
+                      <input type="text" placeholder="Nome Fantasia" class="form-control input-sm" id="fantasia" name="fantasia" readonly>
                     </div>
 
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="rua">Rua </label>
-                      <input type="text" name="rua" id="rua" class="form-control" placeholder="" required>
+                    <div class="mb-3 mt-4">
+                      <label for="natureza_juridica">Natureza Jurídica:</label>
+                      <input type="text" placeholder="Natureza Jurídica" class="form-control input-sm" id="natureza_juridica" name="natureza_juridica" readonly>
                     </div>
 
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="complemento">Complemento </label>
-                      <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Complemento" style="font-size: 0.9em;">
-                    </div>
-
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="bairro">Bairro </label>
-                      <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" style="font-size: 0.9em;">
-                    </div>
-
-                    <div class="mb-1">
-                      <label>Estado</label>
-                      <input type="text" name="uf" id="uf" class="form-control" placeholder="" required>
-                    </div>
-
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="cidade">Cidade </label>
-                      <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" style="font-size: 0.9em;">
-                    </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="estado">Estado </label>
-                      <select name="estado" id="estado" class="form-control" style="font-size: 0.9em;">
-                        <option placeholder="Selecione...">Selecione...</option>
-                        <option placeholder="Selecione...">Estado 1</option>
-                        <option placeholder="Selecione...">Estado 2</option>
-                        <option placeholder="Selecione...">Estado 3</option>
-                        <option placeholder="Selecione...">Estado 4</option>
-                      </select>
-                    </div>                   
+                    <input type="hidden" name="nivel" value="user">                  
                   </div>
                 </div>
               </div>
