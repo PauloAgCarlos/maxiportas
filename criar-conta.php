@@ -40,7 +40,7 @@
         function buscarCNPJ() {
             var cnpj = document.getElementById('cnpj').value;
 
-            fetch(`https://www.receitaws.com.br/v1/cnpj/${cnpj}`)
+            fetch(`https://api-regional-motors.casadosomangola.com/api/verificar_cnpj/${cnpj}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.status === 'OK') {

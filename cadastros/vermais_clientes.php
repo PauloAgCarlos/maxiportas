@@ -75,22 +75,13 @@
                       $idDescriptografado = base64_decode($_GET['view_clientes']);
                       $id = $idDescriptografado;
                       foreach($selecionar_clientes_id->selecionar_clientes_id($id) as $row_clientes_id){ 
-                      echo addslashes($row_clientes_id['nome_razao_socil']); } ?>
+                      echo addslashes($row_clientes_id['nome']); } ?>
                     </h1>
                   </div>
                   <div style=" margin-left:73%; margin-top: -5%;">
                     <a class="btn btn-hero btn-primary" href="./atualizar_clientes.php?atualizar_clientes=<?php $idCriptografado = base64_encode($row_clientes_id['id']); echo $idCriptografado; ?>" data-toggle="click-ripple">
                       <i class="fa fa-pencil-alt"></i>
                     </a>
-                    <!-- <a class="btn btn-hero btn-primary" href="eliminar_clientes.php?eliminar_clientes=<php echo $row_clientes_id['id']; ?>" data-toggle="click-ripple">
-                      <i class="fa fa-trash" ></i>
-                    </a> -->
-                    <!-- <form action="eliminar_clientes.php" method="post">
-                      <input type="hidden" name="eliminar_clientes" value="<?php echo $row_clientes_id['id']; ?>">
-                      <button type="submit" class="btn btn-hero btn-primary" style="color: blue;">
-                        <i class="fa fa-trash" ></i>
-                      </button>
-                    </form> -->
                     <a class="btn  btn-hero btn-primary my-2" href="./visualizar_clientes.php">
                       <i class="fa fa-reply" aria-hidden="true"></i>
                       <span class="d-none d-sm-inline ms-1"></span>
@@ -99,7 +90,6 @@
                 </div>
                 <div class="block-content">
                     
-                    <!-- Customer -->
                     <div class="row">
                         <div class="col-sm-6">
                         
@@ -114,17 +104,18 @@
                             foreach($selecionar_clientes_id->selecionar_clientes_id($id) as $row_clientes_id){ ?>
 
                             <div class="block-header block-header-default">
-                              <h3 class="block-title">Nome: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['nome_razao_socil']); ?></h3>
+                              <h3 class="block-title">Nome: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['nome']); ?></h3>
                             </div>
 
                             <div class="block-content">
-                              <div class="fs-4 mb-1">CPF/CNPJ: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['cpf_cnpj']); ?></span></div>
+                              <div class="fs-4 mb-1">CNPJ: 
+                                <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['cnpj']); ?></span>
+                              </div>
                               <address class="fs-sm">
-                                  Senha: <?php echo addslashes($row_clientes_id['senha']); ?><br>
-                                  <i class="fa fa-phone"></i> Contato: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['contato']); ?></span><br>
-                                  <i class="fa fa-phone"></i> Telefone: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['telefone']); ?></span><br>                                
-                                  <i class="fa fa-phone"></i> Celular: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['celular']); ?></span><br>
-                                  <i class="fa fa-envelope-o"></i><?php echo addslashes($row_clientes_id['email']); ?>
+                                  <span style="font-weight: bolder;">Senha:</span> <?php echo addslashes($row_clientes_id['senha']); ?><br>
+                                  <i class="fa fa-envelope-o"></i><span style="font-weight: bolder;">Email:<span> <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['email']); ?></span><br>
+                                  <span style="font-weight: bolder;">Situacao:</span> <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['situacao']); ?></span><br>                                
+                                  <span style="font-weight: bolder;">Tipo:</span> <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['tipo']); ?></span>
                               </address>
                             </div>
                             <?php } ?>
@@ -142,17 +133,24 @@
                             $id = $idDescriptografado;
                             foreach($selecionar_clientes_id->selecionar_clientes_id($id) as $row_clientes_id_id){ ?>
                             <div class="block-header block-header-default">
-                              <h3 class="block-title">Rua: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['rua']); ?></span></h3>
+                              <h3 class="block-title">Endereço: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['endereco']); ?></span></h3>
                             </div>
+                            
                             <div class="block-content">
-                            <div class="fs-4 mb-1">CEP: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['cep']); ?></span></div>
-                            <address class="fs-sm">
-                            Complemento: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['complemento']); ?></span><br>
-                                Bairro: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['bairro']); ?></span><br>
-                                Cidade: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['cidade']); ?></span><br>
-                                Estado: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['estado']); ?></span><br>
-                                <i class="fa fa-phone"></i> Número: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['numero']); ?></span>
-                            </address>
+                            
+                              <div class="fs-4 mb-1">Atividade Principal: 
+                                <span class="fs-sm text-muted">
+                                  <?php echo addslashes($row_clientes_id['atividade_principal']); ?>
+                                </span>
+                              </div>
+                              
+                              <address class="fs-sm">
+                                <span style="font-weight: bolder;">Data de Abertura:</span> <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['abertura']); ?></span><br>
+                                Porte: <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['porte']); ?></span><br>
+                                <span style="font-weight: bolder;"> Natureza Juridica: </span><span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['natureza_juridica']); ?></span><br>
+                                <span style="font-weight: bolder;">Fantasia:</span> <span class="fs-sm text-muted"><?php echo addslashes($row_clientes_id['fantasia']); ?></span>
+                              </address>
+                              
                             </div>
                             <?php } ?>
                         </div>

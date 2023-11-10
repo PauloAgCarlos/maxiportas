@@ -6,7 +6,10 @@
         header('location: ../index.php');
     }
 
-    require_once "../config.php";
+    $servidor = "localhost";
+    $usuario = "root";
+    $senha = "";
+    $dbname = "maxportas";
     
     //Verificar se está sendo passado na URL a página atual, senao é atribuido a pagina 
     $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
@@ -17,7 +20,7 @@
     }
     
     //Criar a conexão
-    $conn = mysqli_connect($DBHOST, $DBUSER, $DBPASS, $DBNAME);
+    $conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
     
     //Selecionar todos os perfil da tabela
     $result_curso = "SELECT * FROM perfil WHERE codigo_produto LIKE '%$valor_pesquisar%'";

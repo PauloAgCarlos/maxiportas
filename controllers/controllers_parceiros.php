@@ -62,27 +62,24 @@ class controllers_parceiros extends database
     //     return $selecionar_imagem_id->execute();
     // }
 
-    public function atualizar_parceiros($razaosocial, $nomefantasia, $complemento, $cidade, $endreco, $email, $instagram, $facebook, $codigointerno, $bairro, $cnpj, $cep, $uf, $ie, $numero, $telefone, $id_atualizar)
+    public function atualizar_parceiros($cnpj, $nome, $password, $email, $atividade_principal, $endereco, $abertura, $porte, $situacao, $tipo, $fantasia, $natureza_juridica, $nivel, $id_atualizar)
     {
 
-        $atualizar_parceiros = $this->conn->prepare("UPDATE parceiros SET razaosocial = ?, nomefantasia = ?, complemento = ?, cidade = ?, endreco = ?, email = ?, instagram = ?, facebook = ?, codigointerno = ?, bairro = ?, cnpj = ?, cep = ?, uf = ?, ie = ?, numero = ?, telefone = ?  WHERE id = ?");
-        $atualizar_parceiros->bindParam(1, $razaosocial);
-        $atualizar_parceiros->bindParam(2, $nomefantasia);
-        $atualizar_parceiros->bindParam(3, $complemento);            
-        $atualizar_parceiros->bindParam(4, $cidade);
-        $atualizar_parceiros->bindParam(5, $endreco);
-        $atualizar_parceiros->bindParam(6, $email);
-        $atualizar_parceiros->bindParam(7, $instagram);
-        $atualizar_parceiros->bindParam(8, $facebook);
-        $atualizar_parceiros->bindParam(9, $codigointerno);   
-        $atualizar_parceiros->bindParam(10, $bairro);         
-        $atualizar_parceiros->bindParam(11, $cnpj);            
-        $atualizar_parceiros->bindParam(12, $cep);           
-        $atualizar_parceiros->bindParam(13, $uf);
-        $atualizar_parceiros->bindParam(14, $ie);
-        $atualizar_parceiros->bindParam(15, $numero);
-        $atualizar_parceiros->bindParam(16, $telefone);
-        $atualizar_parceiros->bindParam(17, $id_atualizar);
+        $atualizar_parceiros = $this->conn->prepare("UPDATE parceiros SET cnpj = ?, nome = ?, senha = ?, email = ?, atividade_principal = ?, endereco = ?, abertura = ?, porte = ?, situacao = ?, tipo = ?, fantasia = ?, natureza_juridica = ?, nivel = ? WHERE id = ?");
+        $atualizar_parceiros->bindParam(1, $cnpj);
+        $atualizar_parceiros->bindParam(2, $nome);
+        $atualizar_parceiros->bindParam(3, $password);            
+        $atualizar_parceiros->bindParam(4, $email);
+        $atualizar_parceiros->bindParam(5, $atividade_principal);
+        $atualizar_parceiros->bindParam(6, $endereco);
+        $atualizar_parceiros->bindParam(7, $abertura);
+        $atualizar_parceiros->bindParam(8, $porte);
+        $atualizar_parceiros->bindParam(9, $situacao);   
+        $atualizar_parceiros->bindParam(10, $tipo);         
+        $atualizar_parceiros->bindParam(11, $fantasia);            
+        $atualizar_parceiros->bindParam(12, $natureza_juridica);           
+        $atualizar_parceiros->bindParam(13, $nivel);
+        $atualizar_parceiros->bindParam(14, $id_atualizar);
 
         return $atualizar_parceiros->execute();
         

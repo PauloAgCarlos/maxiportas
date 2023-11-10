@@ -39,6 +39,37 @@
     <!--SwitAlert Success ao Cadastrar-->
     <script src="../assets/js/cdn.jsdelivr.net_npm_sweetalert2@11.0.18_dist_sweetalert2.all.min.js"></script>
 
+    <!--CNPJ-->
+    <script>
+        function buscarCNPJ() {
+            var cnpj = document.getElementById('cnpj').value;
+
+            fetch(`https://api-regional-motors.casadosomangola.com/api/verificar_cnpj/${cnpj}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'OK') {
+                        console.log(data);
+                        document.getElementById('nome').value = data.nome;
+                        document.getElementById('atividade_principal').value = data.atividade_principal[0].text;
+                        document.getElementById('endereco').value = data.logradouro + ', ' + data.numero + ', ' + data.bairro + ', ' + data.municipio + ' - ' + data.uf;
+                        document.getElementById('abertura').value = data.abertura;
+                        document.getElementById('situacao').value = data.situacao;
+                        document.getElementById('tipo').value = data.tipo;
+                        document.getElementById('fantasia').value = data.fantasia;
+                        document.getElementById('porte').value = data.porte;
+                        document.getElementById('natureza_juridica').value = data.natureza_juridica;
+                        // ... e assim por diante para os outros campos
+                    } else {
+                        alert('Erro ao buscar dados do CNPJ: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar dados do CNPJ:', error);
+                });
+        }
+    </script>
+    <!--LAST CNPJ-->
+
   </head>
   <body>
     <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
@@ -63,96 +94,80 @@
               </div>
               <div class="block-content" >
                 <div class="row justify-content-center push">
-                  <div class="col-md-4">
-                    <div class="mb-1">
-                      <label class="form-label" for="razaosocial" style="font-size: 0.9em;">Razão Social</label> <span style="color: red;">*</span>
+                <div class="col-md-6">
+                    
+                    <div class="mb-3">
+                      <label class="form-label" for="cpfcnpj" style="font-size: 0.9em;">CPF/CNPJ</label> 
+                      <span style="color: red;">*</span>
                       <div  style="display: flex;">
-                        <input type="text" class="form-control" id="razaosocial" name="razaosocial" placeholder="Razão Social" style="font-size: 0.9em;" required>
-                      </div>
+                        <input type="text" id="cnpj" placeholder="CPF/CNPJ" class="form-control" name="cnpj" pattern="\d{14}" title="Digite um CNPJ com 14 dígitos numéricos" required>
+                        <button type="button" class="btn btn-alt-primary" style="width: 200px; margin-left: 0.5em;" onclick="buscarCNPJ()">Buscar</button>  
+                      </div>                   
                     </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="nomefantasia">Nome Fantasia Social <span style="color: red;">*</span> </label>
-                      <input type="text" class="form-control" id="nomefantasia" name="nomefantasia" placeholder="Nome/Razão social" style="font-size: 0.9em;">
-                    </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="complemento">Complemento</label>
-                      <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Complemento" style="font-size: 0.9em;">
-                    </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="cidade">Cidade </label>
-                      <input type="text" class="form-control" id="cidade" name="cidade" placeholder="Cidade" style="font-size: 0.9em;">
-                    </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="endreco">Endreço </label>
-                      <input type="text" class="form-control" id="endreco" name="endreco" placeholder="Endreço" style="font-size: 0.9em;">
-                    </div>                  
-                  </div>
-
-                  <div class="col-md-4">
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="email">Email </label>
-                      <input type="email" class="form-control" id="email" name="email" placeholder="Email" style="font-size: 0.9em;">
-                    </div>                    
-                    <div class="mb-1">
-                      <label class="form-label" style="font-size: 0.9em;" for="instagram">Instagram </label>
-                      <input type="text" class="form-control" id="instagram" name="instagram" placeholder="Instagram" style="font-size: 0.9em;">
-                    </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="facebook">Facebook </label>
-                      <input type="text" class="form-control" id="facebook" name="facebook" placeholder="Facebook" style="font-size: 0.9em;">
-                    </div> 
                     
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="codigointerno">Código Interno </label>
-                      <input type="text" class="form-control" id="codigointerno" name="codigointerno" placeholder="Código Interno" style="font-size: 0.9em;">
-                    </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="bairro">Bairro </label>
-                      <input type="text" class="form-control" id="bairro" name="bairro" placeholder="Bairro" style="font-size: 0.9em;">
-                    </div> 
-                  </div>
-
-                  <div class="col-md-4">
-                    <div class="input-groupA" style="display: flex; width: 98%; align-items: center; justify-content: center;">
-                      <div>
-                        <label class="form-label" style="font-size: 0.9em;" for="cnpj">CNPJ </label>
-                        <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="CNPJ" style="font-size: 0.9em;">
-                      </div>
+                    <div class="mb-3 d-flex">
+                      <span style="color: red;">*</span>
+                      <input type="text" placeholder="Nome" class="form-control" id="nome" name="nome" readonly>
                       
-                      <div>
-                        <label class="form-label"  style="font-size: 0.9em;" for="cep">CEP </label>
-                        <input type="text" class="form-control ms-2" id="cep" name="cep" placeholder="CEP" style="font-size: 0.9em;">
+                      <span class="ms-3" style="color: red;">*</span>
+                      <input type="password" class="form-control" id="signup-username" name="password" style="font-size: 0.9em;" placeholder="Senha" style="font-size: 0.9em;">
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <span style="color: red;">*</span>
+                      <input type="email" class="form-control" id="signup-username" name="email" style="font-size: 0.9em;" placeholder="Login (e-mail)" style="font-size: 0.9em;">
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label" for="atividade_principal">Atividade Principal:</label>
+                      <input type="text" placeholder="Atividade Principal" class="form-control input-sm" id="atividade_principal" name="atividade_principal" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="endereco">Endereço:</label>
+                      <input type="text" placeholder="Endereço" class="form-control input-sm" id="endereco" name="endereco" readonly>
+                    </div>                 
+                  </div>
+
+                  <div class="col-md-6">
+                    <div style="display: flex;">
+                      <div class="mb-3" style="width: 50%;">
+                        <label for="situcao" class="form-label">Data de Abertura</label>
+                        <input type="text" placeholder="Data de Abertura" class="form-control input-sm" id="abertura" name="abertura" readonly>
+                      </div>
+
+                      <div class="mb-3" style="width: 50%; margin-right: 20px;">
+                        <label for="situcao" class="form-label ms-3">Porte</label>
+                        <input type="text" placeholder="Porte" class="form-control input-sm ms-3" id="porte" name="porte" readonly>
+                      </div>
+                    </div> 
+
+                    <div style="display: flex;">
+                      <div class="mb-3" style="width: 50%;">
+                        <label for="situcao" class="form-label">Situação</label>
+                        <input type="text" placeholder="Situação" class="form-control input-sm" id="situacao" name="situacao" readonly>
+                      </div>
+
+                      <div class="mb-3" style="width: 50%; margin-right: 20px;">
+                        <label for="tipo" class="form-label ms-3">Tipo</label>
+                        <input type="text" placeholder="Tipo" class="form-control input-sm ms-3" id="tipo" name="tipo" readonly>
                       </div>
                     </div>
-                    
-                    <div class="mb-1">
-                    <label class="form-label"  style="font-size: 0.9em;" for="uf">UF </label>
-                     <input type="text" class="form-control" id="uf" name="uf" placeholder="UF" tyle="font-size: 0.9em;">
+
+                    <div class="mb-4">
+                      <label for="fantasia" class="form-label">Nome Fantasia:</label>
+                      <input type="text" placeholder="Nome Fantasia" class="form-control input-sm" id="fantasia" name="fantasia" readonly>
                     </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="ie">IE </label>
-                      <input type="text" class="form-control" id="ie" name="ie" placeholder="IE" style="font-size: 0.9em;">
+
+                    <div class="mb-3 mt-4">
+                      <label for="natureza_juridica">Natureza Jurídica:</label>
+                      <input type="text" placeholder="Natureza Jurídica" class="form-control input-sm" id="natureza_juridica" name="natureza_juridica" readonly>
                     </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="numero">Número </label>
-                      <input type="text" class="form-control" id="numero" name="numero" placeholder="Número" style="font-size: 0.9em;">
-                    </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="telefone">Telefone</label>
-                      <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone" style="font-size: 0.9em;">
-                    </div>                             
+
+                    <input type="hidden" name="nivel" value="user">                  
                   </div>
                 </div>
                 <div class="row justify-content-center pushA">
-                  <div class="mb-4 col-md-12" style="display: flex; align-items: center; justify-content: center;">
-                    <div>
-                      <img class="img-avatar" style="width: 100px; height: 100px; cursor: pointer;" src="../assets/img/avatars/avatar10.jpg" alt="Avatar User" id="profileDisplay" onclick="triggerClick()">
-                    </div>
-                    <div>
-                      <input class="form-control" required type="file" name="imagem" style="display: none;" id="profileImage" onchange="displayImage(this)" type="images/">
-                      <img src="../assets/img/cameraa.png" alt="avatar" onclick="triggerClick()" width="35px" style="border-radius: 1000px; margin-left: -20px; cursor: pointer;">
-                    </div>
-                  </div>
                   <div class="block-content bg-body-light">
                     <div class="row justify-content-center push">
                       <div class="col-md-10">
@@ -196,6 +211,81 @@
 
 <!--Reenvio de Formulário-->
 <script src="../assets/js/evitar_reenvio_form.js"></script>
+
+<!-- CEP-->
+<script>
+
+    function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('rua').value=("");
+            document.getElementById('bairro').value=("");
+            document.getElementById('cidade').value=("");
+            document.getElementById('uf').value=("");
+            document.getElementById('complemento').value=("");
+    }
+
+    function meu_callback(conteudo) {
+      console.log(conteudo)
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('rua').value=(conteudo.logradouro);
+            document.getElementById('bairro').value=(conteudo.bairro);
+            document.getElementById('cidade').value=(conteudo.localidade);
+            document.getElementById('uf').value=(conteudo.uf);
+            document.getElementById('complemento').value=(conteudo.complemento);
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('rua').value="...";
+                document.getElementById('bairro').value="...";
+                document.getElementById('cidade').value="...";
+                document.getElementById('uf').value="...";
+                document.getElementById('complemento').value="...";
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+
+    </script>
+<!--Last CEP-->
 
 
 <?php require_once "cadastrar_parceiros.php"; ?>

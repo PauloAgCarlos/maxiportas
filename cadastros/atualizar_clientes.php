@@ -68,41 +68,40 @@
                       $idCriptografado = base64_decode($_GET['atualizar_clientes']); 
                       
                       $id_update = $idCriptografado;
-                      $update = $selecionar_clientes_id->selecionar_clientes_id($id_update);
-                      // if((!isset($_GET['atualizar_clientes'])) AND ($_GET['atualizar_clientes'] != $idCriptografado))
-                      // {                        
+                      $update = $selecionar_clientes_id->selecionar_clientes_id($id_update);         
                       foreach($update as $row_update){
                     ?>
                     
-                    <div class="mb-1">
-                      <label class="form-label" for="cpfcnpj" style="font-size: 0.9em;">CPF/CNPJ</label> <span style="color: red;">*</span>
+                    <div class="mb-3">
+                      <label class="form-label" for="cpfcnpj" style="font-size: 0.9em;">CPF/CNPJ</label> 
+                      <span style="color: red;">*</span>
                       <div  style="display: flex;">
-                        <input type="text" class="form-control" id="cpfcnpj" name="cpfcnpj" value="<?php echo $row_update['cpf_cnpj']; ?>" style="font-size: 0.9em;" required>
-                      </div>
+                        <input type="text" id="cnpj" value="<?php echo $row_update['cnpj']; ?>" placeholder="CPF/CNPJ" class="form-control" name="cnpj" pattern="\d{14}" title="Digite um CNPJ com 14 dígitos numéricos" required>
+                        <button type="button" class="btn btn-alt-primary" style="width: 200px; margin-left: 0.5em;" onclick="buscarCNPJ()">Buscar</button>  
+                      </div>                   
                     </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="nomerazaosocial">Nome/Razão Social <span style="color: red;">*</span> </label>
-                      <input type="text" class="form-control" id="nomerazaosocial" name="nomerazaosocial" value="<?php echo $row_update['nome_razao_socil']; ?>" style="font-size: 0.9em;" required>
+                    
+                    <div class="mb-3 d-flex">
+                      <span style="color: red;">*</span>
+                      <input type="text" value="<?php echo $row_update['nome']; ?>" placeholder="Nome" class="form-control" id="nome" name="nome" readonly>
+                      
+                      <span class="ms-3" style="color: red;">*</span>
+                      <input type="text" value="<?php echo $row_update['senha']; ?>" class="form-control" id="signup-username" name="password" required style="font-size: 0.9em;" placeholder="Senha" style="font-size: 0.9em;">
                     </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="contato">Contato</label>
-                      <input type="text" class="form-control" id="contato" name="contato" value="<?php echo $row_update['contato']; ?>" style="font-size: 0.9em;">
+
+                    <div class="input-group mb-3">
+                      <span style="color: red;">*</span>
+                      <input type="email" value="<?php echo $row_update['email']; ?>" class="form-control" id="signup-username" name="email" required style="font-size: 0.9em;" placeholder="Login (e-mail)" style="font-size: 0.9em;">
                     </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="telefone">Telefone </label>
-                      <input type="text" class="form-control" id="telefone" name="telefone" value="<?php echo $row_update['telefone']; ?>" style="font-size: 0.9em;">
+
+                    <div class="mb-3">
+                      <label class="form-label" for="atividade_principal">Atividade Principal:</label>
+                      <input type="text" placeholder="Atividade Principal" value="<?php echo $row_update['atividade_principal']; ?>" class="form-control input-sm" id="atividade_principal" name="atividade_principal" readonly>
                     </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="celular">Celular </label>
-                      <input type="text" class="form-control" id="celular" name="celular" value="<?php echo $row_update['celular']; ?>" style="font-size: 0.9em;">
-                    </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="email">Email </label>
-                      <input type="email" class="form-control" id="email" name="email" value="<?php echo $row_update['email']; ?>" style="font-size: 0.9em;">
-                    </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="senha">Senha </label>
-                      <input type="text" class="form-control" id="senha" name="senha" value="<?php echo $row_update['senha']; ?>" style="font-size: 0.9em;">
+
+                    <div class="mb-3">
+                      <label for="endereco">Endereço:</label>
+                      <input type="text" value="<?php echo $row_update['endereco']; ?>" placeholder="Endereço" class="form-control input-sm" id="endereco" name="endereco" readonly>
                     </div> 
                     
                     <?php } ?>
@@ -118,34 +117,42 @@
                       $update = $selecionar_clientes_id->selecionar_clientes_id($id_update);
                       foreach($update as $row_update){
                     ?>
-                    <div class="mb-1">
-                      <label class="form-label" for="cep" style="font-size: 0.9em;">CEP</label>
-                      <input type="text" class="form-control" id="cep" name="cep" value="<?php echo $row_update['cep']; ?>" style="font-size: 0.9em;">
+                    <div style="display: flex;">
+                      <div class="mb-3" style="width: 50%;">
+                        <label for="situcao" class="form-label">Data de Abertura</label>
+                        <input type="text" value="<?php echo $row_update['abertura']; ?>" placeholder="Data de Abertura" class="form-control input-sm" id="abertura" name="abertura" readonly>
+                      </div>
+
+                      <div class="mb-3" style="width: 50%; margin-right: 20px;">
+                        <label for="situcao" class="form-label ms-3">Porte</label>
+                        <input type="text" value="<?php echo $row_update['porte']; ?>" placeholder="Porte" class="form-control input-sm ms-3" id="porte" name="porte" readonly>
+                      </div>
+                    </div> 
+
+                    <div style="display: flex;">
+                      <div class="mb-3" style="width: 50%;">
+                        <label for="situcao" class="form-label">Situação</label>
+                        <input type="text" value="<?php echo $row_update['situacao']; ?>" placeholder="Situação" class="form-control input-sm" id="situacao" name="situacao" readonly>
+                      </div>
+
+                      <div class="mb-3" style="width: 50%; margin-right: 20px;">
+                        <label for="tipo" class="form-label ms-3">Tipo</label>
+                        <input type="text" value="<?php echo $row_update['tipo']; ?>" placeholder="Tipo" class="form-control input-sm ms-3" id="tipo" name="tipo" readonly>
+                      </div>
                     </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="rua">Rua </label>
-                      <input type="text" class="form-control" id="rua" name="rua" value="<?php echo $row_update['rua']; ?>" style="font-size: 0.9em;">
+
+                    <div class="mb-4">
+                      <label for="fantasia" class="form-label">Nome Fantasia:</label>
+                      <input type="text" value="<?php echo $row_update['fantasia']; ?>" placeholder="Nome Fantasia" class="form-control input-sm" id="fantasia" name="fantasia" readonly>
                     </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="numero">Número</label>
-                      <input type="text" class="form-control" id="numero" name="numero" value="<?php echo $row_update['numero']; ?>" style="font-size: 0.9em;">
+
+                    <div class="mb-3 mt-4">
+                      <label for="natureza_juridica">Natureza Jurídica:</label>
+                      <input type="text" value="<?php echo $row_update['natureza_juridica']; ?>" placeholder="Natureza Jurídica" class="form-control input-sm" id="natureza_juridica" name="natureza_juridica" readonly>
                     </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="complemento">Complemento </label>
-                      <input type="text" class="form-control" id="complemento" name="complemento" value="<?php echo $row_update['complemento']; ?>" style="font-size: 0.9em;">
-                    </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="bairro">Bairro </label>
-                      <input type="text" class="form-control" id="bairro" name="bairro" value="<?php echo $row_update['bairro']; ?>" style="font-size: 0.9em;">
-                    </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="cidade">Cidade </label>
-                      <input type="text" class="form-control" id="cidade" name="cidade" value="<?php echo $row_update['cidade']; ?>" style="font-size: 0.9em;">
-                    </div>
-                    <div class="mb-1">
-                      <label class="form-label"  style="font-size: 0.9em;" for="estado">Estado </label>
-                      <input type="text" class="form-control" id="estado" name="estado" value="<?php echo $row_update['estado']; ?>" style="font-size: 0.9em;">
-                    </div>  
+
+                    <input type="hidden" name="nivel" value="user">
+
                     <input type="hidden" name="id_atualizar" value="<?php  $idCriptografado = base64_decode($_GET['atualizar_clientes']); $id_update = $idCriptografado; echo $id_update; ?>">
                     <?php } ?>                 
                   </div>

@@ -47,7 +47,7 @@
         function buscarCNPJ() {
             var cnpj = document.getElementById('cnpj').value;
 
-            fetch(`https://www.receitaws.com.br/v1/cnpj/${cnpj}`)
+            fetch(`https://api-regional-motors.casadosomangola.com/api/verificar_cnpj/${cnpj}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.status === 'OK') {
@@ -115,12 +115,12 @@
                       <input type="text" placeholder="Nome" class="form-control" id="nome" name="nome" readonly>
                       
                       <span class="ms-3" style="color: red;">*</span>
-                      <input type="password" class="form-control" id="signup-username" name="password" required style="font-size: 0.9em;" placeholder="Senha" style="font-size: 0.9em;">
+                      <input type="password" class="form-control" id="signup-username" name="password" style="font-size: 0.9em;" placeholder="Senha" style="font-size: 0.9em;">
                     </div>
 
                     <div class="input-group mb-3">
                       <span style="color: red;">*</span>
-                      <input type="email" class="form-control" id="signup-username" name="email" required style="font-size: 0.9em;" placeholder="Login (e-mail)" style="font-size: 0.9em;">
+                      <input type="email" class="form-control" id="signup-username" name="email" style="font-size: 0.9em;" placeholder="Login (e-mail)" style="font-size: 0.9em;">
                     </div>
 
                     <div class="mb-3">

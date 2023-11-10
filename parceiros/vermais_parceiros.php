@@ -92,7 +92,7 @@
                     
                     <!-- Customer -->
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                         
                         <div class="block block-rounded">
 
@@ -104,24 +104,25 @@
                             foreach($selecionar_parceiros_id->selecionar_parceiros_id($idDescriptografado) as $row_parceiros_id){ ?>
 
                             <div class="block-header block-header-default">
-                              <h3 class="block-title">Razão Social: <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['razaosocial']); ?></h3>
+                              <h3 class="block-title">Nome: <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['nome']); ?></h3>
                             </div>
 
                             <div class="block-content">
-                              <div class="fs-4 mb-1">CNPJ: <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['cnpj']); ?></span></div>
+                              <div class="fs-4 mb-1">CNPJ: 
+                                <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['cnpj']); ?></span>
+                              </div>
                               <address class="fs-sm">
-                                  Nome Fantasia: <?php echo addslashes($row_parceiros_id['nomefantasia']); ?><br>
-                                  Complemento	: <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['complemento']); ?></span><br>
-                                  Cidade: <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['cidade']); ?></span><br>                                
-                                  Endereço: <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['endreco']); ?></span><br>
-                                  <i class="fa fa-envelope-o"></i><?php echo addslashes($row_parceiros_id['email']); ?>
+                                  <span style="font-weight: bolder;">Senha:</span> <?php echo addslashes($row_parceiros_id['senha']); ?><br>
+                                  <i class="fa fa-envelope-o"></i><span style="font-weight: bolder;">Email:<span> <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['email']); ?></span><br>
+                                  <span style="font-weight: bolder;">Situacao:</span> <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['situacao']); ?></span><br>                                
+                                  <span style="font-weight: bolder;">Tipo:</span> <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['tipo']); ?></span>
                               </address>
                             </div>
                             <?php } ?>
                         </div>
                         
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                           <div class="block block-rounded">
                             <?php
                               require_once "../controllers/controllers_parceiros.php";
@@ -131,42 +132,24 @@
 
                               foreach($selecionar_parceiros_id->selecionar_parceiros_id($idDescriptografado) as $row_parceiros_id_id){ ?>
                               <div class="block-header block-header-default">
-                                <h3 class="block-title">Bairro: <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['bairro']); ?></span></h3>
+                                <h3 class="block-title">Endereço: <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['endereco']); ?></span></h3>
                               </div>
+                              
                               <div class="block-content">
-                              <div class="fs-4 mb-1">CEP: <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['cep']); ?></span></div>
-                              <address class="fs-sm">
-                              Instagram: <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['instagram']); ?></span><br>
-                                  Facebook: <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['facebook']); ?></span><br>
-                                  UF: <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['uf']); ?></span><br>
-                                  IE: <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['ie']); ?></span><br>
-                                  <i class="fa fa-phone"></i> Número: <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['numero']); ?></span><br>
-                                  <i class="fa fa-phone"></i> Telefone: <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['telefone']); ?></span>
-                              </address>
-                              </div>
-                              <?php } ?>
-                          </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                          <div class="block block-rounded">
-                            <?php
-                              require_once "../controllers/controllers_parceiros.php";
-
-                              $selecionar_parceiros_id = new controllers_parceiros();
-                              $idDescriptografado = base64_decode($_GET['view_parceiros']); 
-
-                              foreach($selecionar_parceiros_id->selecionar_parceiros_id($idDescriptografado) as $row_parceiros_id_id){ ?>
-                              <div class="block-header block-header-default">
-                                <h3 class="block-title text-center">Imagem:</h3>
-                              </div>
-
-                              <div style="margin: auto; margin-top: 5%; display: flex; align-items: center; justify-content: center;">
-                                <?php if($row_parceiros_id_id['imagem'] == ""){ ?>
-                                  <img style="width: 150px; height: 150px; border-radius: 150px; border: 1px solid black; display: block; margin: auto;" src="../assets/img/avatars/avatar10.jpg" alt="Avatar">
-                                <?php  } else { ?>
-                                  <img style="width: 150px; height: 150px; border-radius: 150px; border: 1px solid black; display: block; margin: auto;" src="<?php echo $row_parceiros_id_id['imagem']; ?>" alt="">
-                                <?php }?>
+                            
+                                <div class="fs-4 mb-1">Atividade Principal: 
+                                  <span class="fs-sm text-muted">
+                                    <?php echo addslashes($row_parceiros_id['atividade_principal']); ?>
+                                  </span>
+                                </div>
+                              
+                                <address class="fs-sm">
+                                  <span style="font-weight: bolder;">Data de Abertura:</span> <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['abertura']); ?></span><br>
+                                  Porte: <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['porte']); ?></span><br>
+                                  <span style="font-weight: bolder;"> Natureza Juridica: </span><span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['natureza_juridica']); ?></span><br>
+                                  <span style="font-weight: bolder;">Fantasia:</span> <span class="fs-sm text-muted"><?php echo addslashes($row_parceiros_id['fantasia']); ?></span>
+                                </address>
+                              
                               </div>
                               <?php } ?>
                           </div>

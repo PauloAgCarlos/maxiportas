@@ -51,7 +51,6 @@
 
           if($tbl_clientes_system->rowCount() > 0)
           {
-            
             $stmt_logado = $pdo->prepare("INSERT INTO `logado` (`id`, `nome`, `email`, `senha`, `atividade_principal`, `cpf`, `endereco`, `abertura`, `porte`, `situacao`, `tipo`, `fantasia`, `natureza_juridica`, `nivel`) VALUES (NULL, :nome, :email, :senha, :atividade_principal, :cpf, :endereco, :abertura, :porte, :situacao, :tipo, :fantasia, :natureza_juridica, :nivel)");
             $stmt_logado->bindParam(':nome', $nome);
             $stmt_logado->bindParam(':email', $email);

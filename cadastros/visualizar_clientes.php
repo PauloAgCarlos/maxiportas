@@ -167,10 +167,9 @@ $total_clientes = mysqli_num_rows($resultado_clientes);
                     { ?>
                     <thead style="text-align: center;">
                       <tr class="text-uppercase">
-                        <th>CPF/CNPF</th>
-                        <th class="d-none d-xl-table-cell">Nome/Razão Social</th>
+                        <th>CNPJ</th>
+                        <th class="d-none d-xl-table-cell">Nome</th>
                         <th>Email</th>
-                        <th class="d-none d-sm-table-cell text-end" style="width: 120px;">Estado</th>
                         <th>Ver Mais</th>
                       </tr>
                     </thead>
@@ -188,16 +187,13 @@ $total_clientes = mysqli_num_rows($resultado_clientes);
                               while($row_clientes = mysqli_fetch_assoc($resultado_clientes)){ ?>
                               <tr>
                                   <td>
-                                      <span class="fw-semibold"><?php echo $row_clientes['cpf_cnpj']; ?></span>
+                                      <span class="fw-semibold"><?php echo $row_clientes['cnpj']; ?></span>
                                   </td>
                                   <td class="d-none d-xl-table-cell">
-                                      <span class="fs-sm text-muted"><?php echo $row_clientes['nome_razao_socil']; ?></span>
+                                      <span class="fs-sm text-muted"><?php echo $row_clientes['nome']; ?></span>
                                   </td>
                                   <td>
                                       <span class="fw-semibold"><?php echo $row_clientes['email']; ?></span>
-                                  </td>
-                                  <td class="d-none d-sm-table-cell text-end fw-medium">
-                                  <?php echo $row_clientes['estado']; ?>
                                   </td>
                                   <td class="text-center text-nowrap fw-medium" style="display: flex; justify-content: center; align-items: center;">
 

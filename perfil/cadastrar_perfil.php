@@ -47,11 +47,14 @@
 
 
     // Configurações do banco de dados
-    require_once "../config.php";
+    $dbHost = "localhost";
+    $dbName = "maxportas";
+    $dbUsuario = "root";
+    $dbSenha = "";
 
     try {
         // Conexão com o banco de dados usando PDO
-        $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+        $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUsuario, $dbSenha);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Consulta para inserir o usuário na tabela

@@ -151,12 +151,12 @@
                                         <?php
                                             require_once "../config.php";
                                             $conn = new mysqli($DBHOST, $DBUSER, $DBPASS, $DBNAME);
-                                            $query = 'SELECT id, nome_razao_socil FROM clientes ORDER BY id DESC';
+                                            $query = 'SELECT id, nome FROM tbl_clientes_system ORDER BY id DESC';
                                             $result = $conn->query($query);
 
                                             if ($result->num_rows > 0) {
                                                 while ($row = $result->fetch_assoc()) {
-                                                echo '<li  style="color: #000; font-size: 1.1em;" data-bs-dismiss="modal"><a href="#" style="text-decoration: none; color: black;" class="select-data">'. $row['nome_razao_socil'] . '</a></li>';
+                                                echo '<li  style="color: #000; font-size: 1.1em;" data-bs-dismiss="modal"><a href="#" style="text-decoration: none; color: black;" class="select-data">'. $row['nome'] . '</a></li>';
                                                 }
                                             }
                                         ?>

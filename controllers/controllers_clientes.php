@@ -52,25 +52,24 @@ class controllers_clientes extends database
         }
     }
 
-    public function atualizar_clientes($cpf_cnpj, $nome_razao_social, $contato, $telefone, $celular, $email, $senha, $cep, $rua, $numero, $complemento, $bairro, $cidade, $estado, $id_atualizar)
+    public function atualizar_clientes($cnpj, $nome, $password, $email, $atividade_principal, $endereco, $abertura, $porte, $situacao, $tipo, $fantasia, $natureza_juridica, $nivel, $id_atualizar)
     {
 
-        $atualizar_clientes = $this->conn->prepare("UPDATE clientes SET cpf_cnpj = ?, nome_razao_socil = ?, contato = ?, telefone = ?, celular = ?, email = ?, senha = ?, cep = ?, rua = ?, numero = ?, complemento = ?, bairro = ?, cidade = ?, estado = ? WHERE id = ?");
-        $atualizar_clientes->bindParam(1, $cpf_cnpj);
-        $atualizar_clientes->bindParam(2, $nome_razao_social);
-        $atualizar_clientes->bindParam(3, $contato);            
-        $atualizar_clientes->bindParam(4, $telefone);
-        $atualizar_clientes->bindParam(5, $celular);
-        $atualizar_clientes->bindParam(6, $email);
-        $atualizar_clientes->bindParam(7, $senha);
-        $atualizar_clientes->bindParam(8, $rua);
-        $atualizar_clientes->bindParam(9, $cep);   
-        $atualizar_clientes->bindParam(10, $numero);         
-        $atualizar_clientes->bindParam(11, $complemento);            
-        $atualizar_clientes->bindParam(12, $bairro);           
-        $atualizar_clientes->bindParam(13, $cidade);
-        $atualizar_clientes->bindParam(14, $estado);
-        $atualizar_clientes->bindParam(15, $id_atualizar);
+        $atualizar_clientes = $this->conn->prepare("UPDATE clientes SET cnpj = ?, nome = ?, senha = ?, email = ?, atividade_principal = ?, endereco = ?, abertura = ?, porte = ?, situacao = ?, tipo = ?, fantasia = ?, natureza_juridica = ?, nivel = ? WHERE id = ?");
+        $atualizar_clientes->bindParam(1, $cnpj);
+        $atualizar_clientes->bindParam(2, $nome);
+        $atualizar_clientes->bindParam(3, $password);            
+        $atualizar_clientes->bindParam(4, $email);
+        $atualizar_clientes->bindParam(5, $atividade_principal);
+        $atualizar_clientes->bindParam(6, $endereco);
+        $atualizar_clientes->bindParam(7, $abertura);
+        $atualizar_clientes->bindParam(8, $porte);
+        $atualizar_clientes->bindParam(9, $situacao);   
+        $atualizar_clientes->bindParam(10, $tipo);         
+        $atualizar_clientes->bindParam(11, $fantasia);            
+        $atualizar_clientes->bindParam(12, $natureza_juridica);           
+        $atualizar_clientes->bindParam(13, $nivel);
+        $atualizar_clientes->bindParam(14, $id_atualizar);
         return $atualizar_clientes->execute();
         
     }

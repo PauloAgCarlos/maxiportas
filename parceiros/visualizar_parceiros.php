@@ -167,9 +167,8 @@ $total_parceiros = mysqli_num_rows($resultado_parceiros);
                     <thead style="text-align: center;">
                       <tr class="text-uppercase">
                         <th>CNPJ</th>
-                        <th>Razão Social</th>
+                        <th>Nome</th>
                         <th>Nome Fantasia</th>
-                        <th>Email</th>
                         <th>Ver Mais</th>
                       </tr>
                     </thead>
@@ -189,13 +188,10 @@ $total_parceiros = mysqli_num_rows($resultado_parceiros);
                                       <span class="fw-semibold"><?php echo $row_parceiros['cnpj']; ?></span>
                                   </td>
                                   <td>
-                                    <span class="fs-sm text-muted"><?php echo $row_parceiros['razaosocial'];?></span>
+                                    <span class="fs-sm text-muted"><?php echo $row_parceiros['nome'];?></span>
                                   </td>
                                   <td>
-                                    <?php echo $row_parceiros['nomefantasia']; ?>
-                                  </td>
-                                  <td>
-                                      <span class="fw-semibold"><?php echo $row_parceiros['email']; ?></span>
+                                    <?php echo $row_parceiros['fantasia']; ?>
                                   </td>
                                   <td class="text-center text-nowrap fw-medium" style="display: flex; justify-content: center; align-items: center;">
 
