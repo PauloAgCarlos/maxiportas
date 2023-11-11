@@ -103,21 +103,37 @@
                     <div class="mb-3" style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
                         <label class="form-label" style="font-size: 0.8em;" for="vidro">Agregar </label>
-                        <select name="agregar" class="form-control" style="font-size: 0.8em;" id="agregar">
-                          <option value="Agregar Simples">Agregar Simples</option>
-                          <option value="Agregar Simples1">Agregar Simples1</option>
-                          <option value="Agregar Simples2">Agregar Simples2</option>
-                          <option value="Agregar Simples3">Agregar Simples3</option>
+                        <select name="agregar" class="form-control" id="agregar">
+                          <?php
+                            require_once "../config.php";
+                            $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                            
+                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $selecionar_agregar = $pdo->prepare("SELECT descricao FROM agregar");
+                            $selecionar_agregar->execute();
+                            while($row_agregar = $selecionar_agregar->fetch()){
+                          ?>
+                            <option value="<?php echo $row_agregar['descricao'] ?>"><?php echo $row_agregar['descricao'] ?></option>
+
+                          <?php }?>
                         </select>
                       </div>
 
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.8em;" for="unidade">Unidade </label>
-                        <select name="unidade" class="form-control" style="font-size: 0.8em;" id="unidade">
-                          <option value="Metro">Metro</option>
-                          <option value="Metro1">Metro1</option>
-                          <option value="Metro2">Metro2</option>
-                          <option value="Metro3">Metro3</option>
+                        <select name="unidade" class="form-control" id="unidade">
+                          <?php
+                            require_once "../config.php";
+                            $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                            
+                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $selecionar_unidade = $pdo->prepare("SELECT descricao FROM unidades_de_produto");
+                            $selecionar_unidade->execute();
+                            while($row_unidade = $selecionar_unidade->fetch()){
+                          ?>
+                            <option value="<?php echo $row_unidade['descricao'] ?>"><?php echo $row_unidade['descricao'] ?></option>
+
+                          <?php }?>
                         </select>
                       </div>
 

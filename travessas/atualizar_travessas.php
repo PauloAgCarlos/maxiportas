@@ -97,33 +97,54 @@
                       <div class="mb-1">
                         <label class="form-label" style="font-size: 0.9em;" for="vidro">Agregar </label>
                         <select name="agregar" class="form-control" id="agregar">
-                          <option value="<?php echo $row_update['agregar']; ?>"><?php echo $row_update['agregar']; ?></option>
-                          <option value="Agregar Simples">Agregar Simples</option>
-                          <option value="Agregar Simples1">Agregar Simples1</option>
-                          <option value="Agregar Simples2">Agregar Simples2</option>
-                          <option value="Agregar Simples3">Agregar Simples3</option>
+                          <?php
+                            require_once "../config.php";
+                            $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                            
+                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $selecionar_agregar = $pdo->prepare("SELECT descricao FROM agregar");
+                            $selecionar_agregar->execute();
+                            while($row_agregar = $selecionar_agregar->fetch()){
+                          ?>
+                            <option value="<?php echo $row_agregar['descricao'] ?>"><?php echo $row_agregar['descricao'] ?></option>
+
+                          <?php }?>
                         </select>
                       </div>
 
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.9em;" for="unidade">Unidade </label>
                         <select name="unidade" class="form-control" id="unidade">
-                          <option value="<?php echo $row_update['unidade']; ?>"><?php echo $row_update['unidade']; ?></option>
-                          <option value="Metro">Metro</option>
-                          <option value="Metro1">Metro1</option>
-                          <option value="Metro2">Metro2</option>
-                          <option value="Metro3">Metro3</option>
+                          <?php
+                            require_once "../config.php";
+                            $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                            
+                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $selecionar_unidade = $pdo->prepare("SELECT descricao FROM unidades_de_produto");
+                            $selecionar_unidade->execute();
+                            while($row_unidade = $selecionar_unidade->fetch()){
+                          ?>
+                            <option value="<?php echo $row_unidade['descricao'] ?>"><?php echo $row_unidade['descricao'] ?></option>
+
+                          <?php }?>
                         </select>
                       </div>
 
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.9em;" for="esquadreta">Esquadreta </label>
                         <select name="esquadreta" class="form-control" id="esquadreta">
-                          <option value="<?php echo $row_update['esquadreta']; ?>"><?php echo $row_update['descricao']; ?></option>
-                          <option value="Esquadreta">Esquadreta</option>
-                          <option value="Esquadreta1">Esquadreta1</option>
-                          <option value="Esquadreta2">Esquadreta2</option>
-                          <option value="Esquadreta3">Esquadreta3</option>
+                          <?php
+                            require_once "../config.php";
+                            $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                            
+                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $selecionar_esquadretas = $pdo->prepare("SELECT descricao FROM esquadretas");
+                            $selecionar_esquadretas->execute();
+                            while($row_esquadretas = $selecionar_esquadretas->fetch()){
+                          ?>
+                            <option value="<?php echo $row_esquadretas['descricao'] ?>"><?php echo $row_esquadretas['descricao'] ?></option>
+
+                          <?php }?>
                         </select>
                       </div>
                     </div>

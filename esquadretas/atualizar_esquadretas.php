@@ -20,7 +20,7 @@
 
     <!-- Open Graph Meta -->
     <meta property="og:title" content="HJ Alumínio">
-    <meta property="og:site_name" content="HH Alumínio">
+    <meta property="og:site_name" content="HJ Alumínio">
     <meta property="og:description" content="HJ Alumínio">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="mb-1 col-md-12">
-                      <label class="form-label" style="font-size: 0.8em;" for="observacao">Observação <span style="color: red;">*</span> </label>
+                      <label class="form-label" style="font-size: 0.8em;" for="observacao">Observação</label>
                       <textarea name="observacao" id="observacao" class="form-control" cols="10" rows="4" style="font-size: 0.8em;"><?php echo addslashes($row_update['observacao']); ?></textarea>
                     </div>                     
                   </div>

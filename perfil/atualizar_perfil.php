@@ -109,31 +109,51 @@
                     <div class="mb-3" style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
                         <label class="form-label" style="font-size: 0.9em;" for="agregar">Agregar </label>
-                        <select name="agregar" class="form-control" id="agregar">
-                          <option value="Agregar Simples">Agregar Simples</option>
-                          <option value="Agregar Simples1">Agregar Simples1</option>
-                          <option value="Agregar Simples2">Agregar Simples2</option>
-                          <option value="Agregar Simples3">Agregar Simples3</option>
-                        </select>
+                          <?php
+                            require_once "../config.php";
+                            $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                            
+                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $selecionar_agregar = $pdo->prepare("SELECT descricao FROM agregar");
+                            $selecionar_agregar->execute();
+                            while($row_agregar = $selecionar_agregar->fetch()){
+                          ?>
+                            <option value="<?php echo $row_agregar['descricao'] ?>"><?php echo $row_agregar['descricao'] ?></option>
+
+                          <?php }?>
                       </div>
 
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.9em;" for="unidade">Unidade </label>
-                        <select name="unidade" class="form-control" id="unidade">
-                          <option value="Metro">Metro</option>
-                          <option value="Metro1">Metro1</option>
-                          <option value="Metro2">Metro2</option>
-                          <option value="Metro3">Metro3</option>
-                        </select>
+                          <?php
+                            require_once "../config.php";
+                            $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                            
+                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $selecionar_unidade = $pdo->prepare("SELECT descricao FROM unidades_de_produto");
+                            $selecionar_unidade->execute();
+                            while($row_unidade = $selecionar_unidade->fetch()){
+                          ?>
+                            <option value="<?php echo $row_unidade['descricao'] ?>"><?php echo $row_unidade['descricao'] ?></option>
+
+                          <?php }?>
                       </div>
 
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.9em;" for="vidro">Vidro </label>
                         <select name="vidro" class="form-control" id="vidro">
-                          <option value="Vidro Simples">Vidro Simples</option>
-                          <option value="Vidro Simples1">Vidro Simples1</option>
-                          <option value="Vidro Simples2">Vidro Simples2</option>
-                          <option value="Vidro Simples3">Vidro Simples3</option>
+                          <?php
+                            require_once "../config.php";
+                            $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                            
+                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $selecionar_vidros = $pdo->prepare("SELECT descricao FROM vidros");
+                            $selecionar_vidros->execute();
+                            while($row_vidros = $selecionar_vidros->fetch()){
+                          ?>
+                            <option value="<?php echo $row_vidros['descricao'] ?>"><?php echo $row_vidros['descricao'] ?></option>
+
+                          <?php }?>
                         </select>
                       </div>
                     </div>
@@ -143,10 +163,18 @@
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.9em;" for="esquadreta">Esquadreta </label>
                         <select name="esquadreta" class="form-control" id="esquadreta">
-                          <option value="Esquadreta">Esquadreta</option>
-                          <option value="Esquadreta1">Esquadreta1</option>
-                          <option value="Esquadreta2">Esquadreta2</option>
-                          <option value="Esquadreta3">Esquadreta3</option>
+                          <?php
+                            require_once "../config.php";
+                            $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                            
+                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $selecionar_esquadretas = $pdo->prepare("SELECT descricao FROM esquadretas");
+                            $selecionar_esquadretas->execute();
+                            while($row_esquadretas = $selecionar_esquadretas->fetch()){
+                          ?>
+                            <option value="<?php echo $row_esquadretas['descricao'] ?>"><?php echo $row_esquadretas['descricao'] ?></option>
+
+                          <?php }?>
                         </select>
                       </div>
                       
@@ -245,11 +273,6 @@
                       <div class="mb-1 ms-2">
                         <label class="form-label" style="font-size: 0.8em;" for="perda_corte_retalho">Perda Corte Retalho (mm)  </label>
                         <input type="text" class="form-control" id="perda_corte_retalho" name="perda_corte_retalho" value="<?php echo $row_update['perda_corte_retalho']; ?>" style="font-size: 0.9em;">
-                      </div>
-
-                      <div class="mb-1 ms-2">  
-                        <label class="form-label"  style="font-size: 0.8em;" for="codigo_produto">Código Produto </label>                    
-                        <input type="text" class="form-control" value="<?php echo $row_update['codigo_produto']; ?>" name="codigo_produto" id="codigo_produto">
                       </div>
 
                       <div class="mb-1 ms-2">

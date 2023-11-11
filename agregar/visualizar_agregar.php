@@ -43,14 +43,14 @@ $total_agregar = mysqli_num_rows($resultado_agregar);
 
     <title>HJ Alumínio</title>
 
-    <meta name="description" content="MaxPortas">
+    <meta name="description" content="HJAlúminio">
     <meta name="author" content="pixelcave">
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Open Graph Meta -->
-    <meta property="og:title" content="MaxPortas">
+    <meta property="og:title" content="HJAlúminio">
     <meta property="og:site_name" content="Dashmix">
-    <meta property="og:description" content="MaxPortas">
+    <meta property="og:description" content="HJAlúminio">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:image" content="">

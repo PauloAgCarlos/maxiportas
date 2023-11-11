@@ -12,16 +12,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <title>MaxPortas</title>
+    <title>HJAlúminio</title>
 
-    <meta name="description" content="MaxPortas">
+    <meta name="description" content="HJAlúminio">
     <meta name="author" content="pixelcave">
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Open Graph Meta -->
-    <meta property="og:title" content="MaxPortas">
+    <meta property="og:title" content="HJAlúminio">
     <meta property="og:site_name" content="Dashmix">
-    <meta property="og:description" content="MaxPortas">
+    <meta property="og:description" content="HJAlúminio">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
@@ -587,8 +587,19 @@
                                                     </div>
                                                     <div class="p-2" style="width: 280px;">
                                                         <label for="">Vidro</label>
-                                                        <select class="form-control mb-2" name="vidro" id="">
-                                                            <option value="">Escolha um Vidro</option>
+                                                        <select name="vidro" class="form-control" id="vidro">
+                                                            <?php
+                                                                require_once "../config.php";
+                                                                $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                                                                
+                                                                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                                $selecionar_vidros = $pdo->prepare("SELECT descricao FROM vidros");
+                                                                $selecionar_vidros->execute();
+                                                                while($row_vidros = $selecionar_vidros->fetch()){
+                                                            ?>
+                                                                <option value="<?php echo $row_vidros['descricao'] ?>"><?php echo $row_vidros['descricao'] ?></option>
+
+                                                            <?php }?>
                                                         </select>
                                                     </div>
                                                 </div>                                                
@@ -611,9 +622,19 @@
                                                         </h3>
                                                     </div>
                                                     <div class="p-2" style="width: 280px;">
-                                                        <select class="form-control mb-2" name="servicos" id="">
-                                                            <option value="Rebaixo">Rebaixo</option>
-                                                            <option value="Usinagem Puxador">Usinagem Puxador</option>
+                                                        <select name="servicos" class="form-control" id="servicos">
+                                                            <?php
+                                                                require_once "../config.php";
+                                                                $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                                                                
+                                                                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                                $selecionar_servicos = $pdo->prepare("SELECT descricao FROM servicos");
+                                                                $selecionar_servicos->execute();
+                                                                while($row_servicos = $selecionar_servicos->fetch()){
+                                                            ?>
+                                                                <option value="<?php echo $row_servicos['descricao'] ?>"><?php echo $row_servicos['descricao'] ?></option>
+
+                                                            <?php }?>
                                                         </select>
                                                     </div>
                                                 </div>                                                
@@ -630,8 +651,19 @@
                                                     </div>
                                                     <div class="p-2" style="width: 280px;">
                                                         <label for="">Sentido da Travessa</label>
-                                                        <select class="form-control mb-2" name="travessa" id="">
-                                                            <option value="">Sem Travessa</option>
+                                                        <select name="travessa" class="form-control" id="travessa">
+                                                            <?php
+                                                                require_once "../config.php";
+                                                                $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                                                                
+                                                                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                                $selecionar_travessas = $pdo->prepare("SELECT descricao FROM travessas");
+                                                                $selecionar_travessas->execute();
+                                                                while($row_travessas = $selecionar_travessas->fetch()){
+                                                            ?>
+                                                                <option value="<?php echo $row_travessas['descricao'] ?>"><?php echo $row_travessas['descricao'] ?></option>
+
+                                                            <?php }?>
                                                         </select>
                                                     </div>
                                                 </div>                                                
@@ -672,8 +704,19 @@
                                                 <div class="col-md-2">
                                                     <div>
                                                         <label for="">Esquadreta</label>
-                                                        <select class="form-control mb-2" name="esquadreta" id="">
-                                                            <option value="">Selecione</option>
+                                                        <select name="esquadreta" class="form-control" id="esquadreta">
+                                                            <?php
+                                                                require_once "../config.php";
+                                                                $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                                                                
+                                                                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                                $selecionar_esquadretas = $pdo->prepare("SELECT descricao FROM esquadretas");
+                                                                $selecionar_esquadretas->execute();
+                                                                while($row_esquadretas = $selecionar_esquadretas->fetch()){
+                                                            ?>
+                                                                <option value="<?php echo $row_esquadretas['descricao'] ?>"><?php echo $row_esquadretas['descricao'] ?></option>
+
+                                                            <?php }?>
                                                         </select>
                                                     </div>
                                                 </div>

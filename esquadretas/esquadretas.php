@@ -79,7 +79,7 @@
                     </div>
 
                     <div class="mb-1 col-md-12">
-                      <label class="form-label" style="font-size: 0.8em;" for="observacao">Observação <span style="color: red;">*</span> </label>
+                      <label class="form-label" style="font-size: 0.8em;" for="observacao">Observação </label>
                       <textarea name="observacao" id="observacao" class="form-control" cols="10" rows="4" style="font-size: 0.8em;"></textarea>
                     </div>                     
                   </div>

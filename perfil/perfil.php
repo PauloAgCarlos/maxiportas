@@ -145,11 +145,11 @@
                             $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
                             
                             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                            $selecionar_unidade = $pdo->prepare("SELECT descricao FROM unidades_de_produto");
-                            $selecionar_unidade->execute();
-                            while($row_unidade = $selecionar_unidade->fetch()){
+                            $selecionar_vidros = $pdo->prepare("SELECT descricao FROM vidros");
+                            $selecionar_vidros->execute();
+                            while($row_vidros = $selecionar_vidros->fetch()){
                           ?>
-                            <option value="<?php echo $row_unidade['descricao'] ?>"><?php echo $row_unidade['descricao'] ?></option>
+                            <option value="<?php echo $row_vidros['descricao'] ?>"><?php echo $row_vidros['descricao'] ?></option>
 
                           <?php }?>
                         </select>
@@ -161,10 +161,18 @@
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.9em;" for="esquadreta">Esquadreta </label>
                         <select name="esquadreta" class="form-control" id="esquadreta">
-                          <option value="Esquadreta">Esquadreta</option>
-                          <option value="Esquadreta1">Esquadreta1</option>
-                          <option value="Esquadreta2">Esquadreta2</option>
-                          <option value="Esquadreta3">Esquadreta3</option>
+                          <?php
+                            require_once "../config.php";
+                            $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                            
+                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $selecionar_esquadretas = $pdo->prepare("SELECT descricao FROM esquadretas");
+                            $selecionar_esquadretas->execute();
+                            while($row_esquadretas = $selecionar_esquadretas->fetch()){
+                          ?>
+                            <option value="<?php echo $row_esquadretas['descricao'] ?>"><?php echo $row_esquadretas['descricao'] ?></option>
+
+                          <?php }?>
                         </select>
                       </div>
                       
