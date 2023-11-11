@@ -74,14 +74,14 @@
                       <div class="mb-1" style="width: 80%;">
                         <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
                         <div>
-                          <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="20" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                          <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="50" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
                         </div>
                       </div>
 
                       <div class="mb-1 ms-4">
                         <label class="form-label" for="quantidade" style="font-size: 0.9em;">Quantidade</label> <span style="color: red;">*</span>
                         <div>
-                          <input type="text" class="form-control" id="quantidade" name="quantidade" placeholder="Quantidade" style="font-size: 0.9em;" required>
+                          <input type="text" class="form-control" id="quantidade" name="quantidade" placeholder="Quantidade" style="font-size: 0.9em;">
                         </div>
                       </div>
                     </div>
@@ -134,15 +134,15 @@
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.9em;" for="custo_metro">Custo (metro) <span style="color: red;">*</span> </label>
-                        <input type="text" class="form-control" id="custo_metro" name="custo_metro" placeholder="0,00" style="font-size: 0.9em;">
+                        <input type="text" value="0"class="form-control" id="custo_metro" name="custo_metro" placeholder="0,00" style="font-size: 0.9em;">
                       </div>
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.9em;" for="markup">Markup (%) <span style="color: red;">*</span> </label>
-                        <input type="text" class="form-control ms-2" id="markup" name="markup" placeholder="0,00" style="font-size: 0.9em;">
+                        <input type="text" value="0"class="form-control ms-2" id="markup" name="markup" placeholder="0,00" style="font-size: 0.9em;">
                       </div>
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.9em;" for="valor">Valor (metro) <span style="color: red;">*</span> </label>
-                        <input type="text" class="form-control ms-3" id="valor" name="valor" placeholder="0,00" style="font-size: 0.9em;">
+                        <input type="text" value="0"class="form-control ms-3" id="valor" name="valor" placeholder="0,00" style="font-size: 0.9em;">
                       </div>
                       
                     </div>
@@ -151,22 +151,22 @@
                      
                       <div class="mb-1 ms-2">
                         <label class="form-label"  style="font-size: 0.8em;" for="desconto_corte_vidro">Desconto Corte Vidro (mm) </label>
-                        <input type="text" class="form-control" id="desconto_corte_vidro" name="desconto_corte_vidro" placeholder="0,0" style="font-size: 0.9em;">
+                        <input type="text" value="0"class="form-control" id="desconto_corte_vidro" name="desconto_corte_vidro" placeholder="0,0" style="font-size: 0.9em;">
                       </div>
                       <div class="mb-1">
                         <label class="form-label ms-2" style="font-size: 0.8em;" for="perda">Perda (%) </label>
-                        <input type="text" class="form-control ms-2" id="perda" name="perda" placeholder="0,00" style="font-size: 0.9em;">
+                        <input type="text" value="0"class="form-control ms-2" id="perda" name="perda" placeholder="0,00" style="font-size: 0.9em;">
                       </div>
                       <div class="mb-1 ms-2">
                         <label class="form-label" style="font-size: 0.8em;" for="perda_bordas">  Perda Bordas<span style="color: red;">*</span> </label>
-                        <input type="text" class="form-control ms-2" id="perda_bordas" name="perda_bordas" placeholder="0" style="font-size: 0.8em;">
+                        <input type="text" value="0"class="form-control ms-2" id="perda_bordas" name="perda_bordas" placeholder="0" style="font-size: 0.8em;">
                       </div>
                     </div>
 
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
                         <label class="form-label" style="font-size: 0.8em;" for="perda_corte">Perda Corte  </label>
-                        <input type="text"  style="width: 100px;" class="form-control" id="perda_corte" name="perda_corte" placeholder="0(mm)" style="font-size: 0.8em;">
+                        <input type="text" value="0" style="width: 100px;" class="form-control" id="perda_corte" name="perda_corte" placeholder="0(mm)" style="font-size: 0.8em;">
                       </div>
 
                       <div class="mb-1">
@@ -176,11 +176,11 @@
 
                       <div class="mb-1">
                         <label class="form-label" style="font-size: 0.8em;" for="perda_bordas_retalho">Perda Bordas Retalho</label>
-                        <input type="text"  style="width: 100px;" class="form-control ms-3" id="perda_bordas_retalho" name="perda_bordas_retalho" placeholder="0(mm)" style="font-size: 0.9em;">
+                        <input type="text" value="0" style="width: 100px;" class="form-control ms-3" id="perda_bordas_retalho" name="perda_bordas_retalho" placeholder="0(mm)" style="font-size: 0.9em;">
                       </div>
                       <div class="mb-1">
                         <label class="form-label" style="font-size: 0.8em;" for="perda_corte_retalho">Perda Corte Retalho</label>
-                        <input type="text"  style="width: 100px;" class="form-control ms-4" id="perda_corte_retalho" name="perda_corte_retalho" placeholder="0(mm)" style="font-size: 0.9em;">
+                        <input type="text" value="0" style="width: 100px;" class="form-control ms-4" id="perda_corte_retalho" name="perda_corte_retalho" placeholder="0(mm)" style="font-size: 0.9em;">
                       </div>
                     </div>
 
@@ -190,7 +190,7 @@
                         <img class="img-avatar" style="width: 100px; height: 100px; cursor: pointer;" src="../assets/img/avatars/avatar10.jpg" alt="Avatar User" id="profileDisplay" onclick="triggerClick()">
                       </div>
                       <div>
-                        <input class="form-control" required type="file" name="imagem" style="display: none;" id="profileImage" onchange="displayImage(this)" type="images/">
+                        <input class="form-control" type="file" name="imagem" style="display: none;" id="profileImage" onchange="displayImage(this)" type="images/">
                         <img src="../assets/img/cameraa.png" alt="avatar" onclick="triggerClick()" width="35px" style="border-radius: 1000px; margin-left: -20px; cursor: pointer;">
                       </div>
 

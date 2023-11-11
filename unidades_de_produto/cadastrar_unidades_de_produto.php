@@ -2,8 +2,7 @@
   if(isset($_POST['btn_cadastrar_unidades_de_produto'])):
 
     $descricao = addslashes($_POST['descricao']);
-    $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
-    $codigo_produto = "CLinhProdHJ-" . $codigo_produto_digitado;
+    $codigo_produto = addslashes($_POST['codigo_produto']);
     $codigo_interno = addslashes($_POST['codigo_interno']);
     $abreviacao = addslashes($_POST['abreviacao']);
     $ultima_alteracao = addslashes($_POST['ultima_alteracao']);    

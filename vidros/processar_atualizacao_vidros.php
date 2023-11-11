@@ -4,13 +4,12 @@
     if(isset($_POST['btn_atualizar_vidros'])):
 
         $descricao = addslashes($_POST['descricao']);
+        $codigo_produto = addslashes($_POST['codigo_produto']);
         $agregar = addslashes($_POST['agregar']);
         $unidade = addslashes($_POST['unidade']);
         $liberado_para = addslashes($_POST['liberado_para']);  
         $permite_pintura = addslashes($_POST['permite_pintura']);      
         $codigo_da_fabrica = addslashes($_POST['codigo_da_fabrica']);
-        $codigo_unico = uniqid();
-        $codigo_produto = "CVHJ-". substr($codigo_unico, 10);
         $observacao = addslashes($_POST['observacao']);
         $custo_metro = addslashes($_POST['custo_metro']);
         $markup = addslashes($_POST['markup']);

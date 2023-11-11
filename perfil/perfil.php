@@ -74,7 +74,7 @@
                     <div class="mb-1">
                       <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
                       <div>
-                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="6" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="50" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
                       </div>
                     </div>
                 
@@ -104,30 +104,54 @@
                       <div class="mb-1">
                         <label class="form-label" style="font-size: 0.9em;" for="vidro">Agregar </label>
                         <select name="agregar" class="form-control" id="agregar">
-                          <option value="Agregar Simples">Agregar Simples</option>
-                          <option value="Agregar Simples1">Agregar Simples1</option>
-                          <option value="Agregar Simples2">Agregar Simples2</option>
-                          <option value="Agregar Simples3">Agregar Simples3</option>
+                          <?php
+                            require_once "../config.php";
+                            $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                            
+                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $selecionar_agregar = $pdo->prepare("SELECT descricao FROM agregar");
+                            $selecionar_agregar->execute();
+                            while($row_agregar = $selecionar_agregar->fetch()){
+                          ?>
+                            <option value="<?php echo $row_agregar['descricao'] ?>"><?php echo $row_agregar['descricao'] ?></option>
+
+                          <?php }?>
                         </select>
                       </div>
 
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.9em;" for="vidro">Unidade </label>
                         <select name="unidade" class="form-control" id="unidade">
-                          <option value="Metro">Metro</option>
-                          <option value="Metro1">Metro1</option>
-                          <option value="Metro2">Metro2</option>
-                          <option value="Metro3">Metro3</option>
+                          <?php
+                            require_once "../config.php";
+                            $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                            
+                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $selecionar_unidade = $pdo->prepare("SELECT descricao FROM unidades_de_produto");
+                            $selecionar_unidade->execute();
+                            while($row_unidade = $selecionar_unidade->fetch()){
+                          ?>
+                            <option value="<?php echo $row_unidade['descricao'] ?>"><?php echo $row_unidade['descricao'] ?></option>
+
+                          <?php }?>
                         </select>
                       </div>
 
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.9em;" for="vidro">Vidro </label>
                         <select name="vidro" class="form-control" id="vidro">
-                          <option value="Vidro Simples">Vidro Simples</option>
-                          <option value="Vidro Simples1">Vidro Simples1</option>
-                          <option value="Vidro Simples2">Vidro Simples2</option>
-                          <option value="Vidro Simples3">Vidro Simples3</option>
+                          <?php
+                            require_once "../config.php";
+                            $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                            
+                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                            $selecionar_unidade = $pdo->prepare("SELECT descricao FROM unidades_de_produto");
+                            $selecionar_unidade->execute();
+                            while($row_unidade = $selecionar_unidade->fetch()){
+                          ?>
+                            <option value="<?php echo $row_unidade['descricao'] ?>"><?php echo $row_unidade['descricao'] ?></option>
+
+                          <?php }?>
                         </select>
                       </div>
                     </div>
@@ -176,15 +200,15 @@
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.9em;" for="custo_metro">Custo (metro) <span style="color: red;">*</span> </label>
-                        <input type="text" class="form-control" id="custo_metro" name="custo_metro" placeholder="0,00" style="font-size: 0.9em;">
+                        <input type="text" value="0" class="form-control" id="custo_metro" name="custo_metro" placeholder="0,00" style="font-size: 0.9em;">
                       </div>
                       <div class="mb-1 ms-2">
                         <label class="form-label"  style="font-size: 0.8em;" for="desconto_corte_perfil">Desconto Corte Perfil(mm)</label>
-                        <input type="text" class="form-control" id="desconto_corte_perfil" name="desconto_corte_perfil" placeholder="0,0" style="font-size: 0.9em;">
+                        <input type="text" value="0" class="form-control" id="desconto_corte_perfil" name="desconto_corte_perfil" placeholder="0,0" style="font-size: 0.9em;">
                       </div>
                       <div class="mb-1 ms-2">
                         <label class="form-label"  style="font-size: 0.8em;" for="desconto_corte_vidro">Desconto Corte Vidro (mm) </label>
-                        <input type="text" class="form-control" id="desconto_corte_vidro" name="desconto_corte_vidro" placeholder="0,0" style="font-size: 0.9em;">
+                        <input type="text" value="0" class="form-control" id="desconto_corte_vidro" name="desconto_corte_vidro" placeholder="0,0" style="font-size: 0.9em;">
                       </div>
                     </div>
 
@@ -192,24 +216,24 @@
                     
                       <div class="mb-1 mt-2 ms-2">
                         <label class="form-label" style="font-size: 0.8em;" for="desconto_corte_travessa">Desconto Corte Travessa (mm) </label>
-                        <input type="text" class="form-control" id="desconto_corte_travessa" name="desconto_corte_travessa" placeholder="0,0" style="font-size: 0.9em;">
+                        <input type="text" value="0" class="form-control" id="desconto_corte_travessa" name="desconto_corte_travessa" placeholder="0,0" style="font-size: 0.9em;">
                       </div>
                       
                       <div class="mb-1 ms-2 mt-2">
                         <label class="form-label" style="font-size: 0.8em;" for="desconto_corte_travessa_oculta">Desconto Corte Travessa Oculta (mm) </label>
-                        <input type="text" class="form-control" id="desconto_corte_travessa_oculta" name="desconto_corte_travessa_oculta" placeholder="0,0" style="font-size: 0.8em;">
+                        <input type="text" value="0" class="form-control" id="desconto_corte_travessa_oculta" name="desconto_corte_travessa_oculta" placeholder="0,0" style="font-size: 0.8em;">
                       </div>
                         
                       <div class="mb-1 ms-2 mt-4">
                         <label class="form-label" style="font-size: 0.8em;" for="perda_bordas">  Perdas Bordas<span style="color: red;">*</span> </label>
-                        <input type="text" class="form-control" id="perda_bordas" name="perda_bordas" placeholder="0" style="font-size: 0.8em;">
+                        <input type="text" value="0" class="form-control" id="perda_bordas" name="perda_bordas" placeholder="0" style="font-size: 0.8em;">
                       </div>
                     </div>
 
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
                         <label class="form-label" style="font-size: 0.8em;" for="perda_corte">Perda Corte (mm) <span style="color: red;">*</span> </label>
-                        <input type="text" class="form-control" id="perda_corte" name="perda_corte" placeholder="0" style="font-size: 0.8em;">
+                        <input type="text" value="0" class="form-control" id="perda_corte" name="perda_corte" placeholder="0" style="font-size: 0.8em;">
                       </div>
 
                       <div class="mb-1 ms-2">
@@ -219,38 +243,31 @@
 
                       <div class="mb-1 ms-2">
                         <label class="form-label" style="font-size: 0.8em;" for="perda_bordas_retalho">Perda Bordas Retalho (mm)</label>
-                        <input type="text" class="form-control" id="perda_bordas_retalho" name="perda_bordas_retalho" placeholder="0" style="font-size: 0.9em;">
+                        <input type="text" value="0" class="form-control" id="perda_bordas_retalho" name="perda_bordas_retalho" placeholder="0" style="font-size: 0.9em;">
                       </div>
                     </div>
 
                     <div style="display: flex; align-items: center; justify-content: space-between;">
-                      
-
                       <div class="mb-1 ms-2">
                         <label class="form-label" style="font-size: 0.8em;" for="perda_corte_retalho">Perda Corte Retalho (mm)  </label>
-                        <input type="text" class="form-control" id="perda_corte_retalho" name="perda_corte_retalho" placeholder="0" style="font-size: 0.9em;">
+                        <input type="text" value="0" class="form-control" id="perda_corte_retalho" name="perda_corte_retalho" placeholder="0" style="font-size: 0.9em;">
                       </div>
-
-                      <!-- <div class="mb-1 ms-2">  
-                        <label class="form-label"  style="font-size: 0.8em;" for="codigo_produto">Código Produto </label>                    
-                        <input type="text" class="form-control" placeholder="0" name="codigo_produto" id="codigo_produto">
-                      </div> -->
 
                       <div class="mb-1 ms-2">
                         <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração <span style="color: red;">*</span> </label>
-                        <input type="text" class="form-control" id="ultima_alteracao" name="ultima_alteracao" placeholder="0" style="font-size: 0.8em;">
+                        <input type="text" value="0" class="form-control" id="ultima_alteracao" name="ultima_alteracao" placeholder="0" style="font-size: 0.8em;">
                       </div>
                     </div>
 
                     <div style="display: flex; align-items: center; justify-content: center;">
                       <div class="mb-1">  
                         <label class="form-label"  style="font-size: 0.8em;" for="largura_da_mascara">Largura da Máscara </label>                    
-                        <input type="text" class="form-control" placeholder="0" name="largura_da_mascara" id="largura_da_mascara">
+                        <input type="text" value="0" class="form-control" placeholder="0" name="largura_da_mascara" id="largura_da_mascara">
                       </div>
 
                       <div class="mb-1 ms-2">  
                         <label class="form-label"  style="font-size: 0.8em;" for="codigo_da_fabrica">Código da Fábrica </label>                    
-                        <input type="text" class="form-control" placeholder="0" name="codigo_da_fabrica" id="codigo_da_fabrica">
+                        <input type="text" value="0" class="form-control" placeholder="0" name="codigo_da_fabrica" id="codigo_da_fabrica">
                       </div>
                     </div>
 
@@ -273,7 +290,7 @@
                       <img class="img-avatar" style="width: 100px; height: 100px; cursor: pointer;" src="../assets/img/avatars/avatar10.jpg" alt="Avatar User" id="profileDisplay" onclick="triggerClick()">
                     </div>
                     <div>
-                      <input class="form-control" required type="file" name="imagem" style="display: none;" id="profileImage" onchange="displayImage(this)" type="images/">
+                      <input class="form-control" type="file" name="imagem" style="display: none;" id="profileImage" onchange="displayImage(this)" type="images/">
                       <img src="../assets/img/cameraa.png" alt="avatar" onclick="triggerClick()" width="35px" style="border-radius: 1000px; margin-left: -20px; cursor: pointer;">
                     </div>
                   </div>

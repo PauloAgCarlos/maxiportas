@@ -4,6 +4,7 @@
     if(isset($_POST['btn_atualizar_servicos'])):
 
         $descricao = addslashes($_POST['descricao']);
+        $codigo_produto = addslashes($_POST['codigo_produto']);
         $tipo_de_servico = addslashes($_POST['tipo_de_servico']);
         $exibe_no_orcamento = addslashes($_POST['exibe_no_orcamento']);
         $exibe_na_lista_de_corte = addslashes($_POST['exibe_na_lista_de_corte']);  
@@ -19,7 +20,7 @@
         $id_atualizar = $_POST['id_atualizar'];        
 
         $controllers_servicos = new controllers_servicos();
-        $atualizar = $controllers_servicos->atualizar_servicos($descricao, $tipo_de_servico, $exibe_no_orcamento, $observacao, $custo_metro, $markup, $valor, $adiciona_para_o_corte, $calculo, $codigo_da_fabrica, $ultima_alteracao, $ativo, $id_atualizar);
+        $atualizar = $controllers_servicos->atualizar_servicos($descricao, $codigo_produto, $tipo_de_servico, $exibe_no_orcamento, $observacao, $custo_metro, $markup, $valor, $adiciona_para_o_corte, $calculo, $codigo_da_fabrica, $ultima_alteracao, $ativo, $id_atualizar);
         if($atualizar)
         {
             header('Location: visualizar_servicos.php?atualizado');

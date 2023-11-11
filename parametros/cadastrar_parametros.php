@@ -2,8 +2,7 @@
   if(isset($_POST['btn_cadastrar_parametros'])):
 
     $descricao = addslashes($_POST['descricao']);
-    $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
-    $codigo_produto = "CParHJ-" . $codigo_produto_digitado;
+    $codigo_produto = addslashes($_POST['codigo_produto']);
     $valor = addslashes($_POST['valor']);
     $observacao = addslashes($_POST['observacao']);
 

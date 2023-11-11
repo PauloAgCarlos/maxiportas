@@ -74,7 +74,7 @@
                     <div class="mb-1">
                       <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
                       <div>
-                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="6" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="50" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
                       </div>
                     </div>
 
@@ -89,15 +89,15 @@
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.8em;" for="custo_metro">Custo (Unitário) </label>
-                        <input type="text" class="form-control" id="custo_metro" name="custo_metro" placeholder="0,00" style="font-size: 0.8em;">
+                        <input type="text" value="0" class="form-control" id="custo_metro" name="custo_metro" placeholder="0,00" style="font-size: 0.8em;">
                       </div>
                       <div class="mb-1 ms-3">
                         <label class="form-label"  style="font-size: 0.8em;" for="markup">Markup (%) </label>
-                        <input type="text" class="form-control" id="markup" name="markup" placeholder="0,00" style="font-size: 0.8em;">
+                        <input type="text" value="0" class="form-control" id="markup" name="markup" placeholder="0,00" style="font-size: 0.8em;">
                       </div>
                       <div class="mb-1 ms-3">
                         <label class="form-label"  style="font-size: 0.8em;" for="valor_unitario">Valor (Unitário) </label>
-                        <input type="text" class="form-control" id="valor_unitario" name="valor_unitario" placeholder="0(m^2)" style="font-size: 0.8em;">
+                        <input type="text" value="0" class="form-control" id="valor_unitario" name="valor_unitario" placeholder="0(m^2)" style="font-size: 0.8em;">
                       </div>
                       
                     </div>
@@ -131,7 +131,7 @@
                           <img class="img-avatar" style="width: 100px; height: 100px; cursor: pointer;" src="../assets/img/avatars/avatar10.jpg" alt="Avatar User" id="profileDisplay" onclick="triggerClick()">
                         </div>
                         <div>
-                          <input class="form-control" required type="file" name="imagem" style="display: none;" id="profileImage" onchange="displayImage(this)" type="images/">
+                          <input class="form-control" type="file" name="imagem" style="display: none;" id="profileImage" onchange="displayImage(this)" type="images/">
                           <img src="../assets/img/cameraa.png" alt="avatar" onclick="triggerClick()" width="35px" style="border-radius: 1000px; margin-left: -20px; cursor: pointer;">
                         </div>
                       </div>
@@ -140,7 +140,7 @@
                         
                           <div class="mb-1 ms-2" style="width: 150px;">  
                             <label class="form-label"  style="font-size: 0.8em;" for="codigo_da_fabrica">Código da Fábrica </label>                    
-                            <input type="text" class="form-control" style="font-size: 0.8em;" placeholder="0" name="codigo_da_fabrica" id="codigo_da_fabrica">
+                            <input type="text" value="0" class="form-control" style="font-size: 0.8em;" placeholder="0" name="codigo_da_fabrica" id="codigo_da_fabrica">
                           </div>
                      
                         <div class="mb-1 ms-4">

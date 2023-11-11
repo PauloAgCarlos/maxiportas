@@ -3,8 +3,7 @@
     if(isset($_POST['btn_cadastrar_tipo_de_item_agregar'])):
 
         $descricao = addslashes($_POST['descricao']);
-        $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
-        $codigo_produto = "CItemAgHJ-". $codigo_produto_digitado;
+        $codigo_produto = addslashes($_POST['codigo_produto']);
 
         // Configurações do banco de dados
       require_once "../config.php";

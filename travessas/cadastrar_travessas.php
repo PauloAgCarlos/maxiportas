@@ -2,12 +2,8 @@
   if(isset($_POST['btn_cadastrar_travessas'])):
 
     $descricao = addslashes($_POST['descricao']);
-    $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
-    $codigo_produto = "CTHJ-" . $codigo_produto_digitado;
+    $codigo_produto = addslashes($_POST['codigo_produto']);
     $quantidade = addslashes($_POST['quantidade']);
-    // $codigo_unico = uniqid();
-    // $codigo_produto_reduzido = substr_replace($codigo_unico, 5,-1);
-    // $codigo_produto = "CTHJ-" . substr($codigo_unico, 10);
     $agregar = addslashes($_POST['agregar']);
     $unidade = addslashes($_POST['unidade']);
     $esquadreta = addslashes($_POST['esquadreta']);

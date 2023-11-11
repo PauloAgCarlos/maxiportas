@@ -8,10 +8,7 @@
     $unidade = addslashes($_POST['unidade']);        
     $codigo_da_fabrica = addslashes($_POST['codigo_da_fabrica']);
     
-    $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
-    $codigo_produto = "CPuHJ-" . $codigo_produto_digitado;
-    // $codigo_unico = uniqid();
-    // $codigo_produto = "CPuHJ-" . substr($codigo_unico, 10);
+    $codigo_produto = addslashes($_POST['codigo_produto']);
     $ponteira_obrigatoria = addslashes($_POST['ponteira_obrigatoria']);
     $referencias_do_mercado = addslashes($_POST['referencias_do_mercado']);
     $custo_metro = addslashes($_POST['custo_metro']);

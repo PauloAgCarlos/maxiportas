@@ -64,7 +64,6 @@ class controllers_vidros extends database
 
         $atualizar_vidros = $this->conn->prepare("UPDATE vidros SET descricao = ?, agregar = ?, unidade = ?, liberado_para = ?, permite_pintura = ?, codigo_da_fabrica = ?, codigo_produto = ?, observacao = ?, custo_metro = ?, markup = ?, markup_avulso = ?, metragem_minima = ?, valor = ?, valor_avulso = ?, valor_com_perda = ?, perda = ?, perda_avulso = ?, perda_bordas = ?, perda_corte = ?, perda_bordas_retalho = ?, perda_corte_retalho = ?, dimensao = ?, ultima_alteracao = ?, ativo = ?  WHERE id = ?");
         $atualizar_vidros->bindParam(1, $descricao);
-        $atualizar_vidros->bindParam(1, $descricao);
         $atualizar_vidros->bindParam(2, $agregar);
         $atualizar_vidros->bindParam(3, $unidade);            
         $atualizar_vidros->bindParam(4, $liberado_para);

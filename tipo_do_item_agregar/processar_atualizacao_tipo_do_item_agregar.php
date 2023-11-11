@@ -4,8 +4,7 @@
     if(isset($_POST['btn_atualizar_tipo_do_item_agregar'])):
 
         $descricao = addslashes($_POST['descricao']);
-        $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
-        $codigo_produto = "CItemAgHJ-". $codigo_produto_digitado;
+        $codigo_produto = addslashes($_POST['codigo_produto']);
         $id_atualizar = $_POST['id_atualizar'];        
 
         $controllers_tipo_do_item_agregar = new controllers_tipo_do_item_agregar();

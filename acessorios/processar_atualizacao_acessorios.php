@@ -4,8 +4,7 @@
     if(isset($_POST['btn_atualizar_acessorios'])):
 
         $descricao = addslashes($_POST['descricao']);
-        $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
-        $codigo_produto = "CAcHJ-". $codigo_produto_digitado;
+        $codigo_produto = addslashes($_POST['codigo_produto']);
         $observacao = addslashes($_POST['observacao']);
         $custo_unitario = addslashes($_POST['custo_unitario']); 
         $markup = addslashes($_POST['markup']); 

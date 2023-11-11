@@ -74,7 +74,7 @@
                     <div class="mb-1">
                       <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
                       <div>
-                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="20" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="50" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
                       </div>
                     </div>                    
                   </div>
@@ -84,15 +84,15 @@
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.8em;" for="medida_inicial">Medida Inicial (mm) </label>
-                        <input type="text" class="form-control" id="medida_inicial" name="medida_inicial" placeholder="0" style="font-size: 0.8em;">
+                        <input type="text" value="0" class="form-control" id="medida_inicial" name="medida_inicial" placeholder="0" style="font-size: 0.8em;">
                       </div>
                       <div class="mb-1 ms-3">
                         <label class="form-label"  style="font-size: 0.8em;" for="medida_final">Medida Final (mm) </label>
-                        <input type="text" class="form-control" id="medida_final" name="medida_final" placeholder="0" style="font-size: 0.8em;">
+                        <input type="text" value="0" class="form-control" id="medida_final" name="medida_final" placeholder="0" style="font-size: 0.8em;">
                       </div>
                       <div class="mb-1 ms-3">
                         <label class="form-label"  style="font-size: 0.8em;" for="quantidade_de_furos">Quantidade de Fiuros</label>
-                        <input type="text" class="form-control" id="quantidade_de_furos" name="quantidade_de_furos" placeholder="0" style="font-size: 0.8em;">
+                        <input type="text" value="0" class="form-control" id="quantidade_de_furos" name="quantidade_de_furos" placeholder="0" style="font-size: 0.8em;">
                       </div>
                       
                     </div>
@@ -103,7 +103,7 @@
                   
                         <div class="mb-1 ms-3">
                           <label class="form-label"  style="font-size: 0.8em;" for="distancia_primeiro_furo">Distância Primeiro Fiuro</label>
-                          <input type="text" class="form-control" id="distancia_primeiro_furo" name="distancia_primeiro_furo" placeholder="0" style="font-size: 0.8em;">
+                          <input type="text" value="0" class="form-control" id="distancia_primeiro_furo" name="distancia_primeiro_furo" placeholder="0" style="font-size: 0.8em;">
                         </div>
 
                         <div class="mb-1 ms-5">

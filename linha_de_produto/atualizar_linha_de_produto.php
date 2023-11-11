@@ -83,16 +83,14 @@
                     <div class="mb-1">
                       <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
                       <div>
-                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="6" minlength="2" value="<?php
-                         $codigo = substr($row_update['codigo_produto'], 6);
-                        echo addslashes($codigo); ?>" style="font-size: 0.9em;" required>
+                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="50" minlength="2" value="<?php echo addslashes($row_update['codigo_produto']); ?>" style="font-size: 0.9em;" required>
                       </div>
                     </div>
 
                     <div class="mb-1">
-                      <label class="form-label" for="codigo_interno" style="font-size: 0.9em;">Código Interno</label> <span style="color: red;">*</span>
+                      <label class="form-label" for="codigo_interno" style="font-size: 0.9em;">Código Interno</label>
                       <div>
-                        <input type="text" class="form-control" id="codigo_interno" name="codigo_interno" maxlength="6" minlength="2" value="<?php echo $row_update['codigo_interno']; ?>" style="font-size: 0.9em;" required>
+                        <input type="text" class="form-control" id="codigo_interno" name="codigo_interno" maxlength="50" minlength="2" value="<?php echo $row_update['codigo_interno']; ?>" style="font-size: 0.9em;">
                       </div>
                     </div>
                      

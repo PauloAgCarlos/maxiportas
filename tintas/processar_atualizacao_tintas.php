@@ -4,8 +4,7 @@
     if(isset($_POST['btn_atualizar_tintas'])):
 
         $descricao = addslashes($_POST['descricao']);
-        $codigo_digitado = "CtinHJ-". addslashes($_POST['codigo_produto']);
-        $codigo_produto = $codigo_digitado;
+        $codigo_produto = addslashes($_POST['codigo_produto']);
         $unidade = addslashes($_POST['unidade']);
         $codigo_da_fabrica = addslashes($_POST['codigo_da_fabrica']);      
         $custo_grama = addslashes($_POST['custo']);

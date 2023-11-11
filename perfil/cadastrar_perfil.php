@@ -24,10 +24,7 @@
     $perda_bordas_retalho = addslashes($_POST['perda_bordas_retalho']);
     $perda_corte_retalho = addslashes($_POST['perda_corte_retalho']);
 
-    $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
-    $codigo_produto = "CPHJ-" . $codigo_produto_digitado;
-    // $codigo_unico = uniqid();
-    // $codigo_produto = "CPHJ-" . substr($codigo_unico, 10);
+    $codigo_produto = addslashes($_POST['codigo_produto']);
     $ultima_alteracao = addslashes($_POST['ultima_alteracao']);
     $largura_da_mascara = addslashes($_POST['largura_da_mascara']);
     $codigo_da_fabrica = addslashes($_POST['codigo_da_fabrica']);
@@ -47,14 +44,11 @@
 
 
     // Configurações do banco de dados
-    $dbHost = "localhost";
-    $dbName = "maxportas";
-    $dbUsuario = "root";
-    $dbSenha = "";
+    require_once "../config.php";
 
     try {
         // Conexão com o banco de dados usando PDO
-        $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUsuario, $dbSenha);
+        $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Consulta para inserir o usuário na tabela

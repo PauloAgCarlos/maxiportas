@@ -56,7 +56,7 @@ class controllers_puxadores extends database
         
     }
 
-    public function atualizar_puxadores($descricao, $usinagem_box_tres, $medida_maxima_para_usinagem, $agregar, $unidade, $codigo_da_fabrica, $codigo_produto, $ponteira_obrigatoria, $referencias_do_mercado, $custo_metro, $markup, $metragem_minima, $valor, $desconto_corte, $perda, $perda_bordas, $perda_corte, $dimensao, $perda_bordas_retalho,$perda_corte_retalho, $ultima_alteracao, $ativo, $id_atualizar)
+    public function atualizar_puxadores($descricao, $usinagem_box_tres, $medida_maxima_para_usinagem, $agregar, $unidade, $codigo_da_fabrica, $codigo_produto, $ponteira_obrigatoria, $referencias_do_mercado, $custo_metro, $markup, $metragem_minima, $valor, $desconto_corte, $perda, $perda_bordas, $perda_corte, $dimensao, $perda_bordas_retalho, $perda_corte_retalho, $ultima_alteracao, $ativo, $id_atualizar)
     {
 
         $atualizar_puxadores = $this->conn->prepare("UPDATE puxadores SET descricao = ?, usinagem_box_tres = ?,medida_maxima_para_usinagem = ?, agregar = ?, unidade = ?, codigo_da_fabrica = ?, codigo_produto = ?, ponteira_obrigatoria = ?, referencias_do_mercado = ?, custo_metro = ?, markup = ?, metragem_minima = ?, valor = ?, desconto_corte = ?, perda = ?, perda_bordas = ?, perda_corte = ?, dimensao = ?, perda_bordas_retalho = ?, perda_corte_retalho = ?, ultima_alteracao = ?, ativo = ?  WHERE id = ?");

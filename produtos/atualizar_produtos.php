@@ -84,8 +84,7 @@
                       <div class="mb-1" style="width: 80%;">
                         <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
                         <div>
-                          <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="20" minlength="2" value="<?php $codigo = substr($row_update['codigo_produto'], 8);
-                        echo $codigo; ?>" ? style="font-size: 0.9em;" required> 
+                          <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="20" minlength="2" value="<?php echo $row_update['codigo_produto']; ?>" ? style="font-size: 0.9em;" required> 
                         </div>
                       </div>
 
@@ -96,9 +95,9 @@
                     </div>
 
                     <div class="mb-1">
-                      <label class="form-label" for="referencia" style="font-size: 0.8em;">Referência</label> <span style="color: red;">*</span>
+                      <label class="form-label" for="referencia" style="font-size: 0.8em;">Referência</label>
                       <div style="display: flex;">
-                        <input type="text" class="form-control" id="referencia" name="referencia" value="<?php echo addslashes($row_update['referencia']); ?>" style="font-size: 0.8em;" required>
+                        <input type="text" class="form-control" id="referencia" name="referencia" value="<?php echo addslashes($row_update['referencia']); ?>" style="font-size: 0.8em;">
                       </div>
                     </div> 
                   

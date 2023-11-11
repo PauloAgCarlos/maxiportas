@@ -74,7 +74,7 @@
                     <div class="mb-1">
                       <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
                       <div>
-                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="6" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="50" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
                       </div>
                     </div>
 
@@ -89,27 +89,23 @@
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.8em;" for="custo">Custo (R$ / litro) </label>
-                        <input type="text" class="form-control" id="custo" name="custo" placeholder="0,00" style="font-size: 0.8em;">
+                        <input type="text" value="0" class="form-control" id="custo" name="custo" placeholder="0,00" style="font-size: 0.8em;">
                       </div>
                       <div class="mb-1 ms-3">
                         <label class="form-label"  style="font-size: 0.8em;" for="markup">Markup (%) </label>
-                        <input type="text" class="form-control" id="markup" name="markup" placeholder="0,00" style="font-size: 0.8em;">
+                        <input type="text" value="0" class="form-control" id="markup" name="markup" placeholder="0,00" style="font-size: 0.8em;">
                       </div>
                       <div class="mb-1 ms-3">
                         <label class="form-label"  style="font-size: 0.8em;" for="valor">Valor</label>
-                        <input type="text" class="form-control" id="valor" name="valor" placeholder="0,00" style="font-size: 0.8em;">
+                        <input type="text" value="0" class="form-control" id="valor" name="valor" placeholder="0,00" style="font-size: 0.8em;">
                       </div>
                       
                     </div>
                     <div class="mb-3" style="display: flex; align-items: center; justify-content: space-between;">
 
-                      <!-- <div class="mb-1 ms-2" style="width: 150px;">  
-                        <label class="form-label"  style="font-size: 0.8em;" for="codigo_da_fabrica">Código da Fábrica </label>                    
-                        <input type="text" class="form-control" style="font-size: 0.8em;" placeholder="0" name="codigo_da_fabrica" id="codigo_da_fabrica">
-                      </div> -->
                       <div class="mb-1 ms-3">
                         <label class="form-label"  style="font-size: 0.8em;" for="rendimento">Rendimento (litros / m^2)</label>
-                        <input type="text" class="form-control" id="rendimento" name="rendimento" placeholder="0,00" style="font-size: 0.8em;">
+                        <input type="text" value="0" class="form-control" id="rendimento" name="rendimento" placeholder="0,00" style="font-size: 0.8em;">
                       </div>
                      
                       <div class="mb-1 ms-4">

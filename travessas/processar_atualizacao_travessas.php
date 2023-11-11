@@ -4,8 +4,7 @@
     if(isset($_POST['btn_atualizar_travessas'])):
 
         $descricao = addslashes($_POST['descricao']);
-        $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
-        $codigo_produto = "CTHJ-" . $codigo_produto_digitado;
+        $codigo_produto = addslashes($_POST['codigo_produto']);;
         $quantidade = addslashes($_POST['quantidade']);
         $agregar = addslashes($_POST['agregar']);
         $unidade = addslashes($_POST['unidade']);

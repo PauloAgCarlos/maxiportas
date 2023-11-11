@@ -8,10 +8,7 @@
         $markup = addslashes($_POST['markup']);  
         $valor_unitario = addslashes($_POST['valor_unitario']);      
         $agregar = addslashes($_POST['agregar']);
-        $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
-        $codigo_produto = "CEsHJ-" . $codigo_produto_digitado;
-        // $codigo_unico = uniqid();
-        // $codigo_produto = "CEsHJ-". substr($codigo_unico, 10);
+        $codigo_produto = addslashes($_POST['codigo_produto']);
         $unidade = addslashes($_POST['unidade']);
         $imagem = $_FILES['imagem'];
         $codigo_da_fabrica = addslashes($_POST['codigo_da_fabrica']);

@@ -67,13 +67,13 @@
                     <div class="mb-1">
                       <label class="form-label" for="descricao" style="font-size: 0.9em;">Decrição</label> <span style="color: red;">*</span>
                       <div style="display: flex;">
-                        <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Decrição" style="font-size: 0.9em;" required>
+                        <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Decrição" style="font-size: 0.9em;" >
                       </div>
                     </div>  
                     <div class="mb-1">
                       <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
                       <div>
-                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="20" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="50" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
                       </div>
                     </div>
 
@@ -85,13 +85,13 @@
                      
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.9em;" for="custo">Custo (R$ / grama) <span style="color: red;">*</span> </label>
-                        <input type="text" class="form-control" id="custo" name="custo" placeholder="0,00" style="font-size: 0.9em;">
+                        <input type="text" value="0" class="form-control" id="custo" name="custo" placeholder="0,00" style="font-size: 0.9em;">
                       </div>
 
                       <div class="mb-1">
                         <label class="form-label" for="codigo_da_fabrica" style="font-size: 0.9em;">Código da Fabrica</label> <span style="color: red;">*</span>
                       <div>
-                        <input type="text" class="form-control" id="codigo_da_fabrica" name="codigo_da_fabrica" maxlength="6" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                        <input type="text" value="0" class="form-control" id="codigo_da_fabrica" name="codigo_da_fabrica" maxlength="50" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;">
                       </div>
                     </div>
 

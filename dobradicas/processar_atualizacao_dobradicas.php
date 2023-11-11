@@ -4,8 +4,7 @@
     if(isset($_POST['btn_atualizar_dobradicas'])):
 
         $descricao = addslashes($_POST['descricao']);
-        $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
-        $codigo_produto = "CDobHJ-". $codigo_produto_digitado;
+        $codigo_produto = addslashes($_POST['codigo_produto']);
         $medida_inicial = addslashes($_POST['medida_inicial']); 
         $medida_final = addslashes($_POST['medida_final']); 
         $quantidade_de_furos = addslashes($_POST['quantidade_de_furos']);      

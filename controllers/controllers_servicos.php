@@ -48,24 +48,25 @@ class controllers_servicos extends database
         
     }
 
-    public function atualizar_servicos($descricao, $tipo_de_servico, $exibe_no_orcamento, $observacao, $custo_metro, $markup, $valor, $adiciona_para_o_corte, $calculo, $codigo_da_fabrica, $ultima_alteracao, $ativo, $id_atualizar)
+    public function atualizar_servicos($descricao, $codigo_produto, $tipo_de_servico, $exibe_no_orcamento, $observacao, $custo_metro, $markup, $valor, $adiciona_para_o_corte, $calculo, $codigo_da_fabrica, $ultima_alteracao, $ativo, $id_atualizar)
     {
 
-        $atualizar_servicos = $this->conn->prepare("UPDATE servicos SET descricao = ?, tipo_de_servico = ?, exibe_no_orcamento = ?, exibe_na_lista_de_corte = ?, observacao = ?, custo_metro = ?, markup = ?, valor = ?, adiciona_para_o_corte = ?, calculo = ?, codigo_da_fabrica = ?, ultima_alteracao = ?, ativo = ?  WHERE id = ?");
+        $atualizar_servicos = $this->conn->prepare("UPDATE servicos SET descricao = ?, codigo_produto = ?, tipo_de_servico = ?, exibe_no_orcamento = ?, exibe_na_lista_de_corte = ?, observacao = ?, custo_metro = ?, markup = ?, valor = ?, adiciona_para_o_corte = ?, calculo = ?, codigo_da_fabrica = ?, ultima_alteracao = ?, ativo = ?  WHERE id = ?");
         $atualizar_servicos->bindParam(1, $descricao);
-        $atualizar_servicos->bindParam(2, $tipo_de_servico);
-        $atualizar_servicos->bindParam(3, $exibe_no_orcamento);            
-        $atualizar_servicos->bindParam(4, $exibe_na_lista_de_corte);
-        $atualizar_servicos->bindParam(5, $observacao);
-        $atualizar_servicos->bindParam(6, $custo_metro);
-        $atualizar_servicos->bindParam(7, $markup);
-        $atualizar_servicos->bindParam(8, $valor);   
-        $atualizar_servicos->bindParam(9, $adiciona_para_o_corte);         
-        $atualizar_servicos->bindParam(10, $calculo);            
-        $atualizar_servicos->bindParam(11, $codigo_da_fabrica);           
-        $atualizar_servicos->bindParam(12, $ultima_alteracao);
-        $atualizar_servicos->bindParam(13, $ativo);
-        $atualizar_servicos->bindParam(14, $id_atualizar);
+        $atualizar_servicos->bindParam(2, $codigo_produto);
+        $atualizar_servicos->bindParam(3, $tipo_de_servico);
+        $atualizar_servicos->bindParam(4, $exibe_no_orcamento);            
+        $atualizar_servicos->bindParam(5, $exibe_na_lista_de_corte);
+        $atualizar_servicos->bindParam(6, $observacao);
+        $atualizar_servicos->bindParam(7, $custo_metro);
+        $atualizar_servicos->bindParam(8, $markup);
+        $atualizar_servicos->bindParam(9, $valor);   
+        $atualizar_servicos->bindParam(10, $adiciona_para_o_corte);         
+        $atualizar_servicos->bindParam(11, $calculo);            
+        $atualizar_servicos->bindParam(12, $codigo_da_fabrica);           
+        $atualizar_servicos->bindParam(13, $ultima_alteracao);
+        $atualizar_servicos->bindParam(14, $ativo);
+        $atualizar_servicos->bindParam(15, $id_atualizar);
         return $atualizar_servicos->execute();
         
     }

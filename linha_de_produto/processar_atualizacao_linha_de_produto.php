@@ -4,8 +4,7 @@
     if(isset($_POST['btn_atualizar_linha_de_produto'])):
 
         $descricao = addslashes($_POST['descricao']);
-        $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
-        $codigo_produto = "CLinhProdHJ-" . $codigo_produto_digitado;
+        $codigo_produto = addslashes($_POST['codigo_produto']);
         $codigo_interno = addslashes($_POST['codigo_interno']);
         $ultima_alteracao = addslashes($_POST['ultima_alteracao']);
         $ativo = addslashes($_POST['ativo']);

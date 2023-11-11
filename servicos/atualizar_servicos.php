@@ -80,6 +80,13 @@
                       </div>
                     </div>  
 
+                    <div class="mb-1">
+                      <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
+                      <div>
+                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="50" minlength="2" value="<?php echo addslashes($row_update['codigo_produto']); ?>" style="font-size: 0.9em;" required>
+                      </div>
+                    </div> 
+
                     <div class="mb-3" style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
                         <label class="form-label" style="font-size: 0.8em;" for="tipo_de_servico">Tipo de Serviço </label>

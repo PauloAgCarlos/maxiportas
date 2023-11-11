@@ -2,8 +2,7 @@
   if(isset($_POST['btn_cadastrar_tintas'])):
 
     $descricao = addslashes($_POST['descricao']);
-    $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
-    $codigo_produto = "CTinHJ-" . $codigo_produto_digitado;
+    $codigo_produto = addslashes($_POST['codigo_produto']);
     $unidade = addslashes($_POST['unidade']);     
     $custo = addslashes($_POST['custo']);
     $codigo_da_fabrica = addslashes($_POST['codigo_da_fabrica']);

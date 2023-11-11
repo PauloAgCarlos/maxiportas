@@ -3,8 +3,7 @@
     if(isset($_POST['btn_cadastrar_cores'])):
 
         $descricao = addslashes($_POST['descricao']);
-        $codigo_produto_digitado = addslashes($_POST['codigo_produto']);
-        $codigo_produto = "CCorHJ-". $codigo_produto_digitado;
+        $codigo_produto = addslashes($_POST['codigo_produto']);
         $observacao = addslashes($_POST['observacao']);
         $custo = addslashes($_POST['custo']); 
         $markup = addslashes($_POST['markup']); 
@@ -13,16 +12,6 @@
         $ultima_alteracao = addslashes($_POST['ultima_alteracao']);
         $ativo = addslashes($_POST['ativo']);
 
-        // $codigo_da_fabrica = addslashes($_POST['codigo_da_fabrica']);
-        // $imagem = $_FILES['imagem'];
-          // $dir = "upload/";
-          // $name_image = $imagem['name'];
-          // $nameNew_image = uniqid();
-          // $extensao_image = strtolower(pathinfo($name_image, PATHINFO_EXTENSION));
-          // $path_image = $dir . $nameNew_image . "." . $extensao_image;
-          // move_uploaded_file($imagem['tmp_name'], $path_image);
-
-        // Configurações do banco de dados
       require_once "../config.php";
 
       try {

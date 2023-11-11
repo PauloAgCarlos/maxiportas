@@ -83,7 +83,7 @@
                       <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
                       <div>
                         <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" value="<?php
-                         $codigo = substr($row_update['codigo_produto'], 7); echo addslashes($codigo); ?>" maxlength="20" minlength="2" style="font-size: 0.9em;" required>
+                         echo addslashes($row_update['codigo_produto']); ?>" maxlength="50" minlength="2" style="font-size: 0.9em;" required>
                       </div>
                     </div>
 

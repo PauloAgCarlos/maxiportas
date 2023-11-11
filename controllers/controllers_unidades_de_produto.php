@@ -48,7 +48,7 @@ class controllers_unidades_de_produto extends database
         $atualizar_unidades_de_produto->bindParam(3, $codigo_interno);
         $atualizar_unidades_de_produto->bindParam(4, $ultima_alteracao);  
         $atualizar_unidades_de_produto->bindParam(5, $ativo);
-        $atualizar_unidades_de_produto->bindParam(7, $id_atualizar);
+        $atualizar_unidades_de_produto->bindParam(6, $id_atualizar);
         return $atualizar_unidades_de_produto->execute();
         
     }
