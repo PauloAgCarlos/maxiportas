@@ -81,16 +81,16 @@
                     </div> 
 
                     <div class="mb-1">
-                      <label class="form-label" for="telefone_usuario" style="font-size: 0.9em;">Telefone Usuário</label> <span style="color: red;">*</span>
+                      <label class="form-label" for="telefone_usuario" style="font-size: 0.9em;">Telefone Usuário</label>
                       <div>
-                        <input type="text" class="form-control" id="telefone_usuario" name="telefone_usuario" placeholder="Telefone Usuário" style="font-size: 0.9em;" required>
+                        <input type="text" class="form-control" id="telefone_usuario" name="telefone_usuario" placeholder="Telefone Usuário" style="font-size: 0.9em;">
                       </div>
                     </div>
 
                     <div class="mb-1">
-                      <label class="form-label" for="email_login" style="font-size: 0.9em;">E-Mail (Login)</label> <span style="color: red;">*</span>
+                      <label class="form-label" for="email_login" style="font-size: 0.9em;">E-Mail (Login)</label>
                       <div>
-                        <input type="email" class="form-control" id="email_login" name="email_login" placeholder="E-Mail (Login)" style="font-size: 0.9em;" required>
+                        <input type="email" class="form-control" id="email_login" name="email_login" placeholder="E-Mail (Login)" style="font-size: 0.9em;">
                       </div>
                     </div>
 
@@ -108,7 +108,7 @@
 
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
-                        <label class="form-label"  style="font-size: 0.9em;" for="desconto_maximo">Desconto Máximo (%) <span style="color: red;">*</span> </label>
+                        <label class="form-label"  style="font-size: 0.9em;" for="desconto_maximo">Desconto Máximo (%)</label>
                         <input type="text" class="form-control" id="desconto_maximo" name="desconto_maximo" placeholder="0,00" style="font-size: 0.9em;">
                       </div>
 
@@ -127,7 +127,7 @@
                     <div class="mb-3" style="display: flex; align-items: center; justify-content: space-between;">
 
                       <div class="mb-1 col-md-12">
-                        <label class="form-label" style="font-size: 0.8em;" for="observacao">Observação <span style="color: red;">*</span> </label>
+                        <label class="form-label" style="font-size: 0.8em;" for="observacao">Observação  </label>
                         <textarea name="observacao" id="observacao" class="form-control" cols="10" rows="4" style="font-size: 0.9em;"></textarea>
                       </div>
 
@@ -135,7 +135,7 @@
 
                     <div class="col-md-12" style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
-                        <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração <span style="color: red;">*</span> </label>
+                        <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração </label>
                         <input type="date" class="form-control" id="ultima_alteracao" name="ultima_alteracao"  style="font-size: 0.8em;">
                       </div>
                     

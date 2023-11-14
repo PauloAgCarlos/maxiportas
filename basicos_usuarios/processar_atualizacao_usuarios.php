@@ -17,7 +17,8 @@
         $id_atualizar = $_POST['id_atualizar'];      
 
         $controllers_atualizar_basicos_usuarios = new controllers_basicos_usuarios();
-        $atualizar = $controllers_atualizar_basicos_usuarios->atualizar_basicos_usuarios($nome_ususario, $senha, $telefone_usuario, $email_login, $libera_xml_pedido, $libera_painel_producao, $desconto_maximo, $grupo_de_usuarios, $observacao, $ultima_alteracao, $ativo, $id_atualizar);     
+        $atualizar = $controllers_atualizar_basicos_usuarios->atualizar_basicos_usuarios($nome_ususario, $telefone_usuario, $email_login, $libera_xml_pedido, $libera_painel_producao, $desconto_maximo, $grupo_de_usuarios, $observacao, $ultima_alteracao, $ativo, $id_atualizar);   
+          
 
         if($atualizar)
         {

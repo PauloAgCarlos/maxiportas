@@ -73,26 +73,35 @@
                     $update = $selecionar_basicos_usuarios_id->selecionar_basicos_usuarios_id($id_update);                   
                     foreach($update as $row_update){
                   ?>
-                    <div class="mb-1">
-                      <label class="form-label" for="nome_ususario" style="font-size: 0.9em;">Nome do Usuário</label> <span style="color: red;">*</span>
-                      <div style="display: flex;">
-                        <input type="text" class="form-control" id="nome_ususario" name="nome_ususario" value="<?php echo
-                         $row_update['nome_ususario']; ?>" style="font-size: 0.9em;" required>
+                    <div style="display: flex;">
+                      <div class="mb-1" style="width: 60%">
+                        <label class="form-label" for="nome_ususario" style="font-size: 0.9em;">Nome do Usuário</label> <span style="color: red;">*</span>
+                        <div style="display: flex;">
+                          <input type="text" class="form-control" id="nome_ususario" name="nome_ususario" value="<?php echo
+                          $row_update['nome_ususario']; ?>" style="font-size: 0.9em;" required>
+                        </div>
                       </div>
-                    </div>  
+                      <div class="mb-1 ms-3">
+                        <label class="form-label" for="libera_xml_pedido" style="font-size: 0.9em;">Senha</label>
+                        <div style="display: flex;">
+                          <input type="text" class="form-control" id="libera_xml_pedido" name="libera_xml_pedido" value="<?php echo
+                          $row_update['libera_xml_pedido']; ?>" style="font-size: 0.9em;">
+                        </div>
+                      </div> 
+                    </div> 
                     <div class="mb-1">
-                      <label class="form-label" for="telefone_usuario" style="font-size: 0.9em;">Telefone Usuário</label> <span style="color: red;">*</span>
+                      <label class="form-label" for="telefone_usuario" style="font-size: 0.9em;">Telefone Usuário</label> 
                       <div>
                         <input type="text" class="form-control" id="telefone_usuario" name="telefone_usuario" value="<?php echo
-                         $row_update['telefone_usuario']; ?>" style="font-size: 0.9em;" required>
+                         $row_update['telefone_usuario']; ?>" style="font-size: 0.9em;">
                       </div>
                     </div>
 
                     <div class="mb-1">
-                      <label class="form-label" for="email_login" style="font-size: 0.9em;">E-Mail (Login)</label> <span style="color: red;">*</span>
+                      <label class="form-label" for="email_login" style="font-size: 0.9em;">E-Mail (Login)</label> 
                       <div>
                         <input type="email" class="form-control" id="email_login" name="email_login" value="<?php echo
-                         $row_update['email_login']; ?>" style="font-size: 0.9em;" required>
+                         $row_update['email_login']; ?>" style="font-size: 0.9em;">
                       </div>
                     </div>
 
@@ -115,7 +124,7 @@
 
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
-                        <label class="form-label"  style="font-size: 0.9em;" for="desconto_maximo">Desconto Máximo (%) <span style="color: red;">*</span> </label>
+                        <label class="form-label"  style="font-size: 0.9em;" for="desconto_maximo">Desconto Máximo (%) </label>
                         <input type="text" class="form-control" id="desconto_maximo" name="desconto_maximo" value="<?php echo
                          $row_update['desconto_maximo']; ?>" style="font-size: 0.9em;">
                       </div>
@@ -136,7 +145,7 @@
                     <div class="mb-3" style="display: flex; align-items: center; justify-content: space-between;">
 
                       <div class="mb-1 col-md-12">
-                        <label class="form-label" style="font-size: 0.8em;" for="observacao">Observação <span style="color: red;">*</span> </label>
+                        <label class="form-label" style="font-size: 0.8em;" for="observacao">Observação</label>
                         <textarea name="observacao" id="observacao" class="form-control" cols="10" rows="4" style="font-size: 0.9em;"><?php echo $row_update['observacao']; ?></textarea>
                       </div>
 
@@ -144,7 +153,7 @@
 
                     <div class="col-md-12" style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
-                        <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração <span style="color: red;">*</span> </label>
+                        <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração</label>
                         <input type="date" class="form-control" id="ultima_alteracao" name="ultima_alteracao" value="<?php echo$row_update['ultima_alteracao']; ?>" style="font-size: 0.8em;">
                       </div>
                     

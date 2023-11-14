@@ -104,6 +104,7 @@
                             <div class="block-content">
                               <div class="fs-4 mb-1">E-Mail (Login): <span class="fs-sm text-muted"><?php echo addslashes($row_usuarios_id['email_login']); ?></span></div>
                               <address class="fs-sm">
+                                  Senha: <?php echo addslashes($row_usuarios_id['libera_xml_pedido']); ?><br>
                                   Telefone: <?php echo addslashes($row_usuarios_id['telefone_usuario']); ?><br>
                                   Libera XML Pedido: <span class="fs-sm text-muted"><?php echo addslashes($row_usuarios_id['libera_xml_pedido']); ?></span><br>
                                   Libera Painel Produção: <span class="fs-sm text-muted"><?php echo addslashes($row_usuarios_id['libera_painel_producao']); ?></span><br>                           

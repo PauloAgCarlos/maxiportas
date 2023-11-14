@@ -191,7 +191,9 @@
                         <div class="col-md-2">Orçamento
                             <!-- <form action="" method="post"> -->
                                 <select name="" id="" class="form-control" style="font-size: 1em;">
-                                    <option value="">Orçamento</option>
+                                    <option selected>Selecione</option>
+                                    <option value="Orçamento">Orçamento</option>
+                                    <option value="Pedido">Pedido</option>
                                 </select>
                             <!-- </form> -->
                         </div>
@@ -434,7 +436,9 @@
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para<span style="color: #f000;">*</span></label>
                                                         <select class="form-control mb-2" name="usinagem_para_esquerdo" id="">
+                                                            <option selected>Selecione</option>
                                                             <option value="Dobradiça">Dobradiça</option>
+                                                            <option value="Sem Usinagem">Sem Usinagem</option>
                                                         </select>
                                                     </div>
 
@@ -491,7 +495,9 @@
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
                                                         <select class="form-control mb-2" name="usinagem_para_direito" id="">
+                                                            <option selected>Selecione</option>
                                                             <option value="Dobradiça">Dobradiça</option>
+                                                            <option value="Sem Usinagem">Sem Usinagem</option>
                                                         </select>
                                                     </div>
 
@@ -544,7 +550,9 @@
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
                                                         <select class="form-control mb-2" name="usinagem_para_superior" id="">
+                                                            <option selected>Selecione</option>
                                                             <option value="Dobradiça">Dobradiça</option>
+                                                            <option value="Sem Usinagem">Sem Usinagem</option>
                                                         </select>
                                                     </div>
 
@@ -598,7 +606,9 @@
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
                                                         <select class="form-control mb-2" name="usinagem_para_inferior" id="">
+                                                            <option selected>Selecione</option>
                                                             <option value="Dobradiça">Dobradiça</option>
+                                                            <option value="Sem Usinagem">Sem Usinagem</option>
                                                         </select>
                                                     </div>
 
@@ -729,20 +739,27 @@
                                                 </h3>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-2">
+                                                <!--div class="col-md-2">
                                                     <div>
                                                         <label for="">Portas Pares</label>
                                                         <select class="form-control mb-2" name="portas_pares" id="">
                                                             <option value="">Selecione</option>
                                                         </select>
                                                     </div>
-                                                </div>
+                                                </div-->
                                                 
                                                 <div class="col-md-2">
                                                     <div>
                                                         <label for="">Reforço</label>
                                                         <select class="form-control mb-2" name="reforco" id="">
-                                                            <option value="">Sem Selecione</option>
+                                                            <option selected>Selecione</option>
+                                                            <option value="Superior">Superior</option>
+                                                            <option value="Inferior">Inferior</option>
+                                                            <option value="Centralizado">Centralizado</option>
+                                                            <option value="Direito">Direito</option>
+                                                            <option value="Esquerdo">Esquerdo</option>
+                                                            <option value="Superior e Inferior">Superior e Inferior</option>
+                                                            <option value="Direito e Esquerdo">Direito e Esquerdo</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -756,6 +773,7 @@
                                                     <div>
                                                         <label for="">Esquadreta</label>
                                                         <select name="esquadreta" class="form-control" id="esquadreta">
+                                                            <option selected>Selecione</option>
                                                             <?php
                                                                 require_once "../config.php";
                                                                 $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
@@ -776,7 +794,19 @@
                                                     <div>
                                                         <label for="">Ponteira</label>
                                                         <select class="form-control mb-2" name="ponteira" id="">
-                                                            <option value="">Selecione uma Ponteira</option>
+                                                            <option selected>Selecione uma Ponteira</option>
+                                                            <?php
+                                                                require_once "../config.php";
+                                                                $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                                                                
+                                                                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                                $selecionar_esquadretas = $pdo->prepare("SELECT descricao FROM acessorios");
+                                                                $selecionar_esquadretas->execute();
+                                                                while($row_esquadretas = $selecionar_esquadretas->fetch()){
+                                                            ?>
+                                                                <option value="<?php echo $row_esquadretas['descricao'] ?>"><?php echo $row_esquadretas['descricao'] ?></option>
+
+                                                            <?php }?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -785,20 +815,32 @@
                                                     <div>
                                                         <label for="kit">Kit</label>
                                                         <select class="form-control mb-2" name="kit" id="">
-                                                            <option value="">Escolha um kit</option>
+                                                            <option selected>Escolha um kit</option>
+                                                            <?php
+                                                                require_once "../config.php";
+                                                                $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                                                                
+                                                                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                                $selecionar_esquadretas = $pdo->prepare("SELECT descricao FROM acessorios");
+                                                                $selecionar_esquadretas->execute();
+                                                                while($row_esquadretas = $selecionar_esquadretas->fetch()){
+                                                            ?>
+                                                                <option value="<?php echo $row_esquadretas['descricao'] ?>"><?php echo $row_esquadretas['descricao'] ?></option>
+
+                                                            <?php }?>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="mt-2" style="border: 1px solid #ddd;">
+                                        <!--div class="mt-2" style="border: 1px solid #ddd;">
                                             <div class="ps-4 mb-1" style="background-color: #33cc66;">
                                                 <h3 class="block-title">
                                                     Valores Consumidor
                                                 </h3>
                                             </div>
-                                            <!-- <div class="row">
+                                            <div class="row">
                                                 <div class="col-md-4">
                                                     <div>
                                                         <label for="valoritem-cliente">Valor Item - Cliente</label>
@@ -819,8 +861,8 @@
                                                         <input type="number" class="form-control mb-2" name="desconto2" id="" placeholder="0,00">
                                                     </div>
                                                 </div>
-                                            </div> -->
-                                        </div>
+                                            </div> >
+                                        </div-->
 
                                         <div class="mt-2" style="border: 1px solid #ddd;">
                                             <div class="ps-4 mb-1" style="background-color: #33cc66;">
@@ -852,13 +894,13 @@
                                             </div>
                                         </div>
 
-                                        <div class="mt-2" style="border: 1px solid #ddd;">
+                                        <!--div class="mt-2" style="border: 1px solid #ddd;">
                                             <div class="ps-4 mb-1" style="background-color: #33cc66;">
                                                 <h3 class="block-title">
                                                     Valores Parceiro
                                                 </h3>
                                             </div>
-                                            <!-- <div class="row">
+                                            <-- <div class="row">
                                                 <div class="col-md-4">
                                                     <div>
                                                         <label for="valoritem-cliente">Valor Item - Cliente</label>
@@ -879,8 +921,8 @@
                                                         <input type="number" class="form-control mb-2" name="desconto2" id="" placeholder="0,00">
                                                     </div>
                                                 </div>
-                                            </div> -->
-                                        </div>
+                                            </div> 
+                                        </div--
 
                                         <div class="mt-2" style="border: 1px solid #ddd;">
                                             <div class="ps-4 mb-1" style="background-color: #33cc66;">
@@ -888,7 +930,7 @@
                                                     Valores Fábrica
                                                 </h3>
                                             </div>
-                                            <!-- <div class="row">
+                                            <-- <div class="row">
                                                 <div class="col-md-4">
                                                     <div>
                                                         <label for="valoritem-cliente">Valor Item - Cliente</label>
@@ -909,8 +951,8 @@
                                                         <input type="number" class="form-control mb-2" name="desconto2" id="" placeholder="0,00">
                                                     </div>
                                                 </div>
-                                            </div> -->
-                                        </div>
+                                            </div> ->
+                                        </div-->
                                         
                                     </div>
 
@@ -964,6 +1006,7 @@
                                                 <div class="col-md-4">
                                                     <div>
                                                         <select name="prod_usinagem_puxador" id="" class="form-control mb-2 ms-2 mt-2">
+                                                            <option selected>Selecione</option>
                                                             <option value="Usinagem Puxador">Usinagem Puxador</option>
                                                         </select>
                                                     </div>
