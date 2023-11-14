@@ -434,14 +434,26 @@
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para<span style="color: #f000;">*</span></label>
                                                         <select class="form-control mb-2" name="usinagem_para_esquerdo" id="">
-                                                            <option value="Sem Usinagem">Sem Usinagem</option>
+                                                            <option value="Dobradiça">Dobradiça</option>
                                                         </select>
                                                     </div>
 
                                                     <div class="p-2">
                                                         <label for="">Puxador</label>
                                                         <select class="form-control mb-2" name="puxador_esquerdo" id="">
-                                                            <option value="">Selecione</option>
+                                                            <option selected>Selecione</option>
+                                                            <?php
+                                                                require_once "../config.php";
+                                                                $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                                                                
+                                                                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                                $selecionar_servicos = $pdo->prepare("SELECT descricao FROM puxadores");
+                                                                $selecionar_servicos->execute();
+                                                                while($row_servicos = $selecionar_servicos->fetch()){
+                                                            ?>
+                                                                <option value="<?php echo $row_servicos['descricao'] ?>"><?php echo $row_servicos['descricao'] ?></option>
+
+                                                            <?php }?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -479,14 +491,26 @@
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
                                                         <select class="form-control mb-2" name="usinagem_para_direito" id="">
-                                                            <option value="Sem Usinagem">Sem Usinagem</option>
+                                                            <option value="Dobradiça">Dobradiça</option>
                                                         </select>
                                                     </div>
 
                                                     <div class="p-2">
                                                         <label for="">Puxador</label>
                                                         <select class="form-control mb-2" name="puxador_direito" id="">
-                                                            <option value="">Selecione</option>
+                                                        <option selected>Selecione</option>
+                                                            <?php
+                                                                require_once "../config.php";
+                                                                $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                                                                
+                                                                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                                $selecionar_servicos = $pdo->prepare("SELECT descricao FROM puxadores");
+                                                                $selecionar_servicos->execute();
+                                                                while($row_servicos = $selecionar_servicos->fetch()){
+                                                            ?>
+                                                                <option value="<?php echo $row_servicos['descricao'] ?>"><?php echo $row_servicos['descricao'] ?></option>
+
+                                                            <?php }?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -520,14 +544,26 @@
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
                                                         <select class="form-control mb-2" name="usinagem_para_superior" id="">
-                                                            <option value="Sem Usinagem">Sem Usinagem</option>
+                                                            <option value="Dobradiça">Dobradiça</option>
                                                         </select>
                                                     </div>
 
                                                     <div class="p-2">
                                                         <label for="">Puxador</label>
                                                         <select class="form-control mb-2" name="puxador_superior" id="">
-                                                            <option value="">Selecione</option>
+                                                        <option selected>Selecione</option>
+                                                            <?php
+                                                                require_once "../config.php";
+                                                                $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                                                                
+                                                                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                                $selecionar_servicos = $pdo->prepare("SELECT descricao FROM puxadores");
+                                                                $selecionar_servicos->execute();
+                                                                while($row_servicos = $selecionar_servicos->fetch()){
+                                                            ?>
+                                                                <option value="<?php echo $row_servicos['descricao'] ?>"><?php echo $row_servicos['descricao'] ?></option>
+
+                                                            <?php }?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -562,14 +598,26 @@
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
                                                         <select class="form-control mb-2" name="usinagem_para_inferior" id="">
-                                                            <option value="Sem Usinagem">Sem Usinagem</option>
+                                                            <option value="Dobradiça">Dobradiça</option>
                                                         </select>
                                                     </div>
 
                                                     <div class="p-2">
                                                         <label for="">Puxador</label>
                                                         <select class="form-control mb-2" name="puxador_inferior" id="">
-                                                            <option value="">Selecione</option>
+                                                        <option selected>Selecione</option>
+                                                            <?php
+                                                                require_once "../config.php";
+                                                                $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                                                                
+                                                                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                                $selecionar_servicos = $pdo->prepare("SELECT descricao FROM puxadores");
+                                                                $selecionar_servicos->execute();
+                                                                while($row_servicos = $selecionar_servicos->fetch()){
+                                                            ?>
+                                                                <option value="<?php echo $row_servicos['descricao'] ?>"><?php echo $row_servicos['descricao'] ?></option>
+
+                                                            <?php }?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -588,6 +636,7 @@
                                                     <div class="p-2" style="width: 280px;">
                                                         <label for="">Vidro</label>
                                                         <select name="vidro" class="form-control" id="vidro">
+                                                            <option selected>Selecione</option>
                                                             <?php
                                                                 require_once "../config.php";
                                                                 $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
@@ -623,6 +672,7 @@
                                                     </div>
                                                     <div class="p-2" style="width: 280px;">
                                                         <select name="servicos" class="form-control" id="servicos">
+                                                            <option selected>Selecione</option>
                                                             <?php
                                                                 require_once "../config.php";
                                                                 $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
@@ -652,6 +702,7 @@
                                                     <div class="p-2" style="width: 280px;">
                                                         <label for="">Sentido da Travessa</label>
                                                         <select name="travessa" class="form-control" id="travessa">
+                                                            <option selected>Selecione</option>
                                                             <?php
                                                                 require_once "../config.php";
                                                                 $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
