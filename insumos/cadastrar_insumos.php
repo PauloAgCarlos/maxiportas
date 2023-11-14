@@ -4,6 +4,7 @@
 
         $descricao = addslashes($_POST['descricao']);
         $codigo_produto = addslashes($_POST['codigo_produto']);
+        $quantidade = addslashes($_POST['quantidade']); 
         $observacao = addslashes($_POST['observacao']);
         $custo = addslashes($_POST['custo']); 
         $markup = addslashes($_POST['markup']); 
@@ -30,9 +31,10 @@
           $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
           // Consulta para inserir o usuário na tabela
-          $stmt = $pdo->prepare("INSERT INTO insumos (descricao, codigo_produto, observacao, custo, markup, valor, unidade, codigo_da_fabrica, ultima_alteracao, imagem, ativo) VALUES (:descricao, :codigo_produto, :observacao, :custo, :markup, :valor, :unidade, :codigo_da_fabrica, :ultima_alteracao, :imagem, :ativo)");
+          $stmt = $pdo->prepare("INSERT INTO insumos (descricao, codigo_produto, quantidade, observacao, custo, markup, valor, unidade, codigo_da_fabrica, ultima_alteracao, imagem, ativo) VALUES (:descricao, :codigo_produto, :quantidade, :observacao, :custo, :markup, :valor, :unidade, :codigo_da_fabrica, :ultima_alteracao, :imagem, :ativo)");
           $stmt->bindParam(":descricao", $descricao);
           $stmt->bindParam(":codigo_produto", $codigo_produto);
+          $stmt->bindParam(":quantidade", $quantidade);
           $stmt->bindParam(":observacao", $observacao);
           $stmt->bindParam(":custo", $custo);
           $stmt->bindParam(":markup", $markup);

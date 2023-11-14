@@ -102,6 +102,7 @@
                             </div>
 
                             <div class="block-content"> 
+                                Quantidade: <span class="fs-sm text-muted"><?php echo addslashes($row_insumos_id['quantidade']); ?></span><br>
                                 Valor: <span class="fs-sm text-muted"><?php echo addslashes($row_insumos_id['valor']); ?></span><br>
                                 Código da Fábrica: <span class="fs-sm text-muted"><?php echo addslashes($row_insumos_id['codigo_da_fabrica']); ?></span>    
                             </div>

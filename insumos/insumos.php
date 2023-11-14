@@ -71,15 +71,25 @@
                       </div>
                     </div>  
 
-                    <div class="mb-1">
-                      <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
-                      <div>
-                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="50" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                    <div style="display: flex; justify-content: space-between;">
+                      <div class="mb-1" style="width: 60%">
+                        <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
+                        <div>
+                          <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="50" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                        </div>
+                      </div>
+
+                      <div class="mb-1 ms-3">
+                        <label class="form-label" for="quantidade" style="font-size: 0.9em;">Quantidade do Produto</label>
+                        <div>
+                          <input type="text" class="form-control" id="quantidade" name="quantidade" placeholder="Quantidade do Produto" style="font-size: 0.9em;">
+                        </div>
                       </div>
                     </div>
 
+
                     <div class="mb-1 col-md-12">
-                      <label class="form-label" style="font-size: 0.8em;" for="observacao">Observação <span style="color: red;">*</span> </label>
+                      <label class="form-label" style="font-size: 0.8em;" for="observacao">Observação  </label>
                       <textarea name="observacao" id="observacao" class="form-control" cols="10" rows="4" style="font-size: 0.8em;"></textarea>
                     </div>                     
                   </div>
@@ -118,7 +128,7 @@
                       </div>
                      
                       <div class="mb-1 ms-4">
-                        <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração <span style="color: red;">*</span> </label>
+                        <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração</label>
                         <input type="date" class="form-control" id="ultima_alteracao" name="ultima_alteracao"  style="font-size: 0.8em;">
                       </div>
 

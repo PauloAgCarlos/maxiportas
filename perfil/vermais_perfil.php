@@ -116,6 +116,7 @@
                                   Perda Bordas Retalho (mm): <span class="fs-sm text-muted"><?php echo addslashes($row_perfil_id['perda_bordas_retalho']); ?></span><br>                             
                                   Perda Corte Retalho (mm): <span class="fs-sm text-muted"><?php echo addslashes($row_perfil_id['perda_corte_retalho']); ?></span><br>
                                   Código Produto: <span class="fs-sm text-muted"><?php echo addslashes($row_perfil_id['codigo_produto']); ?></span><br>
+                                  Quantidade do Produto: <span class="fs-sm text-muted"><?php echo addslashes($row_perfil_id['quantidade']); ?></span><br>
                                   Última Alteração: <span class="fs-sm text-muted"><?php echo addslashes($row_perfil_id['ultima_alteracao']); ?></span><br>
                                   Largura da Máscara: <span class="fs-sm text-muted"><?php echo addslashes($row_perfil_id['largura_da_mascara']); ?></span><br>
                                   <div class="fs-4 mb-1">

@@ -5,6 +5,7 @@
 
         $descricao = addslashes($_POST['descricao']);
         $codigo_produto = addslashes($_POST['codigo_produto']);
+        $quantidade = addslashes($_POST['quantidade']);
         $agregar = addslashes($_POST['agregar']);
         $unidade = addslashes($_POST['unidade']);
         $liberado_para = addslashes($_POST['liberado_para']);  
@@ -30,7 +31,7 @@
         $id_atualizar = $_POST['id_atualizar'];        
 
         $controllers_vidros = new controllers_vidros();
-        $atualizar = $controllers_vidros->atualizar_vidros($descricao, $agregar, $unidade, $liberado_para, $permite_pintura, $codigo_da_fabrica, $codigo_produto, $observacao, $custo_metro, $markup, $markup_avulso, $metragem_minima, $valor, $valor_avulso, $valor_com_perda, $perda, $perda_avulso, $perda_bordas, $perda_corte, $perda_bordas_retalho, $perda_corte_retalho, $dimensao, $ultima_alteracao, $ativo, $id_atualizar);
+        $atualizar = $controllers_vidros->atualizar_vidros($descricao, $agregar, $unidade, $liberado_para, $permite_pintura, $codigo_da_fabrica, $codigo_produto, $quantidade, $observacao, $custo_metro, $markup, $markup_avulso, $metragem_minima, $valor, $valor_avulso, $valor_com_perda, $perda, $perda_avulso, $perda_bordas, $perda_corte, $perda_bordas_retalho, $perda_corte_retalho, $dimensao, $ultima_alteracao, $ativo, $id_atualizar);
         if($atualizar)
         {
             header('Location: visualizar_vidros.php?atualizado');

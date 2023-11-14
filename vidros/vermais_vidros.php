@@ -104,6 +104,7 @@
                             <div class="block-content">
                               <div class="fs-4 mb-1">Custo (metro): <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['custo_metro']); ?></span></div>
                               <address class="fs-sm"> 
+                                Quantidade do Produto: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['quantidade']); ?></span><br>
                                   Valor: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['valor']); ?></span><br>
                                   Valor Avulso: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['valor_avulso']); ?></span><br> 
                                   Valor com Perda: <span class="fs-sm text-muted"><?php echo addslashes($row_vidros_id['valor_com_perda']); ?></span><br> 

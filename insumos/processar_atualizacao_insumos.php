@@ -5,6 +5,7 @@
 
         $descricao = addslashes($_POST['descricao']);
         $codigo_produto = addslashes($_POST['codigo_produto']);
+        $quantidade = addslashes($_POST['quantidade']);
         $observacao = addslashes($_POST['observacao']);
         $custo = addslashes($_POST['custo']); 
         $markup = addslashes($_POST['markup']); 
@@ -16,7 +17,7 @@
         $id_atualizar = $_POST['id_atualizar'];        
 
         $controllers_insumos = new controllers_insumos();
-        $atualizar = $controllers_insumos->atualizar_insumos($descricao, $codigo_produto, $observacao, $custo, $markup, $valor, $unidade, $codigo_da_fabrica, $ultima_alteracao, $ativo, $id_atualizar);
+        $atualizar = $controllers_insumos->atualizar_insumos($descricao, $codigo_produto, $quantidade, $observacao, $custo, $markup, $valor, $unidade, $codigo_da_fabrica, $ultima_alteracao, $ativo, $id_atualizar);
         if($atualizar)
         {
             header('Location: visualizar_insumos.php?atualizado');

@@ -5,10 +5,10 @@
 class controllers_vidros extends database
 {
 
-    public function inserir($descricao, $agregar, $unidade, $liberado_para, $permite_pintura, $codigo_da_fabrica, $codigo_produto, $observacao, $custo_metro, $markup, $markup_avulso, $metragem_minima, $valor, $valor_avulso, $valor_com_perda, $perda, $perda_avulso, $perda_bordas, $perda_corte, $perda_bordas_retalho, $perda_corte_retalho, $dimensao, $path_image, $ultima_alteracao, $ativo)
+    public function inserir($descricao, $agregar, $unidade, $liberado_para, $permite_pintura, $codigo_da_fabrica, $codigo_produto, $quantidade, $observacao, $custo_metro, $markup, $markup_avulso, $metragem_minima, $valor, $valor_avulso, $valor_com_perda, $perda, $perda_avulso, $perda_bordas, $perda_corte, $perda_bordas_retalho, $perda_corte_retalho, $dimensao, $path_image, $ultima_alteracao, $ativo)
     {
 
-        $insert = $this->conn->prepare("INSERT INTO `vidros` (`descricao`, `agregar`, `unidade`, `liberado_para`, `permite_pintura`, `codigo_da_fabrica`, `codigo_produto`, `observacao`, `custo_metro`, `markup`, `markup_avulso`, `metragem_minima`, `valor`, `valor_avulso`, `valor_com_perda`, `perda`, `perda_avulso`, `perda_bordas`, `perda_corte`, `perda_bordas_retalho`, `perda_corte_retalho`, `dimensao`, `imagem`, `ultima_alteracao`, `ativo`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $insert = $this->conn->prepare("INSERT INTO `vidros` (`descricao`, `agregar`, `unidade`, `liberado_para`, `permite_pintura`, `codigo_da_fabrica`, `codigo_produto`, `quantidade`, `observacao`, `custo_metro`, `markup`, `markup_avulso`, `metragem_minima`, `valor`, `valor_avulso`, `valor_com_perda`, `perda`, `perda_avulso`, `perda_bordas`, `perda_corte`, `perda_bordas_retalho`, `perda_corte_retalho`, `dimensao`, `imagem`, `ultima_alteracao`, `ativo`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $insert->bindParam(1, $descricao);
         $insert->bindParam(2, $agregar);
         $insert->bindParam(3, $unidade);            
@@ -16,24 +16,25 @@ class controllers_vidros extends database
         $insert->bindParam(5, $permite_pintura);
         $insert->bindParam(6, $codigo_da_fabrica);
         $insert->bindParam(7, $codigo_produto);
-        $insert->bindParam(8, $observacao);
-        $insert->bindParam(9, $custo_metro);   
-        $insert->bindParam(10, $markup);         
-        $insert->bindParam(11, $markup_avulso);            
-        $insert->bindParam(12, $metragem_minima);           
-        $insert->bindParam(13, $valor);
-        $insert->bindParam(14, $valor_avulso);
-        $insert->bindParam(15, $valor_com_perda);
-        $insert->bindParam(16, $perda);
-        $insert->bindParam(17, $perda_avulso);
-        $insert->bindParam(18, $perda_bordas);
-        $insert->bindParam(19, $perda_corte);
-        $insert->bindParam(20, $perda_bordas_retalho);
-        $insert->bindParam(21, $perda_corte_retalho);
-        $insert->bindParam(22, $dimensao);
-        $insert->bindParam(23, $path_image);
-        $insert->bindParam(24, $ultima_alteracao);
-        $insert->bindParam(25, $ativo);
+        $insert->bindParam(8, $quantidade);
+        $insert->bindParam(9, $observacao);
+        $insert->bindParam(10, $custo_metro);   
+        $insert->bindParam(11, $markup);         
+        $insert->bindParam(12, $markup_avulso);            
+        $insert->bindParam(13, $metragem_minima);           
+        $insert->bindParam(14, $valor);
+        $insert->bindParam(15, $valor_avulso);
+        $insert->bindParam(16, $valor_com_perda);
+        $insert->bindParam(17, $perda);
+        $insert->bindParam(18, $perda_avulso);
+        $insert->bindParam(19, $perda_bordas);
+        $insert->bindParam(20, $perda_corte);
+        $insert->bindParam(21, $perda_bordas_retalho);
+        $insert->bindParam(22, $perda_corte_retalho);
+        $insert->bindParam(23, $dimensao);
+        $insert->bindParam(24, $path_image);
+        $insert->bindParam(25, $ultima_alteracao);
+        $insert->bindParam(26, $ativo);
         return $insert->execute();
 
     }
@@ -59,10 +60,10 @@ class controllers_vidros extends database
         
     }
 
-    public function atualizar_vidros($descricao, $agregar, $unidade, $liberado_para, $permite_pintura, $codigo_da_fabrica, $codigo_produto, $observacao, $custo_metro, $markup, $markup_avulso, $metragem_minima, $valor, $valor_avulso, $valor_com_perda, $perda, $perda_avulso, $perda_bordas, $perda_corte, $perda_bordas_retalho, $perda_corte_retalho, $dimensao, $ultima_alteracao, $ativo, $id_atualizar)
+    public function atualizar_vidros($descricao, $agregar, $unidade, $liberado_para, $permite_pintura, $codigo_da_fabrica, $codigo_produto, $quantidade, $observacao, $custo_metro, $markup, $markup_avulso, $metragem_minima, $valor, $valor_avulso, $valor_com_perda, $perda, $perda_avulso, $perda_bordas, $perda_corte, $perda_bordas_retalho, $perda_corte_retalho, $dimensao, $ultima_alteracao, $ativo, $id_atualizar)
     {
 
-        $atualizar_vidros = $this->conn->prepare("UPDATE vidros SET descricao = ?, agregar = ?, unidade = ?, liberado_para = ?, permite_pintura = ?, codigo_da_fabrica = ?, codigo_produto = ?, observacao = ?, custo_metro = ?, markup = ?, markup_avulso = ?, metragem_minima = ?, valor = ?, valor_avulso = ?, valor_com_perda = ?, perda = ?, perda_avulso = ?, perda_bordas = ?, perda_corte = ?, perda_bordas_retalho = ?, perda_corte_retalho = ?, dimensao = ?, ultima_alteracao = ?, ativo = ?  WHERE id = ?");
+        $atualizar_vidros = $this->conn->prepare("UPDATE vidros SET descricao = ?, agregar = ?, unidade = ?, liberado_para = ?, permite_pintura = ?, codigo_da_fabrica = ?, codigo_produto = ?, quantidade = ?, observacao = ?, custo_metro = ?, markup = ?, markup_avulso = ?, metragem_minima = ?, valor = ?, valor_avulso = ?, valor_com_perda = ?, perda = ?, perda_avulso = ?, perda_bordas = ?, perda_corte = ?, perda_bordas_retalho = ?, perda_corte_retalho = ?, dimensao = ?, ultima_alteracao = ?, ativo = ?  WHERE id = ?");
         $atualizar_vidros->bindParam(1, $descricao);
         $atualizar_vidros->bindParam(2, $agregar);
         $atualizar_vidros->bindParam(3, $unidade);            
@@ -70,24 +71,25 @@ class controllers_vidros extends database
         $atualizar_vidros->bindParam(5, $permite_pintura);
         $atualizar_vidros->bindParam(6, $codigo_da_fabrica);
         $atualizar_vidros->bindParam(7, $codigo_produto);
-        $atualizar_vidros->bindParam(8, $observacao);
-        $atualizar_vidros->bindParam(9, $custo_metro);   
-        $atualizar_vidros->bindParam(10, $markup);         
-        $atualizar_vidros->bindParam(11, $markup_avulso);            
-        $atualizar_vidros->bindParam(12, $metragem_minima);           
-        $atualizar_vidros->bindParam(13, $valor);
-        $atualizar_vidros->bindParam(14, $valor_avulso);
-        $atualizar_vidros->bindParam(15, $valor_com_perda);
-        $atualizar_vidros->bindParam(16, $perda);
-        $atualizar_vidros->bindParam(17, $perda_avulso);
-        $atualizar_vidros->bindParam(18, $perda_bordas);
-        $atualizar_vidros->bindParam(19, $perda_corte);
-        $atualizar_vidros->bindParam(20, $perda_bordas_retalho);
-        $atualizar_vidros->bindParam(21, $perda_corte_retalho);
-        $atualizar_vidros->bindParam(22, $dimensao);
-        $atualizar_vidros->bindParam(23, $ultima_alteracao);
-        $atualizar_vidros->bindParam(24, $ativo);
-        $atualizar_vidros->bindParam(25, $id_atualizar);
+        $atualizar_vidros->bindParam(8, $quantidade);
+        $atualizar_vidros->bindParam(9, $observacao);
+        $atualizar_vidros->bindParam(10, $custo_metro);   
+        $atualizar_vidros->bindParam(11, $markup);         
+        $atualizar_vidros->bindParam(12, $markup_avulso);            
+        $atualizar_vidros->bindParam(13, $metragem_minima);           
+        $atualizar_vidros->bindParam(14, $valor);
+        $atualizar_vidros->bindParam(15, $valor_avulso);
+        $atualizar_vidros->bindParam(16, $valor_com_perda);
+        $atualizar_vidros->bindParam(17, $perda);
+        $atualizar_vidros->bindParam(18, $perda_avulso);
+        $atualizar_vidros->bindParam(19, $perda_bordas);
+        $atualizar_vidros->bindParam(20, $perda_corte);
+        $atualizar_vidros->bindParam(21, $perda_bordas_retalho);
+        $atualizar_vidros->bindParam(22, $perda_corte_retalho);
+        $atualizar_vidros->bindParam(23, $dimensao);
+        $atualizar_vidros->bindParam(24, $ultima_alteracao);
+        $atualizar_vidros->bindParam(25, $ativo);
+        $atualizar_vidros->bindParam(26, $id_atualizar);
         return $atualizar_vidros->execute();
         
     }

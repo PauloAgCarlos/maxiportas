@@ -143,6 +143,7 @@
                                   Usinagem: <span class="fs-sm text-muted"><?php echo addslashes($row_puxadores_id['usinagem_box_tres']); ?></span><br>
                                   Medida Maxima Para Uninagem: <span class="fs-sm text-muted"><?php echo addslashes($row_puxadores_id['medida_maxima_para_usinagem']); ?></span><br>
                                   Código do Produto: <span class="fs-sm text-muted"><?php echo addslashes($row_puxadores_id['codigo_produto']); ?></span><br>
+                                  Quantidade do Produto: <span class="fs-sm text-muted"><?php echo addslashes($row_puxadores_id['quantidade']); ?></span><br>
                                   Última Alteração: <span class="fs-sm text-muted"><?php echo addslashes($row_puxadores_id['ultima_alteracao']); ?></span><br>
                               </address>
                               </div>

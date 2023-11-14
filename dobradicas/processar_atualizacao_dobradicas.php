@@ -5,6 +5,7 @@
 
         $descricao = addslashes($_POST['descricao']);
         $codigo_produto = addslashes($_POST['codigo_produto']);
+        $quantidade = addslashes($_POST['quantidade']);
         $medida_inicial = addslashes($_POST['medida_inicial']); 
         $medida_final = addslashes($_POST['medida_final']); 
         $quantidade_de_furos = addslashes($_POST['quantidade_de_furos']);      
@@ -14,7 +15,7 @@
         $id_atualizar = $_POST['id_atualizar'];        
 
         $controllers_dobradicas = new controllers_dobradicas();
-        $atualizar = $controllers_dobradicas->atualizar_dobradicas($descricao, $codigo_produto, $medida_inicial, $medida_final, $quantidade_de_furos, $distancia_primeiro_furo, $ultima_alteracao, $ativo, $id_atualizar);
+        $atualizar = $controllers_dobradicas->atualizar_dobradicas($descricao, $codigo_produto, $quantidade, $medida_inicial, $medida_final, $quantidade_de_furos, $distancia_primeiro_furo, $ultima_alteracao, $ativo, $id_atualizar);
         if($atualizar)
         {
             header('Location: visualizar_dobradicas.php?atualizado');

@@ -9,6 +9,7 @@
         $valor_unitario = addslashes($_POST['valor_unitario']);      
         $agregar = addslashes($_POST['agregar']);
         $codigo_produto = addslashes($_POST['codigo_produto']);
+        $quantidade = addslashes($_POST['quantidade']);
         $unidade = addslashes($_POST['unidade']);
         $imagem = $_FILES['imagem'];
         $codigo_da_fabrica = addslashes($_POST['codigo_da_fabrica']);
@@ -31,7 +32,7 @@
           $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
           // Consulta para inserir o usuário na tabela
-          $stmt = $pdo->prepare("INSERT INTO esquadretas (descricao, observacao, custo_metro, markup, valor_unitario, agregar, codigo_produto, unidade, imagem, codigo_da_fabrica, ultima_alteracao, ativo) VALUES (:descricao, :observacao, :custo_metro, :markup, :valor_unitario, :agregar, :codigo_produto, :unidade, :imagem, :codigo_da_fabrica, :ultima_alteracao, :ativo)");
+          $stmt = $pdo->prepare("INSERT INTO esquadretas (descricao, observacao, custo_metro, markup, valor_unitario, agregar, codigo_produto, quantidade, unidade, imagem, codigo_da_fabrica, ultima_alteracao, ativo) VALUES (:descricao, :observacao, :custo_metro, :markup, :valor_unitario, :agregar, :codigo_produto, :quantidade, :unidade, :imagem, :codigo_da_fabrica, :ultima_alteracao, :ativo)");
           $stmt->bindParam(":descricao", $descricao);
           $stmt->bindParam(":observacao", $observacao);
           $stmt->bindParam(":custo_metro", $custo_metro);
@@ -39,6 +40,7 @@
           $stmt->bindParam(":valor_unitario", $valor_unitario);
           $stmt->bindParam(":agregar", $agregar);
           $stmt->bindParam(":codigo_produto", $codigo_produto);
+          $stmt->bindParam(":quantidade", $quantidade);
           $stmt->bindParam(":unidade", $unidade);
           $stmt->bindParam(":imagem", $path_image);
           $stmt->bindParam(":codigo_da_fabrica", $codigo_da_fabrica);

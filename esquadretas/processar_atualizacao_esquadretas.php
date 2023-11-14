@@ -5,6 +5,7 @@
 
         $descricao = addslashes($_POST['descricao']);
         $codigo_produto = addslashes($_POST['codigo_produto']);
+        $quantidade = addslashes($_POST['quantidade']);
         $observacao = addslashes($_POST['observacao']);
         $custo_metro = addslashes($_POST['custo_metro']);
         $markup = addslashes($_POST['markup']);  
@@ -18,7 +19,7 @@
         $id_atualizar = $_POST['id_atualizar'];        
 
         $controllers_esquadretas = new controllers_esquadretas();
-        $atualizar = $controllers_esquadretas->atualizar_esquadretas($descricao, $codigo_produto, $observacao, $custo_metro, $markup, $valor_unitario, $agregar, $unidade, $codigo_da_fabrica, $ultima_alteracao, $ativo, $id_atualizar);
+        $atualizar = $controllers_esquadretas->atualizar_esquadretas($descricao, $codigo_produto, $quantidade, $observacao, $custo_metro, $markup, $valor_unitario, $agregar, $unidade, $codigo_da_fabrica, $ultima_alteracao, $ativo, $id_atualizar);
         if($atualizar)
         {
             header('Location: visualizar_esquadretas.php?atualizado');

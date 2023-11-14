@@ -77,12 +77,21 @@
                       </div>
                     </div>  
 
-                    <div class="mb-1">
-                      <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
-                      <div>
-                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="50" minlength="2" value="<?php echo $row_update['codigo_produto']; ?>" style="font-size: 0.9em;" required>
+                    <div style="display: flex; justify-content: space-between;">
+                      <div class="mb-1" style="width: 60%">
+                        <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
+                        <div>
+                          <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="50" minlength="2" value="<?php echo $row_update['codigo_produto']; ?>" style="font-size: 0.9em;" required>
+                        </div>
+                      </div> 
+
+                      <div class="mb-1 ms-3">
+                        <label class="form-label" for="quantidade" style="font-size: 0.9em;">Quantidade</label>
+                        <div>
+                          <input type="text" class="form-control" id="quantidade" name="quantidade" value="<?php echo $row_update['quantidade']; ?>" style="font-size: 0.9em;">
+                        </div>
                       </div>
-                    </div> 
+                    </div>
 
                     <div class="mt-3 mb-3" style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1" style="display: flex; align-items: center; justify-content: center;">                      
@@ -146,7 +155,7 @@
                       <div class="mb-1 ms-2" style="width: 90px;">  
                         <label class="form-label"  style="font-size: 0.8em;" for="codigo_da_fabrica">Código da Fábrica </label>                    
                         <input type="text" class="form-control" style="font-size: 0.8em;" value="<?php echo $row_update['codigo_da_fabrica']; ?>" name="codigo_da_fabrica" id="codigo_da_fabrica">
-                      </div>
+                      </div>                        
                     </div>
 
                     <div class="mb-1">                      

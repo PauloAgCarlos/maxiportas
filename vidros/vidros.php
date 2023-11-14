@@ -72,10 +72,19 @@
                       </div>
                     </div>  
 
-                    <div class="mb-1">
-                      <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
-                      <div>
-                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="50" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                    <div style="display: flex; justify-content: space-between;">
+                      <div class="mb-1" style="width: 60%;">
+                        <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
+                        <div>
+                          <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="50" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;" required>
+                        </div>
+                      </div>
+
+                      <div class="mb-1 ms-3">
+                        <label class="form-label" for="quantidade" style="font-size: 0.9em;">Quantidade</label>
+                        <div>
+                          <input type="text" class="form-control" id="quantidade" name="quantidade" placeholder="Quantidade do Produto" style="font-size: 0.9em;">
+                        </div>
                       </div>
                     </div>
 
@@ -215,7 +224,7 @@
 
                       <div class="mb-1">
                         <label class="form-label" style="font-size: 0.8em;" for="dimensao">Dimensão </label>
-                        <input type="number" class="form-control ms-2" id="dimensao" name="dimensao" placeholder="0(mm)" style="width: 100px; font-size: 0.8em;">
+                        <input type="number" class="form-control ms-2" value="0" id="dimensao" name="dimensao" placeholder="0(mm)" style="width: 100px; font-size: 0.8em;">
                       </div>
 
                     </div>

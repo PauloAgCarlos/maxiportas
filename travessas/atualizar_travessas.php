@@ -86,7 +86,7 @@
                       </div>
 
                       <div class="mb-1 ms-4">
-                        <label class="form-label" for="quantidade" style="font-size: 0.9em;">Quantidade</label> <span style="color: red;">*</span>
+                        <label class="form-label" for="quantidade" style="font-size: 0.9em;">Quantidade</label>
                         <div>
                           <input type="text" class="form-control" id="quantidade" name="quantidade" value="<?php echo $row_update['quantidade_stock']; ?>" style="font-size: 0.9em;">
                         </div>
@@ -155,7 +155,7 @@
                     </div> 
 
                     <div class="mb-1 col-md-12">
-                      <label class="form-label" style="font-size: 0.8em;" for="referencias_do_mercado">Referências do Mercado <span style="color: red;">*</span> </label>
+                      <label class="form-label" style="font-size: 0.8em;" for="referencias_do_mercado">Referências do Mercado </label>
                       <textarea name="referencias_do_mercado" id="referencias_do_mercado" class="form-control" cols="10" rows="4" style="font-size: 0.9em;"><?php echo $row_update['referencias_do_mercado']; ?></textarea>
                     </div>                     
                   </div>
@@ -164,15 +164,15 @@
 
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
-                        <label class="form-label"  style="font-size: 0.9em;" for="custo_metro">Custo (metro) <span style="color: red;">*</span> </label>
+                        <label class="form-label"  style="font-size: 0.9em;" for="custo_metro">Custo (metro) </label>
                         <input type="text" class="form-control" id="custo_metro" name="custo_metro" value="<?php echo $row_update['custo_metro']; ?>" style="font-size: 0.9em;">
                       </div>
                       <div class="mb-1">
-                        <label class="form-label"  style="font-size: 0.9em;" for="markup">Markup (%) <span style="color: red;">*</span> </label>
+                        <label class="form-label"  style="font-size: 0.9em;" for="markup">Markup (%)</label>
                         <input type="text" class="form-control ms-2" id="markup" name="markup" value="<?php echo $row_update['markup']; ?>" style="font-size: 0.9em;">
                       </div>
                       <div class="mb-1">
-                        <label class="form-label"  style="font-size: 0.9em;" for="valor">Valor (metro) <span style="color: red;">*</span> </label>
+                        <label class="form-label"  style="font-size: 0.9em;" for="valor">Valor (metro)</label>
                         <input type="text" class="form-control ms-3" id="valor" name="valor" value="<?php echo $row_update['valor']; ?>" style="font-size: 0.9em;">
                       </div>
                       
@@ -189,7 +189,7 @@
                         <input type="text" class="form-control ms-2" id="perda" name="perda" value="<?php echo $row_update['perda']; ?>" style="font-size: 0.9em;">
                       </div>
                       <div class="mb-1 ms-2">
-                        <label class="form-label" style="font-size: 0.8em;" for="perda_bordas">  Perda Bordas<span style="color: red;">*</span> </label>
+                        <label class="form-label" style="font-size: 0.8em;" for="perda_bordas">  Perda Bordas</label>
                         <input type="text" class="form-control ms-2" id="perda_bordas" name="perda_bordas" value="<?php echo $row_update['perda_bordas']; ?>" style="font-size: 0.8em;">
                       </div>
                     </div>
@@ -217,7 +217,7 @@
 
                     <div class="col-md-6" style="display: flex; align-items: center; justify-content: space-around;">
                       <div class="mb-1">
-                        <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração <span style="color: red;">*</span> </label>
+                        <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração</label>
                         <input type="date" class="form-control" value="<?php echo $row_update['ultima_alteracao']; ?>" id="ultima_alteracao" name="ultima_alteracao"  style="font-size: 0.8em;">
                       </div>
                     

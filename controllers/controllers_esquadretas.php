@@ -5,10 +5,10 @@
 class controllers_esquadretas extends database
 {
 
-    public function inserir($descricao, $observacao, $custo_metro, $markup, $valor_unitario, $agregar, $codigo_produto, $unidade, $path_image, $codigo_da_fabrica, $ultima_alteracao, $ativo)
+    public function inserir($descricao, $observacao, $custo_metro, $markup, $valor_unitario, $agregar, $codigo_produto, $quantidade, $unidade, $path_image, $codigo_da_fabrica, $ultima_alteracao, $ativo)
     {
 
-        $insert = $this->conn->prepare("INSERT INTO esquadretas (descricao, observacao, custo_metro, markup, valor_unitario, agregar, codigo_produto, unidade, imagem, codigo_da_fabrica, ultima_alteracao, ativo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $insert = $this->conn->prepare("INSERT INTO esquadretas (descricao, observacao, custo_metro, markup, valor_unitario, agregar, codigo_produto, quantidade, unidade, imagem, codigo_da_fabrica, ultima_alteracao, ativo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $insert->bindParam(1, $descricao);
         $insert->bindParam(2, $observacao);
         $insert->bindParam(3, $custo_metro);            
@@ -16,11 +16,12 @@ class controllers_esquadretas extends database
         $insert->bindParam(5, $valor_unitario);
         $insert->bindParam(6, $agregar);
         $insert->bindParam(7, $codigo_produto);
-        $insert->bindParam(8, $unidade);
-        $insert->bindParam(9, $path_image);   
-        $insert->bindParam(10, $codigo_da_fabrica);   
-        $insert->bindParam(11, $ultima_alteracao);
-        $insert->bindParam(12, $ativo);
+        $insert->bindParam(8, $quantidade);
+        $insert->bindParam(9, $unidade);
+        $insert->bindParam(10, $path_image);   
+        $insert->bindParam(11, $codigo_da_fabrica);   
+        $insert->bindParam(12, $ultima_alteracao);
+        $insert->bindParam(13, $ativo);
         return $insert->execute();
 
     }
@@ -46,22 +47,23 @@ class controllers_esquadretas extends database
         
     }
 
-    public function atualizar_esquadretas($descricao, $codigo_produto, $observacao, $custo_metro, $markup, $valor_unitario, $agregar, $unidade, $codigo_da_fabrica, $ultima_alteracao, $ativo, $id_atualizar)
+    public function atualizar_esquadretas($descricao, $codigo_produto, $quantidade, $observacao, $custo_metro, $markup, $valor_unitario, $agregar, $unidade, $codigo_da_fabrica, $ultima_alteracao, $ativo, $id_atualizar)
     {
 
-        $atualizar_esquadretas = $this->conn->prepare("UPDATE esquadretas SET descricao = ?, codigo_produto = ?, observacao = ?, custo_metro = ?, markup = ?, valor_unitario = ?, agregar = ?, unidade = ?, codigo_da_fabrica = ?, ultima_alteracao = ?, ativo = ?  WHERE id = ?");
+        $atualizar_esquadretas = $this->conn->prepare("UPDATE esquadretas SET descricao = ?, codigo_produto = ?, quantidade = ?, observacao = ?, custo_metro = ?, markup = ?, valor_unitario = ?, agregar = ?, unidade = ?, codigo_da_fabrica = ?, ultima_alteracao = ?, ativo = ?  WHERE id = ?");
         $atualizar_esquadretas->bindParam(1, $descricao);
         $atualizar_esquadretas->bindParam(2, $codigo_produto);
-        $atualizar_esquadretas->bindParam(3, $observacao);
-        $atualizar_esquadretas->bindParam(4, $custo_metro);            
-        $atualizar_esquadretas->bindParam(5, $markup);
-        $atualizar_esquadretas->bindParam(6, $valor_unitario);
-        $atualizar_esquadretas->bindParam(7, $agregar);
-        $atualizar_esquadretas->bindParam(8, $unidade); 
-        $atualizar_esquadretas->bindParam(9, $codigo_da_fabrica);   
-        $atualizar_esquadretas->bindParam(10, $ultima_alteracao);
-        $atualizar_esquadretas->bindParam(11, $ativo);
-        $atualizar_esquadretas->bindParam(12, $id_atualizar);
+        $atualizar_esquadretas->bindParam(3, $quantidade);
+        $atualizar_esquadretas->bindParam(4, $observacao);
+        $atualizar_esquadretas->bindParam(5, $custo_metro);            
+        $atualizar_esquadretas->bindParam(6, $markup);
+        $atualizar_esquadretas->bindParam(7, $valor_unitario);
+        $atualizar_esquadretas->bindParam(8, $agregar);
+        $atualizar_esquadretas->bindParam(9, $unidade); 
+        $atualizar_esquadretas->bindParam(10, $codigo_da_fabrica);   
+        $atualizar_esquadretas->bindParam(11, $ultima_alteracao);
+        $atualizar_esquadretas->bindParam(12, $ativo);
+        $atualizar_esquadretas->bindParam(13, $id_atualizar);
         return $atualizar_esquadretas->execute();
         
     }

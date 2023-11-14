@@ -9,6 +9,7 @@
         $permite_pintura = addslashes($_POST['permite_pintura']);      
         $codigo_da_fabrica = addslashes($_POST['codigo_da_fabrica']);
         $codigo_produto = addslashes($_POST['codigo_produto']);
+        $quantidade = addslashes($_POST['quantidade']);
         $observacao = addslashes($_POST['observacao']);
         $custo_metro = addslashes($_POST['custo_metro']);
         $markup = addslashes($_POST['markup']);
@@ -44,7 +45,7 @@
           $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
           // Consulta para inserir o usuário na tabela
-          $stmt = $pdo->prepare("INSERT INTO vidros (descricao, agregar, unidade, liberado_para, permite_pintura, codigo_da_fabrica, codigo_produto, observacao, custo_metro, markup, markup_avulso, metragem_minima, valor, valor_avulso, valor_com_perda, perda, perda_avulso, perda_bordas, perda_corte, perda_bordas_retalho, perda_corte_retalho, dimensao, imagem, ultima_alteracao, ativo) VALUES (:descricao, :agregar, :unidade, :liberado_para, :permite_pintura, :codigo_da_fabrica, :codigo_produto, :observacao, :custo_metro, :markup, :markup_avulso, :metragem_minima, :valor, :valor_avulso, :valor_com_perda, :perda, :perda_avulso, :perda_bordas, :perda_corte, :perda_bordas_retalho, :perda_corte_retalho, :dimensao, :imagem, :ultima_alteracao, :ativo)");
+          $stmt = $pdo->prepare("INSERT INTO vidros (descricao, agregar, unidade, liberado_para, permite_pintura, codigo_da_fabrica, codigo_produto, quantidade, observacao, custo_metro, markup, markup_avulso, metragem_minima, valor, valor_avulso, valor_com_perda, perda, perda_avulso, perda_bordas, perda_corte, perda_bordas_retalho, perda_corte_retalho, dimensao, imagem, ultima_alteracao, ativo) VALUES (:descricao, :agregar, :unidade, :liberado_para, :permite_pintura, :codigo_da_fabrica, :codigo_produto, :quantidade, :observacao, :custo_metro, :markup, :markup_avulso, :metragem_minima, :valor, :valor_avulso, :valor_com_perda, :perda, :perda_avulso, :perda_bordas, :perda_corte, :perda_bordas_retalho, :perda_corte_retalho, :dimensao, :imagem, :ultima_alteracao, :ativo)");
           $stmt->bindParam(":descricao", $descricao);
           $stmt->bindParam(":agregar", $agregar);
           $stmt->bindParam(":unidade", $unidade);
@@ -52,6 +53,7 @@
           $stmt->bindParam(":permite_pintura", $permite_pintura);
           $stmt->bindParam(":codigo_da_fabrica", $codigo_da_fabrica);
           $stmt->bindParam(":codigo_produto", $codigo_produto);
+          $stmt->bindParam(":quantidade", $quantidade);
           $stmt->bindParam(":observacao", $observacao);
           $stmt->bindParam(":custo_metro", $custo_metro);
           $stmt->bindParam(":markup", $markup);
@@ -78,7 +80,7 @@
           
         } catch (PDOException $e) {
             // Exibir mensagem de erro caso ocorra uma exceção
-            echo "Erro ao cadastrar usuário: " . $e->getMessage();
+            echo "Erro ao cadastrar Vidro: " . $e->getMessage();
         }        
     endif;
 

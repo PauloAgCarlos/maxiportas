@@ -5,23 +5,24 @@
 class controllers_acessorios extends database
 {
 
-    public function inserir($descricao, $codigo_produto, $observacao, $custo_unitario, $markup, $valor_unitario, $unidade, $tipo_do_acessorio, $desconto_corte, $path_image, $codigo_da_fabrica, $ultima_alteracao, $ativo)
+    public function inserir($descricao, $codigo_produto, $quantidade, $observacao, $custo_unitario, $markup, $valor_unitario, $unidade, $tipo_do_acessorio, $desconto_corte, $path_image, $codigo_da_fabrica, $ultima_alteracao, $ativo)
     {
 
-        $insert = $this->conn->prepare("INSERT INTO acessorios (descricao, codigo_produto, observacao, custo_unitario, markup, valor_unitario, unidade, tipo_do_acessorio, desconto_corte, imagem, codigo_da_fabrica, ultima_alteracao, ativo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $insert = $this->conn->prepare("INSERT INTO acessorios (descricao, codigo_produto, quantidade, observacao, custo_unitario, markup, valor_unitario, unidade, tipo_do_acessorio, desconto_corte, imagem, codigo_da_fabrica, ultima_alteracao, ativo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $insert->bindParam(1, $descricao);
         $insert->bindParam(2, $codigo_produto);
-        $insert->bindParam(3, $observacao);
-        $insert->bindParam(4, $custo_unitario);            
-        $insert->bindParam(5, $markup);
-        $insert->bindParam(6, $valor_unitario);
-        $insert->bindParam(7, $unidade);
-        $insert->bindParam(8, $tipo_do_acessorio);
-        $insert->bindParam(9, $desconto_corte);
-        $insert->bindParam(10, $path_image);   
-        $insert->bindParam(11, $codigo_da_fabrica);   
-        $insert->bindParam(12, $ultima_alteracao);
-        $insert->bindParam(13, $ativo);
+        $insert->bindParam(3, $quantidade);
+        $insert->bindParam(4, $observacao);
+        $insert->bindParam(5, $custo_unitario);            
+        $insert->bindParam(6, $markup);
+        $insert->bindParam(7, $valor_unitario);
+        $insert->bindParam(8, $unidade);
+        $insert->bindParam(9, $tipo_do_acessorio);
+        $insert->bindParam(10, $desconto_corte);
+        $insert->bindParam(11, $path_image);   
+        $insert->bindParam(12, $codigo_da_fabrica);   
+        $insert->bindParam(13, $ultima_alteracao);
+        $insert->bindParam(14, $ativo);
         return $insert->execute();
 
     }
@@ -47,23 +48,24 @@ class controllers_acessorios extends database
         
     }
 
-    public function atualizar_acessorios($descricao, $codigo_produto, $observacao, $custo_unitario, $markup, $valor_unitario, $unidade, $tipo_do_acessorio, $desconto_corte, $codigo_da_fabrica, $ultima_alteracao, $ativo, $id_atualizar)
+    public function atualizar_acessorios($descricao, $codigo_produto, $quantidade, $observacao, $custo_unitario, $markup, $valor_unitario, $unidade, $tipo_do_acessorio, $desconto_corte, $codigo_da_fabrica, $ultima_alteracao, $ativo, $id_atualizar)
     {
 
-        $atualizar_acessorios = $this->conn->prepare("UPDATE acessorios SET descricao = ? , codigo_produto = ? , observacao = ? , custo_unitario = ? , markup = ? , valor_unitario = ? , unidade = ? , tipo_do_acessorio = ? , desconto_corte = ? ,codigo_da_fabrica = ?, ultima_alteracao = ?, ativo = ?  WHERE id = ?");
+        $atualizar_acessorios = $this->conn->prepare("UPDATE acessorios SET descricao = ? , codigo_produto = ? , quantidade = ?, observacao = ? , custo_unitario = ? , markup = ? , valor_unitario = ? , unidade = ? , tipo_do_acessorio = ? , desconto_corte = ? ,codigo_da_fabrica = ?, ultima_alteracao = ?, ativo = ?  WHERE id = ?");
         $atualizar_acessorios->bindParam(1, $descricao);
         $atualizar_acessorios->bindParam(2, $codigo_produto);
-        $atualizar_acessorios->bindParam(3, $observacao);
-        $atualizar_acessorios->bindParam(4, $custo_unitario);            
-        $atualizar_acessorios->bindParam(5, $markup);
-        $atualizar_acessorios->bindParam(6, $valor_unitario);
-        $atualizar_acessorios->bindParam(7, $unidade);
-        $atualizar_acessorios->bindParam(8, $tipo_do_acessorio);
-        $atualizar_acessorios->bindParam(9, $desconto_corte); 
-        $atualizar_acessorios->bindParam(10, $codigo_da_fabrica);   
-        $atualizar_acessorios->bindParam(11, $ultima_alteracao);
-        $atualizar_acessorios->bindParam(12, $ativo);
-        $atualizar_acessorios->bindParam(13, $id_atualizar);
+        $atualizar_acessorios->bindParam(3, $quantidade);
+        $atualizar_acessorios->bindParam(4, $observacao);
+        $atualizar_acessorios->bindParam(5, $custo_unitario);            
+        $atualizar_acessorios->bindParam(6, $markup);
+        $atualizar_acessorios->bindParam(7, $valor_unitario);
+        $atualizar_acessorios->bindParam(8, $unidade);
+        $atualizar_acessorios->bindParam(9, $tipo_do_acessorio);
+        $atualizar_acessorios->bindParam(10, $desconto_corte); 
+        $atualizar_acessorios->bindParam(11, $codigo_da_fabrica);   
+        $atualizar_acessorios->bindParam(12, $ultima_alteracao);
+        $atualizar_acessorios->bindParam(13, $ativo);
+        $atualizar_acessorios->bindParam(14, $id_atualizar);
         return $atualizar_acessorios->execute();
         
     }

@@ -102,6 +102,7 @@
                             </div>
 
                             <div class="block-content"> 
+                                Quantidade: <span class="fs-sm text-muted"><?php echo addslashes($row_dobradicas_id['quantidade']); ?></span><br>
                                 Medida Inicial: <span class="fs-sm text-muted"><?php echo addslashes($row_dobradicas_id['medida_inicial']); ?></span><br>
                                 Medida Final: <span class="fs-sm text-muted"><?php echo addslashes($row_dobradicas_id['medida_final']); ?></span>    
                             </div>

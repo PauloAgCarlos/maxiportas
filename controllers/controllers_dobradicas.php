@@ -5,18 +5,19 @@
 class controllers_dobradicas extends database
 {
 
-    public function inserir($descricao, $codigo_produto, $medida_inicial, $medida_final, $quantidade_de_furos, $distancia_primeiro_furo, $ultima_alteracao, $ativo)
+    public function inserir($descricao, $codigo_produto, $quantidade, $medida_inicial, $medida_final, $quantidade_de_furos, $distancia_primeiro_furo, $ultima_alteracao, $ativo)
     {
 
-        $insert = $this->conn->prepare("INSERT INTO dobradicas (descricao, codigo_produto, medida_inicial, medida_final, quantidade_de_furos, distancia_primeiro_furo, ultima_alteracao, ativo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $insert = $this->conn->prepare("INSERT INTO dobradicas (descricao, codigo_produto, quantidade, medida_inicial, medida_final, quantidade_de_furos, distancia_primeiro_furo, ultima_alteracao, ativo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $insert->bindParam(1, $descricao);
         $insert->bindParam(2, $codigo_produto);
-        $insert->bindParam(3, $medida_inicial);            
-        $insert->bindParam(4, $medida_final);
-        $insert->bindParam(5, $quantidade_de_furos);
-        $insert->bindParam(6, $distancia_primeiro_furo);   
-        $insert->bindParam(7, $ultima_alteracao); 
-        $insert->bindParam(8, $ativo);
+        $insert->bindParam(3, $quantidade);
+        $insert->bindParam(4, $medida_inicial);            
+        $insert->bindParam(5, $medida_final);
+        $insert->bindParam(6, $quantidade_de_furos);
+        $insert->bindParam(7, $distancia_primeiro_furo);   
+        $insert->bindParam(8, $ultima_alteracao); 
+        $insert->bindParam(9, $ativo);
         return $insert->execute();
 
     }
@@ -42,19 +43,20 @@ class controllers_dobradicas extends database
         
     }
 
-    public function atualizar_dobradicas($descricao, $codigo_produto, $medida_inicial, $medida_final, $quantidade_de_furos, $distancia_primeiro_furo, $ultima_alteracao, $ativo, $id_atualizar)
+    public function atualizar_dobradicas($descricao, $codigo_produto, $quantidade, $medida_inicial, $medida_final, $quantidade_de_furos, $distancia_primeiro_furo, $ultima_alteracao, $ativo, $id_atualizar)
     {
 
-        $atualizar_dobradicas = $this->conn->prepare("UPDATE dobradicas SET descricao = ?, codigo_produto = ?, medida_inicial = ?, medida_final = ?, quantidade_de_furos = ?, distancia_primeiro_furo = ?, ultima_alteracao = ?, ativo = ?  WHERE id = ?");
+        $atualizar_dobradicas = $this->conn->prepare("UPDATE dobradicas SET descricao = ?, codigo_produto = ?, quantidade = ?, medida_inicial = ?, medida_final = ?, quantidade_de_furos = ?, distancia_primeiro_furo = ?, ultima_alteracao = ?, ativo = ?  WHERE id = ?");
         $atualizar_dobradicas->bindParam(1, $descricao);
         $atualizar_dobradicas->bindParam(2, $codigo_produto);
-        $atualizar_dobradicas->bindParam(3, $medida_inicial);
-        $atualizar_dobradicas->bindParam(4, $medida_final);            
-        $atualizar_dobradicas->bindParam(5, $quantidade_de_furos);
-        $atualizar_dobradicas->bindParam(6, $distancia_primeiro_furo); 
-        $atualizar_dobradicas->bindParam(7, $ultima_alteracao);
-        $atualizar_dobradicas->bindParam(8, $ativo);
-        $atualizar_dobradicas->bindParam(9, $id_atualizar);
+        $atualizar_dobradicas->bindParam(3, $quantidade);
+        $atualizar_dobradicas->bindParam(4, $medida_inicial);
+        $atualizar_dobradicas->bindParam(5, $medida_final);            
+        $atualizar_dobradicas->bindParam(6, $quantidade_de_furos);
+        $atualizar_dobradicas->bindParam(7, $distancia_primeiro_furo); 
+        $atualizar_dobradicas->bindParam(8, $ultima_alteracao);
+        $atualizar_dobradicas->bindParam(9, $ativo);
+        $atualizar_dobradicas->bindParam(10, $id_atualizar);
         return $atualizar_dobradicas->execute();
         
     }

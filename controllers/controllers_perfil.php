@@ -5,10 +5,10 @@
 class controllers_perfil extends database
 {
 
-    public function inserir($descricao, $puxadoracoplado, $ponteira_acoplado, $ponteira_obrigatoria, $exige_pinturano_vidro, $agregar, $unidade, $vidro, $esquadreta, $esquadreta_reforcada_a, $esquadreta_reforcada_b, $esquadreta_dupla, $custo_metro, $desconto_corte_perfil, $desconto_corte_vidro, $desconto_corte_travessa, $desconto_corte_travessa_oculta, $perda_bordas, $perda_corte, $dimensao, $perda_bordas_retalho, $perda_corte_retalho, $codigo_produto, $ultima_alteracao, $largura_da_mascara, $codigo_da_fabrica, $referencias_do_mercado, $detalhes, $path_image, $ativo)
+    public function inserir($descricao, $puxadoracoplado, $ponteira_acoplado, $ponteira_obrigatoria, $exige_pinturano_vidro, $agregar, $unidade, $vidro, $esquadreta, $esquadreta_reforcada_a, $esquadreta_reforcada_b, $esquadreta_dupla, $custo_metro, $desconto_corte_perfil, $desconto_corte_vidro, $desconto_corte_travessa, $desconto_corte_travessa_oculta, $perda_bordas, $perda_corte, $dimensao, $perda_bordas_retalho, $perda_corte_retalho, $codigo_produto, $quantidade, $ultima_alteracao, $largura_da_mascara, $codigo_da_fabrica, $referencias_do_mercado, $detalhes, $path_image, $ativo)
     {
 
-        $insert = $this->conn->prepare("INSERT INTO `perfil` (`descricao`, `puxadoracoplado`,`ponteira_acoplado`, `ponteira_obrigatoria`, `exige_pinturano_vidro`, `agregar`, `unidade`, `vidro`, `esquadreta`, `esquadreta_reforcada_a`, `esquadreta_reforcada_b`, `esquadreta_dupla`, `custo_metro`, `desconto_corte_perfil`, `desconto_corte_vidro`, `desconto_corte_travessa`, `desconto_corte_travessa_oculta`, `perda_bordas`, `perda_corte`, `dimensao`, `perda_bordas_retalho`, `perda_corte_retalho`, `codigo_produto`, `ultima_alteracao`, `largura_da_mascara`, `codigo_da_fabrica`, `referencias_do_mercado`, `detalhes`, `imagem`, `ativo`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $insert = $this->conn->prepare("INSERT INTO `perfil` (`descricao`, `puxadoracoplado`,`ponteira_acoplado`, `ponteira_obrigatoria`, `exige_pinturano_vidro`, `agregar`, `unidade`, `vidro`, `esquadreta`, `esquadreta_reforcada_a`, `esquadreta_reforcada_b`, `esquadreta_dupla`, `custo_metro`, `desconto_corte_perfil`, `desconto_corte_vidro`, `desconto_corte_travessa`, `desconto_corte_travessa_oculta`, `perda_bordas`, `perda_corte`, `dimensao`, `perda_bordas_retalho`, `perda_corte_retalho`, `codigo_produto`, `quantidade`, `ultima_alteracao`, `largura_da_mascara`, `codigo_da_fabrica`, `referencias_do_mercado`, `detalhes`, `imagem`, `ativo`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $insert->bindParam(1, $descricao);
         $insert->bindParam(2, $puxadoracoplado);
         $insert->bindParam(3, $ponteira_acoplado);            
@@ -32,13 +32,14 @@ class controllers_perfil extends database
         $insert->bindParam(21, $perda_bordas_retalho);
         $insert->bindParam(22, $perda_corte_retalho);
         $insert->bindParam(23, $codigo_produto);
-        $insert->bindParam(24, $ultima_alteracao);
-        $insert->bindParam(25, $largura_da_mascara);
-        $insert->bindParam(26, $codigo_da_fabrica);
-        $insert->bindParam(27, $referencias_do_mercado);
-        $insert->bindParam(28, $detalhes);
-        $insert->bindParam(29, $path_image);
-        $insert->bindParam(30, $ativo);
+        $insert->bindParam(24, $quantidade);
+        $insert->bindParam(25, $ultima_alteracao);
+        $insert->bindParam(26, $largura_da_mascara);
+        $insert->bindParam(27, $codigo_da_fabrica);
+        $insert->bindParam(28, $referencias_do_mercado);
+        $insert->bindParam(29, $detalhes);
+        $insert->bindParam(30, $path_image);
+        $insert->bindParam(31, $ativo);
 
         $insert->execute();
     }
@@ -69,10 +70,10 @@ class controllers_perfil extends database
         }
     }
 
-    public function atualizar_perfil($descricao, $puxadoracoplado, $ponteira_acoplado, $ponteira_obrigatoria, $exige_pinturano_vidro, $agregar, $unidade, $vidro, $esquadreta, $esquadreta_reforcada_a, $esquadreta_reforcada_b, $esquadreta_dupla, $custo_metro, $desconto_corte_perfil, $desconto_corte_vidro, $desconto_corte_travessa, $desconto_corte_travessa_oculta, $perda_bordas, $perda_corte, $dimensao, $perda_bordas_retalho, $perda_corte_retalho, $codigo_produto, $ultima_alteracao, $largura_da_mascara, $codigo_da_fabrica, $referencias_do_mercado, $detalhes, $ativo, $id_atualizar)
+    public function atualizar_perfil($descricao, $puxadoracoplado, $ponteira_acoplado, $ponteira_obrigatoria, $exige_pinturano_vidro, $agregar, $unidade, $vidro, $esquadreta, $esquadreta_reforcada_a, $esquadreta_reforcada_b, $esquadreta_dupla, $custo_metro, $desconto_corte_perfil, $desconto_corte_vidro, $desconto_corte_travessa, $desconto_corte_travessa_oculta, $perda_bordas, $perda_corte, $dimensao, $perda_bordas_retalho, $perda_corte_retalho, $codigo_produto, $quantidade, $ultima_alteracao, $largura_da_mascara, $codigo_da_fabrica, $referencias_do_mercado, $detalhes, $ativo, $id_atualizar)
     {
 
-        $atualizar_perfil = $this->conn->prepare("UPDATE perfil SET descricao = ?, puxadoracoplado = ?, ponteira_acoplado = ?, ponteira_obrigatoria = ?, exige_pinturano_vidro = ?, agregar = ?, unidade = ?, vidro = ?, esquadreta = ?, esquadreta_reforcada_a = ?, esquadreta_reforcada_b = ?, esquadreta_dupla = ?, custo_metro = ?, desconto_corte_perfil = ?, desconto_corte_vidro = ?, desconto_corte_travessa = ?, desconto_corte_travessa_oculta = ?, perda_bordas = ?, perda_corte = ?, dimensao = ?, perda_bordas_retalho = ?, perda_corte_retalho = ?, codigo_produto = ?, ultima_alteracao = ?, largura_da_mascara = ?, codigo_da_fabrica = ?, referencias_do_mercado = ?, detalhes = ?, ativo = ?  WHERE id = ?");
+        $atualizar_perfil = $this->conn->prepare("UPDATE perfil SET descricao = ?, puxadoracoplado = ?, ponteira_acoplado = ?, ponteira_obrigatoria = ?, exige_pinturano_vidro = ?, agregar = ?, unidade = ?, vidro = ?, esquadreta = ?, esquadreta_reforcada_a = ?, esquadreta_reforcada_b = ?, esquadreta_dupla = ?, custo_metro = ?, desconto_corte_perfil = ?, desconto_corte_vidro = ?, desconto_corte_travessa = ?, desconto_corte_travessa_oculta = ?, perda_bordas = ?, perda_corte = ?, dimensao = ?, perda_bordas_retalho = ?, perda_corte_retalho = ?, codigo_produto = ?, quantidade = ?, ultima_alteracao = ?, largura_da_mascara = ?, codigo_da_fabrica = ?, referencias_do_mercado = ?, detalhes = ?, ativo = ?  WHERE id = ?");
         $atualizar_perfil->bindParam(1, $descricao);
         $atualizar_perfil->bindParam(2, $puxadoracoplado);
         $atualizar_perfil->bindParam(3, $ponteira_acoplado);            
@@ -96,13 +97,14 @@ class controllers_perfil extends database
         $atualizar_perfil->bindParam(21, $perda_bordas_retalho);
         $atualizar_perfil->bindParam(22, $perda_corte_retalho);
         $atualizar_perfil->bindParam(23, $codigo_produto);
-        $atualizar_perfil->bindParam(24, $ultima_alteracao);
-        $atualizar_perfil->bindParam(25, $largura_da_mascara);
-        $atualizar_perfil->bindParam(26, $codigo_da_fabrica);
-        $atualizar_perfil->bindParam(27, $referencias_do_mercado);
-        $atualizar_perfil->bindParam(28, $detalhes);
-        $atualizar_perfil->bindParam(29, $ativo);
-        $atualizar_perfil->bindParam(30, $id_atualizar);
+        $atualizar_perfil->bindParam(24, $quantidade);
+        $atualizar_perfil->bindParam(25, $ultima_alteracao);
+        $atualizar_perfil->bindParam(26, $largura_da_mascara);
+        $atualizar_perfil->bindParam(27, $codigo_da_fabrica);
+        $atualizar_perfil->bindParam(28, $referencias_do_mercado);
+        $atualizar_perfil->bindParam(29, $detalhes);
+        $atualizar_perfil->bindParam(30, $ativo);
+        $atualizar_perfil->bindParam(31, $id_atualizar);
 
         return $atualizar_perfil->execute();
         

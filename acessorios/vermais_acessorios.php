@@ -102,6 +102,7 @@
                             </div>
 
                             <div class="block-content"> 
+                                Quantidade: <span class="fs-sm text-muted"><?php echo addslashes($row_acessorios_id['quantidade']); ?></span><br>
                                 Tipo do Acessório: <span class="fs-sm text-muted"><?php echo addslashes($row_acessorios_id['tipo_do_acessorio']); ?></span><br>
                                 Valor (Unitário): <span class="fs-sm text-muted"><?php echo addslashes($row_acessorios_id['valor_unitario']); ?></span><br>
                                 Desconto Corte: <span class="fs-sm text-muted"><?php echo addslashes($row_acessorios_id['desconto_corte']); ?></span><br>

@@ -23,8 +23,8 @@
     $dimensao = addslashes($_POST['dimensao']);
     $perda_bordas_retalho = addslashes($_POST['perda_bordas_retalho']);
     $perda_corte_retalho = addslashes($_POST['perda_corte_retalho']);
-
     $codigo_produto = addslashes($_POST['codigo_produto']);
+    $quantidade = addslashes($_POST['quantidade']);
     $ultima_alteracao = addslashes($_POST['ultima_alteracao']);
     $largura_da_mascara = addslashes($_POST['largura_da_mascara']);
     $codigo_da_fabrica = addslashes($_POST['codigo_da_fabrica']);
@@ -52,7 +52,7 @@
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Consulta para inserir o usuário na tabela
-        $stmt = $pdo->prepare("INSERT INTO perfil (descricao, puxadoracoplado, ponteira_acoplado, ponteira_obrigatoria, exige_pinturano_vidro, agregar, unidade, vidro, esquadreta, esquadreta_reforcada_a, esquadreta_reforcada_b, esquadreta_dupla, custo_metro, desconto_corte_perfil, desconto_corte_vidro, desconto_corte_travessa, desconto_corte_travessa_oculta, perda_bordas, perda_corte, dimensao, perda_bordas_retalho, perda_corte_retalho, codigo_produto, ultima_alteracao, largura_da_mascara, codigo_da_fabrica, referencias_do_mercado, detalhes, imagem, ativo) VALUES (:descricao, :puxadoracoplado, :ponteira_acoplado, :ponteira_obrigatoria, :exige_pinturano_vidro, :agregar, :unidade, :vidro, :esquadreta, :esquadreta_reforcada_a, :esquadreta_reforcada_b, :esquadreta_dupla, :custo_metro, :desconto_corte_perfil, :desconto_corte_vidro, :desconto_corte_travessa, :desconto_corte_travessa_oculta, :perda_bordas, :perda_corte, :dimensao, :perda_bordas_retalho, :perda_corte_retalho, :codigo_produto, :ultima_alteracao, :largura_da_mascara, :codigo_da_fabrica, :referencias_do_mercado, :detalhes, :imagem, :ativo)");
+        $stmt = $pdo->prepare("INSERT INTO perfil (descricao, puxadoracoplado, ponteira_acoplado, ponteira_obrigatoria, exige_pinturano_vidro, agregar, unidade, vidro, esquadreta, esquadreta_reforcada_a, esquadreta_reforcada_b, esquadreta_dupla, custo_metro, desconto_corte_perfil, desconto_corte_vidro, desconto_corte_travessa, desconto_corte_travessa_oculta, perda_bordas, perda_corte, dimensao, perda_bordas_retalho, perda_corte_retalho, codigo_produto, quantidade, ultima_alteracao, largura_da_mascara, codigo_da_fabrica, referencias_do_mercado, detalhes, imagem, ativo) VALUES (:descricao, :puxadoracoplado, :ponteira_acoplado, :ponteira_obrigatoria, :exige_pinturano_vidro, :agregar, :unidade, :vidro, :esquadreta, :esquadreta_reforcada_a, :esquadreta_reforcada_b, :esquadreta_dupla, :custo_metro, :desconto_corte_perfil, :desconto_corte_vidro, :desconto_corte_travessa, :desconto_corte_travessa_oculta, :perda_bordas, :perda_corte, :dimensao, :perda_bordas_retalho, :perda_corte_retalho, :codigo_produto, :quantidade, :ultima_alteracao, :largura_da_mascara, :codigo_da_fabrica, :referencias_do_mercado, :detalhes, :imagem, :ativo)");
         $stmt->bindParam(":descricao", $descricao);
         $stmt->bindParam(":puxadoracoplado", $puxadoracoplado);
         $stmt->bindParam(":ponteira_acoplado", $ponteira_acoplado);            
@@ -76,6 +76,7 @@
         $stmt->bindParam(":perda_bordas_retalho", $perda_bordas_retalho);
         $stmt->bindParam(":perda_corte_retalho", $perda_corte_retalho);
         $stmt->bindParam(":codigo_produto", $codigo_produto);
+        $stmt->bindParam(":quantidade", $quantidade);
         $stmt->bindParam(":ultima_alteracao", $ultima_alteracao);
         $stmt->bindParam(":largura_da_mascara", $largura_da_mascara);
         $stmt->bindParam(":codigo_da_fabrica", $codigo_da_fabrica);

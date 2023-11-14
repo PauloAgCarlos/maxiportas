@@ -102,6 +102,7 @@
                             </div>
 
                             <div class="block-content"> 
+                                Quantidade: <span class="fs-sm text-muted"><?php echo addslashes($row_esquadretas_id['quantidade']); ?></span><br>
                                 Agregar: <span class="fs-sm text-muted"><?php echo addslashes($row_esquadretas_id['agregar']); ?></span><br>
                                 Valor (Unitário): <span class="fs-sm text-muted"><?php echo addslashes($row_esquadretas_id['valor_unitario']); ?></span><br>
                                 Código da Fábrica: <span class="fs-sm text-muted"><?php echo addslashes($row_esquadretas_id['codigo_da_fabrica']); ?></span>    

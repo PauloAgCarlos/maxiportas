@@ -4,6 +4,7 @@
 
         $descricao = addslashes($_POST['descricao']);
         $codigo_produto = addslashes($_POST['codigo_produto']);
+        $quantidade = addslashes($_POST['quantidade']);
         $medida_inicial = addslashes($_POST['medida_inicial']); 
         $medida_final = addslashes($_POST['medida_final']); 
         $quantidade_de_furos = addslashes($_POST['quantidade_de_furos']);      
@@ -20,9 +21,10 @@
           $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
           // Consulta para inserir o usuário na tabela
-          $stmt = $pdo->prepare("INSERT INTO dobradicas (descricao, codigo_produto, medida_inicial, medida_final, quantidade_de_furos, distancia_primeiro_furo, ultima_alteracao, ativo) VALUES (:descricao, :codigo_produto, :medida_inicial, :medida_final, :quantidade_de_furos, :distancia_primeiro_furo, :ultima_alteracao, :ativo)");
+          $stmt = $pdo->prepare("INSERT INTO dobradicas (descricao, codigo_produto, quantidade, medida_inicial, medida_final, quantidade_de_furos, distancia_primeiro_furo, ultima_alteracao, ativo) VALUES (:descricao, :codigo_produto, :quantidade, :medida_inicial, :medida_final, :quantidade_de_furos, :distancia_primeiro_furo, :ultima_alteracao, :ativo)");
           $stmt->bindParam(":descricao", $descricao);
           $stmt->bindParam(":codigo_produto", $codigo_produto);
+          $stmt->bindParam(":quantidade", $quantidade);
           $stmt->bindParam(":medida_inicial", $medida_inicial);
           $stmt->bindParam(":medida_final", $medida_final);
           $stmt->bindParam(":quantidade_de_furos", $quantidade_de_furos);

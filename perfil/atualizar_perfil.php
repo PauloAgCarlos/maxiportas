@@ -77,13 +77,22 @@
                       </div>
                     </div>
                     
-                    <div class="mb-1">
-                      <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
-                      <div>
-                        <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="50" minlength="2" value="<?php echo $row_update['codigo_produto']; ?>" style="font-size: 0.9em;" required>
+                    <div style="display: flex; justify-content: space-between;">
+                      <div class="mb-1" style="width: 60%;">
+                        <label class="form-label" for="codigo_produto" style="font-size: 0.9em;">Código Produto</label> <span style="color: red;">*</span>
+                        <div>
+                          <input type="text" class="form-control" id="codigo_produto" name="codigo_produto" maxlength="50" minlength="2" value="<?php echo $row_update['codigo_produto']; ?>" style="font-size: 0.9em;" required>
+                        </div>
+                      </div>
+
+                      <div class="mb-1 ms-3">
+                        <label class="form-label" for="quantidade" style="font-size: 0.9em;">Quantidade do Produto</label>
+                        <div>
+                          <input type="text" class="form-control" id="quantidade" name="quantidade" value="<?php echo $row_update['quantidade']; ?>" style="font-size: 0.9em;">
+                        </div>
                       </div>
                     </div>
-                
+
                     <div class="mt-3 mb-3" style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1" style="display: flex; align-items: center; justify-content: center;">                      
                         <input type="checkbox" name="puxadoracoplado" id="puxadoracoplado">
@@ -109,6 +118,7 @@
                     <div class="mb-3" style="display: flex; align-items: center; justify-content: space-between;">
                       <div class="mb-1">
                         <label class="form-label" style="font-size: 0.9em;" for="agregar">Agregar </label>
+                        <select name="agregar" class="form-control" id="agregar">
                           <?php
                             require_once "../config.php";
                             $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
@@ -121,10 +131,12 @@
                             <option value="<?php echo $row_agregar['descricao'] ?>"><?php echo $row_agregar['descricao'] ?></option>
 
                           <?php }?>
+                        </select>  
                       </div>
 
                       <div class="mb-1">
                         <label class="form-label"  style="font-size: 0.9em;" for="unidade">Unidade </label>
+                        <select name="unidade" class="form-control" id="unidade">
                           <?php
                             require_once "../config.php";
                             $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
@@ -137,25 +149,32 @@
                             <option value="<?php echo $row_unidade['descricao'] ?>"><?php echo $row_unidade['descricao'] ?></option>
 
                           <?php }?>
+                        </select>
                       </div>
 
                       <div class="mb-1">
-                        <label class="form-label"  style="font-size: 0.9em;" for="vidro">Vidro </label>
-                        <select name="vidro" class="form-control" id="vidro">
-                          <?php
-                            require_once "../config.php";
-                            $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
-                            
-                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                            $selecionar_vidros = $pdo->prepare("SELECT descricao FROM vidros");
-                            $selecionar_vidros->execute();
-                            while($row_vidros = $selecionar_vidros->fetch()){
-                          ?>
-                            <option value="<?php echo $row_vidros['descricao'] ?>"><?php echo $row_vidros['descricao'] ?></option>
+    <label class="form-label" style="font-size: 0.9em;" for="vidro">Vidro </label>
+    <select name="vidro" class="form-control" id="vidro">
+        <?php
+            require_once "../config.php";
+            $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $selecionar_vidros = $pdo->prepare("SELECT descricao FROM vidros");
+            $selecionar_vidros->execute();
 
-                          <?php }?>
-                        </select>
-                      </div>
+            // Suponha que essa seja a descrição do perfil selecionado.
+            $perfil_selecionado = 'Vidro 2'; // Substitua pelo valor real
+
+            while ($row_vidros = $selecionar_vidros->fetch()) {
+                $selected = ($row_vidros['descricao'] == $perfil_selecionado) ? 'selected' : '';
+        ?>
+            <option value="<?php echo $row_vidros['descricao'] ?>" <?php echo $selected; ?>>
+                <?php echo $row_vidros['descricao'] ?>
+            </option>
+        <?php }?>
+    </select>
+</div>
+
                     </div>
 
                     <div class="mb-3" style="display: flex; align-items: center; justify-content: space-between;">

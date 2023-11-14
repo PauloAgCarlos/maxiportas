@@ -7,8 +7,8 @@
     $agregar = addslashes($_POST['agregar']);
     $unidade = addslashes($_POST['unidade']);        
     $codigo_da_fabrica = addslashes($_POST['codigo_da_fabrica']);
-    
     $codigo_produto = addslashes($_POST['codigo_produto']);
+    $quantidade = addslashes($_POST['quantidade']);
     $ponteira_obrigatoria = addslashes($_POST['ponteira_obrigatoria']);
     $referencias_do_mercado = addslashes($_POST['referencias_do_mercado']);
     $custo_metro = addslashes($_POST['custo_metro']);
@@ -43,7 +43,7 @@
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Consulta para inserir o usuário na tabela
-        $stmt = $pdo->prepare("INSERT INTO puxadores (descricao, usinagem_box_tres, medida_maxima_para_usinagem, agregar, unidade, codigo_da_fabrica, codigo_produto, ponteira_obrigatoria, referencias_do_mercado, custo_metro, markup, metragem_minima, valor, desconto_corte, perda, perda_bordas, perda_corte, dimensao, perda_bordas_retalho, perda_corte_retalho, imagem, ultima_alteracao, ativo) VALUES (:descricao, :usinagem_box_tres, :medida_maxima_para_usinagem, :agregar, :unidade, :codigo_da_fabrica, :codigo_produto, :ponteira_obrigatoria, :referencias_do_mercado, :custo_metro, :markup, :metragem_minima, :valor, :desconto_corte, :perda, :perda_bordas, :perda_corte, :dimensao, :perda_bordas_retalho, :perda_corte_retalho, :imagem, :ultima_alteracao, :ativo)");
+        $stmt = $pdo->prepare("INSERT INTO puxadores (descricao, usinagem_box_tres, medida_maxima_para_usinagem, agregar, unidade, codigo_da_fabrica, codigo_produto, quantidade, ponteira_obrigatoria, referencias_do_mercado, custo_metro, markup, metragem_minima, valor, desconto_corte, perda, perda_bordas, perda_corte, dimensao, perda_bordas_retalho, perda_corte_retalho, imagem, ultima_alteracao, ativo) VALUES (:descricao, :usinagem_box_tres, :medida_maxima_para_usinagem, :agregar, :unidade, :codigo_da_fabrica, :codigo_produto, :quantidade, :ponteira_obrigatoria, :referencias_do_mercado, :custo_metro, :markup, :metragem_minima, :valor, :desconto_corte, :perda, :perda_bordas, :perda_corte, :dimensao, :perda_bordas_retalho, :perda_corte_retalho, :imagem, :ultima_alteracao, :ativo)");
         $stmt->bindParam(":descricao", $descricao);
         $stmt->bindParam(":usinagem_box_tres", $usinagem_box_tres);
         $stmt->bindParam(":medida_maxima_para_usinagem", $medida_maxima_para_usinagem);            
@@ -51,6 +51,7 @@
         $stmt->bindParam(":unidade", $unidade);
         $stmt->bindParam(":codigo_da_fabrica", $codigo_da_fabrica);
         $stmt->bindParam(":codigo_produto", $codigo_produto);
+        $stmt->bindParam(":quantidade", $quantidade);
         $stmt->bindParam(":ponteira_obrigatoria", $ponteira_obrigatoria);
         $stmt->bindParam(":referencias_do_mercado", $referencias_do_mercado);   
         $stmt->bindParam(":custo_metro", $custo_metro);         
