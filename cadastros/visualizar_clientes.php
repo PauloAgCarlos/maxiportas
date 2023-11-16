@@ -106,23 +106,30 @@ $total_clientes = mysqli_num_rows($resultado_clientes);
     <div id="page-header-search" class="overlay-header bg-header-dark">
       <div class="bg-white-10">
         <div class="content-header">
-          <form method="POST" id="form-pesquisa" action="">
+          <!--form method="POST" id="form-pesquisa" action="">
             <div class="input-group">
               <button type="button" class="btn btn-alt-primary" data-toggle="layout" data-action="header_search_off">
                 <i class="fa fa-fw fa-times-circle"></i>
               </button>
               <input type="text" class="form-control" name="pesquisa" id="pesquisa" placeholder="Digite o nome do usuário">
             </div>
-          </form>
-          <!--form method="POST" id="form-pesquisa" action="">
-            <label>Pesquisar: </label>
-            <input type="text" name="pesquisa" id="pesquisa" placeholder="Digite o nome do usuário">
           </form-->
+          <form method="POST" id="form-pesquisa" action="">
+			<label>Pesquisar: </label>
+			<input type="text" name="pesquisa" id="pesquisa" placeholder="Digite o nome do usuário">
+		</form>
+		
+		<ul class="resultado">
+		
+		</ul>
+		
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+		<script type="text/javascript" src="personalizado.js"></script>
         </div>
       </div>
-      <ul class="resultado">
+      <!--ul class="resultado">
       
-      </ul>
+      </ul-->
       <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
 		  <script type="text/javascript" src="personalizado.js"></script>
     </div>
