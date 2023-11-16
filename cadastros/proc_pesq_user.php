@@ -1,9 +1,3 @@
-<!--style>
-	#navgation 
-	{
-		display: none;
-	}
-</style-->
 <?php
 
 $servidor = "localhost";
@@ -23,10 +17,10 @@ $resultado_user = mysqli_query($conn, $result_user);
 <table class="table table-striped table-hover table-borderless table-vcenter fs-sm resultado">
 	<thead style="text-align: center;">
 		<tr class="text-uppercase">
-			<th>CNPJ</th>
-			<th class="d-none d-xl-table-cell">Nome</th>
-			<th>Email</th>
-			<th>Ver Mais</th>
+		<th>CNPJ</th>
+		<th class="d-none d-xl-table-cell">Nome</th>
+		<th>Email</th>
+		<th>Ver Mais</th>
 		</tr>
 	</thead>
 	<tbody style="text-align: center;">
@@ -57,8 +51,8 @@ if(($resultado_user) AND ($resultado_user->num_rows != 0 )){
 				
 			</td>
 		</tr>
-	</tbody>
-</table>
+		</tbody>
+                  </table>
 <?php	}
 }else{
 	echo "Nenhum usuário encontrado ...";
