@@ -106,25 +106,14 @@ $total_clientes = mysqli_num_rows($resultado_clientes);
     <div id="page-header-search" class="overlay-header bg-header-dark">
       <div class="bg-white-10">
         <div class="content-header">
-          <!--form method="POST" id="form-pesquisa" action="">
+          <form method="POST" id="form-pesquisa" action="">
             <div class="input-group">
               <button type="button" class="btn btn-alt-primary" data-toggle="layout" data-action="header_search_off">
                 <i class="fa fa-fw fa-times-circle"></i>
               </button>
               <input type="text" class="form-control" name="pesquisa" id="pesquisa" placeholder="Digite o nome do usuário">
             </div>
-          </form-->
-          <form method="POST" id="form-pesquisa" action="">
-			<label>Pesquisar: </label>
-			<input type="text" name="pesquisa" id="pesquisa" placeholder="Digite o nome do usuário">
-		</form>
-		
-		<ul class="resultado">
-		
-		</ul>
-		
-		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-		<script type="text/javascript" src="personalizado.js"></script>
+          </form>
         </div>
       </div>
       <!--ul class="resultado">
@@ -172,7 +161,7 @@ $total_clientes = mysqli_num_rows($resultado_clientes);
                   </a>
                 </div>
                 <div class="block-content">
-                  <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
+                  <table class="table table-striped table-hover table-borderless table-vcenter fs-sm resultado">
                   <?php
                     require_once "../controllers/controllers_clientes.php";
 
@@ -199,7 +188,6 @@ $total_clientes = mysqli_num_rows($resultado_clientes);
                             
                             if(count($resul_clientes) > 0)
                             {
-
                               while($row_clientes = mysqli_fetch_assoc($resultado_clientes)){ ?>
                               <tr>
                                   <td>
@@ -224,7 +212,8 @@ $total_clientes = mysqli_num_rows($resultado_clientes);
                                   </td>
                               </tr>
 
-                        <?php } } else{ echo "<h1>Nenhum registo encontrado!</h1>"; } ?>
+                        <?php }
+                      } else{ echo "<h1>Nenhum registo encontrado!</h1>"; } ?>
                                           
                     </tbody>
                   </table>
@@ -233,7 +222,7 @@ $total_clientes = mysqli_num_rows($resultado_clientes);
                     $pagina_anterior = $pagina - 1;
                     $pagina_posterior = $pagina + 1;
                   ?>
-                <nav class="text-center">
+                <nav class="text-center" id="navgation">
                   <ul class="pagination" style="display: flex; align-items: center; justify-content: space-between; width: 20%; margin: auto;">
                     <li>
                       <?php
@@ -263,7 +252,7 @@ $total_clientes = mysqli_num_rows($resultado_clientes);
                     </li>
                   </ul>
                 </nav>
-
+                
                   <!-- Modal de confirmação -->
                   <div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-labelledby="modalConfirmacaoLabel" aria-hidden="true">
                       <div class="modal-dialog">
