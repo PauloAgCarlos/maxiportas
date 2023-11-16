@@ -20,7 +20,7 @@
     $conn = mysqli_connect($DBHOST, $DBUSER, $DBPASS, $DBNAME);
     
     //Selecionar todos os clientes da tabela
-    $result_curso = "SELECT * FROM clientes WHERE cpf_cnpj LIKE '%$valor_pesquisar%'";
+    $result_curso = "SELECT * FROM clientes WHERE cnpj LIKE '%$valor_pesquisar%' OR nome LIKE '%$valor_pesquisar%'";
     $resultado_curso = mysqli_query($conn, $result_curso);
     
     //Contar o total de clientes
@@ -36,7 +36,7 @@
     $incio = ($quantidade_pg*$pagina)-$quantidade_pg;
     
     //Selecionar os clientes a serem apresentado na página
-    $result_clientes = "SELECT * FROM clientes WHERE cpf_cnpj LIKE '%$valor_pesquisar%' limit $incio, $quantidade_pg";
+    $result_clientes = "SELECT * FROM clientes WHERE cnpj LIKE '%$valor_pesquisar%  nome LIKE '%$valor_pesquisar%' limit $incio, $quantidade_pg";
     $resultado_clientes = mysqli_query($conn, $result_clientes);
     $total_clientes = mysqli_num_rows($resultado_clientes);
 
@@ -153,7 +153,10 @@
               <!--  Latest Orders -->
               <div class="block block-rounded block-mode-loading-refresh">
                 <div class="block-header block-header-default">
-                  <h3 class="block-title">
+                  <a class="btn btn-alt-secondary" href="visualizar_clientes.php">
+                      <i class="fa fa-arrow-left me-1"></i> Visualizar Clientes
+                    </a>
+                  <h3 class="block-title text-center">
                     Resultado da Pesquisa do Cliente
                   </h3>
                   <a class="btn btn-alt-secondary" href="clientes.php">
@@ -172,7 +175,7 @@
                     { ?>
                     <thead style="text-align: center;">
                       <tr class="text-uppercase">
-                        <th>CPF/CNPF</th>
+                        <th>CNPF</th>
                         <th class="d-none d-xl-table-cell">Nome/Razão Social</th>
                         <th>Email</th>
                         <th class="d-none d-sm-table-cell text-end" style="width: 120px;">Estado</th>
@@ -193,7 +196,7 @@
                               while($row_clientes = mysqli_fetch_assoc($resultado_clientes)){ ?>
                               <tr>
                                   <td>
-                                      <span class="fw-semibold"><?php echo $row_clientes['cpf_cnpj']; ?></span>
+                                      <span class="fw-semibold"><?php echo $row_clientes['cnpj']; ?></span>
                                   </td>
                                   <td class="d-none d-xl-table-cell">
                                       <span class="fs-sm text-muted"><?php echo $row_clientes['nome_razao_socil']; ?></span>
