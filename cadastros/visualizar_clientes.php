@@ -104,19 +104,28 @@ $total_clientes = mysqli_num_rows($resultado_clientes);
 
     <!-- Header Search -->
     <div id="page-header-search" class="overlay-header bg-header-dark">
-          <div class="bg-white-10">
-            <div class="content-header">
-              <form class="w-100" action="pesquisar_clientes.php" method="GET">
-                <div class="input-group">
-                  <button type="button" class="btn btn-alt-primary" data-toggle="layout" data-action="header_search_off">
-                    <i class="fa fa-fw fa-times-circle"></i>
-                  </button>
-                  <input type="text" class="form-control border-0" placeholder="Pesquisar por: CNPF" id="page-header-search-input" name="pesquisar">
-                </div>
-              </form>
+      <div class="bg-white-10">
+        <div class="content-header">
+          <form method="POST" id="form-pesquisa" action="">
+            <div class="input-group">
+              <button type="button" class="btn btn-alt-primary" data-toggle="layout" data-action="header_search_off">
+                <i class="fa fa-fw fa-times-circle"></i>
+              </button>
+              <input type="text" class="form-control" name="pesquisa" id="pesquisa" placeholder="Digite o nome do usuário">
             </div>
-          </div>
+          </form>
+          <!--form method="POST" id="form-pesquisa" action="">
+            <label>Pesquisar: </label>
+            <input type="text" name="pesquisa" id="pesquisa" placeholder="Digite o nome do usuário">
+          </form-->
         </div>
+      </div>
+      <ul class="resultado">
+      
+      </ul>
+      <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+		  <script type="text/javascript" src="personalizado.js"></script>
+    </div>
         <!-- END Header Search -->
     <!-- END Right Section -->
     </div>

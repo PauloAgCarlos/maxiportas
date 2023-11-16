@@ -20,7 +20,7 @@
     $conn = mysqli_connect($DBHOST, $DBUSER, $DBPASS, $DBNAME);
     
     //Selecionar todos os clientes da tabela
-    $result_curso = "SELECT * FROM clientes WHERE cnpj LIKE '%$valor_pesquisar%' OR nome LIKE '%$valor_pesquisar%'";
+    $result_curso = "SELECT * FROM clientes WHERE cnpj LIKE '%$valor_pesquisar%' OR nome LIKE '%$valor_pesquisar%' OR email LIKE '%$valor_pesquisar%'";
     $resultado_curso = mysqli_query($conn, $result_curso);
     
     //Contar o total de clientes
@@ -36,7 +36,7 @@
     $incio = ($quantidade_pg*$pagina)-$quantidade_pg;
     
     //Selecionar os clientes a serem apresentado na página
-    $result_clientes = "SELECT * FROM clientes WHERE cnpj LIKE '%$valor_pesquisar%  nome LIKE '%$valor_pesquisar%' limit $incio, $quantidade_pg";
+    $result_clientes = "SELECT * FROM clientes WHERE cnpj LIKE '%$valor_pesquisar%' OR nome LIKE '%$valor_pesquisar%' OR email LIKE '%$valor_pesquisar%' limit $incio, $quantidade_pg";
     $resultado_clientes = mysqli_query($conn, $result_clientes);
     $total_clientes = mysqli_num_rows($resultado_clientes);
 
@@ -176,7 +176,7 @@
                     <thead style="text-align: center;">
                       <tr class="text-uppercase">
                         <th>CNPF</th>
-                        <th class="d-none d-xl-table-cell">Nome/Razão Social</th>
+                        <th class="d-none d-xl-table-cell">Nome</th>
                         <th>Email</th>
                         <th class="d-none d-sm-table-cell text-end" style="width: 120px;">Estado</th>
                         <th>Ver Mais</th>
@@ -199,7 +199,7 @@
                                       <span class="fw-semibold"><?php echo $row_clientes['cnpj']; ?></span>
                                   </td>
                                   <td class="d-none d-xl-table-cell">
-                                      <span class="fs-sm text-muted"><?php echo $row_clientes['nome_razao_socil']; ?></span>
+                                      <span class="fs-sm text-muted"><?php echo $row_clientes['nome']; ?></span>
                                   </td>
                                   <td>
                                       <span class="fw-semibold"><?php echo $row_clientes['email']; ?></span>
