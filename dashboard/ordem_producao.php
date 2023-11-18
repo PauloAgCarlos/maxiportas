@@ -33,6 +33,8 @@
     <!-- END Icons -->
 
     <link rel="stylesheet" id="css-main" href="../assets/css/dashmix.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     
     <!--SwitAlert Success ao Atualizar-->
@@ -128,60 +130,40 @@
                         </div>
                         <div class="col-md-3">Cliente
                             <div  style="display: flex; justify-content: space-between">
-                                <input type="text" readonly class="form-control mb-2" id="id_clienteinput" name="cliente" style="border: none; background-color: white; width: 100%;">
+                                <input type="text" readonly class="form-control mb-2" id="selectedNameInput" name="cliente" style="border: none; background-color: white; width: 100%;">
                                 <?php
                                     echo "
-                                        <button class='btn' type='button' class='ms-1' style='Amargin-right: 15px; border: none; background-color: transparent; border-radius: 1000px; width: 5px;' onclick='abrirModalCliente(2)' data-toggle='modal' data-target='#myModalCliente'>
+                                        <button class='btn' type='button' class='ms-1' id='openModalBtn' style='Amargin-right: 15px; border: none; background-color: transparent; border-radius: 1000px; width: 5px;'>
                                             <img src='../assets/svg/icons8-pesquisar.svg' width='25px' alt=''>
                                         </button>"
                                     ;
                                 ?>
                             </div>
                         </div>
-                        <!-- Modal Cliente -->
-                        <div class="modal fade" id="myModalCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                <div class="modal-header" style="background-color: #33cc66;">
-                                    <h5 class="modal-title" id="exampleModalLabel">Clientes Registados no Sistema</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <ul>
-                                        <?php
-                                            require_once "../config.php";
-                                            $conn = new mysqli($DBHOST, $DBUSER, $DBPASS, $DBNAME);
-                                            $query = 'SELECT id, nome FROM tbl_clientes_system ORDER BY id DESC';
-                                            $result = $conn->query($query);
 
-                                            if ($result->num_rows > 0) {
-                                                while ($row = $result->fetch_assoc()) {
-                                                echo '<li  style="color: #000; font-size: 1.1em;" data-bs-dismiss="modal"><a href="#" style="text-decoration: none; color: black;" class="select-data">'. $row['nome'] . '</a></li>';
-                                                }
-                                            }
-                                        ?>
-                                    </ul>
-                                </div>
-                                </div>
+                        <!-- O modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Clientes Registados no Sistema</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Campo de pesquisa com autocompletar >
+                                <label for="searchInput" class="form-label">Pesquisar:</label-->
+                                <input type="text" id="searchInput" class="form-control" placeholder="Digite para pesquisar...">
+                                <ul id="databaseNamesList" class="list-group mt-2">
+                                <!-- Lista de nomes do banco de dados será exibida aqui -->
+                                </ul>
+                            </div>
                             </div>
                         </div>
-                        <script>
-                            function abrirModalCliente(idProduto) {
-                                idProdutoParaExcluir = idProduto;
-                                const modal = new bootstrap.Modal(document.getElementById('myModalCliente'), {});
-                                modal.show();
-                            }
-                            document.querySelectorAll('.select-data').forEach(item => {
-                            item.addEventListener('click', event => {
-                                event.preventDefault();
-                                const selectedData = item.innerText;
-                                const input = document.getElementById('id_clienteinput');
-                                input.value = selectedData;
-                                $('#myModalCliente').modal('hide');
-                                });
-                            });
-                            </script>
-                        <!-- Last Modal Cliente -->
+                        </div>
+
+                        <script src="scriptAutoComplet.js"></script>
+
+
 
                         <div class="col-md-3">Nome Consumidor
                             <!-- <form action="" method="post"> -->
