@@ -7,7 +7,7 @@ if ($conn->connect_error) {
 }
 
 // Consulta SQL para obter todos os dados do banco de dados (substitua pela sua consulta real)
-$sql = "SELECT * FROM tbl_clientes_system";
+$sql = "SELECT * FROM tbl_clientes_system ORDER BY nome";
 $result = $conn->query($sql);
 
 $data = array();

@@ -3,21 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" id="css-main" href="../assets/css/dashmix.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <title>Modal com PHP e Auto Completar</title>
 </head>
 <body>
 
-
-
-<?php require_once "../template/sidebar.php" ?>
-
-<?php require_once "../template/header.php" ?>
-
 <!-- Botão para abrir o modal -->
-<button type="button" id="openModalBtn" class="btn btn-primary">Abrir Modal</button>
+<button id="openModalBtn" class="btn btn-primary">Abrir Modal</button>
 
 <!-- O modal -->
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -43,7 +37,5 @@
 <input type="text" id="selectedNameInput" class="form-control mt-3" placeholder="Nome selecionado" readonly>
 
 <script src="script.js"></script>
-
-<?php require_once "../template/footer.php"; ?>
 </body>
 </html>

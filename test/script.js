@@ -21,6 +21,9 @@ function fetchData() {
     url: 'getData.php',
     type: 'GET',
     dataType: 'json',
+    data: {
+      searchTerm: searchInput.value
+    },
     success: function(data) {
       // Limpar a lista antes de adicionar os novos itens
       databaseNamesList.innerHTML = '';
@@ -54,6 +57,9 @@ function autoComplete(searchTerm) {
     url: 'getData.php',
     type: 'GET',
     dataType: 'json',
+    data: {
+      searchTerm: searchTerm
+    },
     success: function(data) {
       var filteredResults = data.filter(function(item) {
         return item.toLowerCase().includes(searchTerm);

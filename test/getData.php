@@ -11,20 +11,23 @@ if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
-// Consulta SQL para obter todos os dados do banco de dados (substitua pela sua consulta real)
-$sql = "SELECT * FROM tbl_clientes_system";
+// Parâmetro de pesquisa
+$searchTerm = $_GET['searchTerm'];
+
+// Consulta SQL para obter dados do banco de dados com base no campo específico (substitua pela sua consulta real)
+$sql = "SELECT * FROM tbl_clientes_system WHERE nome LIKE '%$searchTerm%' OR cep LIKE '%$searchTerm%'"; // Substitua 'campo' pelo nome do campo que deseja pesquisar
 $result = $conn->query($sql);
 
-$data = array();
+$databaseNames = array();
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $data[] = $row['nome']; // Substitua 'nome_coluna' pelo nome da coluna que deseja exibir
+        $databaseNames[] = "Nome: ". $row['nome'] . " CEP: " . $row['cep'];
     }
 }
 
 $conn->close();
 
-// Retorna os dados em formato JSON
-echo json_encode($data);
+// Retorna os nomes do banco de dados em formato JSON
+echo json_encode($databaseNames);
 ?>
