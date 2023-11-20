@@ -71,6 +71,13 @@ $total_clientes = mysqli_num_rows($resultado_clientes);
     <!--SwitAlert Success ao Cadastrar-->
     <script src="../assets/js/cdn.jsdelivr.net_npm_sweetalert2@11.0.18_dist_sweetalert2.all.min.js"></script>
 
+
+    <style>
+    .ocultar {
+      display: block;
+    }
+  </style>
+  
   </head>
   <body>
     <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
@@ -222,7 +229,7 @@ $total_clientes = mysqli_num_rows($resultado_clientes);
                     $pagina_anterior = $pagina - 1;
                     $pagina_posterior = $pagina + 1;
                   ?>
-                <nav class="text-center" id="navgation">
+                <nav class="text-center ocultar" id="navgation">
                   <ul class="pagination" style="display: flex; align-items: center; justify-content: space-between; width: 20%; margin: auto;">
                     <li>
                       <?php
@@ -252,6 +259,21 @@ $total_clientes = mysqli_num_rows($resultado_clientes);
                     </li>
                   </ul>
                 </nav>
+
+                <script>
+                  document.addEventListener('DOMContentLoaded', function () {
+                    var inputElement = document.getElementById('pesquisa');
+                    var divElement = document.getElementById('navgation');
+
+                    inputElement.addEventListener('focus', function () {
+                      divElement.style.display = 'none';
+                    });
+
+                    inputElement.addEventListener('blur', function () {
+                      divElement.style.display = 'block';
+                    });
+                  });
+                </script>
                 
                   <!-- Modal de confirmação -->
                   <div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-labelledby="modalConfirmacaoLabel" aria-hidden="true">
