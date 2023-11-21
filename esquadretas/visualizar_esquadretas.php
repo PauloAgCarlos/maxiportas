@@ -280,7 +280,7 @@ $total_esquadretas = mysqli_num_rows($resultado_esquadretas);
                                 <button type="button" class="btn-close bg-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                Tem certeza de que deseja eliminar este Vidro?
+                                Tem certeza de que deseja eliminar esta Esquadreta?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
