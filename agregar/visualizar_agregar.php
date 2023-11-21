@@ -72,6 +72,11 @@ $total_agregar = mysqli_num_rows($resultado_agregar);
     <!--SwitAlert Success ao Cadastrar-->
     <script src="../assets/js/cdn.jsdelivr.net_npm_sweetalert2@11.0.18_dist_sweetalert2.all.min.js"></script>
 
+    <style>
+    .ocultar {
+      display: block;
+    }
+  </style>
   </head>
   <body>
     <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
@@ -102,20 +107,24 @@ $total_agregar = mysqli_num_rows($resultado_agregar);
 
     <!-- Header Search -->
     <div id="page-header-search" class="overlay-header bg-header-dark">
-          <div class="bg-white-10">
-            <div class="content-header">
-              <form class="w-100" action="pesquisar_agregar.php" method="GET">
-                <div class="input-group">
-                  <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                  <button type="button" class="btn btn-alt-primary" data-toggle="layout" data-action="header_search_off">
-                    <i class="fa fa-fw fa-times-circle"></i>
-                  </button>
-                  <input type="text" class="form-control border-0" placeholder="Pesquisar por: Código Produto" id="page-header-search-input" name="pesquisar">
-                </div>
-              </form>
+      <div class="bg-white-10">
+        <div class="content-header">
+          <form method="POST" id="form-pesquisa" action="">
+            <div class="input-group">
+              <button type="button" class="btn btn-alt-primary" data-toggle="layout" data-action="header_search_off">
+                <i class="fa fa-fw fa-times-circle"></i>
+              </button>
+              <input type="text" class="form-control" name="pesquisa" id="pesquisa" placeholder="Digite o nome do usuário">
             </div>
-          </div>
+          </form>
         </div>
+      </div>
+      <!--ul class="resultado">
+      
+      </ul-->
+      <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+		  <script type="text/javascript" src="personalizado.js"></script>
+    </div>
         <!-- END Header Search -->
     <!-- END Right Section -->
     </div>
@@ -154,7 +163,7 @@ $total_agregar = mysqli_num_rows($resultado_agregar);
                   </a>
                 </div>
                 <div class="table-responsive">
-                  <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
+                  <table class="table table-striped table-hover table-borderless table-vcenter fs-sm resultado">
                   <?php
                     require_once "../controllers/controllers_agregar.php";
 
@@ -183,7 +192,7 @@ $total_agregar = mysqli_num_rows($resultado_agregar);
                               while($row_agregar = mysqli_fetch_assoc($resultado_agregar)){ ?>
                                 <tr style="text-align: center;">
                                   <!-- <td>
-                                      <span class="fw-semibold"><?php echo $row_agregar['codigo_produto']; ?></span>
+                                      <span class="fw-semibold"><php echo $row_agregar['codigo_produto']; ?></span>
                                   </td> -->
                                   <td>
                                     <span class="fs-sm text-muted"><?php echo $row_agregar['descricao'];?></span>
@@ -191,9 +200,6 @@ $total_agregar = mysqli_num_rows($resultado_agregar);
                                   <td>
                                     <?php echo $row_agregar['ultima_alteracao']; ?>
                                   </td>
-                                  <!-- <td>
-                                      <span class="fw-semibold"><?php echo $row_agregar['valor']; ?></span>
-                                  </td> -->
                                   <td class="text-center text-nowrap fw-medium" style="display: flex; justify-content: center; align-items: center;">
 
                                     <a href="vermais_agregar.php?view_agregar=<?php $idCriptografado = base64_encode($row_agregar['id']); echo $idCriptografado;?>">
@@ -216,7 +222,7 @@ $total_agregar = mysqli_num_rows($resultado_agregar);
                   $pagina_anterior = $pagina - 1;
                   $pagina_posterior = $pagina + 1;
                 ?>
-                <nav class="text-center">
+                <nav class="text-center ocultar" id="navgation">
                   <ul class="pagination">
                     <li>
                       <?php
@@ -246,6 +252,21 @@ $total_agregar = mysqli_num_rows($resultado_agregar);
                     </li>
                   </ul>
                 </nav>
+
+                <script>
+                  document.addEventListener('DOMContentLoaded', function () {
+                    var inputElement = document.getElementById('pesquisa');
+                    var divElement = document.getElementById('navgation');
+
+                    inputElement.addEventListener('focus', function () {
+                      divElement.style.display = 'none';
+                    });
+
+                    inputElement.addEventListener('blur', function () {
+                      divElement.style.display = 'block';
+                    });
+                  });
+                </script>
 
                 <!-- Modal de confirmação -->
                 <div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-labelledby="modalConfirmacaoLabel" aria-hidden="true">
