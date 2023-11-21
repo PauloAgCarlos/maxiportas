@@ -71,6 +71,11 @@ $total_linha_de_produto = mysqli_num_rows($resultado_linha_de_produto);
     <!--SwitAlert Success ao Cadastrar-->
     <script src="../assets/js/cdn.jsdelivr.net_npm_sweetalert2@11.0.18_dist_sweetalert2.all.min.js"></script>
 
+    <style>
+    .ocultar {
+      display: block;
+    }
+  </style>
   </head>
   <body>
     <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
@@ -101,20 +106,24 @@ $total_linha_de_produto = mysqli_num_rows($resultado_linha_de_produto);
 
     <!-- Header Search -->
     <div id="page-header-search" class="overlay-header bg-header-dark">
-          <div class="bg-white-10">
-            <div class="content-header">
-              <form class="w-100" action="pesquisar_linha_de_produto.php" method="GET">
-                <div class="input-group">
-                  <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                  <button type="button" class="btn btn-alt-primary" data-toggle="layout" data-action="header_search_off">
-                    <i class="fa fa-fw fa-times-circle"></i>
-                  </button>
-                  <input type="text" class="form-control border-0" placeholder="Pesquisar por: ID" id="page-header-search-input" name="pesquisar">
-                </div>
-              </form>
+      <div class="bg-white-10">
+        <div class="content-header">
+          <form method="POST" id="form-pesquisa" action="">
+            <div class="input-group">
+              <button type="button" class="btn btn-alt-primary" data-toggle="layout" data-action="header_search_off">
+                <i class="fa fa-fw fa-times-circle"></i>
+              </button>
+              <input type="text" class="form-control" name="pesquisa" id="pesquisa" placeholder="Pesquisar...">
             </div>
-          </div>
+          </form>
         </div>
+      </div>
+      <!--ul class="resultado">
+      
+      </ul-->
+      <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+		  <script type="text/javascript" src="personalizado.js"></script>
+    </div>
         <!-- END Header Search -->
     <!-- END Right Section -->
     </div>
@@ -154,7 +163,7 @@ $total_linha_de_produto = mysqli_num_rows($resultado_linha_de_produto);
                   </a>
                 </div>
                 <div class="table-responsive">
-                  <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
+                  <table class="table table-striped table-hover table-borderless table-vcenter fs-sm resultado">
                   <?php
                     require_once "../controllers/controllers_linha_de_produto.php";
 
@@ -208,7 +217,7 @@ $total_linha_de_produto = mysqli_num_rows($resultado_linha_de_produto);
                     $pagina_anterior = $pagina - 1;
                     $pagina_posterior = $pagina + 1;
                   ?>
-                <nav class="text-center">
+                <nav class="text-center ocultar" id="navgation">
                   <ul class="pagination" style="display: flex; align-items: center; justify-content: space-between; width: 20%; margin: auto;">
                     <li>
                       <?php
@@ -238,6 +247,21 @@ $total_linha_de_produto = mysqli_num_rows($resultado_linha_de_produto);
                     </li>
                   </ul>
                 </nav>
+
+                <script>
+                  document.addEventListener('DOMContentLoaded', function () {
+                    var inputElement = document.getElementById('pesquisa');
+                    var divElement = document.getElementById('navgation');
+
+                    inputElement.addEventListener('focus', function () {
+                      divElement.style.display = 'none';
+                    });
+
+                    inputElement.addEventListener('blur', function () {
+                      divElement.style.display = 'block';
+                    });
+                  });
+                </script>
 
                   <!-- Modal de confirmação -->
                   <div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-labelledby="modalConfirmacaoLabel" aria-hidden="true">
