@@ -118,7 +118,7 @@ $total_clientes = mysqli_num_rows($resultado_clientes);
               <button type="button" class="btn btn-alt-primary" data-toggle="layout" data-action="header_search_off">
                 <i class="fa fa-fw fa-times-circle"></i>
               </button>
-              <input type="text" class="form-control" name="pesquisa" id="pesquisa" placeholder="Digite o nome do usuário">
+              <input type="text" class="form-control" name="pesquisa" id="pesquisa" placeholder="Pesquisar...">
             </div>
           </form>
         </div>

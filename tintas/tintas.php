@@ -84,12 +84,12 @@
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                      
                       <div class="mb-1">
-                        <label class="form-label"  style="font-size: 0.9em;" for="custo">Custo (R$ / grama) <span style="color: red;">*</span> </label>
+                        <label class="form-label"  style="font-size: 0.9em;" for="custo">Custo (R$ / grama) </label>
                         <input type="text" value="0" class="form-control" id="custo" name="custo" placeholder="0,00" style="font-size: 0.9em;">
                       </div>
 
                       <div class="mb-1">
-                        <label class="form-label" for="codigo_da_fabrica" style="font-size: 0.9em;">Código da Fabrica</label> <span style="color: red;">*</span>
+                        <label class="form-label" for="codigo_da_fabrica" style="font-size: 0.9em;">Código da Fabrica</label> 
                       <div>
                         <input type="text" value="0" class="form-control" id="codigo_da_fabrica" name="codigo_da_fabrica" maxlength="50" minlength="2" placeholder="Código Produto" style="font-size: 0.9em;">
                       </div>
@@ -109,7 +109,7 @@
                     <div class="mb-3" style="display: flex; align-items: center; justify-content: space-around;">
                     
                       <div class="mb-1">
-                        <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração <span style="color: red;">*</span> </label>
+                        <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração </label>
                         <input type="date" class="form-control" id="ultima_alteracao" name="ultima_alteracao"  style="font-size: 0.8em;">
                       </div>
 
