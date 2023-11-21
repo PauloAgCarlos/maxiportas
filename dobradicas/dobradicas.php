@@ -116,7 +116,7 @@
                         </div>
 
                         <div class="mb-1 ms-5">
-                          <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração <span style="color: red;">*</span> </label>
+                          <label class="form-label" style="font-size: 0.8em;" for="ultima_alteracao">Última Alteração </label>
                           <input type="date" class="form-control" id="ultima_alteracao" name="ultima_alteracao"  style="font-size: 0.8em;">
                         </div>
 
