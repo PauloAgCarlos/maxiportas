@@ -84,12 +84,12 @@
                     <div style="display: flex; align-items: center; justify-content: space-between;">
 
                       <div class="mb-1">
-                        <label class="form-label" style="font-size: 0.9em;" for="valor">Valor <span style="color: red;">*</span> </label>
+                        <label class="form-label" style="font-size: 0.9em;" for="valor">Valor </label>
                         <input type="text" class="form-control ms-3" id="valor" name="valor" placeholder="0,00" style="font-size: 0.9em;">
                       </div>
                     </div>
                     <div class="mb-1">
-                        <label class="form-label" style="font-size: 0.8em;" for="observacao">Observação <span style="color: red;">*</span> </label>
+                        <label class="form-label" style="font-size: 0.8em;" for="observacao">Observação </label>
                         <textarea name="observacao" id="observacao" class="form-control" cols="1" rows="1" style="font-size: 0.9em;"></textarea>
                       </div>
                   </div>
