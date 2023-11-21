@@ -199,7 +199,7 @@ $total_parceiros = mysqli_num_rows($resultado_parceiros);
                                   </td>
                                   <td class="text-center text-nowrap fw-medium" style="display: flex; justify-content: center; align-items: center;">
 
-                                      <a href="vermais_clientes.php?view_clientes=<?php $idCriptografado = base64_encode($row_parceiros['id']); echo $idCriptografado; ?>">
+                                      <a href="vermais_parceiros.php?view_parceiros=<?php $idCriptografado = base64_encode($row_parceiros['id']); echo $idCriptografado; ?>">
                                           <i class="fa fa-eye me-1 opacity-50"></i>
                                       </a>
                                       
