@@ -71,6 +71,11 @@ $total_parceiros = mysqli_num_rows($resultado_parceiros);
     <!--SwitAlert Success ao Cadastrar-->
     <script src="../assets/js/cdn.jsdelivr.net_npm_sweetalert2@11.0.18_dist_sweetalert2.all.min.js"></script>
 
+    <style>
+    .ocultar {
+      display: block;
+    }
+  </style>
   </head>
   <body>
     <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow">
@@ -83,43 +88,41 @@ $total_parceiros = mysqli_num_rows($resultado_parceiros);
     <div class="content-header">
     <!-- Left Section -->
     <div class="space-x-1">
-        <!-- Toggle Sidebar -->
-        <!-- Layout API, functionality initialized in Template._uiApiLayout()-->
-        <button type="button" class="btn btn-alt-secondary" data-toggle="layout" data-action="sidebar_toggle">
+      <!-- Toggle Sidebar -->
+      <!-- Layout API, functionality initialized in Template._uiApiLayout()-->
+      <button type="button" class="btn btn-alt-secondary" data-toggle="layout" data-action="sidebar_toggle">
         <i class="fa fa-fw fa-bars"></i>
-        </button>
-         <!-- Open Search Section -->
-            <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-            <button type="button" class="btn btn-alt-secondary" data-toggle="layout" data-action="header_search_on">
-              <i class="fa fa-fw opacity-50 fa-search"></i> <span class="ms-1 d-none d-sm-inline-block">Pesquisar</span>
-            </button>
-            <!-- END Open Search Section -->
-        
-        <!-- END Toggle Sidebar -->
+      </button>
+      
+      <button type="button" class="btn btn-alt-secondary" data-toggle="layout" data-action="header_search_on">
+        <i class="fa fa-fw opacity-50 fa-search"></i> <span class="ms-1 d-none d-sm-inline-block">Pesquisar</span>
+      </button>
+      
+      <!-- END Toggle Sidebar -->
     </div>
     <!-- END Left Section -->
 
     <?php require_once "../template/btn_logout.php"; ?>
 
-
     <!-- Header Search -->
     <div id="page-header-search" class="overlay-header bg-header-dark">
-          <div class="bg-white-10">
-            <div class="content-header">
-              <form class="w-100" action="pesquisar_parceiros.php" method="GET">
-                <div class="input-group">
-                  <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                  <button type="button" class="btn btn-alt-primary" data-toggle="layout" data-action="header_search_off">
-                    <i class="fa fa-fw fa-times-circle"></i>
-                  </button>
-                  <input type="text" class="form-control border-0" placeholder="Pesquisar por: CNPJ" id="page-header-search-input" name="pesquisar">
-                </div>
-              </form>
+      <div class="bg-white-10">
+        <div class="content-header">
+          <form method="POST" id="form-pesquisa" action="">
+            <div class="input-group">
+              <button type="button" class="btn btn-alt-primary" data-toggle="layout" data-action="header_search_off">
+                <i class="fa fa-fw fa-times-circle"></i>
+              </button>
+              <input type="text" class="form-control" name="pesquisa" id="pesquisa" placeholder="Digite o nome do usuário">
             </div>
-          </div>
+          </form>
         </div>
-        <!-- END Header Search -->
-    <!-- END Right Section -->
+      </div>
+      <!--ul class="resultado">
+      
+      </ul-->
+      <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+		  <script type="text/javascript" src="personalizado.js"></script>
     </div>
     <!-- END Header Content -->
 
@@ -156,19 +159,20 @@ $total_parceiros = mysqli_num_rows($resultado_parceiros);
                   </a>
                 </div>
                 <div class="table-responsive">
-                  <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
+                <table class="table table-striped table-hover table-borderless table-vcenter fs-sm resultado">
                   <?php
                     require_once "../controllers/controllers_parceiros.php";
 
                     $selecionar_parceiros = new controllers_parceiros();
-                    $result_parceiros = $selecionar_parceiros->selecionar_parceiros();
-                    if(count($result_parceiros) > 0)
+                    $resul_parceiros = $selecionar_parceiros->selecionar_parceiros();
+                    
+                    if(count($resul_parceiros) > 0)
                     { ?>
                     <thead style="text-align: center;">
                       <tr class="text-uppercase">
                         <th>CNPJ</th>
-                        <th>Nome</th>
-                        <th>Nome Fantasia</th>
+                        <th class="d-none d-xl-table-cell">Nome</th>
+                        <th>Email</th>
                         <th>Ver Mais</th>
                       </tr>
                     </thead>
@@ -178,37 +182,37 @@ $total_parceiros = mysqli_num_rows($resultado_parceiros);
                             require_once "../controllers/controllers_parceiros.php";
 
                             $selecionar_parceiros = new controllers_parceiros();
-                            $result_parceiros = $selecionar_parceiros->selecionar_parceiros();
-                            if(count($result_parceiros) > 0)
+                            $resul_parceiros = $selecionar_parceiros->selecionar_parceiros();
+                            
+                            if(count($resul_parceiros) > 0)
                             {
-
                               while($row_parceiros = mysqli_fetch_assoc($resultado_parceiros)){ ?>
-                                <tr style="text-align: center;">
+                              <tr>
                                   <td>
                                       <span class="fw-semibold"><?php echo $row_parceiros['cnpj']; ?></span>
                                   </td>
-                                  <td>
-                                    <span class="fs-sm text-muted"><?php echo $row_parceiros['nome'];?></span>
+                                  <td class="d-none d-xl-table-cell">
+                                      <span class="fs-sm text-muted"><?php echo $row_parceiros['nome']; ?></span>
                                   </td>
                                   <td>
-                                    <?php echo $row_parceiros['fantasia']; ?>
+                                      <span class="fw-semibold"><?php echo $row_parceiros['email']; ?></span>
                                   </td>
                                   <td class="text-center text-nowrap fw-medium" style="display: flex; justify-content: center; align-items: center;">
 
-                                    <a href="vermais_parceiros.php?view_parceiros=<?php $idCriptografado = base64_encode($row_parceiros['id']); echo $idCriptografado;?>">
-                                        <i class="fa fa-eye me-1 opacity-50"></i>
-                                    </a>
-
-                                    <?php
+                                      <a href="vermais_clientes.php?view_clientes=<?php $idCriptografado = base64_encode($row_parceiros['id']); echo $idCriptografado; ?>">
+                                          <i class="fa fa-eye me-1 opacity-50"></i>
+                                      </a>
+                                      
+                                      <?php
                                        echo "<button class='btn' onclick='abrirModal(".$row_parceiros['id'].")'><i class='fa fa-fw fa-times text-danger'></i></button>";
-                                    ?>
+                                      ?>
+                                      
                                   </td>
-                                </tr>
+                              </tr>
 
-                          <?php } } else
-                          {
-                            echo "<h1>Nenhum registo encontrado!</h1>";
-                          } ?>                      
+                        <?php }
+                      } else{ echo "<h1>Nenhum registo encontrado!</h1>"; } ?>
+                                          
                     </tbody>
                   </table>
                   <?php
@@ -216,7 +220,7 @@ $total_parceiros = mysqli_num_rows($resultado_parceiros);
                     $pagina_anterior = $pagina - 1;
                     $pagina_posterior = $pagina + 1;
                   ?>
-                <nav class="text-center">
+                <nav class="text-center ocultar" id="navgation">
                   <ul class="pagination" style="display: flex; align-items: center; justify-content: space-between; width: 20%; margin: auto;">
                     <li>
                       <?php
@@ -246,6 +250,21 @@ $total_parceiros = mysqli_num_rows($resultado_parceiros);
                     </li>
                   </ul>
                 </nav>
+
+                <script>
+                  document.addEventListener('DOMContentLoaded', function () {
+                    var inputElement = document.getElementById('pesquisa');
+                    var divElement = document.getElementById('navgation');
+
+                    inputElement.addEventListener('focus', function () {
+                      divElement.style.display = 'none';
+                    });
+
+                    inputElement.addEventListener('blur', function () {
+                      divElement.style.display = 'block';
+                    });
+                  });
+                </script>
 
                 </div>
 
