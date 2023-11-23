@@ -68,7 +68,7 @@
 
                   <div style="margin: 5px; display: flex; justify-content: right;">
                     <div>   
-                        <form action="pdf_solicitacaocliente.php" method="post" id="resultForm">
+                        <form action="pdf_solicitacaocliente.php" target="_blank" method="post" id="resultForm">
                             <input type="hidden" id="selectedIds" name="selectedIds">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 0 5px 16px;">

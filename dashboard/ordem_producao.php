@@ -34,7 +34,7 @@
 
     <link rel="stylesheet" id="css-main" href="../assets/css/dashmix.min.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!--script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script-->
 
     
     <!--SwitAlert Success ao Atualizar-->
@@ -74,10 +74,10 @@
                     <div>                    
                         <!-- <button type="submit" name="btn_incluir" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;">    <a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Incluir</a>
                         </button> -->                        
-                        <form action="pdf_ordemProducao.php" method="post">
+                        <form action="pdf_ordemProducao.php" target="_blank" method="post">
                             <!-- <php $id_unik = uniqid(); ?> -->
                             <input type="hidden" name="id_ordemProducao" id="idDoForm1" value="<?php if(!empty($_GET['id_filter'])){ echo $_GET['id_filter'];} ?>" >
-                            <div class="btn-group">
+                            <div class="btn-group"> 
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 0 5px 16px;">
                                 <a style="color: #1d1d1d; font-size: 0.9em;"  style="text-decoration: none;"  href="#" role="button" aria-expanded="false">Imprimir <img src="../assets/img/icons8-ordem-descendente-24.png" width="16px" alt=""></a>
                                 </button>
