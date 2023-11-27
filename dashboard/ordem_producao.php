@@ -856,7 +856,7 @@
                                                 <div class="col-md-4">
                                                     <div>
                                                         <label for="valoritem-cliente">Valor Item - Cliente</label>
-                                                        <input type="number" class="form-control mb-2" name="valor_item_cliente" id="" placeholder="0,00">
+                                                        <input type="number" class="form-control mb-2" name="portas_valor_item_cliente" id="" placeholder="0,00">
                                                     </div>
                                                 </div>
                                                 
