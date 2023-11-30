@@ -393,7 +393,7 @@ foreach ($tbl_ordem_producao as $row_odermproducao) {
         foreach ($tbl_clientes_system as $row_tbl_clientes_system) {
 
             $pdf->writeHTMLCell(350, 0, 0, 28, '<table style="font-size: 10px;"><thead style="border: 1px solid black;"><tr style="font-weight: bold;"><th>OP</th><th>Dt.Pedido</th><th>Parceiro</th><th>Cliente</th><th>Valor</th></tr></thead>
-            <tbody><tr><td>22546</td><td>'.$data.'</td><td>HJ Alumínios</td><td>'.$row_tbl_clientes_system['nome'].'</td><td>955,84</td></tr><tr><td>22546</td><td>'.$data.'</td><td>HJ Alumínios</td><td>ANDERSON DIEGO GOMES</td><td>955,84</td></tr><tr><td>22546</td><td>'.$data.'</td><td>HJ Alumínios</td><td>ANDERSON DIEGO GOMES</td><td>955,84</td></tr><tr><td>22546</td><td>'.$data.'</td><td>HJ Alumínios</td><td>ANDERSON DIEGO GOMES</td><td>955,84</td></tr></tbody></table>');
+            <tbody><tr><td>22546</td><td>'.$data.'</td><td>HJ Alumínios</td><td>'.$row_tbl_clientes_system['nome'].'</td><td>'.$tbl_ordem_producao[''].'</td></tr></tbody></table>');
         }
         // Adiciona uma borda ao rodapé
         $header_borda = 8;
