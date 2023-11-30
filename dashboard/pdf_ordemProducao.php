@@ -19,8 +19,6 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
     
     $sql = "SELECT * FROM tbl_ordem_producao WHERE id_uniq = '$id_uniq'";
     $result = $conn->query($sql);
-    //$usuario_orProd = ($result->num_rows > 0) ? $result->fetch_assoc()['cliente'] : '';
-    //print($usuario_orProd); die();
 
     $tbl_ordem_producao = array();
 
@@ -156,7 +154,6 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
             $pdf->SetY(-$footer_height - $footer_bottom_margin);
             $pdf->Rect(5, $pdf->GetY(), $pdf->getPageWidth() - 10, $footer_height);
             $data = date("d/m/Y");
-            // $pdf->writeHTMLCell(0, 0, 6, 233, '<div><strong style="font-size: 11px">Qtd Total (Portas + Vidros): 1</strong></div>');
             $pdf->writeHTMLCell(0, 0, 6, 228, '<div style="font-size: 10px;"><strong>Observação da OP: </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vendedor(a): Elaine Ap. Gorris Benedit
             <br><br><br><br><br><br><br><br><br><br><strong>Prev. Entrega:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Pedido P.:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Conferido Por: _____________________________</strong></div>', 0, 0, false, true, 'L', true);
             $pdf->SetY($pdf->GetY() + 30);
@@ -205,8 +202,6 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
         $segundoHeader_bottom_margin = 239;
             $segundoHeader_height = 20;
             $pdf->setY(-$segundoHeader_height - $segundoHeader_bottom_margin);
-            // Borda
-            //$pdf->Rect(5, 68, $pdf->getPageWidth() - 10, $segundoHeader_height);
             // Content
             $pdf->writeHTMLCell(0, 0, 6, 55, '<table style="text-align: center !important;"><thead><tr style="font-weight: normal;">
             <th>Qtd</th>
@@ -308,8 +303,6 @@ foreach ($tbl_ordem_producao as $row_odermproducao) {
     $segundoHeader_bottom_margin = 239;
         $segundoHeader_height = 20;
         $pdf->setY(-$segundoHeader_height - $segundoHeader_bottom_margin);
-        // Borda
-        //$pdf->Rect(5, 68, $pdf->getPageWidth() - 10, $segundoHeader_height);
         // Content
         $pdf->writeHTMLCell(0, 0, 6, 55, '<table style="text-align: center !important;"><thead><tr style="font-weight: normal;">
         <th>Qtd</th>
@@ -445,86 +438,7 @@ foreach ($tbl_ordem_producao as $row_odermproducao) {
         <br><br><br><br><strong>Prev. Entrega:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Pedido P.:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Conferido Por: _____________________________</strong></div>', 0, 0, false, true, 'L', true);
         
         $pdf->writeHTMLCell(0, 0, 5, 204,'<div style="font-size: 10px; text-align: left;"><a style="color: black; font-weight: bold; text-decoration:none;" href="https://www.exemplo.com">https://www.exemplo.com</a></div>', 0, 0, false, true, 'L', true);     
-
-
-
-        $btn_submit = $_POST['btn_submit'];
-        foreach ($tbl_ordem_producao as $arquivo) {
-            // $pdf->Cell(0, 10, $arquivo['id_uniq']. '___' . $arquivo['cliente'] , 0, true, 'L', 0, '', 0, false, 'T', 'M'); 
-        
-            // Defina o conteúdo do PDF
-            // $content = '
-            // <h1 style="text-align: center;">Conteúdo do PDF</h1>
-            // <p> ' . $arquivo['id_uniq'] . ' ' . $btn_submit .'___'. $id_uniq . 'Relátorio de Vendas (OP)</p>
-            // ';
-        }
     }      
-    
-
-
-
-
-
-
-
-
-    
-    // Defina o rodapé
-    // $rodape = '
-    // <div style="width: 100%; border: 1px solid #ddd; padding: 10px !important; margin: 0 !important; display: flex !important;">
-    //     <div style="background-color: red">
-    //         <p>id_uniq: ' . $id_uniqUsuario . '</p>
-    //         <p>Email: ' . $emailUsuario . '</p>
-    //     </div>
-
-    //     <div>
-    //         <p>id_uniq: ' . $id_uniqUsuario . '</p>
-    //         <p>Email: ' . $emailUsuario . '</p>
-    //     </div>
-    // </div>
-    // ';
-    // $pdf->SetY(238);  // Posiciona a 15 unidades a partir do final da página (para o rodapé)
-    // $pdf->writeHTML($rodape, true, false, true, false, '');
-
-    // // Desative o corte automático de página
-    // $pdf->SetAutoPageBreak(false, 0);
-
-    // // Altura da margem de baixo do rodapé (em milímetros)
-    // $footer_bottom_margin = 28;
-
-    // // Altura do rodapé
-    // $footer_height = 28;
-
-    // // Posiciona o cursor para o rodapé
-    // $pdf->SetY(-$footer_height - $footer_bottom_margin);
-    // // Adiciona a imagem
-    // // $image_file = '../assets/img/logoHJ-Aluminio.jpg';  // Substitua pelo caminho real da sua imagem
-    // // $pdf->Image($image_file, 0, $pdf->GetY(), 40, 30);  // Ajuste as coordenadas e o tamanho conforme necessário
-    // // Adiciona uma borda ao rodapé
-    // $pdf->Rect(5, $pdf->GetY(), $pdf->getPageWidth() - 10, $footer_height);
-    // $data = date("d/m/Y");
-    // // Adiciona o conteúdo em divs
-    // // $pdf->writeHTMLCell(0, 0, 6, $pdf->GetY(), '<div style="font-size: 12px;"><strong style="font-size: 15px;">Observação da OP: </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vendedor(a): Elaine Ap. Gorris Benedit<br><br><a href="malito:hjaluminio@hotmail.com" style="text-decoration: none; color: black;">hjaluminio@hotmail.com</a></div>', 0, 0, false, true, 'L', true);
-    // // $pdf->writeHTMLCell(0, 0, 150, $pdf->GetY(), '<div style="font-size: 12px; padding-left: 30px;"><strong>Pedido: 22.546<br>Data: ' . $data . '</strong><br>Aprovado ('.$data.')</div>', 0, 0, false, true, 'L', true);
-    // $pdf->writeHTMLCell(0, 0, 6, 233, '<div><strong style="font-size: 11px">Qtd Total (Portas + Vidros): 1</strong></div>');
-    // $pdf->writeHTMLCell(0, 0, 6, 242, '<div style="font-size: 12px;"><strong>Observação da OP: </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vendedor(a): Elaine Ap. Gorris Benedit
-    // <br><br><br><br><strong>Prev. Entrega:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Pedido P.:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Conferido Por: _____________________________</strong></div>', 0, 0, false, true, 'L', true);
-    // // $pdf->writeHTMLCell(0, 0, 150, $pdf->GetY(), '<div style="font-size: 12px; padding-left: 30px;"><strong>Pedido: 22.546<br>Data: ' . $data . '</strong><br>Aprovado ('.$data.')</div>', 0, 0, false, true, 'L', true);
-    // // Posicione o cursor para o endereço web
-    // $pdf->SetY($pdf->GetY() + 30);
-    // // $pdf->writeHTML('<div style="font-size: 10px; text-align: center;"><a href="https://www.exemplo.com">https://www.exemplo.com</a></div>', true, false, false, false, '');
-    // // Posicione o cursor para o número da página
-    // // $pdf->SetX($pdf->getPageWidth() - 40);
-    // // $pdf->writeHTML('<div style="font-size: 10px; text-align: center;">Página '.$pdf->getAliasNumPage().' de '.$pdf->getAliasNbPages().'</div>', true, false, false, false, '');
-    // // Last Footer
-
-    // $debaixo_footer_height = 17;
-    // $pdf->Rect(5, $pdf->GetY(), $pdf->getPageWidth() - 10, $debaixo_footer_height);
-    // $pdf->writeHTMLCell(0, 0, 6, $pdf->GetY(), '<div style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Total-Cliente:</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;955,84</div>', 0, 0, false, true, 'L', true);
-
-    // $pdf->writeHTMLCell(0, 0, 5, 290, '<div style="font-size: 10px; text-align: left;"><a href="https://www.exemplo.com" style=" color: #000;">https://www.exemplo.com</a></div>', 0, 0, false, true, 'L', true);
-
-
 
     // id_uniq do arquivo
     $id_uniqArquivo = 'hjaluminio.pdf';
@@ -543,52 +457,3 @@ $emailUsuario = "exemplo@dominio.com";
 // Chame a função para criar o PDF
 criarPDF($id_uniqUsuario, $emailUsuario);
 ?>
-
-<!-- <php
-require_once('./TCPDF-main/tcpdf.php');
-    
-// Crie um novo objeto TCPDF
-$pdf = new TCPDF();
-
-// Defina as margens (em milímetros)
-$pdf->SetMargins(10, 10, 10);
-
-// Defina o padding do cabeçalho e rodapé (em milímetros)
-$pdf->setHeaderMargin(10);
-$pdf->setFooterMargin(10);
-
-// Defina a orientação da página como horizontal (L para landscape)
-$pdf->setPageOrientation('L');
-
-// Adicione uma página
-$pdf->AddPage();
-
-// Configurações de fonte
-$font_size = 10;
-// $pdf->SetFont('Arial', '', $font_size);
-
-// Conteúdo para cada coluna do rodapé
-$col1 = 'Coluna 1';
-$col2 = 'Coluna 2';
-$col3 = 'Coluna 3';
-
-// Largura de cada coluna (ajuste conforme necessário)
-$col_width = 60;
-
-// Altura do rodapé
-$footer_height = 15;
-
-// Coordenadas iniciais para cada coluna
-$x1 = 10;
-$x2 = $x1 + $col_width;
-$x3 = $x2 + $col_width;
-
-// Posiciona o cursor para o rodapé
-$pdf->SetY(-$footer_height);
-
-// Adiciona o conteúdo em cada coluna
-$pdf->Cell($col_width, $footer_height, $col1, 0, 0, 'L');
-$pdf->Cell($col_width, $footer_height, $col2, 0, 0, 'C');
-$pdf->Cell($col_width, $footer_height, $col3, 0, 0, 'R');
-
-?> -->
