@@ -403,17 +403,6 @@ foreach ($tbl_ordem_producao as $row_odermproducao) {
         // Adiciona o conteúdo em divs
         $pdf->writeHTMLCell(0, 50, 240, 55, '<div style="font-size: 12px;"><strong style="font-size: 11px; padding: 50px; margin: 50px;">Valor Total: $'.$valorTotalConvertido.'</strong></div>', 0, 0, false, true, 'L', true);
 
-        $btn_submit = $_POST['btn_submit'];
-        foreach ($tbl_ordem_producao as $arquivo) {
-            // $pdf->Cell(0, 10, $arquivo['id_uniq']. '___' . $arquivo['cliente'] , 0, true, 'L', 0, '', 0, false, 'T', 'M'); 
-        
-            // Defina o conteúdo do PDF
-            // $content = '
-            // <h1 style="text-align: center;">Conteúdo do PDF</h1>
-            // <p> ' . $arquivo['id_uniq'] . ' ' . $btn_submit .'___'. $id_uniq . 'Relátorio de Vendas (OP)</p>
-            // ';
-        }
-        // Escreva o conteúdo no PDF
     }elseif(isset($_POST['btn_submit']) && $_POST['btn_submit'] == 'Relátorio para Entrega Por Cliente')
     {
         $pdf->setPageOrientation('L');
@@ -423,19 +412,23 @@ foreach ($tbl_ordem_producao as $row_odermproducao) {
         $pdf->Image($image_file, 0, 2, 30, 20); 
         // Adiciona uma borda ao rodapé
 
-        $height = 30;
+        $height = 35;
         $pdf->Rect(5, 2, $pdf->getPageWidth() - 10, $height);
         $data = date("d/m/Y");
 
+        foreach ($tbl_clientes_system as $row_tbl_clientes_system) {}
+        
         // Adiciona o conteúdo em divs
         $pdf->writeHTMLCell(0, 50, 120, 3, '<div style="font-size: 12px;"><span style="font-size: 12px;">HJ Alumínios EIRELI</span><br><span>&nbsp;&nbsp;&nbsp;&nbsp;43-3056-0052</span><br><span>&nbsp;<a style="text-decoration: none; color: black;" href="malito:hjaluminio@hotmail.com">hjaluminio@hotmail.com</a></span></div>', 0, 0, false, true, 'L', true);
         $pdf->writeHTMLCell(0, 0, 256, $pdf->GetY(), '<div style="font-size: 11px; font-weight: bold;">' . $data . '</div>', 0, 0, false, true, 'L', true);
-        $pdf->writeHTMLCell(0, 0, 5, 20, '<div>Cliente: CASSANDRO BOM SUCESSO<br>E-mail:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Telefone: (43) 99806-9640
+        $pdf->writeHTMLCell(0, 0, 5, 25, '<div>Cliente: '.$row_tbl_clientes_system['nome'].'<br>E-mail:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Telefone: '.$row_tbl_clientes_system['fone'].'
         </div>');
         // Last Header
 
-        $pdf->writeHTMLCell(320, 0, 4, 35, '<table style="font-size: 10px;"><thead style="border: 1px solid black;"><tr style="font-weight: bold;"><th>Qtd</th><th>Descrição</th><th>Alt</th><th>Lar</th><th>Vidro</th><th>Perfil</th><th>Pedido</th></tr></thead>
-        <tbody><tr><td>1</td><td>PX HJ183INOX</td><td></td><td>18000</td><td></td><td></td><td>22.543</td></tr><tr><td>1</td><td>PX HJ183INOX</td><td></td><td>18000</td><td></td><td></td><td>22.543</td></tr><tr><td>1</td><td>PX HJ183INOX</td><td></td><td>18000</td><td></td><td></td><td>22.543</td></tr></tbody></table>');
+        foreach ($tbl_ordem_producao as $row_odermproducao) { }     
+
+        $pdf->writeHTMLCell(320, 0, 4, 40, '<table style="font-size: 10px;"><thead style="border: 1px solid black;"><tr style="font-weight: bold;"><th>Qtd</th><th>Descrição</th><th>Alt</th><th>Lar</th><th>Vidro</th><th>Perfil</th><th>Pedido</th></tr></thead>
+        <tbody><tr><td>'.$row_odermproducao['qtd'].'</td><td>'.$row_odermproducao['produto'].'</td><td></td><td>'.$row_odermproducao['altura'].'</td><td>'.$row_odermproducao['largura'].'</td><td></td><td>'.$row_odermproducao['op'].'</td></tr></tbody></table>');
 
         // Desative o corte automático de página
         $pdf->SetAutoPageBreak(false, 0);
