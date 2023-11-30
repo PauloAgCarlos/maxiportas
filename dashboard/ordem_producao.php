@@ -127,7 +127,7 @@
                                     $row = $result->fetch_assoc();
                                     $novo_valor = $row['op'] + 1;                            
 
-                                    echo '<br><input style="border: none;" type="text" value="' . $novo_valor . '" />';
+                                    echo '<br><input name="op" style="border: none;" type="text" value="' . $novo_valor . '" />';
                                 } else {
                                     echo  "<br>"."Nenhum registro encontrado na tabela.";
                                 }
