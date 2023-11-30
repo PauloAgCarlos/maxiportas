@@ -109,16 +109,30 @@
                     <button type="submit" name="btn_incluir" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;">    
                         <span style="color: #1d1d1d; font-size: 0.9em;">Incluir</span>
                     </button>
-                    <!-- <button type="button" name="btn_incluir" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;" onclick="enviarForm1('<php echo $id_unik; ?>')">    
-                        <span style="color: #1d1d1d; font-size: 0.9em;">Incluir</span>
-                    </button> -->
                   </div>
                   <section style="padding-bottom: 10px;">
 
                     <hr style="width: 99%; margin: auto; margin-bottom: 10px;">
                     <div class="row" style="font-size: 0.9em; border: 1px solid #ddd; border-radius: 5px; width: 99%; margin: auto;">
                         <div class="col-md-2">OP
-                            <p>22.111</p>
+                            <?php
+
+                                require_once "../config.php";
+                                $conn = new mysqli($DBHOST, $DBUSER, $DBPASS, $DBNAME);
+                                
+                                $sql_select = "SELECT * FROM tbl_ordem_producao ORDER BY ABS(op) DESC LIMIT 1";
+                                $result = $conn->query($sql_select);
+                                if ($result->num_rows > 0) {
+                                
+                                    $row = $result->fetch_assoc();
+                                    $novo_valor = $row['op'] + 1;                            
+
+                                    echo '<br><input style="border: none;" type="text" value="' . $novo_valor . '" />';
+                                } else {
+                                    echo  "<br>"."Nenhum registro encontrado na tabela.";
+                                }
+                            
+                            ?>
                         </div>
                         <div class="col-md-2">Parceiro <span style="color: #f00;">*</span>
                             <!-- <form action="" method="post"> -->
