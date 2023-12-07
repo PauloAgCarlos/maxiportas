@@ -83,6 +83,9 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li>
+                                        <button class="dropdown-item" type="submit" name="btn_submit" value="Ficha de Corte">Ficha de Corte</button>
+                                    </li>
+                                    <li>
                                         <button class="dropdown-item" type="submit" name="btn_submit" value="Sintético - Cliente">Sintético - Cliente</button>
                                     </li>
                                     <li>
