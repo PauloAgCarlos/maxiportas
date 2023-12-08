@@ -985,7 +985,19 @@
                                             <div class="row">
                                                 <div class="col-md-3">Produto
                                                     <select class="form-control" name="produto" id="">
-                                                        <option value="">Selecione</option>
+                                                        <option selected value="">Selecione</option>
+                                                        <?php
+                                                            require_once "../config.php";
+                                                            $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
+                                                            
+                                                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                            $selecionar_servicos = $pdo->prepare("SELECT descricao_do_produto FROM produtos");
+                                                            $selecionar_servicos->execute();
+                                                            while($row_servicos = $selecionar_servicos->fetch()){
+                                                        ?>
+                                                            <option value="<?php echo $row_servicos['descricao_do_produto'] ?>"><?php echo $row_servicos['descricao_do_produto'] ?></option>
+
+                                                        <?php }?>
                                                     </select>
                                                 </div>
 
