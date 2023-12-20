@@ -76,6 +76,8 @@
                         </button> -->                        
                         <form action="pdf_ordemProducao.php" target="_blank" method="post">
                             <!-- <php $id_unik = uniqid(); ?> -->
+                                <?php $name_admin = $row['nome']; ?>
+                            <input type="hidden" name="admin" value="<?php echo $row['nome']; ?>">
                             <input type="hidden" name="id_ordemProducao" id="idDoForm1" value="<?php if(!empty($_GET['id_filter'])){ echo $_GET['id_filter'];} ?>" >
                             <div class="btn-group"> 
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 0 5px 16px;">
