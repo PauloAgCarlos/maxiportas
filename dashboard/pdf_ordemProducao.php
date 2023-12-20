@@ -117,15 +117,21 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
             $terceira_borda = 70;
             // Borda
             $pdf->Rect(5, 56, $pdf->getPageWidth() - 10, $terceira_borda);
-            $pdf->writeHTMLCell(0, 0, 8, 57, '<div style="font-size: 10px;"><strong>Item: </strong>'.$row_odermproducao['qtd'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Tipo: </strong>'.$row_odermproducao['produto'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Quantidade: </strong>'.$row_odermproducao['qtd'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Altura: </strong>'.$altura_cortada.' (mm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Largura: </strong>'.$largura_cortada.' (mm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Área: </strong>1,956 (m^2)</div>');
+            $pdf->writeHTMLCell(0, 0, 8, 57, '<div style="font-size: 10px;"><strong>Item: </strong>'.$row_odermproducao['qtd'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Tipo: </strong>'.$row_odermproducao['produto'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Quantidade: </strong>'.$row_odermproducao['val_qtd_vidros'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Altura: </strong>'.$altura_cortada.' (mm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Largura: </strong>'.$largura_cortada.' (mm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Área: </strong>1,956 (m^2)</div> 
+            ');
                    
 
             $quarta_borda = 12;
             // Borda
             $pdf->Rect(8, 63, 205 - 10, $quarta_borda);
-            $pdf->writeHTMLCell(0, 0, 8, 64, '<div style="font-size: 10px;"><strong>Vidro: </strong>'.$row_odermproducao['vidro'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Qtd: </strong>'.$row_odermproducao['val_qtd_vidros'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <strong>Corte - Vidro: </strong>'.$row_odermproducao['perfil_lado_superior'].' X '.$row_odermproducao['perfil_lado_superior'].'
-            </div>');
+            $pdf->writeHTMLCell(0, 0, 8, 64, '
+            <table style="text-align: center !important;"><thead><tr style="font-size: 0.9em;">
+            <th><strong>Vidro: </strong></th>
+            <th><strong>Qtd: </strong></th>
+            <th><strong>Corte - Vidro: </strong></th>
+            </tr>
+            </thead>
+            <tbody><tr style="font-size: 0.9em;"><td>'.$row_odermproducao['vidro'].'</td><td>'.$row_odermproducao['val_qtd_vidros'].'</td><td>'.$altura_cortada.' X '.$largura_cortada.'</td></tr></tbody></table>');
 
             $oitava_borda = 30;
             // Borda
