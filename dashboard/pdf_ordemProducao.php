@@ -107,20 +107,18 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
             // Last segundoHeader
         }
         
-        foreach ($tbl_ordem_producao as $row_odermproducao) 
-        {
-            $terceira_borda = 70;
-            // Borda
-            $pdf->Rect(5, 56, $pdf->getPageWidth() - 10, $terceira_borda);
-            $pdf->writeHTMLCell(0, 0, 8, 57, '<div style="font-size: 10px;"><strong>Item: </strong>'.$row_odermproducao['qtd'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Tipo: </strong>'.$row_odermproducao['produto'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Quantidade: </strong>'.$row_odermproducao['qtd'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Altura: </strong>'.$row_odermproducao['altura'].' (mm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Largura: </strong>'.$row_odermproducao['largura'].' (mm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Área: </strong>1,956 (m^2)</div>');
-        } 
+        foreach ($tbl_ordem_producao as $row_odermproducao) { }
 
-
-            foreach($tbl_Perfil as $rowPerfil) { }
+        foreach($tbl_Perfil as $rowPerfil) { }
             
             $altura_cortada = ($row_odermproducao['altura'] - ($rowPerfil['desconto_corte_perfil'] * 2));
             $largura_cortada = ($row_odermproducao['largura'] - ($rowPerfil['desconto_corte_perfil'] * 2));
             
+            $terceira_borda = 70;
+            // Borda
+            $pdf->Rect(5, 56, $pdf->getPageWidth() - 10, $terceira_borda);
+            $pdf->writeHTMLCell(0, 0, 8, 57, '<div style="font-size: 10px;"><strong>Item: </strong>'.$row_odermproducao['qtd'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Tipo: </strong>'.$row_odermproducao['produto'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Quantidade: </strong>'.$row_odermproducao['qtd'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Altura: </strong>'.$altura_cortada.' (mm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Largura: </strong>'.$largura_cortada.' (mm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Área: </strong>1,956 (m^2)</div>');
+                   
 
             $quarta_borda = 12;
             // Borda
