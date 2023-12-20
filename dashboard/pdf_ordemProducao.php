@@ -133,15 +133,30 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
             $observacao = $pdf->writeHTMLCell(0, 0, 8, 86, '<div style="font-size: 10px;"><strong>Observação do Item: </strong>
             <br>'.$row_odermproducao['obs_observacao_op'].'
             </div>');
-            
-            $alturaCortada = $pdf->writeHTMLCell(0, 0, 112, 98, '<div>'.$altura_cortada.'</div>');
-            $larguraCortada = $pdf->writeHTMLCell(0, 0, 136, 117, '<div>'.$largura_cortada.'</div>');
 
-            // Adiciona a imagem
-            $image_file = $row_odermproducao['imagem_perfil'];  // Substitua pelo caminho real da sua imagem
-            $pdf->Image($image_file, 120, 85, 40, 30); 
-            // $container_observacao_image = $pdf->writeHTMLCell(0, 0, 0, 150);
+            if($altura_cortada < $largura_cortada)
+            {
+                $alturaCortada = $pdf->writeHTMLCell(0, 0, 112, 98, '<div>'.$altura_cortada.'</div>');
+                $larguraCortada = $pdf->writeHTMLCell(0, 0, 144, 117, '<div>'.$largura_cortada.'</div>');
 
+                // Adiciona a imagem
+                $image_file = '../assets/img/vidro_horizontal.jpeg';  // Substitua pelo caminho real da sua imagem
+                $pdf->Image($image_file, 120, 85, 55, 30); 
+                // $container_observacao_image = $pdf->writeHTMLCell(0, 0, 0, 150);
+            }elseif($altura_cortada > $largura_cortada)
+            {
+                $alturaCortada = $pdf->writeHTMLCell(0, 0, 112, 98, '<div>'.$altura_cortada.'</div>');
+                $larguraCortada = $pdf->writeHTMLCell(0, 0, 136, 117, '<div>'.$largura_cortada.'</div>');
+
+                $image_file = '../assets/img/vidro_vertical.jpeg';  // Substitua pelo caminho real da sua imagem
+                $pdf->Image($image_file, 125, 77, 25, 40);  
+            }else{
+                $alturaCortada = $pdf->writeHTMLCell(0, 0, 112, 98, '<div>'.$altura_cortada.'</div>');
+                $larguraCortada = $pdf->writeHTMLCell(0, 0, 136, 117, '<div>'.$largura_cortada.'</div>');
+
+                $image_file = '../assets/img/vidro_quadrado.jpeg';  // Substitua pelo caminho real da sua imagem
+                $pdf->Image($image_file, 121, 77, 39, 39); 
+            }
             // Desative o corte automático de página
             $pdf->SetAutoPageBreak(false, 0);
 
