@@ -137,7 +137,7 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
             if($altura_cortada < $largura_cortada)
             {
                 $alturaCortada = $pdf->writeHTMLCell(0, 0, 112, 98, '<div>'.$altura_cortada.'</div>');
-                $larguraCortada = $pdf->writeHTMLCell(0, 0, 144, 117, '<div>'.$largura_cortada.'</div>');
+                $larguraCortada = $pdf->writeHTMLCell(0, 0, 142, 117, '<div>'.$largura_cortada.'</div>');
 
                 // Adiciona a imagem
                 $image_file = '../assets/img/vidro_horizontal.jpeg';  // Substitua pelo caminho real da sua imagem
@@ -145,8 +145,8 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                 // $container_observacao_image = $pdf->writeHTMLCell(0, 0, 0, 150);
             }elseif($altura_cortada > $largura_cortada)
             {
-                $alturaCortada = $pdf->writeHTMLCell(0, 0, 112, 98, '<div>'.$altura_cortada.'</div>');
-                $larguraCortada = $pdf->writeHTMLCell(0, 0, 136, 117, '<div>'.$largura_cortada.'</div>');
+                $alturaCortada = $pdf->writeHTMLCell(0, 0, 116, 95, '<div>'.$altura_cortada.'</div>');
+                $larguraCortada = $pdf->writeHTMLCell(0, 0, 133, 117, '<div>'.$largura_cortada.'</div>');
 
                 $image_file = '../assets/img/vidro_vertical.jpeg';  // Substitua pelo caminho real da sua imagem
                 $pdf->Image($image_file, 125, 77, 25, 40);  
