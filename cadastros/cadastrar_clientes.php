@@ -15,6 +15,15 @@
     $natureza_juridica = addslashes($_POST['natureza_juridica']);
     $nivel = addslashes($_POST['nivel']);
 
+    //dados of CEP
+    $cep = addslashes($_POST['cep']);
+    $rua = addslashes($_POST['rua']);
+    $bairro = addslashes($_POST['bairro']);
+    $uf = addslashes($_POST['uf']);
+    $cidade = addslashes($_POST['cidade']);
+    $numero = addslashes($_POST['numero']);
+    $complemento = addslashes($_POST['complemento']);
+
     // Configurações do banco de dados
     require_once "../config.php";
 
@@ -24,7 +33,7 @@
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Consulta para inserir o usuário na tabela
-        $stmt = $pdo->prepare("INSERT INTO clientes (cnpj, nome, senha, email, atividade_principal, endereco, abertura, porte, situacao, tipo, fantasia, natureza_juridica, nivel) VALUES (:cnpj, :nome, :senha, :email, :atividade_principal, :endereco, :abertura, :porte, :situacao, :tipo, :fantasia, :natureza_juridica, :nivel)");
+        $stmt = $pdo->prepare("INSERT INTO clientes (cnpj, nome, senha, email, atividade_principal, endereco, abertura, porte, situacao, tipo, fantasia, natureza_juridica, nivel, cep, rua, bairro, uf, cidade, numero, complemento) VALUES (:cnpj, :nome, :senha, :email, :atividade_principal, :endereco, :abertura, :porte, :situacao, :tipo, :fantasia, :natureza_juridica, :nivel, :cep, :rua, :bairro, :uf, :cidade, :numero, :complemento)");
         $stmt->bindParam(":cnpj", $cnpj);
         $stmt->bindParam(":nome", $nome);
         $stmt->bindParam(":senha", $password);
@@ -38,6 +47,14 @@
         $stmt->bindParam(":fantasia", $fantasia);
         $stmt->bindParam(":natureza_juridica", $natureza_juridica);
         $stmt->bindParam(":nivel", $nivel);
+        $stmt->bindParam(":cep", $cep);
+        $stmt->bindParam(":rua", $rua);
+        $stmt->bindParam(":bairro", $bairro);
+        $stmt->bindParam(":uf", $uf);
+        $stmt->bindParam(":cidade", $cidade);
+        $stmt->bindParam(":numero", $numero);
+        $stmt->bindParam(":complemento", $complemento);
+
         $stmt->execute();
 
         if($stmt)
