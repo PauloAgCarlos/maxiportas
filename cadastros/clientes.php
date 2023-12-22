@@ -131,10 +131,8 @@
                     <div class="mb-3">
                       <label for="endereco">Endereço:</label>
                       <input type="text" placeholder="Endereço" class="form-control input-sm" id="endereco" name="endereco" readonly>
-                    </div>                 
-                  </div>
+                    </div> 
 
-                  <div class="col-md-6">
                     <div style="display: flex;">
                       <div class="mb-3" style="width: 50%;">
                         <label for="situcao" class="form-label">Data de Abertura</label>
@@ -157,16 +155,61 @@
                         <label for="tipo" class="form-label ms-3">Tipo</label>
                         <input type="text" placeholder="Tipo" class="form-control input-sm ms-3" id="tipo" name="tipo" readonly>
                       </div>
+                    </div>                
+                  </div>
+
+                  <div class="col-md-6">
+                    <div style="display: flex;">
+                      <div class="mb-3" style="width: 50%;">
+                        <label for="situcao" class="form-label">CEP (apenas números)</label>
+                        <input type="text" placeholder="Data de Abertura" class="form-control input-sm" name="cep" id="cep" maxlength="8"
+                        onblur="pesquisacep(this.value);">
+                      </div>
+
+                      <div class="mb-3" style="width: 50%; margin-right: 20px;">
+                        <label for="situcao" class="form-label ms-3">Rua</label>
+                        <input type="text" placeholder="Rua" class="form-control input-sm ms-3" name="rua" id="rua" readonly>
+                      </div>
+                    </div> 
+
+                    <div style="display: flex;">
+                      <div class="mb-3" style="width: 50%;">
+                        <label for="situcao" class="form-label">Bairro</label>
+                        <input type="text" placeholder="Bairro" class="form-control input-sm" name="bairro" id="bairro" readonly>
+                      </div>
+
+                      <div class="mb-3" style="width: 50%; margin-right: 20px;">
+                        <label for="tipo" class="form-label ms-3">UF</label>
+                        <input type="text" placeholder="Tipo" class="form-control input-sm ms-3" name="uf" id="uf" readonly>
+                      </div>
+                    </div>
+
+                    <div class="mb-2">
+                      <label for="cidade" class="form-label">Cidade:</label>
+                      <input type="text" placeholder="Ciddade" class="form-control input-sm" name="cidade" id="cidade" readonly>
+                    </div>
+
+                    <div style="display: flex;">
+                      <div class="mb-3 mt-4" style="width: 50%;">
+                        <label for="numero">Número:</label>
+                        <input type="text" placeholder="Número" class="form-control input-sm" name="numero" id="numero" readonly>
+                      </div>
+
+                      <div class="mb-3 mt-4" style="width: 50%; margin-left: 20px;">
+                        <label for="numero">Complemento:</label>
+                        <input type="text" placeholder="complemento" class="form-control input-sm" name="complemento" id="complemento" readonly>
+                      </div>
+                    </div>
+                    <!--Last CEP-->
+
+                    <div class="mb-3 mt-2">
+                      <label for="natureza_juridica">Natureza Jurídica:</label>
+                      <input type="text" placeholder="Natureza Jurídica" class="form-control input-sm" id="natureza_juridica" name="natureza_juridica" readonly>
                     </div>
 
                     <div class="mb-4">
                       <label for="fantasia" class="form-label">Nome Fantasia:</label>
                       <input type="text" placeholder="Nome Fantasia" class="form-control input-sm" id="fantasia" name="fantasia" readonly>
-                    </div>
-
-                    <div class="mb-3 mt-4">
-                      <label for="natureza_juridica">Natureza Jurídica:</label>
-                      <input type="text" placeholder="Natureza Jurídica" class="form-control input-sm" id="natureza_juridica" name="natureza_juridica" readonly>
                     </div>
 
                     <input type="hidden" name="nivel" value="user">                  
