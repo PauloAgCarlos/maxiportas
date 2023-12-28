@@ -225,7 +225,77 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
              </thead>
              <tbody><tr style="font-size: 0.9em;"><td>'.$row_odermproducao['qtd'].'</td><td>'.$row_odermproducao['perfil_lado_direito'].'</td><td>'.$row_odermproducao['qtd'].'</td><td></td><td>R$ '.number_format($row_odermproducao['valor_item_cliente'], 2, '.', ',').'</td><td>R$ '.number_format($produto_qtd_unitario, 2, '.', ',').'</td></tr></tbody></table>');
              
-             $pdf->writeHTMLCell(0, 0, 45, 70, ' <div style="margin-left: 500px; font-size: 0.9em;">(Modo: '.$row_odermproducao['modo'].' - Usinagem Esquerdo: '.$row_odermproducao['usinagem_para_esquerdo'].' - Usinagem Direito: '.$row_odermproducao['usinagem_para_direito'].' - Usinagem Superior: '.$row_odermproducao['usinagem_para_superior'].' - Usiangem Inferior: '.$row_odermproducao['usinagem_para_inferior'].' - Puxador Esquerdo:'.$row_odermproducao['puxador_esquerdo'].' - Puxador Direito: '.$row_odermproducao['puxador_direito'].' - Puxador Superior: '.$row_odermproducao['puxador_superior'].' - Puxador Inferior: '.$row_odermproducao['puxador_inferior'].' - Vidro: '.$row_odermproducao['vidro'].' - TV: '.$row_odermproducao['tv'].' - Serviços: '.$row_odermproducao['servicos'].' - Travessa: '.$row_odermproducao['travessa'].' - Portas Pares: '.$row_odermproducao['portas_pares'].' - Reforço: '.$row_odermproducao['reforco'].' - Desempenador: '.$row_odermproducao['desempenador'].' - Esquadreta: '.$row_odermproducao['esquadreta'].' - Ponteira: '.$row_odermproducao['ponteira'].' - Kit: '.$row_odermproducao['kit'].' - Valor Item Cliente: '.$row_odermproducao['valor_item_cliente'].' - Porcento Desconto: '.$row_odermproducao['porcento_desconto'].' - Desconto: '.$row_odermproducao['desconto'].' - Produto: '.$row_odermproducao['produto'].' - Produto Usinagem Puxador: '.$row_odermproducao['prod_usinagem_puxador'].' - Prod_Porcento_Desconto: '.$row_odermproducao['prod_porcento_desconto'].') </div>');
+             $Modo = $row_odermproducao['modo'];
+            $usinagemEsquerdo = $row_odermproducao['usinagem_para_esquerdo'];
+            $usinagemDireito = $row_odermproducao['usinagem_para_direito'];
+            $usinagemSuperior = $row_odermproducao['usinagem_para_superior'];
+            $usinagemInferior = $row_odermproducao['usinagem_para_inferior'];
+            $puxadorEsquerdo = $row_odermproducao['puxador_esquerdo'];
+            $puxadorDireito = $row_odermproducao['puxador_direito'];
+            $PuxadorSuperior = $row_odermproducao['puxador_superior'];
+            $PuxadorInferior = $row_odermproducao['puxador_inferior'];
+            $Vidro = $row_odermproducao['vidro'];
+            $TV = $row_odermproducao['tv'];
+            $Servicos = $row_odermproducao['servicos'];
+            $Travessa = $row_odermproducao['travessa'];
+            $PortasPares = $row_odermproducao['portas_pares'];
+            $Reforco = $row_odermproducao['reforco'];
+            $Desempenador = $row_odermproducao['desempenador'];
+            $Esquadreta = $row_odermproducao['esquadreta'];
+            $Ponteira = $row_odermproducao['ponteira'];
+            $Kit = $row_odermproducao['kit'];
+            $Valor_item_cliente = $row_odermproducao['valor_item_cliente'];
+            $Porcento_desconto = $row_odermproducao['porcento_desconto'];
+            $Desconto = $row_odermproducao['desconto'];
+            $Produto = $row_odermproducao['produto'];
+            $Prod_usinagem_puxador = $row_odermproducao['prod_usinagem_puxador'];
+            $Prod_porcento_desconto = $row_odermproducao['prod_porcento_desconto'];
+
+            // Cria um array associativo com os textos
+            $textos = array(
+                'Modo' => $Modo,
+                'Usinagem Esquerdo' => $usinagemEsquerdo,
+                'Usinagem Direito' => $usinagemDireito,
+                'Usinagem Superior' => $usinagemSuperior,
+                'Usinagem Inferior' => $usinagemInferior,
+                'Puxador Esquerdo' => $puxadorEsquerdo,
+                'Puxador Direito' => $puxadorDireito,
+                'Puxador Superior' => $PuxadorSuperior,
+                'Puxador Inferior' => $PuxadorInferior,
+                'Vidro' => $Vidro,
+                'TV' => $TV,
+                'Serviços' => $Servicos,
+                'Travessa' => $Travessa,
+                'Portas Pares' => $PortasPares,
+                'Reforço' => $Reforco,
+                'Desempenador' => $Desempenador,
+                'Esquadreta' => $Esquadreta,
+                'Ponteira' => $Ponteira,
+                'Kit' => $Kit,
+                'Valor Item Cliente' => $Valor_item_cliente,
+                'Porcento Desconto' => $Porcento_desconto,
+                'Desconto' => $Desconto,
+                'Produto' => $Produto,
+                'Produto Usinagem Puxador' => $Prod_usinagem_puxador,
+                'Produto Porcento Desconto' => $Prod_porcento_desconto
+            );
+
+            // Filtra o array para incluir apenas os índices e valores não vazios
+            $itensNaoVazios = array_filter($textos, function($valor) {
+                return !empty($valor);
+            });
+
+            // Gera o texto final
+            $textoFinal = implode(' - ', array_map(function($indice, $valor) {
+                return $indice . ': ' . $valor;
+            }, array_keys($itensNaoVazios), $itensNaoVazios));
+
+            // Adiciona o texto ao PDF se não estiver vazio
+            if (!empty($textoFinal)) {
+                $pdf->writeHTMLCell(0, 0, 45, 70, '<div style="margin-left: 500px; font-size: 0.9em;">(' . $textoFinal . ')</div>');
+            } else {
+                $pdf->writeHTMLCell(0, 0, 45, 70, '<div style="margin-left: 500px; font-size: 0.9em;"></div>');
+            }
         }
  
          // Desative o corte automático de página
@@ -303,7 +373,43 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
             <tbody><tr><td>'.$row_odermproducao['qtd'].'</td><td>'.$row_odermproducao['perfil_lado_direito'].'</td><td>'.$row_odermproducao['largura'].' X '.$row_odermproducao['altura'].'</td><td>R$ '.number_format($row_odermproducao['valor_item_cliente'], 2, '.', ',').'</td><td>R$ '.number_format($produto_qtd_unitario, 2, '.', ',').'</td></tr></tbody></table>');
 
 
-            $pdf->writeHTMLCell(0, 0, 45, 70, ' <div style="margin-left: 500px; font-size: 0.9em;">('.$row_odermproducao['usinagem_para_esquerdo'].' - '.$row_odermproducao['usinagem_para_direito'].' - '.$row_odermproducao['usinagem_para_superior'].' - '.$row_odermproducao['usinagem_para_inferior'].' - '.$row_odermproducao['puxador_esquerdo'].' - '.$row_odermproducao['puxador_direito'].' - '.$row_odermproducao['puxador_superior'].' - '.$row_odermproducao['puxador_inferior'].') </div>');
+            $usinagemEsquerdo = $row_odermproducao['usinagem_para_esquerdo'];
+            $usinagemDireito = $row_odermproducao['usinagem_para_direito'];
+            $usinagemSuperior = $row_odermproducao['usinagem_para_superior'];
+            $usinagemInferior = $row_odermproducao['usinagem_para_inferior'];
+            $puxadorEsquerdo = $row_odermproducao['puxador_esquerdo'];
+            $puxadorDireito = $row_odermproducao['puxador_direito'];
+            $PuxadorSuperior = $row_odermproducao['puxador_superior'];
+            $PuxadorInferior = $row_odermproducao['puxador_inferior'];
+
+            // Cria um array associativo com os textos
+            $textos = array(
+                'Usinagem Esquerdo' => $usinagemEsquerdo,
+                'Usinagem Direito' => $usinagemDireito,
+                'Usinagem Superior' => $usinagemSuperior,
+                'Usinagem Inferior' => $usinagemInferior,
+                'Puxador Esquerdo' => $puxadorEsquerdo,
+                'Puxador Direito' => $puxadorDireito,
+                'Puxador Superior' => $PuxadorSuperior,
+                'Puxador Inferior' => $PuxadorInferior,
+            );
+
+            // Filtra o array para incluir apenas os índices e valores não vazios
+            $itensNaoVazios = array_filter($textos, function($valor) {
+                return !empty($valor);
+            });
+
+            // Gera o texto final
+            $textoFinal = implode(' - ', array_map(function($indice, $valor) {
+                return $indice . ': ' . $valor;
+            }, array_keys($itensNaoVazios), $itensNaoVazios));
+
+            // Adiciona o texto ao PDF se não estiver vazio
+            if (!empty($textoFinal)) {
+                $pdf->writeHTMLCell(0, 0, 45, 70, '<div style="margin-left: 500px; font-size: 0.9em;">(' . $textoFinal . ')</div>');
+            } else {
+                $pdf->writeHTMLCell(0, 0, 45, 70, '<div style="margin-left: 500px; font-size: 0.9em;"></div>');
+            }
     }
 
         // Desative o corte automático de página
@@ -379,8 +485,43 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                 </thead>
                 <tbody><tr><td>'.$row_odermproducao['qtd'].'</td><td>'.$row_odermproducao['perfil_lado_direito'].'</td><td>'.$row_odermproducao['largura'].' X '.$row_odermproducao['altura'].'</td></tr></tbody></table>');
 
+                $usinagemEsquerdo = $row_odermproducao['usinagem_para_esquerdo'];
+                $usinagemDireito = $row_odermproducao['usinagem_para_direito'];
+                $usinagemSuperior = $row_odermproducao['usinagem_para_superior'];
+                $usinagemInferior = $row_odermproducao['usinagem_para_inferior'];
+                $puxadorEsquerdo = $row_odermproducao['puxador_esquerdo'];
+                $puxadorDireito = $row_odermproducao['puxador_direito'];
+                $PuxadorSuperior = $row_odermproducao['puxador_superior'];
+                $PuxadorInferior = $row_odermproducao['puxador_inferior'];
 
-                $pdf->writeHTMLCell(0, 0, 45, 70, ' <div style="margin-left: 500px; font-size: 0.9em;">('.$row_odermproducao['usinagem_para_esquerdo'].' - '.$row_odermproducao['usinagem_para_direito'].' - '.$row_odermproducao['usinagem_para_superior'].' - '.$row_odermproducao['usinagem_para_inferior'].' - '.$row_odermproducao['puxador_esquerdo'].' - '.$row_odermproducao['puxador_direito'].' - '.$row_odermproducao['puxador_superior'].' - '.$row_odermproducao['puxador_inferior'].') </div>');
+                // Cria um array associativo com os textos
+                $textos = array(
+                    'Usinagem Esquerdo' => $usinagemEsquerdo,
+                    'Usinagem Direito' => $usinagemDireito,
+                    'Usinagem Superior' => $usinagemSuperior,
+                    'Usinagem Inferior' => $usinagemInferior,
+                    'Puxador Esquerdo' => $puxadorEsquerdo,
+                    'Puxador Direito' => $puxadorDireito,
+                    'Puxador Superior' => $PuxadorSuperior,
+                    'Puxador Inferior' => $PuxadorInferior,
+                );
+
+                // Filtra o array para incluir apenas os índices e valores não vazios
+                $itensNaoVazios = array_filter($textos, function($valor) {
+                    return !empty($valor);
+                });
+
+                // Gera o texto final
+                $textoFinal = implode(' - ', array_map(function($indice, $valor) {
+                    return $indice . ': ' . $valor;
+                }, array_keys($itensNaoVazios), $itensNaoVazios));
+
+                // Adiciona o texto ao PDF se não estiver vazio
+                if (!empty($textoFinal)) {
+                    $pdf->writeHTMLCell(0, 0, 45, 70, '<div style="margin-left: 500px; font-size: 0.9em;">(' . $textoFinal . ')</div>');
+                } else {
+                    $pdf->writeHTMLCell(0, 0, 45, 70, '<div style="margin-left: 500px; font-size: 0.9em;"></div>');
+                }
 
                 
         }
