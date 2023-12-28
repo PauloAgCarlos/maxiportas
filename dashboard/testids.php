@@ -232,116 +232,95 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                     $pdf->writeHTMLCell(0, 0, 150, $pdf->GetY(), '<div style="font-size: 11px; padding-left: 30px;"><strong>Pedido: 22.546<br>Data: ' . $data . '</strong><br>Aprovado ('.$data.')</div>', 0, 0, false, true, 'L', true);
                     // Last Header
 
-                    /*foreach ($tbl_ordem_producao as $row_ordemproducao) {
-                        // Definir a posição do conteúdo relacionado ao cliente
-                        $pdf->Rect(5, $pdf->GetY() + 22, $pdf->getPageWidth() - 10, 20);
-                        $pdf->writeHTMLCell(0, 0, 6, $pdf->GetY() + 23, '<div style="font-size: 10px;"><strong>Cliente: </strong>'.$row_ordemproducao['cliente'].'</div>');
-                        // Adicionar mais conteúdo relacionado ao cliente aqui
-                    }*/
-
                     if(isset($_POST['btn_submit']) && $_POST['btn_submit'] == 'Ficha de Corte')
-                    {
-                        foreach ($tbl_ordem_producao as $row_clientes) 
-                        {
-                            $segundoHeader_bottom_margin = 239;
-                            $segundoHeader_height = 20;
-                            $pdf->setY(-$segundoHeader_height - $segundoHeader_bottom_margin);
-                            // Borda
-                            $pdf->Rect(5, 33, $pdf->getPageWidth() - 10, $segundoHeader_height);
-                            // Content
-                            $pdf->writeHTMLCell(0, 0, 6, 34, '<div style="font-size: 10px;"><strong>Cliente: </strong>'.$row_clientes['nome'].' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Celular: </strong>'.$row_clientes['celular'].'
-                            <br><strong>Endereço: </strong>&nbsp;'.$row_clientes['endereco'].'<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CEP:</strong> '.$row_clientes['cep'].'
-                            <br><strong>Bairro: </strong>'.$row_clientes['bairro'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Cidade: </strong>'.$row_clientes['cidade'].'</div>');
-                            // Last segundoHeader
-                        }
-
-                        foreach ($tbl_ordem_producao as $row_odermproducao) { }
-
-                        foreach($tbl_Perfil as $rowPerfil) { }
-                        
-                        $altura_cortada = ($row_odermproducao['altura'] - ($rowPerfil['desconto_corte_perfil'] * 2));
-                        $largura_cortada = ($row_odermproducao['largura'] - ($rowPerfil['desconto_corte_perfil'] * 2));
-                        
-                        $terceira_borda = 70;
-                        // Borda
-                        $pdf->Rect(5, 56, $pdf->getPageWidth() - 10, $terceira_borda);
-                        $pdf->writeHTMLCell(0, 0, 8, 57, '<div style="font-size: 10px;"><strong>Item: </strong>'.$row_odermproducao['qtd'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Tipo: </strong>'.$row_odermproducao['produto'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Quantidade: </strong>'.$row_odermproducao['val_qtd_vidros'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Altura: </strong>'.$altura_cortada.' (mm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Largura: </strong>'.$largura_cortada.' (mm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Área: </strong>1,956 (m^2)</div> 
-                        ');
-                            
-
-                        $quarta_borda = 12;
-                        // Borda
-                        $pdf->Rect(8, 63, 205 - 10, $quarta_borda);
-                        $pdf->writeHTMLCell(0, 0, 8, 64, '
-                        <table style="text-align: center !important;"><thead><tr style="font-size: 0.9em;">
-                        <th><strong>Vidro: </strong></th>
-                        <th><strong>Qtd: </strong></th>
-                        <th><strong>Corte - Vidro: </strong></th>
-                        </tr>
-                        </thead>
-                        <tbody><tr style="font-size: 0.9em;"><td>'.$row_odermproducao['vidro'].'</td><td>'.$row_odermproducao['val_qtd_vidros'].'</td><td>'.$altura_cortada.' X '.$largura_cortada.'</td></tr></tbody></table>');
-
-                        $oitava_borda = 30;
-                        // Borda
-                        $pdf->Rect(8, 84, 110 - 10, $oitava_borda);
-                        $observacao = $pdf->writeHTMLCell(0, 0, 8, 86, '<div style="font-size: 10px;"><strong>Observação do Item: </strong>
-                        <br>'.$row_odermproducao['obs_observacao_op'].'
-                        </div>');
-
-                        if($altura_cortada < $largura_cortada)
-                        {
-                            $alturaCortada = $pdf->writeHTMLCell(0, 0, 112, 98, '<div>'.$altura_cortada.'</div>');
-                            $larguraCortada = $pdf->writeHTMLCell(0, 0, 142, 117, '<div>'.$largura_cortada.'</div>');
-
-                            // Adiciona a imagem
-                            $image_file = '../assets/img/vidro_horizontal.jpeg';  // Substitua pelo caminho real da sua imagem
-                            $pdf->Image($image_file, 120, 85, 55, 30); 
-                            // $container_observacao_image = $pdf->writeHTMLCell(0, 0, 0, 150);
-                        }elseif($altura_cortada > $largura_cortada)
-                        {
-                            $alturaCortada = $pdf->writeHTMLCell(0, 0, 116, 95, '<div>'.$altura_cortada.'</div>');
-                            $larguraCortada = $pdf->writeHTMLCell(0, 0, 133, 117, '<div>'.$largura_cortada.'</div>');
-
-                            $image_file = '../assets/img/vidro_vertical.jpeg';  // Substitua pelo caminho real da sua imagem
-                            $pdf->Image($image_file, 125, 77, 25, 40);  
-                        }else{
-                            $alturaCortada = $pdf->writeHTMLCell(0, 0, 112, 98, '<div>'.$altura_cortada.'</div>');
-                            $larguraCortada = $pdf->writeHTMLCell(0, 0, 136, 117, '<div>'.$largura_cortada.'</div>');
-
-                            $image_file = '../assets/img/vidro_quadrado.jpeg';  // Substitua pelo caminho real da sua imagem
-                            $pdf->Image($image_file, 121, 77, 39, 39); 
-                        }
-                        // Desative o corte automático de página
-                        $pdf->SetAutoPageBreak(false, 0);
-
-                        // Altura da margem de baixo do rodapé (em milímetros)
-                        $footer_bottom_margin = 20;
-
-                        // Altura do rodapé
-                        $footer_height = 50;
-                        // Posiciona o cursor para o rodapé
-                        $pdf->SetY(-$footer_height - $footer_bottom_margin);
-
-                        $pdf->writeHTMLCell(0, 0, 8, 107, '<div style="font-size: 10px; text-align: left;"><a href="https://www.exemplo.com" style=" color: #000;">https://www.exemplo.com</a></div>', 0, 0, false, true, 'L', true); 
+    {
+        
 
 
-                        // Desative o corte automático de página
-                        $pdf->SetAutoPageBreak(false, 0);
+        foreach ($tbl_clientes_system as $row_clientes) 
+        {
+            $segundoHeader_bottom_margin = 239;
+            $segundoHeader_height = 20;
+            $pdf->setY(-$segundoHeader_height - $segundoHeader_bottom_margin);
+            // Borda
+            $pdf->Rect(5, 33, $pdf->getPageWidth() - 10, $segundoHeader_height);
+            // Content
+            $pdf->writeHTMLCell(0, 0, 6, 34, '<div style="font-size: 10px;"><strong>Cliente: </strong>'.$row_clientes['nome'].' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Celular: </strong>'.$row_clientes['celular'].'
+            <br><strong>Endereço: </strong>&nbsp;'.$row_clientes['endereco'].'<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CEP:</strong> '.$row_clientes['cep'].'
+            <br><strong>Bairro: </strong>'.$row_clientes['bairro'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Cidade: </strong>'.$row_clientes['cidade'].'</div>');
+            // Last segundoHeader
+        }
+        
+        foreach ($tbl_ordem_producao as $row_odermproducao) { }
 
-                        // Altura da margem de baixo do rodapé (em milímetros)
-                        $footer_bottom_margin = 6;
+        foreach($tbl_Perfil as $rowPerfil) { }
+            
+            $altura_cortada = ($row_odermproducao['altura'] - ($rowPerfil['desconto_corte_perfil'] * 2));
+            $largura_cortada = ($row_odermproducao['largura'] - ($rowPerfil['desconto_corte_perfil'] * 2));
+            
+            $terceira_borda = 70;
+            // Borda
+            $pdf->Rect(5, 56, $pdf->getPageWidth() - 10, $terceira_borda);
+            $pdf->writeHTMLCell(0, 0, 8, 57, '<div style="font-size: 10px;"><strong>Item: </strong>'.$row_odermproducao['qtd'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Tipo: </strong>'.$row_odermproducao['produto'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Quantidade: </strong>'.$row_odermproducao['val_qtd_vidros'].'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Altura: </strong>'.$altura_cortada.' (mm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Largura: </strong>'.$largura_cortada.' (mm)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Área: </strong>1,956 (m^2)</div> 
+            ');
+                   
 
-                        // Altura do rodapé
-                        $footer_height = 10;
-                        // Posiciona o cursor para o rodapé
-                        $pdf->SetY(-$footer_height - $footer_bottom_margin);
-                        $data = date("d/m/Y");
-                        // $pdf->writeHTMLCell(0, 0, 6, 233, '<div><strong style="font-size: 14px">Qtd Total (Portas + Vidros): 1</strong></div>');
-                        $pdf->writeHTMLCell(0, 0, 6, 290, '<div style="font-size: 10px; text-align: left;"><a href="https://www.exemplo.com" style=" color: #000;">https://www.exemplo.com</a></div>', 0, 0, false, true, 'L', true);
-                        $pdf->SetY($pdf->GetY() + 30);
-                        // Last Footer
+            $quarta_borda = 12;
+            // Borda
+            $pdf->Rect(8, 63, 205 - 10, $quarta_borda);
+            $pdf->writeHTMLCell(0, 0, 8, 64, '
+            <table style="text-align: center !important;"><thead><tr style="font-size: 0.9em;">
+            <th><strong>Vidro: </strong></th>
+            <th><strong>Qtd: </strong></th>
+            <th><strong>Corte - Vidro: </strong></th>
+            </tr>
+            </thead>
+            <tbody><tr style="font-size: 0.9em;"><td>'.$row_odermproducao['vidro'].'</td><td>'.$row_odermproducao['val_qtd_vidros'].'</td><td>'.$altura_cortada.' X '.$largura_cortada.'</td></tr></tbody></table>');
 
-                    }elseif(isset($_POST['btn_submit']) && $_POST['btn_submit'] == 'Sintético - Cliente')
+            $oitava_borda = 30;
+            // Borda
+            $pdf->Rect(8, 84, 110 - 10, $oitava_borda);
+            $observacao = $pdf->writeHTMLCell(0, 0, 8, 86, '<div style="font-size: 10px;"><strong>Observação do Item: </strong>
+            <br>'.$row_odermproducao['obs_observacao_op'].'
+            </div>');
+
+            if($altura_cortada < $largura_cortada)
+            {
+                $alturaCortada = $pdf->writeHTMLCell(0, 0, 112, 98, '<div>'.$altura_cortada.'</div>');
+                $larguraCortada = $pdf->writeHTMLCell(0, 0, 142, 117, '<div>'.$largura_cortada.'</div>');
+
+                // Adiciona a imagem
+                $image_file = '../assets/img/vidro_horizontal.jpeg';  // Substitua pelo caminho real da sua imagem
+                $pdf->Image($image_file, 120, 85, 55, 30); 
+                // $container_observacao_image = $pdf->writeHTMLCell(0, 0, 0, 150);
+            }elseif($altura_cortada > $largura_cortada)
+            {
+                $alturaCortada = $pdf->writeHTMLCell(0, 0, 116, 95, '<div>'.$altura_cortada.'</div>');
+                $larguraCortada = $pdf->writeHTMLCell(0, 0, 133, 117, '<div>'.$largura_cortada.'</div>');
+
+                $image_file = '../assets/img/vidro_vertical.jpeg';  // Substitua pelo caminho real da sua imagem
+                $pdf->Image($image_file, 125, 77, 25, 40);  
+            }else{
+                $alturaCortada = $pdf->writeHTMLCell(0, 0, 112, 98, '<div>'.$altura_cortada.'</div>');
+                $larguraCortada = $pdf->writeHTMLCell(0, 0, 136, 117, '<div>'.$largura_cortada.'</div>');
+
+                $image_file = '../assets/img/vidro_quadrado.jpeg';  // Substitua pelo caminho real da sua imagem
+                $pdf->Image($image_file, 121, 77, 39, 39); 
+            }
+            // Desative o corte automático de página
+            $pdf->SetAutoPageBreak(false, 0);
+
+            // Altura da margem de baixo do rodapé (em milímetros)
+            $footer_bottom_margin = 20;
+
+            // Altura do rodapé
+            $footer_height = 50;
+            // Posiciona o cursor para o rodapé
+            $pdf->SetY(-$footer_height - $footer_bottom_margin);
+
+            $pdf->writeHTMLCell(0, 0, 8, 107, '<div style="font-size: 10px; text-align: left;"><a href="https://www.exemplo.com" style=" color: #000;">https://www.exemplo.com</a></div>', 0, 0, false, true, 'L', true);        
+
+    }elseif(isset($_POST['btn_submit']) && $_POST['btn_submit'] == 'Sintético - Cliente')
                     {
                         
                              // Adiciona a imagem
