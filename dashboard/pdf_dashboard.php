@@ -232,7 +232,7 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                              $Prod_usinagem_puxador = $row_odermproducao['prod_usinagem_puxador'];
                              $Prod_porcento_desconto = $row_odermproducao['prod_porcento_desconto'];
 
-                             if(!empty($usinagemEsquerdo) || !empty($usinagemDireito) || !empty($usinagemSuperior)){
+                             if(!empty($Modo) || !empty($usinagemEsquerdo) || !empty($usinagemDireito) || !empty($usinagemSuperior) || !empty($usinagemInferior) || !empty($puxadorEsquerdo) || !empty($puxadorDireito) || !empty($PuxadorSuperior) || !empty($PuxadorInferior) || !empty($Vidro) || !empty($TV) || !empty($Servicos) || !empty($Travessa) || !empty($PortasPares) || !empty($Reforco) || !empty($Desempenador) || !empty($Esquadreta) || !empty($Ponteira) || !empty($Kit) || !empty($Valor_item_cliente) || !empty($Porcento_desconto) || !empty($Desconto) || !empty($Produto) || !empty($Prod_usinagem_puxador) || !empty($Prod_porcento_desconto)){
                                 
                                 $textoModo = 'Modo: ' . $Modo;
                                 $textoUsinagemEsquerdo = 'Usinagem Esquerdo: ' . $usinagemEsquerdo;
