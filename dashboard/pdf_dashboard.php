@@ -206,65 +206,79 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                              </thead>
                              <tbody><tr style="font-size: 0.9em;"><td>'.$row_odermproducao['qtd'].'</td><td>'.$row_odermproducao['perfil_lado_direito'].'</td><td>'.$row_odermproducao['qtd'].'</td><td></td><td>R$ '.number_format($row_odermproducao['valor_item_cliente'], 2, '.', ',').'</td><td>R$ '.number_format($produto_qtd_unitario, 2, '.', ',').'</td></tr></tbody></table>');
                              
-                             $Modo = $row_odermproducao['modo']; 
-                             $usinagemEsquerdo = $row_odermproducao['usinagem_para_esquerdo'];
-                             $usinagemDireito = $row_odermproducao['usinagem_para_direito'];
-                             $usinagemSuperior = $row_odermproducao['usinagem_para_superior'];
-                             $usinagemInferior = $row_odermproducao['usinagem_para_inferior'];
-                             $puxadorEsquerdo = $row_odermproducao['puxador_esquerdo'];
-                             $puxadorDireito = $row_odermproducao['puxador_direito'];
-                             $PuxadorSuperior = $row_odermproducao['puxador_superior'];
-                             $PuxadorInferior = $row_odermproducao['puxador_inferior'];
-                             $Vidro = $row_odermproducao['vidro'];
-                             $TV = $row_odermproducao['tv'];
-                             $Servicos = $row_odermproducao['servicos'];
-                             $Travessa = $row_odermproducao['travessa'];
-                             $PortasPares = $row_odermproducao['portas_pares'];
-                             $Reforco = $row_odermproducao['reforco'];
-                             $Desempenador = $row_odermproducao['desempenador'];
-                             $Esquadreta = $row_odermproducao['esquadreta'];
-                             $Ponteira = $row_odermproducao['ponteira'];
-                             $Kit = $row_odermproducao['kit'];
-                             $Valor_item_cliente = $row_odermproducao['valor_item_cliente'];
-                             $Porcento_desconto = $row_odermproducao['porcento_desconto'];
-                             $Desconto = $row_odermproducao['desconto'];
-                             $Produto = $row_odermproducao['produto'];
-                             $Prod_usinagem_puxador = $row_odermproducao['prod_usinagem_puxador'];
-                             $Prod_porcento_desconto = $row_odermproducao['prod_porcento_desconto'];
+$Modo = $row_odermproducao['modo'];
+$usinagemEsquerdo = $row_odermproducao['usinagem_para_esquerdo'];
+$usinagemDireito = $row_odermproducao['usinagem_para_direito'];
+$usinagemSuperior = $row_odermproducao['usinagem_para_superior'];
+$usinagemInferior = $row_odermproducao['usinagem_para_inferior'];
+$puxadorEsquerdo = $row_odermproducao['puxador_esquerdo'];
+$puxadorDireito = $row_odermproducao['puxador_direito'];
+$PuxadorSuperior = $row_odermproducao['puxador_superior'];
+$PuxadorInferior = $row_odermproducao['puxador_inferior'];
+$Vidro = $row_odermproducao['vidro'];
+$TV = $row_odermproducao['tv'];
+$Servicos = $row_odermproducao['servicos'];
+$Travessa = $row_odermproducao['travessa'];
+$PortasPares = $row_odermproducao['portas_pares'];
+$Reforco = $row_odermproducao['reforco'];
+$Desempenador = $row_odermproducao['desempenador'];
+$Esquadreta = $row_odermproducao['esquadreta'];
+$Ponteira = $row_odermproducao['ponteira'];
+$Kit = $row_odermproducao['kit'];
+$Valor_item_cliente = $row_odermproducao['valor_item_cliente'];
+$Porcento_desconto = $row_odermproducao['porcento_desconto'];
+$Desconto = $row_odermproducao['desconto'];
+$Produto = $row_odermproducao['produto'];
+$Prod_usinagem_puxador = $row_odermproducao['prod_usinagem_puxador'];
+$Prod_porcento_desconto = $row_odermproducao['prod_porcento_desconto'];
 
-                             if(!empty($Modo) || !empty($usinagemEsquerdo) || !empty($usinagemDireito) || !empty($usinagemSuperior) || !empty($usinagemInferior) || !empty($puxadorEsquerdo) || !empty($puxadorDireito) || !empty($PuxadorSuperior) || !empty($PuxadorInferior) || !empty($Vidro) || !empty($TV) || !empty($Servicos) || !empty($Travessa) || !empty($PortasPares) || !empty($Reforco) || !empty($Desempenador) || !empty($Esquadreta) || !empty($Ponteira) || !empty($Kit) || !empty($Valor_item_cliente) || !empty($Porcento_desconto) || !empty($Desconto) || !empty($Produto) || !empty($Prod_usinagem_puxador) || !empty($Prod_porcento_desconto)){
-                                
-                                $textoModo = 'Modo: ' . $Modo;
-                                $textoUsinagemEsquerdo = 'Usinagem Esquerdo: ' . $usinagemEsquerdo;
-                                $textoUsinagemDireito = 'Usinagem Direito: ' . $usinagemDireito;
-                                $textoUsinagemSuperior = 'Usinagem Direito: ' . $usinagemSuperior;
-                                $textoUsinagemInfeior = 'Usinagem Direito: ' . $usinagemInferior;
-                                $textoPuxadorEsquerdo = 'Puxador Esquerdo: ' . $puxadorEsquerdo;
-                                $textoPuxadorDireito = 'Puxador Direito: ' . $puxadorDireito;
-                                $textoPuxadorSuperior = 'Puxador Superior: ' . $PuxadorSuperior;
-                                $textoPuxadorInferior = 'Puxador Inferior: ' . $PuxadorInferior;
-                                $textoVidro = 'Vidro: ' . $Vidro;
-                                $textoTV = 'TV: ' . $TV;
-                                $textoServicos = 'Serviços: ' . $Servicos;
-                                $textoTravessa = 'Travessa: ' .$Travessa;
-                                $textoPortasPares = 'Portas Pares: ' . $PortasPares;
-                                $textoReforco = 'Reforço: ' . $Reforco;
-                                $textoDesempenador = 'Desempenador: ' . $Desempenador;
-                                $textoEsquadreta = 'Esquadreta: ' . $Esquadreta;
-                                $textoPonteira = 'Ponteira: ' . $Ponteira;
-                                $textoKit = 'Kit: ' . $Kit;
-                                $textoValor_item_cliente = 'Valor Item Cliente: ' . $Valor_item_cliente;
-                                $textoPorcento_desconto = 'Porcento Desconto: ' . $Porcento_desconto;
-                                $textoDesconto = 'Desconto: ' . $Desconto;
-                                $textoProduto = 'Produto: ' . $Produto;
-                                $textoProd_usinagem_puxador = 'Produto Usinagem Puxador: ' . $Prod_usinagem_puxador;
-                                $textoProd_porcento_desconto = 'Produto Porcento Desconto: ' . $Prod_porcento_desconto;
+// Cria um array associativo com os textos
+$textos = array(
+    'Modo' => $Modo,
+    'Usinagem Esquerdo' => $usinagemEsquerdo,
+    'Usinagem Direito' => $usinagemDireito,
+    'Usinagem Superior' => $usinagemSuperior,
+    'Usinagem Inferior' => $usinagemInferior,
+    'Puxador Esquerdo' => $puxadorEsquerdo,
+    'Puxador Direito' => $puxadorDireito,
+    'Puxador Superior' => $PuxadorSuperior,
+    'Puxador Inferior' => $PuxadorInferior,
+    'Vidro' => $Vidro,
+    'TV' => $TV,
+    'Serviços' => $Servicos,
+    'Travessa' => $Travessa,
+    'Portas Pares' => $PortasPares,
+    'Reforço' => $Reforco,
+    'Desempenador' => $Desempenador,
+    'Esquadreta' => $Esquadreta,
+    'Ponteira' => $Ponteira,
+    'Kit' => $Kit,
+    'Valor Item Cliente' => $Valor_item_cliente,
+    'Porcento Desconto' => $Porcento_desconto,
+    'Desconto' => $Desconto,
+    'Produto' => $Produto,
+    'Produto Usinagem Puxador' => $Prod_usinagem_puxador,
+    'Produto Porcento Desconto' => $Prod_porcento_desconto
+);
 
-                                $pdf->writeHTMLCell(0, 0, 45, 70, '<div style="margin-left: 500px; font-size: 0.9em;">('.$textoModo.' - '.$textoUsinagemEsquerdo.' - '.$textoUsinagemDireito.' - '.$textoUsinagemSuperior.' - '.$textoUsinagemInfeior.' - '.$textoPuxadorEsquerdo.' - '.$textoPuxadorDireito.' - '.$textoPuxadorSuperior.' - '.$textoPuxadorInferior.' - '.$textoVidro.' - '.$textoTV.' - '.$textoServicos.' - '.$textoTravessa.' - '.$textoPortasPares.' - '.$textoReforco.' - '.$textoDesempenador.' - '.$textoEsquadreta.' - '.$textoPonteira.' - '.$textoKit.' - '.$textoValor_item_cliente.' - '.$textoPorcento_desconto.' - '.$textoDesconto.' - '.$textoProduto.' - '.$textoProd_usinagem_puxador.' - '.$textoProd_porcento_desconto.') </div>');
-                             }else {
-                                 
-                                 $pdf->writeHTMLCell(0, 0, 45, 70, '<div style="margin-left: 500px; font-size: 0.9em;"> </div>');
-                             }                                                                                                         
+// Filtra o array para incluir apenas os índices e valores não vazios
+$itensNaoVazios = array_filter($textos, function($valor) {
+    return !empty($valor);
+});
+
+// Gera o texto final
+$textoFinal = implode(' - ', array_map(function($indice, $valor) {
+    return $indice . ': ' . $valor;
+}, array_keys($itensNaoVazios), $itensNaoVazios));
+
+// Adiciona o texto ao PDF se não estiver vazio
+if (!empty($textoFinal)) {
+    $pdf->writeHTMLCell(0, 0, 45, 70, '<div style="margin-left: 500px; font-size: 0.9em;">(' . $textoFinal . ')</div>');
+} else {
+    $pdf->writeHTMLCell(0, 0, 45, 70, '<div style="margin-left: 500px; font-size: 0.9em;"></div>');
+}
+
+                                                                                                     
                         }
                  
                          // Desative o corte automático de página
