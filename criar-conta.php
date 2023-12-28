@@ -147,19 +147,6 @@
                             <input type="text" placeholder="Tipo" class="form-control input-sm ms-3" id="tipo" name="tipo" readonly>
                           </div>
                         </div>
-                        
-                        <input type="hidden" name="nivel" value="user">
-                        
-                        <div class="text-center mb-4">
-                          <button type="submit" name="btn_cadastrar" class="btn btn-hero btn-primary">
-                            <i class="fa fa-fw fa-plus opacity-50 me-1"></i>Cadastrar-se
-                          </button>
-                        </div>
-                        <p class="mt-3 mb-0 d-lg-flex justify-content-lg-between">
-                            <a class="btn btn-sm btn-alt-secondary d-block d-lg-inline-block mb-1" href="index.php">
-                            <i class="fa fa-exclamation-triangle opacity-50 me-1"></i> Voltar
-                            </a>
-                        </p>
                       </div>
 
                       <div class="col-md-6">
@@ -225,6 +212,18 @@
 
                         <input type="hidden" name="nivel" value="user">                  
                       </div>
+
+                      <div class="text-center mb-4">
+                          <button type="submit" name="btn_cadastrar" class="btn btn-hero btn-primary">
+                            <i class="fa fa-fw fa-plus opacity-50 me-1"></i>Cadastrar-se
+                          </button>
+                        </div>
+                        <p class="mt-3 mb-0 d-lg-flex justify-content-lg-between">
+                            <a class="btn btn-sm btn-alt-secondary d-block d-lg-inline-block mb-1" href="index.php">
+                            <i class="fa fa-exclamation-triangle opacity-50 me-1"></i> Voltar
+                            </a>
+                        </p>
+
                     </div>
                   </form>
                     <div style="display: flex; justify-content: right;">
@@ -263,7 +262,8 @@
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-    <script>
+
+  <script>
 
     function limpa_formulário_cep() {
             //Limpa valores do formulário de cep.
@@ -335,6 +335,7 @@
     };
 
     </script>
+
   </body>
 </html>
 
@@ -387,7 +388,7 @@ if(isset($_POST['btn_cadastrar'])) :
     if($stmt->rowCount() > 0)
     { 
       //Cadastrar tbl_clientes_system
-      $tbl_clientes_system = $pdo->prepare("INSERT INTO `tbl_clientes_system` (`id`, `nome`, `endereco`, `bairro`, `cidade`, `cep`, `celular`) VALUES (NULL, :nome, :endereco, :bairro, :cidade, :cep, :celular)");
+      $tbl_clientes_system = $conn->prepare("INSERT INTO `tbl_clientes_system` (`id`, `nome`, `endereco`, `bairro`, `cidade`, `cep`, `celular`) VALUES (NULL, :nome, :endereco, :bairro, :cidade, :cep, :celular)");
       $tbl_clientes_system->bindParam(":nome", $nome);
       $tbl_clientes_system->bindParam(":endereco", $endereco);
       $tbl_clientes_system->bindParam(":bairro", $bairro);
