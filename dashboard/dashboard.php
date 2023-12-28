@@ -196,14 +196,14 @@
                                         <button class="dropdown-item" type="submit" name="btn_submit" value="Sintético 3 - Cliente">Sintético 3 - Cliente</button>
                                     </li>
                                     <li>
-                                        <button class="dropdown-item" type="button" name="btn_submit" value="Sintético 3 - Sem Valor">Sintético 3 - Sem Valor</button>
+                                        <button class="dropdown-item" type="submit" name="btn_submit" value="Sintético 3 - Sem Valor">Sintético 3 - Sem Valor</button>
                                     </li>
                                     <li style="width: 100%;"><hr class="dropdown-divider" style="color: black; padding: 1px;"></li>
                                     <li>
-                                        <button class="dropdown-item" type="button" name="btn_submit" value="Relátorio de Vendas (OP)">Relátorio de Vendas (OP)</button>
+                                        <button class="dropdown-item" type="submit" name="btn_submit" value="Relátorio de Vendas (OP)">Relátorio de Vendas (OP)</button>
                                     </li>
                                     <li>
-                                        <button class="dropdown-item" type="button" name="btn_submit" value="Relátorio para Entrega Por Cliente">Relátorio para Entrega Por Cliente</button>
+                                        <button class="dropdown-item" type="submit" name="btn_submit" value="Relátorio para Entrega Por Cliente">Relátorio para Entrega Por Cliente</button>
                                     </li>
                                 </ul>
                             </div>

@@ -481,7 +481,7 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                     {
                 
                         // Adiciona a imagem
-                        $image_file = '../assets/img/logoHJ-Aluminio.jpg'; 
+                        /*$image_file = '../assets/img/logoHJ-Aluminio.jpg'; 
                         $pdf->Image($image_file, 0, $pdf->GetY(), 30, 20);  
                 
                         $header_height = 20;
@@ -491,7 +491,7 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                 
                         // Adiciona o conteúdo em divs
                         $pdf->writeHTMLCell(0, 50, 60, $pdf->GetY(), '<div style="font-size: 11px;"><strong style="font-size: 12px; padding: 50px; margin: 50px;">HJ Alumínios</strong><br><br>43-3056-0052<br><a href="malito:hjaluminio@hotmail.com" style="text-decoration: none; color: black;">hjaluminio@hotmail.com</a></div>', 0, 0, false, true, 'L', true);
-                        $pdf->writeHTMLCell(0, 0, 150, $pdf->GetY(), '<div style="font-size: 11px; padding-left: 30px;"><strong>Pedido: 22.546<br>Data: ' . $data . '</strong><br>Aprovado ('.$data.')</div>', 0, 0, false, true, 'L', true);
+                        $pdf->writeHTMLCell(0, 0, 150, $pdf->GetY(), '<div style="font-size: 11px; padding-left: 30px;"><strong>Pedido: 22.546<br>Data: ' . $data . '</strong><br>Aprovado ('.$data.')</div>', 0, 0, false, true, 'L', true);*/
                         // Last Header
                 
                 
