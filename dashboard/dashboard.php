@@ -179,7 +179,7 @@
                     <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Novo</a></button>
 
                     <div>    
-                        <form action="testids.php" method="post" target="_blank" id="resultFormPedidos">
+                        <form action="pdf_dashboard.php" method="post" target="_blank" id="resultFormPedidos">
                             <input type="hidden" id="selectedIdsPedidos" name="selectedIdsPedidos">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 0 5px 16px;">

@@ -437,7 +437,7 @@
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para<span style="color: #f000;">*</span></label>
                                                         <select class="form-control mb-2" name="usinagem_para_esquerdo" id="">
-                                                            <option selected>Selecione</option>
+                                                            <option selected value="">Selecione</option>
                                                             <option value="Dobradiça">Dobradiça</option>
                                                             <option value="Sem Usinagem">Sem Usinagem</option>
                                                         </select>
@@ -446,7 +446,7 @@
                                                     <div class="p-2">
                                                         <label for="">Puxador</label>
                                                         <select class="form-control mb-2" name="puxador_esquerdo" id="">
-                                                            <option selected>Selecione</option>
+                                                            <option selected value="">Selecione</option>
                                                             <?php
                                                                 require_once "../config.php";
                                                                 $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
@@ -496,7 +496,7 @@
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
                                                         <select class="form-control mb-2" name="usinagem_para_direito" id="">
-                                                            <option selected>Selecione</option>
+                                                            <option selected value="">Selecione</option>
                                                             <option value="Dobradiça">Dobradiça</option>
                                                             <option value="Sem Usinagem">Sem Usinagem</option>
                                                         </select>
@@ -505,7 +505,7 @@
                                                     <div class="p-2">
                                                         <label for="">Puxador</label>
                                                         <select class="form-control mb-2" name="puxador_direito" id="">
-                                                        <option selected>Selecione</option>
+                                                        <option selected value="">Selecione</option>
                                                             <?php
                                                                 require_once "../config.php";
                                                                 $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
@@ -551,7 +551,7 @@
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
                                                         <select class="form-control mb-2" name="usinagem_para_superior" id="">
-                                                            <option selected>Selecione</option>
+                                                            <option selected value="">Selecione</option>
                                                             <option value="Dobradiça">Dobradiça</option>
                                                             <option value="Sem Usinagem">Sem Usinagem</option>
                                                         </select>
@@ -560,7 +560,7 @@
                                                     <div class="p-2">
                                                         <label for="">Puxador</label>
                                                         <select class="form-control mb-2" name="puxador_superior" id="">
-                                                        <option selected>Selecione</option>
+                                                        <option selected value="">Selecione</option>
                                                             <?php
                                                                 require_once "../config.php";
                                                                 $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
@@ -607,7 +607,7 @@
                                                     <div class="p-2">
                                                         <label for="">Usinagem Para <span style="color: #f000;">*</span></label>
                                                         <select class="form-control mb-2" name="usinagem_para_inferior" id="">
-                                                            <option selected>Selecione</option>
+                                                            <option selected value="">Selecione</option>
                                                             <option value="Dobradiça">Dobradiça</option>
                                                             <option value="Sem Usinagem">Sem Usinagem</option>
                                                         </select>
@@ -616,7 +616,7 @@
                                                     <div class="p-2">
                                                         <label for="">Puxador</label>
                                                         <select class="form-control mb-2" name="puxador_inferior" id="">
-                                                        <option selected>Selecione</option>
+                                                        <option selected value="">Selecione</option>
                                                             <?php
                                                                 require_once "../config.php";
                                                                 $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
@@ -647,7 +647,7 @@
                                                     <div class="p-2" style="width: 280px;">
                                                         <label for="">Vidro</label>
                                                         <select name="vidro" class="form-control" id="vidro">
-                                                            <option selected>Selecione</option>
+                                                            <option selected value="">Selecione</option>
                                                             <?php
                                                                 require_once "../config.php";
                                                                 $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
@@ -683,7 +683,7 @@
                                                     </div>
                                                     <div class="p-2" style="width: 280px;">
                                                         <select name="servicos" class="form-control" id="servicos">
-                                                            <option selected>Selecione</option>
+                                                            <option selected value="">Selecione</option>
                                                             <?php
                                                                 require_once "../config.php";
                                                                 $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
@@ -713,7 +713,7 @@
                                                     <div class="p-2" style="width: 280px;">
                                                         <label for="">Sentido da Travessa</label>
                                                         <select name="travessa" class="form-control" id="travessa">
-                                                            <option selected>Selecione</option>
+                                                            <option selected value="">Selecione</option>
                                                             <?php
                                                                 require_once "../config.php";
                                                                 $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
@@ -753,7 +753,7 @@
                                                     <div>
                                                         <label for="">Reforço</label>
                                                         <select class="form-control mb-2" name="reforco" id="">
-                                                            <option selected>Selecione</option>
+                                                            <option selected value="">Selecione</option>
                                                             <option value="Superior">Superior</option>
                                                             <option value="Inferior">Inferior</option>
                                                             <option value="Centralizado">Centralizado</option>
@@ -774,7 +774,7 @@
                                                     <div>
                                                         <label for="">Esquadreta</label>
                                                         <select name="esquadreta" class="form-control" id="esquadreta">
-                                                            <option selected>Selecione</option>
+                                                            <option selected value="">Selecione</option>
                                                             <?php
                                                                 require_once "../config.php";
                                                                 $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
@@ -795,7 +795,7 @@
                                                     <div>
                                                         <label for="">Ponteira</label>
                                                         <select class="form-control mb-2" name="ponteira" id="">
-                                                            <option selected>Selecione uma Ponteira</option>
+                                                            <option selected value="">Selecione uma Ponteira</option>
                                                             <?php
                                                                 require_once "../config.php";
                                                                 $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
@@ -816,7 +816,7 @@
                                                     <div>
                                                         <label for="kit">Kit</label>
                                                         <select class="form-control mb-2" name="kit" id="">
-                                                            <option selected>Escolha um kit</option>
+                                                            <option selected value="">Escolha um kit</option>
                                                             <?php
                                                                 require_once "../config.php";
                                                                 $pdo = new PDO("mysql:host=$DBHOST;dbname=$DBNAME", $DBUSER, $DBPASS);
@@ -1019,7 +1019,7 @@
                                                 <div class="col-md-4">
                                                     <div>
                                                         <select name="prod_usinagem_puxador" id="" class="form-control mb-2 ms-2 mt-2">
-                                                            <option selected>Selecione</option>
+                                                            <option selected value="">Selecione</option>
                                                             <option value="Usinagem Puxador">Usinagem Puxador</option>
                                                         </select>
                                                     </div>
