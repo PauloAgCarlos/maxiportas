@@ -112,7 +112,7 @@
                     
                     <div class="mb-3 d-flex">
                       <span style="color: red;">*</span>
-                      <input type="text" placeholder="Nome" class="form-control" id="nome" name="nome" readonly>
+                      <input type="text" placeholder="Nome" class="form-control" id="nome" name="nome">
                       
                       <span class="ms-3" style="color: red;">*</span>
                       <input type="password" class="form-control" id="signup-username" name="password" style="font-size: 0.9em;" placeholder="Senha" style="font-size: 0.9em;">
@@ -192,7 +192,7 @@
                     <div style="display: flex;">
                       <div class="mb-3 mt-4" style="width: 50%;">
                         <label for="numero">Número:</label>
-                        <input type="text" placeholder="Número" class="form-control input-sm" name="numero" id="numero" readonly>
+                        <input type="text" placeholder="Número" class="form-control input-sm" name="numero" id="numero">
                       </div>
 
                       <div class="mb-3 mt-4" style="width: 50%; margin-left: 20px;">
@@ -207,9 +207,16 @@
                       <input type="text" placeholder="Natureza Jurídica" class="form-control input-sm" id="natureza_juridica" name="natureza_juridica" readonly>
                     </div>
 
-                    <div class="mb-4">
-                      <label for="fantasia" class="form-label">Nome Fantasia:</label>
-                      <input type="text" placeholder="Nome Fantasia" class="form-control input-sm" id="fantasia" name="fantasia" readonly>
+                    <div style="display: flex;">
+                      <div class="mb-3 mt-2" style="width: 50%;">
+                        <label for="celular" class="form-label">Celular:</label>
+                        <input type="text" placeholder="Celular" class="form-control input-sm" id="celular" name="celular" >
+                      </div>
+
+                      <div class="mb-3 mt-2" style="width: 50%; margin-left: 20px;">
+                        <label for="fantasia" class="form-label">Nome Fantasia:</label>
+                        <input type="text" placeholder="Nome Fantasia" class="form-control input-sm" id="fantasia" name="fantasia" readonly>
+                      </div>
                     </div>
 
                     <input type="hidden" name="nivel" value="user">                  

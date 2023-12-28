@@ -23,6 +23,7 @@
     $cidade = addslashes($_POST['cidade']);
     $numero = addslashes($_POST['numero']);
     $complemento = addslashes($_POST['complemento']);
+    $celular = addslashes($_POST['celular']);
 
     // Configurações do banco de dados
     require_once "../config.php";
@@ -33,7 +34,7 @@
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Consulta para inserir o usuário na tabela
-        $stmt = $pdo->prepare("INSERT INTO clientes (cnpj, nome, senha, email, atividade_principal, endereco, abertura, porte, situacao, tipo, fantasia, natureza_juridica, nivel, cep, rua, bairro, uf, cidade, numero, complemento) VALUES (:cnpj, :nome, :senha, :email, :atividade_principal, :endereco, :abertura, :porte, :situacao, :tipo, :fantasia, :natureza_juridica, :nivel, :cep, :rua, :bairro, :uf, :cidade, :numero, :complemento)");
+        $stmt = $pdo->prepare("INSERT INTO clientes (cnpj, nome, senha, email, atividade_principal, endereco, abertura, porte, situacao, tipo, fantasia, natureza_juridica, nivel, cep, rua, bairro, uf, cidade, numero, complemento, celular) VALUES (:cnpj, :nome, :senha, :email, :atividade_principal, :endereco, :abertura, :porte, :situacao, :tipo, :fantasia, :natureza_juridica, :nivel, :cep, :rua, :bairro, :uf, :cidade, :numero, :complemento, :celular)");
         $stmt->bindParam(":cnpj", $cnpj);
         $stmt->bindParam(":nome", $nome);
         $stmt->bindParam(":senha", $password);
@@ -54,16 +55,20 @@
         $stmt->bindParam(":cidade", $cidade);
         $stmt->bindParam(":numero", $numero);
         $stmt->bindParam(":complemento", $complemento);
+        $stmt->bindParam(":celular", $celular);
 
         $stmt->execute();
 
         if($stmt)
         {         
           //Cadastrar tbl_clientes_system
-          $tbl_clientes_system = $pdo->prepare("INSERT INTO `tbl_clientes_system` (`id`, `nome`, `endereco`, `cep`) VALUES (NULL, :nome, :endereco, :cep)");
+          $tbl_clientes_system = $pdo->prepare("INSERT INTO `tbl_clientes_system` (`id`, `nome`, `endereco`, `bairro`, `cidade`, `cep`, `celular`) VALUES (NULL, :nome, :endereco, :bairro, :cidade, :cep, :celular)");
           $tbl_clientes_system->bindParam(":nome", $nome);
           $tbl_clientes_system->bindParam(":endereco", $endereco);
-          $tbl_clientes_system->bindParam(":cep", $cnpj);
+          $tbl_clientes_system->bindParam(":bairro", $bairro);
+          $tbl_clientes_system->bindParam(":cidade", $rua);
+          $tbl_clientes_system->bindParam(":cep", $cep);
+          $tbl_clientes_system->bindParam(":celular", $celular);
           $tbl_clientes_system->execute();
 
           if($tbl_clientes_system->rowCount() > 0)
