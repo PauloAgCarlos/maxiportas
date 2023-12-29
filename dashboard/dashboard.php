@@ -176,7 +176,26 @@
                   
                 
                 <div style="margin: 5px; display: flex; justify-content: space-between;">
-                    <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Novo</a></button>
+                    <button style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; height: 40px; padding: 0px 16px;"><a href="ordem_producao.php" style="color: #1d1d1d; font-size: 0.9em;">Novo</a></button>
+
+                    <!-- Header Search -->
+                    <div id="Apage-header-search" class="Aoverlay-header Abg-header-dark">
+                      <div class="bg-white-10">
+                        <div class="content-header">
+                          <form method="POST" id="form-pesquisa" action="">
+                            <div class="input-group">
+                              <input type="text" class="form-control" name="pesquisa" id="pesquisa" placeholder="Pesquisar...">
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      <!--ul class="resultado">
+                      
+                      </ul-->
+                      <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+                      <script type="text/javascript" src="personalizado.js"></script>
+                    </div>
+                    <!-- END Header Search -->
 
                     <div>    
                         <form action="pdf_dashboard.php" method="post" target="_blank" id="resultFormPedidos">
