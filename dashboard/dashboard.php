@@ -191,7 +191,7 @@
                     </div>
                     <!-- END Header Search -->
                   </div>
-                <div class="table-responsive">   
+                <div class="table-responsive resultado">   
                   
                 
                   <div style="margin: 5px; display: flex; align-items: center; justify-content: space-between;">
@@ -199,7 +199,7 @@
 
                       <div>    
                           <form action="pdf_dashboard.php" method="post" target="_blank" id="resultFormPedidos">
-                              <input type="hidden" id="selectedIdsPedidos" name="selectedIdsPedidos">
+                              <input type="hidden" id="selectedIdsPedidosDash" name="selectedIdsPedidos">
                               <div class="btn-group">
                                   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 20px; border: 1px solid #ccc; background-color: transparent; padding: 5px 0 5px 16px;">
                                     <a style="color: #1d1d1d; font-size: 0.9em;"  style="text-decoration: none;"  href="#" role="button" aria-expanded="false">Imprimir <img src="../assets/img/icons8-ordem-descendente-24.png" width="16px" alt=""></a>
@@ -231,7 +231,7 @@
                     </div>
 
 
-                  <table class="table table-striped table-hover table-borderless table-vcenter fs-sm resultado">
+                  <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
                     <thead style="text-align: center; font-size: 0.8em; background-color: #2ab759; color: #fff;">
                       <tr class="text-uppercase">
                         <th>ID </th>
@@ -256,7 +256,7 @@
                           <?= $row_p['id']; ?>
                         </td>
                         <td class="text-center text-end fw-medium">
-                          <form id="selectFormPedidos">
+                          <form id="selectFormPedidosDash">
                               <?php
                               $items = array(1, 2, 3, 4, 5);
                                 echo '<input type="checkbox" name="selectedItemsPedidos[]" value="' . $row_p['id'] . '">';
@@ -290,18 +290,18 @@
                       
                     </tbody>
                      <script>
-                        const checkboxesPedidos = document.querySelectorAll("#selectFormPedidos input[type='checkbox']");
-                        const selectedIdsPedidosInput = document.getElementById("selectedIdsPedidos");
+                        const checkboxesPedidos = document.querySelectorAll("#selectFormPedidosDash input[type='checkbox']");
+                        const selectedIdsPedidosDashInput = document.getElementById("selectedIdsPedidosDash");
 
                         checkboxesPedidos.forEach((checkbox) => {
-                            checkbox.addEventListener("change", updateSelectedIdsPedidos);
+                            checkbox.addEventListener("change", updateSelectedIdsPedidosDash);
                         });
 
-                        function updateSelectedIdsPedidos() {
+                        function updateSelectedIdsPedidosDash() {
                             const selectedCheckboxesPedidos = Array.from(checkboxesPedidos).filter((checkbox) => checkbox.checked);
-                            const selectedIdsPedidos = selectedCheckboxesPedidos.map((checkbox) => checkbox.value);
+                            const selectedIdsPedidosDash = selectedCheckboxesPedidos.map((checkbox) => checkbox.value);
 
-                            selectedIdsPedidosInput.value = JSON.stringify(selectedIdsPedidos);
+                            selectedIdsPedidosDashInput.value = JSON.stringify(selectedIdsPedidosDash);
                         }
                     </script>
                   </table>
