@@ -548,7 +548,10 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                         
                     }elseif(isset($_POST['btn_submit']) && $_POST['btn_submit'] == 'Relátorio de Vendas (OP)')
                     {
-                        $pdf->setPageOrientation('L');
+                        // Redirecionar para outra página passando $id como parâmetro GET
+                        header("Location: pdf_relatorio_op.php?selectedIdsPedidos=$row_id");
+                        exit;
+                        /*$pdf->setPageOrientation('L');
                         
                         // Adiciona a imagem
                         $image_file = '../assets/img/logoHJ-Aluminio.jpg';  // Substitua pelo caminho real da sua imagem
@@ -575,7 +578,7 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                         $pdf->Rect(1, 52, $pdf->getPageWidth() - 2, $header_borda);
                         // Adiciona o conteúdo em divs
                         $pdf->writeHTMLCell(0, 50, 240, 55, '<div style="font-size: 12px;"><strong style="font-size: 11px; padding: 50px; margin: 50px;">Valor Total: $'.$valorTotalConvertido.'</strong></div>', 0, 0, false, true, 'L', true);
-                
+                        */
                     }elseif(isset($_POST['btn_submit']) && $_POST['btn_submit'] == 'Relátorio para Entrega Por Cliente')
                     {
                         $pdf->setPageOrientation('L');
