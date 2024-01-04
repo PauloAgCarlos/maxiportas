@@ -6,7 +6,7 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
 
     $pdf->SetMargins(5, 10, 5, true);
 
-    require_once "../config.php";
+    require_once "../config.php";   
     $conn = new mysqli($DBHOST, $DBUSER, $DBPASS, $DBNAME);
     if ($conn->connect_error) {
         die("Conexão falhou: " . $conn->connect_error);
@@ -549,9 +549,9 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                     }elseif(isset($_POST['btn_submit']) && $_POST['btn_submit'] == 'Relátorio de Vendas (OP)')
                     {
                         // Redirecionar para outra página passando $id como parâmetro GET
-                        header("Location: pdf_relatorio_op.php?selectedIdsPedidos=$row_id");
-                        exit;
-                        /*$pdf->setPageOrientation('L');
+                        /*header("Location: pdf_relatorio_op.php?selectedIdsPedidos=$row_id");
+                        exit;*/
+                        $pdf->setPageOrientation('L');
                         
                         // Adiciona a imagem
                         $image_file = '../assets/img/logoHJ-Aluminio.jpg';  // Substitua pelo caminho real da sua imagem
@@ -577,8 +577,8 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                         $header_borda = 8;
                         $pdf->Rect(1, 52, $pdf->getPageWidth() - 2, $header_borda);
                         // Adiciona o conteúdo em divs
-                        $pdf->writeHTMLCell(0, 50, 240, 55, '<div style="font-size: 12px;"><strong style="font-size: 11px; padding: 50px; margin: 50px;">Valor Total: $'.$valorTotalConvertido.'</strong></div>', 0, 0, false, true, 'L', true);
-                        */
+                        $pdf->writeHTMLCell(0, 50, 240, 55, '<div style="font-size: 12px;"><strong style="font-size: 11px; padding: 50px; margin: 50px;">AValor Total: $'.$valorTotalConvertido.'</strong></div>', 0, 0, false, true, 'L', true);
+                        
                     }elseif(isset($_POST['btn_submit']) && $_POST['btn_submit'] == 'Relátorio para Entrega Por Cliente')
                     {
                         $pdf->setPageOrientation('L');
