@@ -106,6 +106,7 @@ foreach ($id as $row_id1) {
             $tbl_ordem_producao1[] = array(
                 'valor_item_cliente' => $row['valor_item_cliente'],
                 'qtd' => $row['qtd'],
+                'op' => $row['op'],
             );
         }
     }
@@ -114,7 +115,7 @@ foreach ($id as $row_id1) {
         $valorTotal += $row_odermproducao['valor_item_cliente'] * $row_odermproducao['qtd'];
         $margem += 10;
         $pdf->writeHTMLCell($pdf->GetX(), 0, 0, 28 + $margem, '<table style="font-size: 10px;">
-            <tbody><tr><td>' . $row_odermproducao['op'] . '</td><td>' . $data . '</td><td>HJ Alumínios</td><td>' . $row_tbl_clientes_system['nome'] . '</td><td>R$ ' . number_format($row_odermproducao['valor_item_cliente'], 2, '.', ',') . '</td></tr></tbody></table>');
+            <tbody><tr><td>OP ' . $row_odermproducao['op'] . '</td><td>' . $data . '</td><td>HJ Alumínios</td><td>' . $row_tbl_clientes_system['nome'] . '</td><td>R$ ' . number_format($row_odermproducao['valor_item_cliente'], 2, '.', ',') . '</td></tr></tbody></table>');
     }
 }
 
