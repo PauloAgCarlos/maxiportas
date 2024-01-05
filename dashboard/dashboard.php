@@ -224,6 +224,9 @@
                                       <li>
                                           <button class="dropdown-item" type="submit" name="btn_submit" value="Relátorio para Entrega Por Cliente">Relátorio para Entrega Por Cliente</button>
                                       </li>
+                                      <li>
+                                          <button class="dropdown-item" type="submit" name="btn_submit" value="Etiqueta 10X10">Etiqueta 10X10</button>
+                                      </li>
                                   </ul>
                               </div>
                           </form>
@@ -234,7 +237,7 @@
                   <table class="table table-striped table-hover table-borderless table-vcenter fs-sm">
                     <thead style="text-align: center; font-size: 0.8em; background-color: #2ab759; color: #fff;">
                       <tr class="text-uppercase">
-                        <th>ID </th>
+                        <th>OP </th>
                         <th><input type="checkbox"></th>
                         <th>Cliente</th>
                         <th>Produto</th>
@@ -253,7 +256,7 @@
                       ?>
                       <tr>
                         <td class="text-center text-end fw-medium">
-                          <?= $row_p['id']; ?>
+                          <?= $row_p['op']; ?>
                         </td>
                         <td class="text-center text-end fw-medium">
                           <form id="selectFormPedidosDash">
