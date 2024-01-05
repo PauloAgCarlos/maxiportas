@@ -90,15 +90,37 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                     $valorTotal = $row_odermproducao['valor_item_cliente'] * $row_odermproducao['qtd'];
                     $valorTotalConvertido = number_format($valorTotal, 2, '.',',');
             
-                    foreach ($tbl_clientes_system as $row_tbl_clientes_system) {
-            
-                        $pdf->writeHTMLCell($pdf->GetX(), 0, 0, 28, '<table style="font-size: 10px;"><thead style="border: 1px solid black;"><tr style="font-weight: bold;"><th>OP</th><th>Dt.Pedido</th><th>Parceiro</th><th>Cliente</th><th>Valor</th></tr></thead>
-                        <tbody><tr><td>'.$row_odermproducao['op'].'</td><td>'.$data.'</td><td>HJ Alumínios</td><td>'.$row_tbl_clientes_system['nome'].'</td><td>$'.number_format($row_odermproducao['valor_item_cliente'], 2, '.', ',').'</td></tr></tbody></table>');
-                    }
-                    $margem = -10; 
-                    foreach($id as $row_id1) 
-                    {
+                    foreach ($tbl_clientes_system as $row_tbl_clientes_system) {}
+                    
+                    $pdf->writeHTMLCell($pdf->GetX(), 0, 0, 28, '<table style="font-size: 10px;"><thead style="border: 1px solid black;"><tr style="font-weight: bold;"><th>OP</th><th>Dt.Pedido</th><th>Parceiro</th><th>Cliente</th><th>Valor</th></tr></thead>
+                    </table>');    
+                    $valorTotal = 0; // Inicializa a variável fora do loop
 
+foreach ($id as $row_id1) {
+    $sql1 = "SELECT * FROM tbl_ordem_producao WHERE id = $row_id1";
+    $result1 = $conn->query($sql1);
+    $tbl_ordem_producao1 = array();
+
+    if ($result1->num_rows > 0) {
+        while ($row = $result1->fetch_assoc()) {
+            $tbl_ordem_producao1[] = array(
+                'valor_item_cliente' => $row['valor_item_cliente'],
+                'qtd' => $row['qtd'],
+            );
+        }
+    }
+
+    foreach ($tbl_ordem_producao1 as $row_odermproducao) {
+        $valorTotal += $row_odermproducao['valor_item_cliente'] * $row_odermproducao['qtd'];
+        $margem += 10;
+        $pdf->writeHTMLCell($pdf->GetX(), 0, 0, 28 + $margem, '<table style="font-size: 10px;">
+            <tbody><tr><td>' . $row_odermproducao['op'] . '</td><td>' . $data . '</td><td>HJ Alumínios</td><td>' . $row_tbl_clientes_system['nome'] . '</td><td>R$ ' . number_format($row_odermproducao['valor_item_cliente'], 2, '.', ',') . '</td></tr></tbody></table>');
+    }
+}
+
+$valorTotalConvertido = number_format($valorTotal, 2, '.', ',');
+                    /*foreach($id as $row_id1) 
+                    {
                         $sql1 = "SELECT * FROM tbl_ordem_producao WHERE id = $row_id1";
                         $result1 = $conn->query($sql1);
                         $tbl_ordem_producao1 = array();
@@ -115,14 +137,14 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                         $valorTotalConvertido = number_format($valorTotal, 2, '.',',');
 
                         $margem +=10;
-                        // Adiciona uma borda ao rodapé
-                        $header_borda = 8;
-                        $pdf->Rect(1, 52, $pdf->getPageWidth() - 2, $header_borda+$margem);
-                        // Adiciona o conteúdo em divs
-                        $pdf->writeHTMLCell(0, 50, 240, 55+$margem, '<div style="font-size: 12px;"><strong style="font-size: 11px; padding: 50px; margin: 50px;">AValor Total: $'.$valorTotalConvertido.'</strong></div>', 0, 0, false, true, 'L', true);
+                        $pdf->writeHTMLCell($pdf->GetX(), 0, 0, 28+$margem, '<table style="font-size: 10px;">
+                        <tbody><tr><td>'.$row_odermproducao['op'].'</td><td>'.$data.'</td><td>HJ Alumínios</td><td>'.$row_tbl_clientes_system['nome'].'</td><td>R$ '.number_format($row_odermproducao['valor_item_cliente'], 2, '.', ',').'</td></tr></tbody></table>');                   
+                    }*/
 
-                        $pdf->writeHTMLCell(0, 70, 290, 75+$margem, '<div style="font-size: 12px;"><br><br></div>', 0, 0, false, true, 'L', true);                            
-                    }
+                    $header_borda = 8;
+                    //$pdf->Rect(1, 52, $pdf->getPageWidth() - 2, $header_borda+$margem);
+                    // Adiciona o conteúdo em divs
+                    $pdf->writeHTMLCell(0, 50, 240, 55+$margem, '<div><strong style="font-size: 12px; padding: 50px; margin: 50px;">Valor Total: R$ '.$valorTotalConvertido.'</strong></div>', 0, 0, false, true, 'L', true);
                 }
             }
         }
