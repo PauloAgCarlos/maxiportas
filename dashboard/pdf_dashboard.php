@@ -64,7 +64,7 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                 if ($result_tbl_clientes_system->num_rows > 0) {
                     // Preenche o array com os dados dos tbl_clientes_system
                     while ($row_tbl_clientes_system = $result_tbl_clientes_system->fetch_assoc()) {
-                        $tbl_clientes_system[] = array('id' => $row_tbl_clientes_system['id'], 'nome' => $row_tbl_clientes_system['nome'], 'endereco' => $row_tbl_clientes_system['endereco'], 'bairro' => $row_tbl_clientes_system['bairro'], 'cidade' => $row_tbl_clientes_system['cidade'], 'cep' => $row_tbl_clientes_system['cep'], 'celular' => $row_tbl_clientes_system['celular']);
+                        $tbl_clientes_system[] = array('id' => $row_tbl_clientes_system['id'], 'nome' => $row_tbl_clientes_system['nome'], 'endereco' => $row_tbl_clientes_system['endereco'], 'bairro' => $row_tbl_clientes_system['bairro'], 'cidade' => $row_tbl_clientes_system['cidade'], 'cep' => $row_tbl_clientes_system['cep'], 'celular' => $row_tbl_clientes_system['celular'], 'nome_fantasia' => $row_tbl_clientes_system['nome_fantasia']);
                     }
                 }
                 
@@ -116,7 +116,7 @@ foreach ($id as $row_id1) {
         $valorTotal += $row_odermproducao['valor_item_cliente'] * $row_odermproducao['qtd'];
         $margem += 10;
         $pdf->writeHTMLCell($pdf->GetX(), 0, 0, 28 + $margem, '<table style="font-size: 10px;">
-            <tbody><tr><td>' . $row_odermproducao['op'] . '</td><td>' . $data . '</td><td>HJ Alumínios</td><td>' . $row_tbl_clientes_system['nome'] . ' ('.$row_odermproducao['name_consumidor'].')</td><td>R$ ' . number_format($row_odermproducao['valor_item_cliente'], 2, '.', ',') . '</td></tr></tbody></table>');
+            <tbody><tr><td>' . $row_odermproducao['op'] . '</td><td>' . $data . '</td><td>HJ Alumínios</td><td>' . $row_tbl_clientes_system['nome_fantasia'] . ' ('.$row_odermproducao['name_consumidor'].')</td><td>R$ ' . number_format($row_odermproducao['valor_item_cliente'], 2, '.', ',') . '</td></tr></tbody></table>');
     }
 }
 
