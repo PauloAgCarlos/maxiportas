@@ -238,6 +238,23 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                          $pdf->Rect(113, 45, 32, $terceira_borda);
                          $pdf->writeHTMLCell(0, 0, 113, 47, '<div style="font-size: 11px;">Qtd: <strong style="font-size: 12px;">'.$row_odermproducao['qtd'].'</strong></div> 
                          ');
+
+                         // Borda
+                         $pdf->Rect(5, 55, $pdf->getPageWidth() - 10, 18);
+                         $pdf->writeHTMLCell(0, 0, 5, 56, '<div style="font-size: 11px;"><strong style="font-size: 12px;">HJ 045 - INOX / PX HJ378 INOX 150mm Embutido <br/> Alin: Centralizado</strong></div> 
+                         ');
+
+                         // Descrição
+                         $pdf->Rect(5, 75, $pdf->getPageWidth() - 60, 31);
+                         $pdf->writeHTMLCell(0, 0, 5, 76, '<div style="font-size: 12px;">Descrição: <br/>
+                         <strong style="font-size: 11px;">'.$row_odermproducao['qtd'].' '.$row_odermproducao['produto'].' <br/> Sup: 2 Dobr.</div> 
+                         ');
+
+                         // Observação
+                         $pdf->Rect(5, 108, $pdf->getPageWidth() - 60, 31);
+                         $pdf->writeHTMLCell(0, 0, 5, 109, '<div style="font-size: 12px;">Observação: <br/>
+                         <strong style="font-size: 11px;">'.$row_odermproducao['obs_observacao_op'].'</div> 
+                         ');
                         /*$quarta_borda = 12;
                         // Borda
                         $pdf->Rect(8, 63, 205 - 10, $quarta_borda);
