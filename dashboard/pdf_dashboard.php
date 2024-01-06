@@ -144,7 +144,7 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                     foreach ($tbl_ordem_producao as $row_odermproducao){}
                     foreach(range(0, $row_odermproducao['qtd'] -1) as $indice)
                     {
-                    $pdf->AddPage('P', array(150, 150)); // Substitua 100 e 150 pelos tamanhos desejados
+                    $pdf->AddPage('P', array(150, 160)); // Substitua 100 e 150 pelos tamanhos desejados
      
 
                     $perfil_selected = $row_odermproducao['perfil_lado_direito'];
@@ -244,15 +244,57 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                          $pdf->writeHTMLCell(0, 0, 5, 56, '<div style="font-size: 11px;"><strong style="font-size: 12px;">HJ 045 - INOX / PX HJ378 INOX 150mm Embutido <br/> Alin: Centralizado</strong></div> 
                          ');
 
-                         // Descrição
-                         $pdf->Rect(5, 75, $pdf->getPageWidth() - 60, 31);
-                         $pdf->writeHTMLCell(0, 0, 5, 76, '<div style="font-size: 12px;">Descrição: <br/>
-                         <strong style="font-size: 11px;">'.$row_odermproducao['qtd'].' '.$row_odermproducao['produto'].' <br/> Sup: 2 Dobr.</div> 
-                         ');
+                         $usinagemEsquerdo = $row_odermproducao['usinagem_para_esquerdo'];
+                            $usinagemDireito = $row_odermproducao['usinagem_para_direito'];
+                            $usinagemSuperior = $row_odermproducao['usinagem_para_superior'];
+                            $usinagemInferior = $row_odermproducao['usinagem_para_inferior'];
+                            $puxadorEsquerdo = $row_odermproducao['puxador_esquerdo'];
+                            $puxadorDireito = $row_odermproducao['puxador_direito'];
+                            $PuxadorSuperior = $row_odermproducao['puxador_superior'];
+                            $PuxadorInferior = $row_odermproducao['puxador_inferior'];
+
+                            // Cria um array associativo com os textos
+                            $textos = array(
+                                'Usinagem Esquerdo' => $usinagemEsquerdo,
+                                'Usinagem Direito' => $usinagemDireito,
+                                'Usinagem Superior' => $usinagemSuperior,
+                                'Usinagem Inferior' => $usinagemInferior,
+                                'Puxador Esquerdo' => $puxadorEsquerdo,
+                                'Puxador Direito' => $puxadorDireito,
+                                'Puxador Superior' => $PuxadorSuperior,
+                                'Puxador Inferior' => $PuxadorInferior,
+                            );
+
+                            // Filtra o array para incluir apenas os índices e valores não vazios
+                            $itensNaoVazios = array_filter($textos, function($valor) {
+                                return !empty($valor);
+                            });
+
+                            // Gera o texto final
+                            $textoFinal = implode(' - ', array_map(function($indice, $valor) {
+                                return $indice . ': ' . $valor;
+                            }, array_keys($itensNaoVazios), $itensNaoVazios));
+
+                            // Adiciona o texto ao PDF se não estiver vazio
+                            if (!empty($textoFinal)) {
+                                // Descrição
+                                $pdf->Rect(5, 75, $pdf->getPageWidth() - 60, 47);
+                                $pdf->writeHTMLCell($pdf->getPageWidth() - 60, 0, 5, 76, '<div style="font-size: 12px;">Descrição: <br/>
+                                <strong style="font-size: 11px;">'.$textoFinal.'</div> 
+                                ');
+                            } else {
+                                // Descrição
+                                $pdf->Rect(5, 75, $pdf->getPageWidth() - 60, 47);
+                                $pdf->writeHTMLCell($pdf->getPageWidth() - 60, 0, 5, 76, '<div style="font-size: 12px;">Descrição: <br/>
+                                <strong style="font-size: 11px;">()</div> 
+                                ');
+                            }
+
+                        
 
                          // Observação
-                         $pdf->Rect(5, 108, $pdf->getPageWidth() - 60, 31);
-                         $pdf->writeHTMLCell(0, 0, 5, 109, '<div style="font-size: 12px;">Observação: <br/>
+                         $pdf->Rect(5, 124, $pdf->getPageWidth() - 60, 28);
+                         $pdf->writeHTMLCell(0, 0, 5, 125, '<div style="font-size: 12px;">Observação: <br/>
                          <strong style="font-size: 11px;">'.$row_odermproducao['obs_observacao_op'].'</div> 
                          ');
                         /*$quarta_borda = 12;
@@ -308,7 +350,7 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
                         // Posiciona o cursor para o rodapé
                         $pdf->SetY(-$footer_height - $footer_bottom_margin);
 
-                        $pdf->writeHTMLCell(0, 0, 8, 140, '<div style="font-size: 10px; text-align: left;"><a href="https://www.exemplo.com" style=" color: #000;">https://www.exemplo.com</a></div>', 0, 0, false, true, 'L', true);        
+                        $pdf->writeHTMLCell(0, 0, 5, 153, '<div style="font-size: 10px; text-align: left;"><a style="font-weight: bolder;" href="https://www.exemplo.com" style=" color: #000;">https://www.exemplo.com</a></div>', 0, 0, false, true, 'L', true);        
                     }
                 }
                 
