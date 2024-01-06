@@ -388,13 +388,14 @@ if(isset($_POST['btn_cadastrar'])) :
     if($stmt->rowCount() > 0)
     { 
       //Cadastrar tbl_clientes_system
-      $tbl_clientes_system = $conn->prepare("INSERT INTO `tbl_clientes_system` (`id`, `nome`, `endereco`, `bairro`, `cidade`, `cep`, `celular`) VALUES (NULL, :nome, :endereco, :bairro, :cidade, :cep, :celular)");
+      $tbl_clientes_system = $conn->prepare("INSERT INTO `tbl_clientes_system` (`id`, `nome`, `endereco`, `bairro`, `cidade`, `cep`, `celular`, `nome_fantasia`) VALUES (NULL, :nome, :endereco, :bairro, :cidade, :cep, :celular, :nome_fantasia)");
       $tbl_clientes_system->bindParam(":nome", $nome);
       $tbl_clientes_system->bindParam(":endereco", $endereco);
       $tbl_clientes_system->bindParam(":bairro", $bairro);
       $tbl_clientes_system->bindParam(":cidade", $rua);
       $tbl_clientes_system->bindParam(":cep", $cep);
       $tbl_clientes_system->bindParam(":celular", $celular);
+      $tbl_clientes_system->bindParam(":nome_fantasia", $fantasia);
       $tbl_clientes_system->execute();
     ?>
         <script>
