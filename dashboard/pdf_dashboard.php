@@ -241,7 +241,7 @@ function criarPDF($id_uniqUsuario, $emailUsuario) {
 
                          // Borda
                          $pdf->Rect(5, 55, $pdf->getPageWidth() - 10, 18);
-                         $pdf->writeHTMLCell(0, 0, 5, 56, '<div style="font-size: 11px;"><strong style="font-size: 12px;">HJ 045 - INOX / PX HJ378 INOX 150mm Embutido <br/> Alin: Centralizado</strong></div> 
+                         $pdf->writeHTMLCell(0, 0, 5, 56, '<div style="font-size: 11px;"><strong style="font-size: 12px;"> '.$row_odermproducao['perfil_lado_esquerdo'].'<br/> '.$row_odermproducao['reforco'].'</strong></div> 
                          ');
 
                          $usinagemEsquerdo = $row_odermproducao['usinagem_para_esquerdo'];
